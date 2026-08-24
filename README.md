@@ -5,10 +5,10 @@
 
 | | |
 |---|---|
-| Phases closed | **5 of 19** (P0.0, P0, P1, P2, P3) |
-| Current phase | **P5 — SEO enrichment**, unblocked 2026-08-24 |
+| Phases closed | **6 of 19** (P0.0, P0, P1, P2, P3, P4) |
+| Current phase | **P5 — SEO enrichment** — gate-green, in §0 remediation |
 | Owner gates passed | **2 of 4** — P2 positioning (Rev 3), P4 site plan (6 pages) |
-| Gates verified | 6 — G0, G1, G1b, G2, G3, G4 — each run against the real files, with negative controls |
+| Gates verified | 7 — G0, G1, G1b, G2, G3, G4, G5 — each run against the real files, with negative controls |
 | Skill bugs found + fixed | **6** — all verified by the full smoke suites |
 | Spec root | `Code/client-site-prep/stomatology/_spec/` *(gitignored — see the last section)* |
 
@@ -39,7 +39,7 @@ absent and must never be invented.**
 | P2 | Positioning | **done, Rev 3** — owner-approved after two rewrites |
 | P3 | Architecture / IA | **done** — 6 nav nodes, 3 reserved, 43-page reconciliation |
 | P4 | Page list | **done** — 6 pages, owner-approved 2026-08-24 |
-| P5 | SEO enrichment | **next** — unblocked |
+| P5 | SEO enrichment | **drafted, not closed** — passes G5; three §0 blockers in remediation |
 | P6 | Typed content briefs | pending (owner gate) |
 | P7 | Readiness verdict | pending (owner gate) |
 
@@ -173,6 +173,48 @@ Regeneration was then verified end-to-end: template and generated artifact are b
 running the generator twice produces byte-identical output.
 
 **Still genuinely open:** the practice's own data, and the jurisdiction. Both need a human.
+
+---
+
+## 8. P5 — SEO enrichment: gate-green, not finished
+
+The six-row SEO table clears **G5** on the first attempt. Measured independently, twice, with two
+different engines rather than taking the authoring agent's numbers: titles 48–55 characters against
+a 60 ceiling, metas 131–147 against 160, and the primary keyword at index 0 on every row against a
+30-character window. The 301 ordinance reconciles exactly — 18 mapped, 1 with no target, 24 dropped,
+43 total.
+
+**It is still not finished**, because passing the gate and being correct are different things.
+
+**Three §0 blockers, found by the compliance audit:**
+
+1. **The children's-dentistry claim, asserted without its receipt — for the third time.** The
+   content bible permits that claim only against the owner's confirmation of the service mix, which
+   does not exist. It appears in 6 of 6 titles, 6 of 6 metas and 5 of 6 keywords. The file
+   *discloses* the ambiguity and then resolves it in favour of the copy — and §0.7 says ambiguity
+   resolves *against* the copy, every time. **Disclosure is not compliance.**
+2. **False provenance.** Four metas state that content "is owner-supplied." Nothing is: the audit
+   record reads "owner_supplied — NONE SUPPLIED," and the intake-reviewed flag is false. One row
+   phrases it correctly, which is how we know it's a slip rather than a convention.
+3. **Service mix asserted while the menu conflict is open** — the crawled services page advertises
+   ten general and adult treatments.
+
+**Why the first one matters most.** That same claim was caught and removed from the intake, then
+caught again in the page inventory, and has now appeared in the SEO. It keeps returning because the
+project *is* about children's dentistry and every author reaches for it. It is a systemic pull, not
+three coincidences, and it is only caught because something adversarial reads every artifact.
+
+**Two more gate holes**, found by negative control rather than inspection:
+
+- A 301 pair carrying a status token on only *one* side passes. Deleting the target-side token and
+  leaving the source-side token exits 0 — so half of every pair in the file is unenforced.
+- The ordinance scanner skips any line without a path, so it covers 42 of 43 lines.
+
+**And a self-reported trap worth recording.** The titles are measured with placeholder tokens in
+place, and headroom to the 60-character ceiling is only 12/6/6/5/10/6. A real city plus a real
+practice name is around 29 characters combined — which **breaks four of the six titles.** These
+titles pass the gate today and will fail it the moment the placeholders are substituted. The
+authoring agent volunteered that; a less honest file would have banked the green.
 
 ---
 
