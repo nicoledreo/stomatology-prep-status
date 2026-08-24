@@ -9,7 +9,7 @@
 | Current phase | **P5 — SEO enrichment**, unblocked 2026-08-24 |
 | Owner gates passed | **2 of 4** — P2 positioning (Rev 3), P4 site plan (6 pages) |
 | Gates verified | 6 — G0, G1, G1b, G2, G3, G4 — each run against the real files, with negative controls |
-| Skill bugs found + fixed | **4** (+2 more reported, 1 patched on request) |
+| Skill bugs found + fixed | **6** — all verified by the full smoke suites |
 | Spec root | `Code/client-site-prep/stomatology/_spec/` *(gitignored — see the last section)* |
 
 ---
@@ -149,15 +149,30 @@ Two things still gate real content:
 
 ---
 
-## 7. In flight at time of writing
+## 7. Owner-facing defects — found by audit, now closed
 
-A verification pass is still running against four owner-facing defects found by the placeholder
-audit: currency prompts that survive in the intake **template** (so regeneration restores them),
-two invented example names that reached a spec file, an unsupported claim about one crawled page
-that was labelled "verified," and a testimonial roster whose count doesn't match its own list.
+The placeholder audit found four defects in the artifacts the owner actually reads. All four are
+fixed, and the fix pass surfaced two more:
 
-**None of those four is fixed yet.** They are listed here because a status report that omitted
-them would be the exact failure this project keeps catching.
+| defect | resolution |
+|---|---|
+| Currency prompts (`USD, GBP, EUR…`, a `"from $X"` exemplar) suggested to the owner | fixed **in the template**, so regeneration cannot restore them |
+| Two invented example names reached a spec file | removed |
+| An unsupported claim about one crawled page, labelled "verified" | corrected — that page carries **0** of the markers claimed, while two sibling pages carry 11 and 9 |
+| A testimonial roster whose count didn't match its own list | corrected — see below |
+| *(found during the fix)* a comparative-pricing promise, template-resident | removed from template and artifact |
+| *(found during the fix)* a banner contradicting five of its own fields | reworded |
+
+**On the testimonial count.** The document said "seven" and named six. The correction brief handed
+to the agent said "determine whether it is six or seven." The true figure, counted from the
+snapshots, is **15 instances carrying 8 unique names across 5 pages** — so the original was wrong,
+and *the correction brief was also wrong*. It was caught only because the agent counted from source
+instead of accepting either number on offer.
+
+Regeneration was then verified end-to-end: template and generated artifact are both clean, and
+running the generator twice produces byte-identical output.
+
+**Still genuinely open:** the practice's own data, and the jurisdiction. Both need a human.
 
 ---
 
