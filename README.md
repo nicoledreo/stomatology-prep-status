@@ -6,10 +6,11 @@
 | | |
 |---|---|
 | Phases closed | **8 of 19** (P0.0 → P6) |
-| Current phase | **P7 — readiness** — committed **NO-GO**, 21 blockers, clearing in progress |
+| Current phase | **P7 — readiness** — NO-GO standing; re-scoped by the owner to a **template build**, spec conversion under way |
 | Owner gates passed | **3 of 4** — positioning (Rev 3), site plan (6 pages), content/claims briefs |
 | Gates verified | 8 — G0 → G7 — each run against the real files, with negative controls |
 | Skill bugs found + fixed | **8** — all verified; all 8 were wiped by a redeploy and restored |
+| Adversarial reviews that returned FLAWED | **6** — every one caught something real; see §4, §7, §11 |
 | Spec root | `Code/client-site-prep/stomatology/_spec/` *(gitignored — see the last section)* |
 
 ---
@@ -273,8 +274,130 @@ presented as the practice's clinicians** — the single most damaging thing this
 
 **Current state:** the 21 blockers split into 8 needing owner data, 4 needing a doctrine ruling, and
 9 the agent can clear alone. The nine are in progress; four of the missing handoff documents have
-already landed. The owner has scoped the remainder as a **template build** — placeholder content
-throughout, to be replaced when real practice information arrives.
+already landed. The owner has scoped the remainder as a **template build** — see §11, which is where
+that decision stopped being a footnote and became the shape of the work.
+
+---
+
+## 11. The re-scope: from *honest and empty* to *honest and finished*
+
+Everything above optimised for one thing: never assert what nobody had confirmed. The visible `⚠`
+marker was how that discipline was enforced. It produced a spec that was completely honest and, as a
+website, completely unfinished-looking.
+
+The owner then supplied the missing piece of context — **this is a template**, and real practice
+information replaces the placeholder content when it arrives — with a specific instruction:
+
+> *"i don't want the placeholders to be visibly and obviously swappable in the actual site build
+> (i.e. blank images, lorem ipsum text etc), i want it to look like a finished site with complete
+> info."*
+
+That is not a request to lower the bar. It changes which artifact is being built, and the safety
+argument has to be re-derived rather than repeated.
+
+### Why the objection genuinely doesn't apply — and where it still does
+
+The danger in invented content was always **false attribution**: a fabricated clinician is a real
+person's name on a practice they don't work at; a plausible telephone number is one a parent
+actually calls. **A template is not published as anyone's practice, so it attributes nothing.**
+Every commercial site template ships realistic demo content — that is how a design gets evaluated.
+
+But that argument covers *identity*, not *evidence*. So the line was redrawn rather than erased:
+
+| | |
+|---|---|
+| **Identity, structure, copy** — name, address, services, FAQ answers, the about story | realistic template content |
+| **Proof** — testimonials, ratings, review counts, awards, statistics | **still prohibited, under every scope** |
+
+A fabricated review is a lie about other people's experiences, and no scope makes it not one.
+
+### The build gate turned out to answer the question exactly
+
+Rather than guessing at the honesty gate, it was read at source, and two mechanics decided the whole
+design:
+
+1. It computes visible text by **stripping HTML comments first**, with the source comment reading
+   *"placeholders/markers in a comment are INVISIBLE to the visitor."* So a swappable marker in a
+   comment is invisible to the visitor **and** to the gate.
+2. It is **brief-driven**. It only forces a visible *"representative example"* label onto a section
+   whose brief marks it as fabricated proof. A section not so marked carries no such requirement.
+
+So realistic copy plus comment markers is not a workaround — it is the sanctioned path. And the only
+content the gate would have forced an ugly visible label onto was proof, which is exactly the
+content that was prohibited anyway. **The two rules met in the same place.**
+
+### The design call: omit the proof, don't label it
+
+A finished dental site with no reviews section is completely ordinary. A site showing
+`★★★★★ — representative example` is visibly broken *and* still displays a fake review. So every
+proof block was deleted outright — proof strips, data points, persona proof, proof logos — rather
+than shipped with a disclaimer.
+
+**Verified, live, this pass:** all fabricated proof gone from all six briefs; all six of the gate's
+fabricated markers at **zero**; **G6 exit 0 on all six briefs** and **G4 exit 0** on the page
+inventory and sitemap — each with asserted payload byte counts and four negative controls, including
+two that confirm the fail-open traps rather than assuming them. Three briefs now sit *exactly* on
+their type-window floor, so nothing further can be deleted.
+
+### The mistake worth publishing: a shared value with no owner
+
+The conversion was run as two agents working **in parallel** — one on the page inventory, one on the
+briefs. Both finished green. Both passed their own gates. The adversarial verifier returned
+**FLAWED** on the first line of its report:
+
+> *"THE SITE HAS TWO IDENTITIES."*
+
+Each agent had independently invented a practice name, city, address, phone and email — and written
+them into files that **cross-reference each other**. Every brief pointed at a register that declared
+different strings. A build reading both would emit a site whose wordmark disagrees with its own body
+copy: the single most obviously-unfinished thing a page can do.
+
+No gate caught it, and no gate *could* have. G4 checks that page counts reconcile. G6 checks section
+counts, ownership and link resolution. **Neither compares a value in one file against the same value
+in another.** This is the second time in this project that class of hole has appeared — the earlier
+one let a struck claim survive in seven downstream files because no gate compares nav *labels*.
+
+The failure was not agent judgment. It was **a shared value with no owner**, and the fix is
+structural, not a matter of trying harder: the canonical identity is now decided up front in a
+single file that every agent reads and none may override, and the repair runs *sequentially*.
+
+The general lesson, which generalises past this project: **never fan out concurrent agents over
+files that reference each other's invented values.** Parallelism is safe for independent work and
+quietly corrupting for shared state.
+
+### Two more things the verifier caught
+
+**Blank images were still blank, just restyled.** Every image slot on every page specified *"a flat
+brand-coloured panel or a neutral non-representational field."* That is the owner's stated problem
+wearing a nicer outfit. Replaced with real imagery — and, for team cards, **monogram avatars rather
+than generated faces.** A generated face misattributes nobody, but it is still a photograph of a
+human presented as this practice's staff, and every one would have to be hunted down when the real
+team arrives. A monogram reads as a deliberate design choice and degrades honestly.
+
+**Three instructions still built the old page.** The worst was on the homepage, which was still told
+to *"mark every unfinished slot as unfinished"* so that *"nothing on it is mistaken for finished"* —
+the flat opposite of the re-scope, on the front door.
+
+### Two judgment calls recorded rather than buried
+
+**Register-gated role words.** The page inventory proposed *Practice Principal* and *Associate
+Dentist*; the briefs barred that whole family, since a role word that may be a protected title in an
+undetermined jurisdiction fails closed. Two internal rules conflicted, and **the stricter one
+governs** — that is what fail-closed means. The team page carries functional roles only.
+
+**The one imperfect value, flagged not hidden.** The template email uses the IANA-reserved
+`.example` TLD, which a careful reader may clock as non-real. Every alternative that reads perfectly
+finished is a domain someone may own, and mail sent to it would reach them. **Misrouting a real
+parent's email to a stranger is the worse failure than an odd TLD**, so the reserved form stands —
+as an explicit owner decision, not a default. The address and phone needed no such compromise: a
+fictional city and the reserved `555-01xx` range render as ordinary finished details that
+*structurally cannot* reach a real practice or a real line.
+
+### Where this stands right now
+
+The repair pass — one identity, real imagery, stale instructions struck, roll-up regenerated — is
+**running, not finished**, and a second adversarial round will report on it before anything is
+called done. Published here as in-flight rather than as a result.
 
 ---
 
