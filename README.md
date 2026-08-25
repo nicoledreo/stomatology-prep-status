@@ -1,15 +1,15 @@
 # Stomatology — children's dentistry site prep
 
-**Status as of 2026-08-24.** Run of the `client-site-prep` skill against
+**Status as of 2026-08-25.** Run of the `client-site-prep` skill against
 `https://stomatology.axiomthemes.com/childrens-dentistry/`.
 
 | | |
 |---|---|
-| Phases closed | **6 of 19** (P0.0, P0, P1, P2, P3, P4) |
-| Current phase | **P5 — SEO enrichment** — gate-green, in §0 remediation |
-| Owner gates passed | **2 of 4** — P2 positioning (Rev 3), P4 site plan (6 pages) |
-| Gates verified | 7 — G0, G1, G1b, G2, G3, G4, G5 — each run against the real files, with negative controls |
-| Skill bugs found + fixed | **6** — all verified by the full smoke suites |
+| Phases closed | **8 of 19** (P0.0 → P6) |
+| Current phase | **P7 — readiness** — committed **NO-GO**, 21 blockers, clearing in progress |
+| Owner gates passed | **3 of 4** — positioning (Rev 3), site plan (6 pages), content/claims briefs |
+| Gates verified | 8 — G0 → G7 — each run against the real files, with negative controls |
+| Skill bugs found + fixed | **8** — all verified; all 8 were wiped by a redeploy and restored |
 | Spec root | `Code/client-site-prep/stomatology/_spec/` *(gitignored — see the last section)* |
 
 ---
@@ -39,9 +39,9 @@ absent and must never be invented.**
 | P2 | Positioning | **done, Rev 3** — owner-approved after two rewrites |
 | P3 | Architecture / IA | **done** — 6 nav nodes, 3 reserved, 43-page reconciliation |
 | P4 | Page list | **done** — 6 pages, owner-approved 2026-08-24 |
-| P5 | SEO enrichment | **drafted, not closed** — passes G5; three §0 blockers in remediation |
-| P6 | Typed content briefs | pending (owner gate) |
-| P7 | Readiness verdict | pending (owner gate) |
+| P5 | SEO enrichment | **done** — six rows, G5 green, three §0 blockers closed |
+| P6 | Typed content briefs | **done** — six typed briefs, G6 green, owner-approved 2026-08-25 |
+| P7 | Readiness verdict | **committed NO-GO** — 21 blockers; 9 agent-clearable in progress |
 
 ### Build — `client-site-build`
 
@@ -114,6 +114,8 @@ permission and verified by the full smoke suites.
 | 4 | G4 compared page **counts** but never **membership** | **fixed** |
 | 5 | Two owner-approval gates mis-substituted `$&` when reconstructing an edit | **fixed on request** |
 | 6 | Snapshot script's asset filter didn't strip query strings | reported, not patched |
+| 7 | G6 registered on `Write` only — same Edit bypass as #3, on the brief gate | reported |
+| 8 | G5 accepts a 301 pair with a status token on only **one** side | reported |
 
 **On #2, which is the instructive one.** A bare digit-run scan published a fabricated contact
 number four separate ways: an ISO build date, a section reference, a warning-marked held
@@ -215,6 +217,64 @@ place, and headroom to the 60-character ceiling is only 12/6/6/5/10/6. A real ci
 practice name is around 29 characters combined — which **breaks four of the six titles.** These
 titles pass the gate today and will fail it the moment the placeholders are substituted. The
 authoring agent volunteered that; a less honest file would have banked the green.
+
+---
+
+## 9. P6 — six typed content briefs, owner-approved
+
+All six briefs authored and passing **G6**: `index` 12 sections, `team` 8, `faq` 8, `services` 7,
+`about` 6, `contact` 4 — every count inside its type's window, zero duplicated fact-owners, zero
+broken internal links. The owner signed them off on 2026-08-25 against a rendered claims preview
+carrying **293 claim lines and 227 owner placeholders** — a ratio that is itself the honest picture
+of where this spec stands.
+
+**The same defect recurred a fourth time, and this round finally found its root.** An audience-worded
+phrase kept reappearing in different artifacts. It was not authors reaching for it: the phrase was
+baked into a **navigation label written at P3**, before the claim was ever ruled on, and every
+artifact that renders nav labels inherited it. Renaming the label at source, then propagating to all
+seven carriers, closed it.
+
+**And it exposed something structural: no gate compares labels.** The IA gate checks that each
+navigation row cites a source. The page-list gate reconciles counts. Neither compares label *values*
+across artifacts — so every downstream copy could contradict the source of truth while every gate
+stayed green, and they all did. That claim was never caught by machinery; it was caught four times by
+an adversarial reader, which is not a control that scales.
+
+---
+
+## 10. P7 — a committed NO-GO, and why that is the right answer
+
+The readiness verdict is a **NO-GO**: not cleared to build, **21 blockers**. The handoff gate refuses
+the kickoff and prints the count, which is the gate working rather than failing. The same gate was
+run in the opposite direction with a synthetic clean manifest and returned a pass — proving it
+discriminates rather than always blocking.
+
+**What a build today would produce: nothing.** The build stops before writing its first file,
+because six of the twelve required handoff documents did not exist.
+
+**The finding that matters most is about placeholders.** Filling every unknown with a visible marker
+was right *for the spec* — it is how fabrications stayed out. But the build has an honesty gate whose
+banned-content list contains that very marker, commented *"must never reach the visitor."* Proven by
+execution against the real briefs, with clean controls. **The placeholder register is a spec
+instrument, not a render instrument**, and that reclassified two more pages to blocked — all six.
+
+Worth recording: the first attempt to verify this returned a pass, and it was **fail-open** — the
+gate had exited early on an out-of-scope path. An unengaged gate is not a passing gate, and it was
+very nearly reported as a refutation.
+
+**Two defects in the verdict's own reasoning**, caught by an adversarial challenge: the arithmetic
+did not derive — it printed one total while its own chain produced another, because a finding was
+counted twice — and a shopping-list item told the owner to obtain a five-field declaration **without
+saying what the five fields are**. Both corrected; three independent derivations now agree.
+
+The verdict refuses euphemism, including against itself: *"There is no owner data. Not 'some gaps' —
+none."* And it names the worst credible outcome squarely: **a team page showing three strangers
+presented as the practice's clinicians** — the single most damaging thing this project could ship.
+
+**Current state:** the 21 blockers split into 8 needing owner data, 4 needing a doctrine ruling, and
+9 the agent can clear alone. The nine are in progress; four of the missing handoff documents have
+already landed. The owner has scoped the remainder as a **template build** — placeholder content
+throughout, to be replaced when real practice information arrives.
 
 ---
 
