@@ -6,11 +6,12 @@
 | | |
 |---|---|
 | Phases closed | **8 of 19** (P0.0 → P6) |
-| Current phase | **P7 — readiness** — NO-GO standing; re-scoped by the owner to a **template build**, spec conversion under way |
+| Current phase | **P7 — readiness** — template conversion through **8 adversarial rounds**; build unblocked, final verdict pending |
 | Owner gates passed | **3 of 4** — positioning (Rev 3), site plan (6 pages), content/claims briefs |
-| Gates verified | 8 — G0 → G7 — each run against the real files, with negative controls |
+| Gates verified | 9 — G0 → G7 plus the build's CTA-singularity gate — each run against the real files, with negative controls |
 | Skill bugs found + fixed | **8** — all verified; all 8 were wiped by a redeploy and restored |
-| Adversarial reviews that returned FLAWED | **6** — every one caught something real; see §4, §7, §11 |
+| Adversarial reviews that returned FLAWED | **13** — every one caught something real; see §4, §7, §11, §12 |
+| Spec size | 6 briefs, ~654 KB, 41 sections, **474 swap markers**, 179-name derived index |
 | Spec root | `Code/client-site-prep/stomatology/_spec/` *(gitignored — see the last section)* |
 
 ---
@@ -398,6 +399,128 @@ fictional city and the reserved `555-01xx` range render as ordinary finished det
 The repair pass — one identity, real imagery, stale instructions struck, roll-up regenerated — is
 **running, not finished**, and a second adversarial round will report on it before anything is
 called done. Published here as in-flight rather than as a result.
+
+---
+
+## 12. Eight rounds: what it took to make "finished" true
+
+§11 recorded the re-scope as a decision. This is what executing it actually cost — **eight rounds,
+seven of which came back FLAWED on adversarial review.** That ratio is the point, not an
+embarrassment: every one of those seven caught something that would otherwise have shipped.
+
+### The build was blocked, and the gate was right
+
+Five of the six pages **could not be written at all**. The build's CTA-singularity gate refused
+them:
+
+```
+chrome closing band + a body closing-CTA section
+  -> exit 2  "MORE THAN ONE closing / quote-CTA band on the FULL page"
+```
+
+Read at source, that gate exists because of **a failure that already shipped once**: a live build
+put two closing conversion bands on top of each other, because the old check inspected only the page
+body and never saw the site chrome. Our briefs each named their final section `final-dual-cta`,
+`cta`, `final-cta`, `closing-cta` — every one matches the gate's class patterns. Plus the mandatory
+chrome band, that is two. The gate was correctly refusing to repeat a known failure.
+
+The obvious fixes were both bad. Deleting those sections broke three type-window floors
+(index 12→11, team 7→6, about 5→4). Waiving the chrome doctrine meant discarding the rule that
+exists because of the original bug.
+
+**The third option worked: rewrite, don't delete.** A brief needs its section *count* — it does not
+need that section to be a CTA band. Each became real content with a non-CTA class:
+
+| page | was | now renders |
+|---|---|---|
+| index | `final-dual-cta` | *Inside the practice* |
+| about | `cta` | *When we are open* |
+| team | `final-cta` | *Asking for someone by name* |
+| services | `closing-cta` | *Where the work happens* |
+| faq | `closing-cta` | *Before an appointment is arranged* |
+
+Every count unchanged, no doctrine waived, verified against the real gate with asserted payload
+bytes.
+
+### The defect nobody asked about, found while fixing that one
+
+Five briefs specified a closing CTA in the page **body**. **Not one specified the chrome band that
+actually renders on every page.** The site's single most prominent ask — its heading and its verb —
+would have been the build's to invent. Now specified once, reusing the existing marker name rather
+than minting a new one.
+
+### The one dishonest string this spec was on course to publish
+
+The build doctrine **mandates a risk-reversal / guarantee line** in that same band. The content
+bible **holds every guarantee** (jurisdiction undetermined). Because the spec never enumerated the
+band, the build would have written that line **itself, unreviewed**.
+
+Resolution: **no guarantee line is written.** The slot renders nothing, emits no marker, and the
+hold is recorded in three separate places so the gap cannot be filled by invention. A doctrine about
+design quality does not lift a content hold.
+
+**The general lesson, and it generalises past this project: an unspecified slot inside a mandated
+band is not an absence. It is a blank cheque written to whoever builds the page.**
+
+### The recurring failure, finally named
+
+The same defect kept coming back in new clothes, and the eighth round produced the sentence that
+explains all of them at once:
+
+> **A defect fixed at its slot instead of in its class survives wherever the class also lives.**
+
+- Two agents each invented a practice identity → *the same value with no owner* (§11)
+- Then invented staff names against a register that forbade them → *same shape, different slot*
+- Then four competing label sets for the same destinations → *same shape, in link labels*
+- Then the same room called two different things on one page → *same shape, in nouns*
+- A held vocabulary word fixed on the staff cards, missed in a pillar two sections down
+
+No gate catches any of it. Structural gates reconcile counts, sections and link resolution — **none
+compares a value in one file against the same value in another.**
+
+### What the copy pass had to survive
+
+Writing ~225 body strings is where fabricated proof enters a project. It did not.
+
+**Zero** across fifteen categories — testimonials, ratings, review counts, awards, accreditations,
+statistics, head counts, years-in-practice, bare years, outcome figures, superlatives, credentials,
+protected titles, prices, insurance vocabulary — each verified with a **live negative control**
+proving the sweep fires on an injected fake.
+
+Three capability claims were caught and removed: two named clinical procedures that the unresolved
+service menu does not establish, and one that had crept back in from a *withdrawn* menu. Plus the
+sharpest catch of the run — a room noun that, on one regional reading, **names an operation.**
+
+Also fixed: a roll-up manifest carrying **24 stale measured values while asserting in writing that
+they were freshly recomputed from disk.** Staleness is a bug. A false claim about your own
+verification is worse, because it is the thing a reader trusts *instead* of checking.
+
+### The honest gaps, stated plainly
+
+**The team page is the largest.** The nav, the page heading and the tab title all promise *who you
+will see* — and the page carries a practice manager, a treatment coordinator and a reception lead.
+**Zero clinicians.** Every clinical slot renders empty by design, because inventing one is the single
+most damaging thing this project could ship. As a template that is a deliberate hold. For a real
+practice it needs real register entries.
+
+**The service menu.** Four template services with descriptions. The real menu is unresolved, and at
+the moment of swap an unswapped template menu becomes a false statement about what is offered.
+
+**The swap index has no gate behind it.** Making placeholders invisible to the visitor makes them
+invisible to a careless reader too. The obligation that replaces the visible marker — *grep the
+build tree for swap markers before publishing; it must return zero* — is prose, and depends on a
+human running it. Recorded as a known weakness rather than discovered later.
+
+### Still open
+
+The proposed fix for the gate that blocks the readiness verdict passed its **fifth** adversarial
+attack (three earlier designs were each broken by execution, not argument). It needs changes to a
+gate and to hook configuration, so it sits as a **proposal awaiting the owner** — this project does
+not modify code without explicit permission.
+
+P7 is **not closed.** The manifest that would say so is written last, from measured state, once the
+final adversarial verdict lands. Given seven FLAWED rounds out of eight, writing it early is exactly
+where that habit would cost something.
 
 ---
 
