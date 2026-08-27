@@ -6,12 +6,13 @@
 | | |
 |---|---|
 | Phases closed | **8 of 19** (P0.0 → P6) |
-| Current phase | **P7 — readiness** — template conversion through **8 adversarial rounds**; build unblocked, final verdict pending |
+| Current phase | **P7 — readiness** — **14 adversarial rounds**; blockers **21 → 10**; spec work nearly closed |
 | Owner gates passed | **3 of 4** — positioning (Rev 3), site plan (6 pages), content/claims briefs |
-| Gates verified | 9 — G0 → G7 plus the build's CTA-singularity gate — each run against the real files, with negative controls |
-| Skill bugs found + fixed | **8** — all verified; all 8 were wiped by a redeploy and restored |
-| Adversarial reviews that returned FLAWED | **13** — every one caught something real; see §4, §7, §11, §12 |
-| Spec size | 6 briefs, ~654 KB, 41 sections, **474 swap markers**, 179-name derived index |
+| Gates verified | 12+ — the prep chain G0 → G7 plus the build's CTA-singularity, no-dash, banned-content, copy-fidelity and conversion-integrity gates — each run live, with negative controls |
+| Skill bugs found + fixed | **9** — including one gate patched **under written owner permission**, verified PASSES |
+| Adversarial reviews that returned FLAWED | **19** — every one caught something real; see §4, §7, §11, §12, §13 |
+| Blockers remaining | **10** — 8 owner-gated, 2 doctrine. Zero are "the agent hasn't got to it yet" |
+| Spec size | 6 briefs, ~700 KB, 41 sections, **~480 swap markers**, derived index regenerated from disk |
 | Spec root | `Code/client-site-prep/stomatology/_spec/` *(gitignored — see the last section)* |
 
 ---
@@ -521,6 +522,118 @@ not modify code without explicit permission.
 P7 is **not closed.** The manifest that would say so is written last, from measured state, once the
 final adversarial verdict lands. Given seven FLAWED rounds out of eight, writing it early is exactly
 where that habit would cost something.
+
+---
+
+## 13. Rounds 9–14: the deadlock broke, and the record turned out to be the harder problem
+
+§12 ended with the build unblocked and the verdict pending. Six more rounds followed. Blockers went
+**21 → 13 → 6 spec-fixable**, total **21 → 10**, and every one of the ten now needs the owner rather
+than more agent time.
+
+### The gate that demanded a fabrication is fixed — with written permission
+
+The standing deadlock: a gate counted 106 crawled *theme* images as "the intake supplied proof",
+then required three proof categories marked *present* — on a project with **zero** proof. The only
+way to satisfy it was to assert proof that does not exist.
+
+Five remedies were designed. **Three were broken by execution, not by argument** — each added a
+declaration the author writes about their own work, and a declaration the author controls is cheap
+to write falsely. The fourth relocated the check instead of teaching it provenance, and survived.
+
+The owner gave explicit permission, and it was applied. Measured across **all 130 registered
+hooks**, against a 55,130-byte payload carrying the real 54,409-byte adverse verdict:
+
+| write | before | after |
+|---|---|---|
+| **Adverse NO-GO verdict** | 1 gate exits 2 — *the deadlock* | **0** — the record can be written |
+| **GO verdict** | 1 exits 2 | **1** — the proof requirement correctly re-arms |
+
+Detection was proven **byte-identical** rather than eyeballed: the detection region hashes the same
+in the pre-patch backup and the live file, `diff` empty, every difference confined to console
+strings. Shipped smoke 5/0. Exactly two files changed under the tool directory.
+
+**The asymmetry is the whole point.** An adverse finding must always be recordable; a *claim of
+readiness* must still be policed. A gate that blocks you from writing down bad news is structurally
+wrong however good its detection is.
+
+**One deviation was disclosed rather than buried.** The proposal said to move the hook into an
+existing block; no such block existed. The agent created one and rejected both alternatives *with
+evidence* — registering it elsewhere would have blocked arbitrary shell commands (proven: exit 2 on
+a plain `ls -la`), and editing another block's matcher would have silently changed the firing
+surface of two unrelated hooks. It also caught that the config file's hash no longer matched what
+the ruling recorded: the file had moved between ruling and apply.
+
+### The artifact is close. The record about the artifact was the real problem.
+
+By round 12 a pattern was unmistakable: each round reported 13–28 defects, and **almost none were
+defects in the website.** They were manifests carrying stale hashes, status lines describing a state
+the disk no longer had, and measurement sentences that were wrong.
+
+The mechanism: every round wrote extensive *"verified this turn"* prose into the spec artifacts, and
+that prose went stale the moment the next round edited anything. **The spec was documenting itself
+faster than it could keep the documentation true.**
+
+The proof it was structural rather than careless: three published measurements were wrong **and each
+was labelled as freshly measured.** The claim of freshness was itself the stale part.
+
+### Two attempts to end it — one worked, one was a counter wearing a checker's clothes
+
+**What worked:** the manifests became **generated from disk**, not authored. A stale hash is now
+impossible by construction instead of by diligence. Proven in place *and* in an isolated 27 MB copy,
+with four mutation tests — including one that moved the **disk** rather than the manifest and was
+still caught.
+
+**What did not:** a "ratchet" meant to police measurement prose *counted occurrences* and never
+re-derived any of them. So three briefs published a wrong character count, inside the ratchet's own
+scope, **with the ratchet green**. One of the four titles happened to be correct, which is exactly
+why counting looked adequate.
+
+> **A checker that counts instances of a claim is not checking the claim.** It must parse the claim,
+> recompute the value, and fail on mismatch — and it must report *unverifiable* as its own state,
+> because a green that silently absorbs unverifiable claims is the same defect one level up.
+
+### The defect that kept coming back, and finally got machine-enforced
+
+*A defect fixed at its slot instead of in its class survives wherever the class also lives.* Round 13
+found the sharpest instance yet: an illegal comment form was **reproduced, not described,** in 13
+places — including inside **the checker's own header, in the paragraph warning against it.** Nine
+further classes of the same shape were found alongside it.
+
+It is now machine-enforced rather than written down: the checker refuses the struck form **on sight,
+escaped or not**, and assembles its own detector name at runtime so the file can never carry the
+form it refuses.
+
+A boundary was drawn explicitly so the green is not over-read: the regex rows in the ban list are
+**not** in that class, because a ban-list pattern is not a copyable page payload — converting them
+would delete the ban list.
+
+### Design went back to the drawing board, correctly
+
+The first visual direction was rejected by the owner as *"too old / scrapbook"* — cream, tan, olive
+and terracotta, which read as craft-heritage rather than clinic. That was the right call and a wrong
+instinct on our side. Six modern directions replaced it, each a complete system with real swatches,
+both typefaces set in specimen text and a working mini-page in the site's own copy. Three full
+homepage layouts followed, deliberately rendered in one neutral skin so **layout is the only
+variable**.
+
+**And a verification failure worth publishing.** Seven contrast ratios were stated as fact with none
+of them computed. All seven were wrong; the corrected figures changed the accessibility advice on
+one option. On re-verification a *second* error surfaced — a number had been fixed while its label
+still named the wrong background, which is just as false. Both are the same failure this project
+keeps finding in its own record: **a measurement asserted with confidence and never actually taken.**
+
+A near-miss followed: the first content sweep of the mockups reported *"6/8 detectors fire"* on its
+positive control and nearly passed. Two classes were untested, so the sweep looked clean while
+proving nothing. **A sweep not proven to fire is not evidence.**
+
+### Where it stands
+
+The spec's blocker list is down to **10, and 8 of them are owner-gated** — no jurisdiction
+declaration, no intake, no photography, no clinician register entries, no ruling on the service
+menu. Those are not agent work. `ready_for_build` remains **false** and is deliberately not being
+flipped: that flag authorises a build, and it is a GO/NO-GO call for the owner, not for the process
+that wants to finish.
 
 ---
 
