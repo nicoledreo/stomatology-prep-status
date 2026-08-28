@@ -4,9 +4,17 @@
 `client-site-build`, against
 `https://stomatology.axiomthemes.com/childrens-dentistry/`.
 
+Every count in the table below was re-derived from disk when this entry was written, rather than
+carried forward from the last one. That is worth stating plainly, because during the audit that
+produced this entry **the spec tree changed underneath the measurement**: a manifest that had been
+unparsable was repaired mid-pass, and the phase count moved with it. Two readings taken twenty
+minutes apart disagreed, and the second one is what is published here. These numbers are true as of
+their derivation, not for all time — which is the same lesson §13 records about the spec's own
+manifests, arriving this time in the status record itself.
+
 | | |
 |---|---|
-| Phases closed | **9 of 19**, as the project's own dashboard generator scores it: P0, P1, P2, P3, P4, P6, P7, P7.5, P8. It scores **P0.0 and P5 pending**, and both are live tooling defects rather than unfinished work — the P0.0 probe looks for three filenames that are not the ones on disk (§5 bug 1, still open), and `_spec/seo-manifest.json` is currently **invalid JSON**, so the flag that would mark P5 done cannot be read at all. An earlier draft of this row said **10 of 19**; that was an editorial count the generator does not reproduce |
+| Phases closed | **10 of 19** — P0, P1, P2, P3, P4, P5, P6, P7, P7.5, P8, re-derived from the project's own dashboard generator at publication time. **P0.0 is not among them**: the generator scores it *pending* because of a tooling defect, now diagnosed to the line. Its probe reads the slug root, `<slug>/`, while every other phase reads `<slug>/_spec/`. The file it wants is on disk, one directory deeper than it looks. It is a **wrong-directory** bug, not the filename-case bug an earlier revision of this row reported (§5 bug 1, still open). The previous row reached the same total by a different route — "P0.0 to P7, plus P7.5" — and that membership is wrong at both ends: it counts P0.0, which does not close, and omits P8, which does |
 | Current phase | **FEEL — feel confirm** is the active row in the generated dashboard. P8 design-system instantiation scores **done** there, because the generator's whole test for P8 is that a `-tokens.css` file exists. Brand card owner-picked and stamped; token sheet locked, grafted complete and independently verified; the feel specimen is composing and **unstamped** |
 | Owner gates passed | **4 of 8** canonical gates — intake, positioning, site plan, content/claims briefs. The remaining four (feel, system, chrome, flagship page) are all downstream. Three further owner decisions were taken outside that list: the GO acknowledgement, the visual direction, and the brand card |
 | Verdict | **GO at TEMPLATE scope** — re-tiered, not discharged; see §14 |
@@ -39,13 +47,13 @@ absent and must never be invented.**
 
 | # | Phase | State |
 |---|---|---|
-| P0.0 | Supply & audit | **done in substance** — 43 pages crawled, Existing-A model built at `_spec/existing-a-model.md`. The dashboard still scores it **pending**: it probes three filenames that do not exist here (§5 bug 1) |
+| P0.0 | Supply & audit | **done in substance** — 43 pages crawled, Existing-A model built at `_spec/existing-a-model.md`. The dashboard still scores it **pending**, and the cause is now pinned: its probe reads `<slug>/` where every other phase reads `<slug>/_spec/`, so it misses a file that is there (§5 bug 1) |
 | P0 | Intake & rails | **done** — filled with visibly-placeholder values (see §6) |
 | P1 | Market research | **done** — 7 competitors, 30 snapshot-locked pages |
 | P2 | Positioning | **done, Rev 3** — owner-approved after two rewrites |
 | P3 | Architecture / IA | **done** — 6 nav nodes, 3 reserved, 43-page reconciliation |
 | P4 | Page list | **done** — 6 pages, owner-approved 2026-08-24 |
-| P5 | SEO enrichment | **done in substance** — six rows, G5 green, three §0 blockers closed. The dashboard scores it **pending**, because `_spec/seo-manifest.json` is currently **invalid JSON** and its flag cannot be read |
+| P5 | SEO enrichment | **done** — six rows, G5 green, three §0 blockers closed. Worth recording: `_spec/seo-manifest.json` was **unparsable JSON** for part of this audit, so the generator scored P5 *pending*; it was repaired mid-pass and now reads clean |
 | P6 | Typed content briefs | **done** — six typed briefs, G6 green, owner-approved 2026-08-25 |
 | P7 | Readiness verdict + handoff | **done** — **GO at TEMPLATE scope**; 12 files copied under checksum |
 
