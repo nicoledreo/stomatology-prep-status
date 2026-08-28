@@ -1,19 +1,22 @@
 # Stomatology — children's dentistry site prep
 
-**Status as of 2026-08-25.** Run of the `client-site-prep` skill against
+**Status as of 2026-08-28.** Run of the `client-site-prep` skill, and now
+`client-site-build`, against
 `https://stomatology.axiomthemes.com/childrens-dentistry/`.
 
 | | |
 |---|---|
-| Phases closed | **8 of 19** (P0.0 → P6) |
-| Current phase | **P7 — readiness** — **14 adversarial rounds**; blockers **21 → 10**; spec work nearly closed |
-| Owner gates passed | **3 of 4** — positioning (Rev 3), site plan (6 pages), content/claims briefs |
-| Gates verified | 12+ — the prep chain G0 → G7 plus the build's CTA-singularity, no-dash, banned-content, copy-fidelity and conversion-integrity gates — each run live, with negative controls |
-| Skill bugs found + fixed | **9** — including one gate patched **under written owner permission**, verified PASSES |
-| Adversarial reviews that returned FLAWED | **19** — every one caught something real; see §4, §7, §11, §12, §13 |
-| Blockers remaining | **10** — 8 owner-gated, 2 doctrine. Zero are "the agent hasn't got to it yet" |
-| Spec size | 6 briefs, ~700 KB, 41 sections, **~480 swap markers**, derived index regenerated from disk |
+| Phases closed | **9 of 19**, as the project's own dashboard generator scores it: P0, P1, P2, P3, P4, P6, P7, P7.5, P8. It scores **P0.0 and P5 pending**, and both are live tooling defects rather than unfinished work — the P0.0 probe looks for three filenames that are not the ones on disk (§5 bug 1, still open), and `_spec/seo-manifest.json` is currently **invalid JSON**, so the flag that would mark P5 done cannot be read at all. An earlier draft of this row said **10 of 19**; that was an editorial count the generator does not reproduce |
+| Current phase | **FEEL — feel confirm** is the active row in the generated dashboard. P8 design-system instantiation scores **done** there, because the generator's whole test for P8 is that a `-tokens.css` file exists. Brand card owner-picked and stamped; token sheet locked, grafted complete and independently verified; the feel specimen is composing and **unstamped** |
+| Owner gates passed | **4 of 8** canonical gates — intake, positioning, site plan, content/claims briefs. The remaining four (feel, system, chrome, flagship page) are all downstream. Three further owner decisions were taken outside that list: the GO acknowledgement, the visual direction, and the brand card |
+| Verdict | **GO at TEMPLATE scope** — re-tiered, not discharged; see §14 |
+| Blockers | **0** at template scope · **8** at launch scope, per the census evidence file that derives them and names the eight rows. Both are published — but **not cleanly**: the manifest carries `blocker_count_at_launch_scope` **twice**, as 8 and again as 10, and every conforming JSON parser takes the last, so a machine reading that file gets **10**. See §14. The gap to template scope is the owner debt |
+| Gates verified | 20+ across prep and build, each driven live with negative controls. Four found fail-OPEN and reported as such |
+| Skill bugs found | **10** — but *fixed* does not hold for all of them today, and this row used to claim it did. Bug 1 (§5) is **still open on disk**. The BL-23 gate patch that §13 records as applied and verified has been **reverted off disk** — the file is back to its pre-patch byte count and pre-patch hash, so that deadlock is live again (§14). The newest is a gate that cannot see the file its own skill writes (§14) |
+| Adversarial reviews that returned FLAWED | **22** — every one caught something real; see §4, §7, §11, §12, §13, §14 |
+| Spec size | 6 briefs, **906,948 bytes** and **613 swap markers**, both re-measured from disk for this entry. The previous row published "~700 KB, 41 sections, ~480 swap markers" — all three had gone stale, and the section figure also disagreed with §9's own enumeration, which sums to 45. Derived index regenerated from disk |
 | Spec root | `Code/client-site-prep/stomatology/_spec/` *(gitignored — see the last section)* |
+| Build root | `Code/client-sites/stomatology/` *(gitignored — same reason)* |
 
 ---
 
@@ -36,19 +39,30 @@ absent and must never be invented.**
 
 | # | Phase | State |
 |---|---|---|
-| P0.0 | Supply & audit | **done** — 43 pages crawled, Existing-A model built |
+| P0.0 | Supply & audit | **done in substance** — 43 pages crawled, Existing-A model built at `_spec/existing-a-model.md`. The dashboard still scores it **pending**: it probes three filenames that do not exist here (§5 bug 1) |
 | P0 | Intake & rails | **done** — filled with visibly-placeholder values (see §6) |
 | P1 | Market research | **done** — 7 competitors, 30 snapshot-locked pages |
 | P2 | Positioning | **done, Rev 3** — owner-approved after two rewrites |
 | P3 | Architecture / IA | **done** — 6 nav nodes, 3 reserved, 43-page reconciliation |
 | P4 | Page list | **done** — 6 pages, owner-approved 2026-08-24 |
-| P5 | SEO enrichment | **done** — six rows, G5 green, three §0 blockers closed |
+| P5 | SEO enrichment | **done in substance** — six rows, G5 green, three §0 blockers closed. The dashboard scores it **pending**, because `_spec/seo-manifest.json` is currently **invalid JSON** and its flag cannot be read |
 | P6 | Typed content briefs | **done** — six typed briefs, G6 green, owner-approved 2026-08-25 |
-| P7 | Readiness verdict | **committed NO-GO** — 21 blockers; 9 agent-clearable in progress |
+| P7 | Readiness verdict + handoff | **done** — **GO at TEMPLATE scope**; 12 files copied under checksum |
 
 ### Build — `client-site-build`
 
-Not started. Blocked on P7.
+| # | Phase | State |
+|---|---|---|
+| P7.5 | Asset intake + tonal lock | **done** — 9 generated template images; 106 crawled files quarantined (§14) |
+| P8 | Design-system instantiation | **in progress** by our reckoning; the dashboard scores it **done**, its test being only that a `-tokens.css` exists. Brand card stamped; token sheet locked + grafted; feel specimen composing |
+| FEEL | Feel confirm (owner) | **composing** — a single specimen, iterate rather than fan out |
+| SYSTEM | Token lock card (owner) | not started — held by FEEL |
+| P9 | Global chrome (owner) | not started — held by SYSTEM; brief researched ahead (§14) |
+| P10 | Pipeline setup | not started |
+| P11 | Content + proof to briefs | not started |
+| P12 | Page build, home last (owner) | not started |
+| P13 | Mobile + revision loop | not started |
+| P14 | Final QA + publish | not started |
 
 ---
 
@@ -58,9 +72,9 @@ The wedge was rewritten twice, both times because verification refuted it — no
 changed.
 
 **Rev 1 — "fear-first."** Refuted. The claim was that no competitor positions on a child's fear.
-Adding the missing solo-practice class killed it: one competitor carries 33 verbatim fear/comfort
-strings, a named behaviour technique, a dedicated comfort page, parent-coaching about the parent's
-own fear, **and** a published CDT-coded fee table. Fear language is table stakes, not a
+Adding the missing solo-practice class killed it: one competitor carries dozens of verbatim
+fear/comfort strings, a named behaviour technique, a dedicated comfort page, parent-coaching about
+the parent's own fear, **and** a published fee schedule. Fear language is table stakes, not a
 differentiator. Rev 1's second-best wedge, cost transparency, died to the same competitor.
 
 **Rev 2 — "decide before you call."** Survived on evidence, then failed a different check. It was
@@ -111,7 +125,7 @@ permission and verified by the full smoke suites.
 
 | # | Bug | Status |
 |---|---|---|
-| 1 | Dashboard tested only a legacy uppercase path, so P0.0 read "pending" forever | **fixed** — real path added, legacy kept |
+| 1 | Dashboard tested only a legacy uppercase path, so P0.0 read "pending" forever | **still open** — re-checked for this entry: the generator probes only `EXISTING-A-MODEL.md`, `intake-completed.md` and `CLIENT-INTAKE-PREFILLED.html` at the prep root, while the file on disk is `_spec/existing-a-model.md`. This row previously read "fixed — real path added". That was wrong |
 | 2 | Site-plan preview fabricated a phone number in the **owner-facing** artifact | **fixed by redesign** — see below |
 | 3 | G4 was registered on `Write` only, so an `Edit` bypassed page-list reconciliation entirely | **fixed** |
 | 4 | G4 compared page **counts** but never **membership** | **fixed** |
@@ -549,6 +563,12 @@ hooks**, against a 55,130-byte payload carrying the real 54,409-byte adverse ver
 | **Adverse NO-GO verdict** | 1 gate exits 2 — *the deadlock* | **0** — the record can be written |
 | **GO verdict** | 1 exits 2 | **1** — the proof requirement correctly re-arms |
 
+> **This is a dated record of one run, and it no longer describes the disk.** Re-checked while
+> preparing §14: the patched gate has been **reverted**. The file is back to its pre-patch size of
+> 7,319 bytes and its pre-patch hash, and not one of the relocation markers survives. The deadlock
+> is back. Everything below about how the patch was verified is true of the run it describes and
+> false of the tree today — which is exactly the failure this section goes on to name.
+
 Detection was proven **byte-identical** rather than eyeballed: the detection region hashes the same
 in the pre-patch backup and the live file, `diff` empty, every difference confined to console
 strings. Shipped smoke 5/0. Exactly two files changed under the tool directory.
@@ -637,9 +657,246 @@ that wants to finish.
 
 ---
 
+## 14. P7 closed, the seam crossed, and the build started
+
+Three days of work sit between this entry and the last one. P7 closed, the handoff crossed into the
+build tree, and the build has now passed its first owner gate. The most useful things in this
+section are the four places the process was wrong and something external caught it.
+
+### The verdict changed without a single blocker being discharged
+
+The last entry ended with **10 blockers, 8 of them owner-gated**, and `ready_for_build` deliberately
+left `false`. That flag has now flipped to `true` and the verdict reads **GO**, and it is worth being
+precise about why, because nothing was fixed to earn it.
+
+The blocker census had been counting against a **launch** — a real practice, with a real address, real
+clinicians and real photographs. The build that was actually authorised is a **template**: a complete,
+honest, fully-designed site whose business facts are openly invented and marked for swapping. Those
+are different questions, and eight of the ten blockers were only blockers for the first one.
+
+So the census was made scope-aware and re-run. The rule it already carried, applied honestly to
+closure targets read off disk: a finding counts as a blocker if and only if it is **open** and closing
+it **edits a file under the spec root**. Three of them close entirely outside it — one in a settings
+file, one in a skill amendment, one in neither.
+
+| | Blockers |
+|---|---|
+| At **launch** scope | **8** — unchanged, every one owner-gated |
+| At **template** scope | **0** |
+
+Both numbers are published in the manifest, not just the convenient one. The gap between them is the
+owner debt, and keeping it visible is the whole point: a single number would have let "GO" quietly
+mean "nothing left to do."
+
+**And then the manifest published the launch number twice, with two different values.** Found while
+preparing this entry: `blocker_count_at_launch_scope` appears once as **8** and again, later in the
+same file, as **10**. It is the only duplicated key in the manifest. Every conforming JSON parser
+takes the last one, so any gate or script reading that file gets **10**, while the census evidence,
+the manifest's own prose and this document all say **8** and name the eight rows. The derived figure
+is 8; the 10 is uncorrected on disk as this is published.
+
+**A number published twice is a number with no owner** — the same defect class this project has now
+hit four times, arriving this round inside the very key that was written to stop a single number
+hiding the truth. The check that would have caught it is the one this document keeps asking for and
+still does not have: something that compares a value against the same value elsewhere.
+
+**Nothing was discharged. The number changed because the question changed.** That is a legitimate move
+exactly once, and only when both numbers stay on the record.
+
+### The correction the process had coming
+
+The owner, on being shown the blocker list again: *"I told you to place imaginary information for
+these, I already said this way back."*
+
+They were right, and the record proves it — the decision was on the ledger from **25 August**. For
+three days after that the status kept reporting eight blockers as *waiting on the owner* when the
+owner had already ruled on them. The re-tier above was available that whole time and was not done.
+
+A related detail, found while fixing it: the string `build_scope` appeared **zero times** in the spec
+manifest. The single most consequential decision on the run — what kind of site this is — was being
+carried in conversation and in prose, and nowhere a gate could read it.
+
+### Placeholders that are invisible but findable
+
+The owner's instruction was specific: *"I don't want the placeholders to be visibly and obviously
+swappable — no blank images, no lorem ipsum. I want it to look like a finished site with complete
+info."*
+
+That is a harder brief than it sounds, because the honesty gate exists to stop exactly the thing being
+asked for. The resolution came from **reading the gate's source instead of guessing at it**: it strips
+HTML comments before running its debris check, and its "representative example" labelling requirement
+is driven by markers in the page brief rather than applied to everything. So realistic prose plus
+comment-form swap markers is not a workaround — it is the sanctioned path, and roughly **480 markers**
+now carry it.
+
+The tension is real and worth stating rather than smoothing over: **a site that looks finished is a
+site whose placeholders a careless operator can ship.** The markers are machine-findable, the swap
+list is generated from disk, and the invented identity is owned by a single file so it cannot drift.
+That is mitigation, not elimination.
+
+### Seven contrast ratios, none of which had been computed
+
+A design document went out carrying seven WCAG contrast ratios. **None of them had been calculated.**
+They were plausible numbers attached to colour pairs.
+
+All seven were wrong. Recomputed properly:
+
+| Claimed | Actual |
+|---|---|
+| 5.6 | 5.13 |
+| 2.8 | **2.96** |
+| 4.9 | 5.59 |
+| 15.1 | 14.87 |
+| 4.0 | 3.67 |
+| 5.6 | 5.34 |
+| 6.7 | 5.87 |
+
+Six were close enough to be embarrassing but harmless. **One changed the advice**: a teal scoring 2.96
+against its own page colour fails even the large-text standard, and had been presented as usable.
+
+Then a second error surfaced during the re-check: one number was corrected while its **label** still
+said "on white", when it had actually been computed against a tinted page colour. The fix had been
+applied to the value and not to the sentence around it.
+
+The proof-of-work gate caught the first round. The second was found by re-auditing rather than by
+being caught, which is the order those two things are supposed to happen in.
+
+### The visual direction was rejected once, correctly
+
+The first direction offered was cream, tan, olive and terracotta. The owner's response: *"this looks
+too old, scrapbook style. I want it modern, eye-catching yet clean, easy to read."*
+
+That judgement was right — that palette reads as craft or heritage, not as a dental practice. Six
+modern directions were built and shown, and the owner picked one built on near-black ink, a single
+blue accent and a strict neutral ladder.
+
+The defect came next. The new direction was appended to the direction file as **§12** — which already
+had a §12. For a period, the file the build reads carried **two live, incompatible visual
+directions**, and a build could legitimately have designed from either. The rejected sections now
+carry supersede banners and the live one was renumbered. They were kept rather than deleted, because
+deleting them would erase the only evidence that the direction was chosen rather than assumed.
+
+### The brand cards the owner could not read
+
+Three brand cards went out. The owner: *"I cannot see the difference between the brand cards because
+they all look the same. I cannot visualize it completely."*
+
+**That was a design failure, not a perception failure.** With the palette and typeface already locked
+by the earlier pick, three identity sheets differ only in corner radius, depth treatment and
+alignment. Presented as swatches and atoms, those are abstractions. Asking someone to choose between
+them is asking them to choose between descriptions of a difference rather than the difference.
+
+The fix was to render **the same page content three times**, once in each form language, so the choice
+is visible instead of inferred. Critically it was **derived, not illustrated**: every radius and depth
+value was read out of each concept's own token sheet, then compared back against the rendered page
+after writing. A plausible-looking illustration of a difference is not the difference.
+
+Two gates blocked that comparison page from being written, and both were right:
+
+- it cited no design system, so the page was asserting a design rationale it had not consulted;
+- it contained **em dashes throughout the prose** — the precise defect this project spent multiple
+  earlier rounds chasing out of the spec, walked into while writing the fix for something else.
+
+The owner picked the hairline-ring concept. That pick is now stamped.
+
+### What came across the seam, including what should not have
+
+The handoff copied **12 files** into the build tree under checksum. The seam integrity gate rehashes
+both the source tree and every copied file, so the copied decisions cannot silently drift from the
+ones that were approved.
+
+It also copied **106 files from the original site crawl** into the build's asset directory — **98 of
+them carrying copyright markings** — and labelled them real image assets. They are research evidence
+from the audit of the reference site, and they are emphatically not this practice's photographs. Left
+where they landed, the build would have designed around another vendor's licensed stock.
+
+They are now quarantined behind a README explaining what they are and why they are not in use, and the
+nine generated template images are in their place. **This recurs on every run of the copy step**, so
+the quarantine has to be re-applied each time; the underlying fix belongs in the copier.
+
+### A gate that cannot see the file its own skill writes
+
+The no-dash rule has blocked two writes on this project and has been one of the more useful gates on
+the run.
+
+The skill's own token-graft script writes **two em dashes into the locked token sheet** every time it
+runs — inside the comments it generates to explain itself.
+
+The gate cannot catch this. Its scope covers copy files, tournament artifacts and page files. The
+locked design-token sheet is **not in scope**, so on that path the gate fails open, and the skill
+drives straight through the hole its own rule was written to close. Both dashes were removed from this
+build's output and the sheet re-verified clean. **The root cause is in the skill and will reproduce on
+every future build.**
+
+This is the same failure class the run has hit repeatedly, in a new location: *a defect fixed at its
+slot instead of in its class survives wherever the class also lives.*
+
+### A smoke that has never run, guarding the stage that comes next
+
+The chrome stage is next. Its automated self-test **has never executed on this machine even once**: it
+is hard-wired to copy fixture data from a different client's build tree, which does not exist here, so
+it crashes during setup having asserted nothing. The result had been reported as a passing suite.
+
+Rather than modify the skill, a disposable build was staged from **this** client's real handoff, and
+the actual page builder was run against it as a child process.
+
+**The headline prediction was wrong, and that is the most useful thing in this section.** Reading the
+config, the brand block was entirely empty and the conclusion drawn was that the site would ship
+unbranded and unstyled. Running it disproved that: the builder exits clean, correctly derives its
+stylesheet set by scanning the design directory, and the empty fields never reach the page as a
+fallback name. **Reading the source was not enough. Running it was.**
+
+Five real defects did surface, each verified in the rendered output:
+
+1. **The wordmark renders empty** — the brand link is emitted with no text inside it.
+2. **The footer carries about seven empty elements** from the same cause.
+3. **The page template hardcodes a serif webfont the locked direction does not use**, and the shell
+   derivation carries that head forward, so it would survive into the built site.
+4. **The canonical hook the functional mobile-navigation test drives is absent** — the default markup
+   uses a different class, which would leave that test decorative rather than real.
+5. **The default chrome is exactly the under-build the tournament exists to replace** — a flat row of
+   links and a thin one-line closing band, both of which the skill names as failures.
+
+The first is the one worth keeping. **The slot-completeness check passes because the slot is filled —
+with an empty string.** A check proving a slot was filled says nothing about it being filled with
+something. That is the same shape as the fail-open gates this run has caught four times now.
+
+### Where it stands
+
+The brand card is owner-picked and **stamped**, and the locked token sheet was verified independently
+rather than on the word of the process that wrote it: **17 colour values, all 17 traceable to the
+picked concept, none invented**; the constrained radius roles present; one typeface on both axes; the
+hairline-ring signature and its dark-surface counterpart intact; zero dashes.
+
+The approval chain is doing its job in both directions — the next stage is unblocked by the new stamp,
+and every stage after it is still correctly held.
+
+### The fix from §13 is off disk again
+
+§13 recorded the BL-23 patch as applied, verified and shipped, with a before/after table. **It is not
+on disk.** The gate file is back to its pre-patch 7,319 bytes and its pre-patch hash, byte for byte,
+and none of the relocation markers survive. The spec manifest already carries this as open and states
+the part worth publishing: *"the deadlock is back. Second occurrence of this failure mode in this
+project."*
+
+So the gate that refuses to let an adverse verdict be written is live again, and the summary table's
+"found + fixed" tally was only ever true of the ones that stayed fixed. **A fix that can silently
+leave the disk is not a fix. It is a state that has to be re-measured every time it is relied on**
+— the stale-record lesson of §13, one level up: there the record went stale about the artifact, here
+the record went stale about the repair.
+
+### Where the launch-scope debt stands
+
+**The eight launch-scope blockers are unchanged and remain entirely owner-gated**: no jurisdiction
+declaration, no owner intake, no photography, no clinician register entries, no ruling on the service
+menu. Re-scoping to a template did not make them go away. It made them honest about being the owner's
+to answer, and stopped them blocking work that does not depend on them.
+
+---
+
 ## Why the spec isn't in this repo
 
-`Code/client-site-prep/` is gitignored. The spec contains the full competitive research — 30
+`Code/client-site-prep/` and `Code/client-sites/` are both gitignored. The spec contains the full competitive research — 30
 snapshot-locked competitor pages and seven dossiers — plus the positioning that derives from it.
 That is client work product and third-party content, and it does not belong in a public repository.
 
