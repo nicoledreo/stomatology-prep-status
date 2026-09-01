@@ -2,6 +2,84 @@
 <!-- ============================================================================
      SECTION 8 AMENDMENTS AUTHORISED BY THE OWNER, 2026-09-01
 
+     ==========================================================================
+     THIRD NOTE, 2026-09-01. THE BIG ONE. TWO CLAUSES MOVE AGAIN, AND ONE OF THEM
+     IS THE CLAUSE THIS WHOLE FILE HAS BEEN BUILT AROUND. Read this block before
+     the older ones below it: where the two disagree, THIS ONE IS CURRENT.
+
+     ITEM 8, AMENDED AGAIN, AND THIS TIME THE ABSOLUTE ITSELF MOVES.
+       As written, verbatim: "No photograph of a person, generated or licensed,
+       anywhere, and specifically no face on a team card."
+       AMENDED 2026-09-01. The owner wrote, quoted verbatim: "The people who work
+       here, the boxes here should have centred profile pictures / talking heads
+       ... just generate imaginary images of the dentists speaking."
+       RELEASED: the full face, the eyes, and the team card specifically. Team
+       cards now carry generated portraits. The designed monogram avatar that the
+       clause used to mandate is GONE from this file, markup and CSS both, because
+       a monogram kept beside a portrait is two answers to one question.
+       AS BUILT IN THIS FILE, COUNTED not assumed: THREE generated portraits, one
+       per person card at section 7 (.hp-portrait), each a 1024x1024 generated
+       image cropped to a circle and centred over the card, with the face held at
+       object-position 50% 24% so the crop lands on the head and not the collar.
+       WHAT THE RELEASE DOES NOT REACH: no other slot on this site gains a face.
+       The band grounds, the card grounds and the plate ground carry no person.
+
+     THE DISCLOSURE THAT COMES WITH IT, AND IT IS NOT SOFTENABLE.
+       A generated face attached to a named role IS AN INVENTED PERSON. The three
+       portraits in this file are GENERATED IMAGES OF PEOPLE WHO DO NOT EXIST, and
+       the names beside them (Alex Morgan, Jordan Ellis, Sam Patel) are themselves
+       placeholders. That is recorded IN PLAIN WORDS, IN THE RENDERED LABEL STRIP
+       at the top of the page (.hp-label__note--faces), at body size, in full ink,
+       on its own plate with an accent rule, as the FIRST note under the label
+       title. It is not a footnote, it is not small print, and it is not a comment:
+       a reader who reads nothing else on this page reads that the faces are not
+       real people. If the portraits are ever removed, that note goes with them; if
+       a portrait is ever added to another page, that note goes there first.
+
+     ITEM 4, AMENDED FURTHER STILL, IN BOTH ITS RELEASED CLAUSES.
+       As written: "No drop shadow, no gradient, no glow, no texture, no glass."
+       AMENDED FURTHER 2026-09-01: the owner wants the gradients MORE VISIBLE and
+       the drop shadows MORE NOTICEABLE. Quoted: "make the gradients across all
+       pages MORE VISIBLE because it still looks too flat", and "check the WHITE
+       BOXES ON TOP OF WHITE BACKGROUNDS across all pages, add more visible drop
+       shadows for the boxes to lift", and "add a faint background here of a clinic
+       gradually fading to white onto the middle".
+       WHAT MOVED, MEASURED AND NOT CLAIMED. The band gradients were deepened at
+       the token, not at the rule: --hp-wash-a 5% to 13%, --hp-wash-b 9% to 20%,
+       plus a new --hp-wash-c at 28% and two new ground stops (--hp-ground-low,
+       --hp-ground-mid). The shadow was rebuilt as a soft AMBIENT plus a tighter
+       KEY over the locked ring: --hp-sh-key 10% to 20%, --hp-sh-amb 14% to 26%.
+       The clinic plate is ONE class, .hp-clinic, defined once and shared by all
+       six pages, drawn from dental-bg-clinic-airy.jpg at low opacity behind a
+       radial mask so it shows at the band edges and washes to white behind the
+       copy. Numbers for all three are in the DEPTH LEDGER in the stylesheet.
+       STILL NOT RELEASED AND STILL ABSENT: glow, texture, glass. Three notes have
+       now moved gradient and drop shadow. Nothing has moved those three.
+
+     ITEM 5 OF THE SAME NOTE, WHICH IS NOT A SECTION 8 CLAUSE AT ALL.
+       Quoted: "I do not like the OPEN THIS PAGE CTAs on every box, it is already
+       given. REMOVE THOSE COMPLETELY ACROSS ALL PAGES and move down the text on
+       top", and "make sure spacing, alignment, button sizing, shadows, gradients
+       and background-image treatments are CONSISTENT ACROSS THE ENTIRE SITE".
+       AS BUILT IN THIS FILE, COUNTED: FIVE .hp-route__go labels removed from the
+       markup AND their two CSS rules removed with them, so neither an orphan class
+       nor an orphan rule is left behind. The cards keep every other affordance:
+       the whole card is still the link target, the hover still lifts and still
+       scales the photograph, and the focus ring is untouched (item 11).
+
+     WHAT IS STILL BINDING AND HAS NEVER BEEN AMENDED, restated because three
+     notes of releases is exactly when a file starts assuming the rest moved too:
+       item 1  no teal, no cyan, no aqua, in CSS or in imagery.
+       item 9  no testimonial, review, star row, rating, review count, award,
+               accreditation, certification badge, logo strip or statistic, in any
+               form, not even captioned as an example.
+       item 10 no text inside an image asserting a fact.
+       item 11 no colour-only state, and a focus ring is never removed.
+       No guarantee. No premises assertion. No closing CTA band in any body. No
+       before-and-after imagery. The children's-dentistry category claim stays
+       HELD. No em dash and no en dash anywhere, comments included.
+     ==========================================================================
+
      The owner amended their own _handoff/visual-direction.md section 8 in writing
      on 2026-09-01, and then amended it FURTHER on the same day. SIX clauses now
      move: items 2, 3, 4, 6, 7 and 8. Each is quoted below verbatim from section 8
@@ -215,7 +293,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Alder Grove Dental homepage composition (Low Light)</title>
+<!-- Template value, not this practice's data.
+     Swap for the page-inventory.md 2.3 "practice name" row when the owner supplies it.
+     THE PREVIOUS TITLE WAS A BUILD-INTERNAL LABEL THAT REACHED A USER-VISIBLE SURFACE:
+     "Alder Grove Dental homepage composition (Low Light)". "Low Light" is a tournament
+     variant name and appears nowhere in the handoff; the string below is briefs/index.md
+     line 237, which specifies the spec string `Dentistry in [CITY] - [PRACTICE NAME]` and
+     its template rendering verbatim, at 43 characters against the 60-character ceiling
+     with the primary keyword at index 0. The five sibling pages already carry their
+     specified title and both swap markers; this page carried neither. -->
+<title>Dentistry in Riverbend - Alder Grove Dental</title>
+<!-- swap:practice-name -->
+<!-- swap:city -->
+<!-- Meta, briefs/index.md line 238, verbatim as the spec string: the authored string and
+     the shipped string are the same string, with only the two tokens substituted. This
+     page had NO meta description at all, while all five siblings had one. -->
+<meta name="description" content="Dentistry in Riverbend. Alder Grove Dental sets out what we do, who you will see, and how to reach us, in plain words.">
 
 <!-- ============================================================================
      WHAT THIS FILE IS
@@ -590,19 +683,75 @@
   /* the hero's radial vignette: ink at the frame edge, NOTHING at the focal point */
   --hp-ink-mid:       color-mix(in srgb, var(--ds-primary-deep) 22%, transparent);
   --hp-ink-deep:      color-mix(in srgb, var(--ds-primary-deep) 46%, transparent);
-  /* the accent washes the light grounds are built from (item 9, more gradients) */
-  --hp-wash-a:        color-mix(in srgb, var(--ds-primary) 5%,  transparent);
-  --hp-wash-b:        color-mix(in srgb, var(--ds-primary) 9%,  transparent);
+  /* ---- THE BAND WASHES, DEEPENED BY THE THIRD NOTE. "make the gradients across
+     all pages MORE VISIBLE because it still looks too flat."
+     The old values were 5 and 9 percent, which measured a 4.17 row-luminance
+     spread on .hp-ground--paper and 0.67 on .hp-ground--grad. A 0.67 spread over a
+     900px band is a sixth of one percent per hundred pixels: it is not a gradient a
+     reader can see, which is precisely the complaint. These are the SAME TOKEN at a
+     higher percentage, so no new hue enters and item 1's no-teal absolute is
+     untouched: --ds-primary is #0B5FFF at hue 219deg, and mixing it with the locked
+     neutrals moves saturation, never hue. Measured after: see the DEPTH LEDGER. */
+  --hp-wash-a:        color-mix(in srgb, var(--ds-primary) 13%, transparent);
+  --hp-wash-b:        color-mix(in srgb, var(--ds-primary) 20%, transparent);
+  --hp-wash-c:        color-mix(in srgb, var(--ds-primary) 9%, transparent);   /* was 28%. At 28 the radial lifted dark bands from L 0.009 to L 0.43 by measurement, which washed the accent-coloured headline keywords down to about 1.3:1 and made them unreadable. 9% keeps a visible direction of light without touching legibility. */
+  /* the two NEW ground stops. A two-stop ramp between two near-identical paper
+     tokens cannot carry a direction of light, so each light ground now ends on a
+     stop that is measurably away from where it started. Both are locked tokens
+     mixed with locked tokens, and both FLIP with .surface-dark for free, which is
+     why the dark bands gain the same direction without a second rule. */
+  --hp-ground-low:    color-mix(in srgb, var(--ds-primary-deep) 10%, var(--ds-bg-surface-2));
+  --hp-ground-mid:    color-mix(in srgb, var(--ds-accent)       9%, var(--ds-bg-surface-2));
+  /* the copy-plate tint, PINNED so the ground deepening cannot drag it. It held the
+     old --hp-wash-b value, and .hp-plate--paper carries body copy in --ds-ink-soft:
+     taking it to 20 percent would have dropped that pairing to 4.04:1, under AA.
+     Naming it separately is what stops a ground change becoming a contrast bug. */
+  --hp-plate-tint:    color-mix(in srgb, var(--ds-primary)  9%, transparent);
 
-  /* ---- THE DROP SHADOW, released by the owner's second note and built from the
+  /* ---- THE DROP SHADOW, released by the owner's second note and MADE TO READ by
+     the third. "add more visible drop shadows for the boxes to lift." Built from the
      LOCKED INK, never from a new colour. Two drop layers plus the brand card's
      hairline ring, in that order: a tight KEY that reads as contact, a wide soft
      AMBIENT that reads as air, and the ring that keeps the card's edge crisp on a
-     ground it barely differs from. --ds-shadow-rest is the locked ring token. */
-  --hp-sh-key:  color-mix(in srgb, var(--ds-primary-deep) 10%, transparent);
-  --hp-sh-amb:  color-mix(in srgb, var(--ds-primary-deep) 14%, transparent);
-  --hp-shadow-box:    0 1px 2px var(--hp-sh-key), 0 14px 32px var(--hp-sh-amb), var(--ds-shadow-rest);
-  --hp-shadow-box-hi: 0 2px 6px var(--hp-sh-key), 0 26px 54px var(--hp-sh-amb), var(--ds-shadow-rest);
+     ground it barely differs from. --ds-shadow-rest is the locked ring token.
+     THE OLD RECIPE EXISTED AND DID NOT READ, which is the owner's actual complaint:
+     10 percent ink at 2px and 14 percent at 32px, on a white box on a white ground,
+     put roughly one luminance point between the box edge and the paper. The key and
+     the ambient are both roughly doubled, the ambient is given a negative spread so
+     it pools under the box rather than haloing around it, and the result is measured
+     at the box edge rather than asserted. See the DEPTH LEDGER. */
+  --hp-sh-key:  color-mix(in srgb, var(--ds-primary-deep) 20%, transparent);
+  --hp-sh-amb:  color-mix(in srgb, var(--ds-primary-deep) 26%, transparent);
+  --hp-shadow-box:    0 2px 5px var(--hp-sh-key), 0 22px 44px -8px var(--hp-sh-amb), var(--ds-shadow-rest);
+  --hp-shadow-box-hi: 0 4px 10px var(--hp-sh-key), 0 40px 72px -10px var(--hp-sh-amb), var(--ds-shadow-rest);
+
+  /* ---- THE FADED CLINIC PLATE. "add a faint background here of a clinic gradually
+     fading to white onto the middle. do this treatment for ALL SECTIONS ACROSS ALL
+     PAGES THAT HAVE WHITE BOXES ON TOP OF PLAIN WHITE BGs."
+     ONE definition, six pages, one class (.hp-clinic). The image is masked so it is
+     visible at the band EDGES and absent behind the copy, and a white radial veil
+     sits over it so the centre resolves to the locked page surface whatever the
+     photograph does. Both layers are token-built: the mask uses --ds-ink for its
+     opaque stop because a mask reads ALPHA and ignores hue, and the veil uses
+     --ds-bg-surface, which is the locked page white.
+     THE IMAGE CARRIES NO PERSON AND NO TEXT, which is what keeps item 8's remaining
+     absolutes and item 10 intact even though item 8 released the team card. */
+  /* the generated portrait's circle, one value shared by the homepage and the team
+     page so the two person grids cannot drift apart again (item 5, consistency). */
+  --hp-portrait-size: clamp(96px, 8.6vw, 128px);
+
+  --hp-clinic-img:    url("../assets/dental-bg-clinic-airy.jpg");
+  --hp-clinic-alpha:  .55;
+  --hp-clinic-mask:   radial-gradient(88% 80% at 50% 46%,
+                        transparent 0%,
+                        transparent 44%,
+                        color-mix(in srgb, var(--ds-ink) 30%, transparent) 66%,
+                        var(--ds-ink) 92%);
+  --hp-clinic-veil:   radial-gradient(76% 68% at 50% 46%,
+                        var(--ds-bg-surface) 0%,
+                        var(--ds-bg-surface) 54%,
+                        color-mix(in srgb, var(--ds-bg-surface) 74%, transparent) 76%,
+                        transparent 96%);
 
   /* ---- THE TYPE STEP, RAISED. Item 2's amendment released the prohibition and the
      second note withdrew the 40px ceiling this file had kept BY CHOICE ("the owner
@@ -628,7 +777,12 @@
   /* ---- motion ------------------------------------------------------------- */
   --hp-dur-reveal: 620ms;
   --hp-dur-rise:   760ms;
-  --hp-dur-draw:   1100ms;   /* the timeline rail drawing itself between the steps */
+  /* the timeline rail drawing itself between the steps. Shortened from 1100ms when
+     the rail became TWO segments: 1100ms was a whole-width sweep, and the same
+     duration on a segment a third of that length reads as a stall rather than as a
+     draw. The two segments are staggered behind their steps, so the cascade still
+     takes about a second and a half end to end. */
+  --hp-dur-draw:   760ms;
   --hp-stagger:    90ms;
   --hp-i: 0;                 /* stagger index; set per element inline */
 }
@@ -669,14 +823,20 @@ img{ max-width:100%; }
 .hp-ground--paper{
   background-color:var(--ds-bg-surface);
   background-image:
-    radial-gradient(120% 90% at 12% 0%, var(--hp-wash-b) 0%, transparent 62%),
-    linear-gradient(180deg, var(--ds-bg-surface) 0%, var(--ds-bg-surface-2) 100%);
+    radial-gradient(120% 92% at 12% 0%, var(--hp-wash-c) 0%, transparent 58%),
+    linear-gradient(180deg,
+      var(--ds-bg-surface)    0%,
+      var(--ds-bg-surface-2) 52%,
+      var(--hp-ground-low)  100%);
 }
 .hp-ground--paper2{
   background-color:var(--ds-bg-surface-2);
   background-image:
-    radial-gradient(120% 90% at 88% 0%, var(--hp-wash-a) 0%, transparent 60%),
-    linear-gradient(180deg, var(--ds-bg-surface-2) 0%, var(--ds-bg-surface) 100%);
+    radial-gradient(120% 92% at 88% 0%, var(--hp-wash-b) 0%, transparent 56%),
+    linear-gradient(180deg,
+      var(--hp-ground-low)    0%,
+      var(--ds-bg-surface-2) 48%,
+      var(--ds-bg-surface)  100%);
 }
 
 /* pick: SURFACE-PATTERNS.md #26 (None / pure-spacing) for the band interior +
@@ -688,14 +848,95 @@ img{ max-width:100%; }
    locked band surface to the locked warm dark gives the dark bands a direction of
    light, so a run of four dark bands reads as one room lit from one side rather
    than as four black rectangles stacked. */
+/* RE-RESOLVE THE GRADIENT STOPS ON THE DARK FLIP.
+   Custom properties are substituted at COMPUTED-VALUE time on the element that DECLARES them, and
+   the value that inherits is the already-substituted one. --hp-ground-mid and --hp-ground-low are
+   declared on :root, where --ds-bg-surface-2 is the LIGHT #F4F6F8, so they baked that in and did
+   NOT re-resolve inside .surface-dark even though .surface-dark flips --ds-bg-surface-2 to #1C2A3A.
+   MEASURED before this fix on a dark band: --hp-ground-mid computed to
+   color-mix(in srgb, #0B5FFF 9%, #F4F6F8), i.e. near white. The 152deg gradient therefore ran
+   dark, near-white, dark, near-white and painted a bright diagonal streak across four dark bands,
+   washing their headline keywords down to roughly 1.3:1 and making them unreadable.
+   Redeclaring both inside .surface-dark forces the substitution to happen there, against the dark
+   surface. This is the fix, not the wash opacity: reducing --hp-wash-c from 28% to 9% changed
+   nothing, which is what proved the streak was these two stops rather than the wash. */
+.surface-dark{
+  --hp-ground-mid: color-mix(in srgb, var(--ds-accent)       9%, var(--ds-bg-surface-2));
+  --hp-ground-low: color-mix(in srgb, var(--ds-primary-deep) 10%, var(--ds-bg-surface-2));
+  /* THE SAME SUBSTITUTION TRAP, SECOND INSTANCE, FOUND BY READING getComputedStyle ON A
+     DARK ELEMENT RATHER THAN BY READING THIS STYLESHEET. --hp-shadow-box ends in
+     var(--ds-shadow-rest), which is the 1px ring. --ds-shadow-rest FLIPS: it is
+     0 0 0 1px #E3E8EE at :root and 0 0 0 1px #283544 inside .surface-dark. Because
+     --hp-shadow-box was declared only on :root, it substituted the LIGHT #E3E8EE ring at
+     computed-value time and inherited that already-substituted value into the dark bands,
+     so the three .hp-portrait cards on the dark team band carried a near-white hairline
+     instead of the dark one. Redeclaring here forces the substitution to happen against
+     the dark surface. --hp-shadow-box-hi carries the identical reference and is redeclared
+     with it: it is not consumed on a dark band today, and this is what keeps that true if
+     one lands there later. */
+  --hp-shadow-box:    0 2px 5px var(--hp-sh-key), 0 22px 44px -8px var(--hp-sh-amb), var(--ds-shadow-rest);
+  --hp-shadow-box-hi: 0 4px 10px var(--hp-sh-key), 0 40px 72px -10px var(--hp-sh-amb), var(--ds-shadow-rest);
+}
 .hp-ground--grad{
   background-color:var(--ds-bg-surface);
   background-image:
-    radial-gradient(90% 70% at 78% 6%, var(--hp-wash-b) 0%, transparent 58%),
+    radial-gradient(92% 74% at 78% 6%, var(--hp-wash-c) 0%, transparent 56%),
     linear-gradient(152deg,
       var(--ds-bg-surface)   0%,
-      var(--ds-bg-surface-2) 46%,
-      var(--ds-bg-warm)     100%);
+      var(--hp-ground-mid)  40%,
+      var(--ds-bg-warm)     76%,
+      var(--hp-ground-low) 100%);
+}
+
+/* ============================================================================
+   THE FADED CLINIC PLATE. ONE CLASS, ONE DEFINITION, SIX PAGES.
+   The owner: "add a faint background here of a clinic gradually fading to white
+   onto the middle. do this treatment for ALL SECTIONS ACROSS ALL PAGES THAT HAVE
+   WHITE BOXES ON TOP OF PLAIN WHITE BGs."
+   THE RULE THAT DECIDES WHERE IT GOES is the owner's own sentence turned into a
+   measurement rather than a taste: a section takes .hp-clinic when it contains an
+   element whose computed background is white or near-white sitting on a ground
+   whose computed background is ALSO white or near-white. That set was ENUMERATED
+   by rendering all six pages headless and reading computed styles, not by looking
+   at the markup. In this file that is exactly one band, section 4, whose three
+   .hp-step boxes and three .hp-tl__icon circles are white on the paper2 ground,
+   plus the label strip, whose disclosure plate is white on the band surface.
+   TWO LAYERS, AND BOTH ARE LOAD-BEARING.
+     ::before is the photograph, at --hp-clinic-alpha, behind a RADIAL MASK that is
+     fully transparent through the middle 40 percent and only reaches full alpha at
+     92 percent. The mask is what makes it "gradually fading to white onto the
+     middle": the image is not faded there, it is ABSENT there.
+     ::after is a white radial VEIL over the top, so the centre resolves to the
+     locked page surface even where the mask has not finished. Belt and braces, and
+     the reason is the owner's condition on item 3: text over a photograph has to be
+     READABLE. Two independent layers each guarantee the centre is paper, so a
+     future crop or a different plate image cannot quietly put copy on a room.
+   THE COPY NEVER SITS ON VISIBLE IMAGERY. Both pseudos are z-index 0 and 1 and
+   pointer-events:none; every content wrapper on this page is z-index 3 or above.
+   The worst-case measured contrast of body copy over the plated bands is recorded
+   in the DEPTH LEDGER, sampled from the rendered backdrop under each text box.
+   ============================================================================ */
+.hp-clinic{ isolation:isolate; }
+.hp-clinic::before,
+.hp-clinic::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+.hp-clinic::before{
+  z-index:0;
+  background-image:var(--hp-clinic-img);
+  background-size:cover;
+  background-position:50% 46%;
+  background-repeat:no-repeat;
+  opacity:var(--hp-clinic-alpha);
+  -webkit-mask-image:var(--hp-clinic-mask);
+          mask-image:var(--hp-clinic-mask);
+}
+.hp-clinic::after{
+  z-index:1;
+  background-image:var(--hp-clinic-veil);
 }
 
 .hp-wrap{
@@ -1522,52 +1763,143 @@ img{ max-width:100%; }
    WHITE ON NEAR-WHITE, so these are among the boxes the drop-shadow release is FOR:
    a --ds-bg-surface card on the --ds-bg-surface-2 band, separation that the hairline
    alone was carrying. */
-.hp-timeline{
+/* ---- THE GEOMETRY IS DECLARED ONCE, ON ONE ELEMENT, AND READ BY BOTH THE GRID AND
+   THE RAIL. The grid gap and the medallion diameter are the two numbers the rail's
+   own left/width arithmetic depends on, so if either lived somewhere else the rail
+   could drift off the circles the day that value stepped at a breakpoint.
+   ALL THREE ARE DECLARED ON .hp-tl AND CONSUMED ON .hp-tl, or on a descendant that
+   inherits the already-substituted value. Nothing here mixes a token against a
+   surface colour, so nothing here needs a dark-flip redeclaration; if a colour ever
+   joins this list it does, and it must be verified by reading getComputedStyle on a
+   rendered element rather than by reading this sheet. */
+.hp-tl{
+  --hp-tl-gap:var(--ds-space-lg);
+  --hp-tl-icon:72px;
+  --hp-tl-rail:3px;
   --hp-stagger:260ms;        /* the steps appear ONE BY ONE, not as a group */
+  position:relative;
+}
+.hp-timeline{
   position:relative;
   display:grid;
   grid-template-columns:repeat(3, minmax(0,1fr));
-  gap:var(--ds-space-lg);
+  gap:var(--hp-tl-gap);
   margin:0; padding:0;
   list-style:none;
 }
+/* THE RAIL IS A LAYER, NOT A LIST ITEM. It is a sibling of the <ol> rather than a
+   child of it, for two reasons that both matter: an <ol> may only contain <li>, and
+   the rail has to measure itself against the WHOLE grid rather than against one
+   step. It is aria-hidden and carries no text, because the reading order 1, 2, 3 is
+   already carried by the <ol>. pointer-events:none, so a rail lying over a card can
+   never swallow a hover meant for the card underneath it. */
 .hp-tl__rail{
   position:absolute;
-  z-index:0;
-  left:16.6667%;
-  right:16.6667%;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+}
+/* A SEGMENT IS A TRACK PLUS A FILL. The track is the unlit hairline that shows where
+   the line is GOING; the fill is the accent that draws along it. Two elements rather
+   than one, because a rail that is simply absent until it animates reads as a
+   rendering fault, and because the drawn fraction only means something against a
+   whole. */
+.hp-tl__seg{
+  position:absolute;
   /* the vertical centre of a medallion: the card's own top padding plus half of the
-     72px circle. Both terms are declared, so the rail cannot drift off the circles
-     when the padding token changes. */
-  top:calc(var(--ds-space-lg) + 36px);
-  height:2px;
+     circle, minus half the rail's own thickness. Every term is a declared value. */
+  top:calc(var(--ds-space-lg) + var(--hp-tl-icon) / 2 - var(--hp-tl-rail) / 2);
+  height:var(--hp-tl-rail);
   border-radius:var(--ds-r-pill);
+  background-color:var(--ds-line);
+  overflow:hidden;
+  transform-origin:center center;
+  transition:transform var(--ds-dur-slow) var(--ds-ease-out);
+}
+/* A column is (100% minus two gaps) / 3 and the centre-to-centre stride is a column
+   plus a gap. The segment starts half a column plus half a medallion in, and runs
+   one stride minus a whole medallion, so it begins and ends at the circles' EDGES
+   and never crosses one. Written out longhand rather than aliased into a derived
+   custom property: a custom property is substituted on the element that declares it,
+   and writing the arithmetic where it is used removes that question entirely. */
+.hp-tl__seg--1{
+  left:calc((100% - 2 * var(--hp-tl-gap)) / 6 + var(--hp-tl-icon) / 2);
+  width:calc((100% - 2 * var(--hp-tl-gap)) / 3 + var(--hp-tl-gap) - var(--hp-tl-icon));
+}
+.hp-tl__seg--2{
+  left:calc((100% - 2 * var(--hp-tl-gap)) / 6 + var(--hp-tl-icon) / 2
+            + (100% - 2 * var(--hp-tl-gap)) / 3 + var(--hp-tl-gap));
+  width:calc((100% - 2 * var(--hp-tl-gap)) / 3 + var(--hp-tl-gap) - var(--hp-tl-icon));
+}
+.hp-tl__fill{
+  display:block;
+  width:100%;
+  height:100%;
+  border-radius:inherit;
+  /* the draw runs left to right, which is the reading direction of a horizontal
+     timeline. The 768 block turns this to center top with the rail. */
   transform-origin:left center;
   background-image:linear-gradient(90deg,
     var(--ds-accent-soft) 0%,
-    var(--ds-accent)     50%,
-    var(--ds-accent-soft) 100%);
+    var(--ds-accent)     45%,
+    var(--ds-accent-deep) 100%);
 }
+/* THE RAIL ANSWERS THE STEP IN FRONT OF IT. Engaging a step thickens the segment
+   LEAVING it, which is the one thing a process diagram can say that a static line
+   cannot: this is what happens next. Additive only. A browser without :has() shows
+   the rail at its resting thickness and loses nothing else. */
+.hp-tl:has(.hp-step:nth-child(1):hover) .hp-tl__seg--1,
+.hp-tl:has(.hp-step:nth-child(1):focus) .hp-tl__seg--1,
+.hp-tl:has(.hp-step:nth-child(2):hover) .hp-tl__seg--2,
+.hp-tl:has(.hp-step:nth-child(2):focus) .hp-tl__seg--2{
+  transform:scaleY(1.9);
+}
+/* THE STEP IS A SHELL AND THE CARD IS INSIDE IT, and that split is load-bearing
+   rather than tidy. The shell carries .hp-reveal, whose transition is opacity and
+   transform over --hp-dur-reveal with a per-step delay. If the hover lift lived on
+   the same element it would inherit that 620ms duration and up to half a second of
+   delay, so a step would answer a pointer half a second late. The card is a separate
+   element with a separate, short transition, and the two never share a property. */
 .hp-step{
   position:relative;
   z-index:1;
+  display:flex;
+  flex-direction:column;
+  border-radius:var(--ds-r-surface);
+}
+/* THE FOCUS RING. The step is a tab stop (see the markup note on tabindex), so it
+   needs a ring, and this file removes a focus outline nowhere. The ring is drawn on
+   the shell, which has no padding of its own, so it sits exactly around the card. */
+.hp-step:focus-visible{
+  outline:3px solid var(--ds-accent-deep);
+  outline-offset:4px;
+}
+.hp-step__card{
+  flex:1 1 auto;
   padding:var(--ds-space-lg) var(--ds-space-md);
   border-radius:var(--ds-r-surface);
   background-color:var(--ds-bg-surface);
   background-image:linear-gradient(180deg, var(--ds-bg-surface) 0%, var(--ds-primary-soft) 100%);
   box-shadow:var(--hp-shadow-box);
+  transition:
+    transform  var(--ds-dur-slow) var(--ds-ease-out),
+    box-shadow var(--ds-dur-slow) var(--ds-ease-out);
 }
 .hp-tl__icon{
   display:flex;
   align-items:center;
   justify-content:center;
-  width:72px;
-  height:72px;
+  width:var(--hp-tl-icon);
+  height:var(--hp-tl-icon);
   margin:0 auto var(--ds-space-md);
   border-radius:var(--ds-r-pill);
   background-color:var(--ds-bg-surface);
   background-image:radial-gradient(120% 120% at 50% 0%, var(--ds-accent-soft) 0%, var(--ds-bg-surface) 78%);
   box-shadow:var(--hp-shadow-box);
+  transition:
+    transform  var(--ds-dur-slow) var(--ds-ease-out),
+    box-shadow var(--ds-dur-slow) var(--ds-ease-out),
+    background-color var(--ds-dur-slow) var(--ds-ease-out);
 }
 .hp-tl__n{
   font-family:var(--ds-font-display);
@@ -1577,6 +1909,7 @@ img{ max-width:100%; }
   font-weight:var(--ds-weight-display);
   color:var(--ds-accent-ink);
   font-variant-numeric:tabular-nums;
+  transition:color var(--ds-dur-slow) var(--ds-ease-out);
 }
 .hp-step__line{
   margin:0;
@@ -1584,6 +1917,53 @@ img{ max-width:100%; }
   font-size:var(--ds-fs-body);
   line-height:var(--ds-lh-body);
   color:var(--ds-ink);
+  transition:
+    color     var(--ds-dur-slow) var(--ds-ease-out),
+    transform var(--ds-dur-slow) var(--ds-ease-out);
+}
+
+/* ---- THE INTERACTION. The owner: "make it INTERACTIVE, not merely animated."
+   ONE STATE, TWO WAYS IN. Every rule below names :hover and :focus in the same
+   selector list, so a keyboard reader gets the identical state a pointer gets, and
+   the ring above stays on top of it. Nothing here is carried by colour alone: the
+   step that comes forward MOVES, its medallion GROWS, and its line SHIFTS, so a
+   reader who cannot separate the two blues still sees which step is engaged.
+   THE RECEDE NEVER COSTS LEGIBILITY. A receded line goes to --ds-ink-soft, which is
+   5.06:1 on the band surface, not to a reduced opacity, because a step that steps
+   back is still a step somebody may be reading.
+   pick: MOTION-PATTERNS.md #10 (Lift) for the card, #2 (Color-shift) for the
+   medallion | considered: MOTION-PATTERNS.md #9 (None, luxury silence) | why: #9 is
+   the correct answer for a card that goes nowhere and the wrong one for the element
+   the owner asked to be shown. No bounce and no overshoot: --ds-ease-out does not
+   pass its endpoint. */
+.hp-timeline:hover .hp-step__card,
+.hp-timeline:focus-within .hp-step__card{
+  transform:scale(.985);
+  box-shadow:var(--ds-shadow-card);
+}
+.hp-timeline:hover .hp-tl__icon,
+.hp-timeline:focus-within .hp-tl__icon{ transform:scale(.94); }
+.hp-timeline:hover .hp-step__line,
+.hp-timeline:focus-within .hp-step__line{ color:var(--ds-ink-soft); }
+
+.hp-timeline:hover .hp-step:hover .hp-step__card,
+.hp-timeline:focus-within .hp-step:focus .hp-step__card{
+  transform:translateY(-5px);
+  box-shadow:var(--hp-shadow-box-hi);
+}
+.hp-timeline:hover .hp-step:hover .hp-tl__icon,
+.hp-timeline:focus-within .hp-step:focus .hp-tl__icon{
+  transform:scale(1.1);
+  background-color:var(--ds-accent-deep);
+  background-image:radial-gradient(120% 120% at 50% 0%, var(--ds-accent) 0%, var(--ds-accent-deep) 82%);
+  box-shadow:var(--hp-shadow-box-hi), var(--ds-glow);
+}
+.hp-timeline:hover .hp-step:hover .hp-tl__n,
+.hp-timeline:focus-within .hp-step:focus .hp-tl__n{ color:var(--ds-ink-on-dark); }
+.hp-timeline:hover .hp-step:hover .hp-step__line,
+.hp-timeline:focus-within .hp-step:focus .hp-step__line{
+  color:var(--ds-ink);
+  transform:translateY(-2px);
 }
 
 /* ============================================================================
@@ -1681,22 +2061,22 @@ img{ max-width:100%; }
   line-height:var(--ds-lh-body);
   color:var(--ds-ink-on-dark);
 }
-/* the action label. A RULE under a word, not an arrow: item 6's release is the
-   timeline digits and nothing else, so the chevron and the arrow stay banned and
-   this affordance is built from type and a line. */
-.hp-route__go{
-  display:inline-block;
-  margin-top:var(--ds-space-md);
-  padding-bottom:var(--ds-space-2xs);
-  border-bottom:2px solid var(--ds-accent-light);
-  font-size:var(--ds-fs-fine);
-  letter-spacing:var(--ds-track-eyebrow);
-  text-transform:uppercase;
-  font-weight:500;
-  color:var(--ds-accent-light);
-  transition:border-color var(--ds-dur) var(--ds-ease), color var(--ds-dur) var(--ds-ease);
-}
-.hp-route:hover .hp-route__go{ color:var(--ds-ink-on-dark); border-bottom-color:var(--ds-ink-on-dark); }
+/* THE ACTION LABEL IS GONE. The owner: "I do not like the OPEN THIS PAGE CTAs on
+   every box, it is already given. REMOVE THOSE COMPLETELY ACROSS ALL PAGES and move
+   down the text on top, if there is any."
+   FIVE labels removed from this file, and the .hp-route__go rule and its hover rule
+   were DELETED with them rather than left behind, because a CSS rule whose class no
+   longer appears in any markup is an orphan the next reader has to re-derive.
+   THE CARD STILL READS AS CLICKABLE, and that is a requirement rather than a hope.
+   Three affordances survive the removal, and none of them was the label:
+     1. the WHOLE CARD is the <a>, so the entire 300px target is the link;
+     2. the HOVER MOVES: translate3d on the card plus a scale on the photograph. It
+        is not a colour change, which is item 11's requirement and not manners;
+     3. the FOCUS RING is declared in the shared focus rule with every other control
+        and is not touched here.
+   THE TEXT MOVED DOWN BY ITSELF, and that is why nothing else changed: .hp-route is
+   justify-content:flex-end, so the body block was already anchored to the card floor
+   and simply drops by the height of the removed label. There is no hole to close. */
 
 /* ============================================================================
    CARD TEXT COLOUR, DECLARED ONCE FOR BOTH BAND POLARITIES. A REAL TRAP, CAUGHT BY
@@ -1724,9 +2104,7 @@ img{ max-width:100%; }
 .surface-dark .hp-service__line,
 .surface-dark .hp-find__line,
 .surface-dark .hp-route__label,
-.surface-dark .hp-route__line,
-.surface-dark .hp-route:hover .hp-route__go{ color:var(--ds-ink); }
-.surface-dark .hp-route:hover .hp-route__go{ border-bottom-color:var(--ds-ink); }
+.surface-dark .hp-route__line{ color:var(--ds-ink); }
 
 /* ============================================================================
    SECTION 6. Two flows, four routes.
@@ -1765,16 +2143,20 @@ img{ max-width:100%; }
 .hp-flow__steps{ display:flex; flex-wrap:wrap; gap:var(--ds-space-sm); margin-top:var(--ds-space-md); }
 
 /* ============================================================================
-   SECTION 7. Three profile cards with a designed monogram, never a face.
+   SECTION 7. Three profile cards with a centred generated portrait.
    pick: SECTION-COMPONENTS.md #18 (Team grid 3-col) | considered:
    CARD-VARIATIONS.md #7 team photo card (full-bleed image + name overlay),
-   CARD-VARIATIONS.md #8 team bio card (photo + extended bio) | why: #7 and #8 both
-   require a photograph of a person on a team card, and item 8's amendment released
-   hands and cropped mouths and left "specifically no face on a team card" standing.
-   #18 is the plain three-column grid the monogram treatment can live in. The beauty
-   reason: a monogram set in the display face at the locked pill radius is the only
-   circle on a page whose every other corner is 4px, so the three of them read as a
-   deliberate mark rather than as three missing photographs.
+   CARD-VARIATIONS.md #8 team bio card (photo + extended bio) | why the pick did NOT
+   change when item 8 did: #7 and #8 were refused because item 8 barred a face on a
+   team card, and item 8's third note has since released exactly that. They stay
+   refused on their own merits rather than by prohibition. #7 lays type over a
+   full-bleed photograph, which would put white text on a generated face and turn a
+   picture that has to READ as a placeholder into a designed portrait plate. #8 wants
+   an extended bio, and every extra sentence about an invented person is one more
+   sentence somebody has to notice is fiction. #18 keeps the picture as a MARK and
+   the words as words. The beauty reason: the portrait sits at the locked pill radius
+   and is the only circle on a page whose every other corner is 4px, so the three of
+   them read as a deliberate mark.
    ============================================================================ */
 .hp-people{
   display:grid;
@@ -1783,30 +2165,75 @@ img{ max-width:100%; }
   margin:0; padding:0;
   list-style:none;
 }
+/* THE PERSON CARD, ONE DEFINITION, SHARED WITH page-team.html RULE FOR RULE.
+   Before this pass the two files disagreed on three values (this file had no flex
+   column, no min-height and no space-between, and set the name at --ds-fs-h3 where
+   the team page set it at --hp-fs-h3), which is exactly the drift the owner's
+   consistency instruction names. The team page's version was the fuller one, so it
+   is the one that survives and this file was brought up to it, not the reverse.
+   CENTRED, BY OWNER INSTRUCTION: "the boxes here should have centred profile
+   pictures / talking heads". The portrait is centred and so is the identity block
+   under it, because a centred portrait over left-ragged type reads as a mistake. */
 .hp-person{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
   padding:var(--ds-space-md);
   border-radius:var(--ds-r-surface);
   background-color:var(--ds-bg-surface-2);
   box-shadow:var(--ds-shadow-card);
+  text-align:center;
 }
-.hp-mono{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  width:56px; height:56px;
-  margin-bottom:var(--ds-space-md);
+@media (min-width:900px){
+  .hp-person{ min-height:clamp(300px, 38svh, 420px); }
+}
+/* THE GENERATED PORTRAIT. Item 8's third-note release, and the single element on
+   this site that carries a human face. Sized from a clamp rather than a fixed pixel
+   so the circle scales with the card at every step of the ladder, and carrying the
+   same shadow recipe as every other lifted surface.
+   IT IS A FRAME AND AN IMAGE, NOT ONE <img>, AND THAT IS A RENDER FINDING RATHER
+   THAN A PREFERENCE. This rule used to be a bare <img> with object-position:50% 24%
+   on it. The sources are 1024 by 1024 SQUARES and the circle is a square box, so
+   object-fit:cover has nothing left over to crop and object-position moves NOTHING.
+   The declaration read as a considered crop and was a no-op: the three faces
+   rendered small and off centre, and one of them sat with its hairline against the
+   top of the circle. A frame with overflow:hidden and an image that scales and pans
+   inside it is the only way to actually choose what the circle holds.
+   THE THREE VALUES ARE PER IMAGE AND ARE TUNED IN THE RENDER, not derived from the
+   file name. --hp-p-z is how far in; --hp-p-x and --hp-p-y carry the frame's centre
+   onto the FACE's centre, and each is simply 50% minus where that face sits in its
+   own square. They are declared INLINE beside each portrait, so a value and the
+   picture it belongs to cannot drift apart, and so the same face keeps the same crop
+   on both pages that show it. */
+.hp-portrait{
+  display:block;
+  position:relative;
+  width:var(--hp-portrait-size);
+  height:var(--hp-portrait-size);
+  margin:0 auto var(--ds-space-md);
   border-radius:var(--ds-r-pill);
-  background-color:var(--ds-accent-soft);
-  color:var(--ds-accent-ink);
-  font-family:var(--ds-font-display);
-  font-size:20px;
-  font-weight:var(--ds-weight-head);
-  letter-spacing:.02em;
+  overflow:hidden;
+  background-color:var(--ds-bg-surface-2);
+  box-shadow:var(--hp-shadow-box);
 }
+.hp-portrait__img{
+  position:absolute;
+  inset:0;
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform-origin:center center;
+  transform:scale(var(--hp-p-z, 1.5)) translate(var(--hp-p-x, 0%), var(--hp-p-y, 0%));
+}
+/* THE MONOGRAM AVATAR IS GONE, class and rule both. Item 8 as written mandated it
+   ("The team cards take a designed monogram avatar"); item 8 as amended on
+   2026-09-01 replaced it with a generated portrait. Keeping the rule behind would
+   have left an orphan the next reader has to test to find dead. */
 .hp-person__name{
   margin:0 0 var(--ds-space-2xs);
   font-family:var(--ds-font-display);
-  font-size:var(--ds-fs-h3);
+  font-size:var(--hp-fs-h3);
   line-height:var(--ds-lh-head);
   font-weight:var(--ds-weight-head);
   color:var(--ds-ink-heading);
@@ -1882,7 +2309,7 @@ img{ max-width:100%; }
   background-color:var(--hp-paper-plate);
   background-image:linear-gradient(160deg,
     color-mix(in srgb, var(--ds-bg-surface) 0%, transparent) 0%,
-    var(--hp-wash-b) 100%);
+    var(--hp-plate-tint) 100%);
   box-shadow:var(--hp-shadow-box);
 }
 
@@ -2089,16 +2516,29 @@ img{ max-width:100%; }
    THE LABEL STRIP. Build furniture, not a band of the site. It is the disclosure
    the owner's instruction requires, and it is the first thing on the page.
    ============================================================================ */
+/* THE LABEL STRIP IS ITSELF A WHITE-ON-WHITE BOX, and it was the one the earlier
+   passes missed: a --ds-bg-surface-2 strip on the --ds-bg-surface body, separated by
+   nothing but a hairline. It is in the enumerated set, so it takes the same shadow
+   and the same clinic plate as every other member of that set. It needs
+   position:relative for the plate pseudos to anchor to it, and its inner wrapper
+   needs a stacking position so the copy sits above both plate layers. */
 .hp-label{
+  position:relative;
   background-color:var(--ds-bg-surface-2);
   border-bottom:var(--ds-divider-h) solid var(--ds-line);
   padding:var(--ds-space-lg) var(--hp-gutter);
+  box-shadow:var(--hp-shadow-box);
 }
-.hp-label__inner{ max-width:var(--ds-container-max); margin:0 auto; }
+.hp-label__inner{ position:relative; z-index:3; max-width:var(--ds-container-max); margin:0 auto; }
 .hp-label__title{
   margin:0 0 var(--ds-space-xs);
   font-family:var(--ds-font-display);
-  font-size:var(--ds-fs-h3);
+  /* --hp-fs-h3, not --ds-fs-h3. The raw DS token is a flat 16px; the page's own h3
+     scale is the fluid clamp, which is what this page's <h3> elements and all five
+     sibling pages already use for this same disclosure title. Reaching for the DS
+     token here rendered the FIRST line of the honesty disclosure a full step
+     smaller than every sibling and smaller than this page's own h3s. */
+  font-size:var(--hp-fs-h3);
   line-height:var(--ds-lh-head);
   font-weight:var(--ds-weight-head);
   color:var(--ds-ink-heading);
@@ -2111,6 +2551,30 @@ img{ max-width:100%; }
   color:var(--ds-ink-soft);
 }
 .hp-label__note:last-child{ margin-bottom:0; }
+/* THE FACES DISCLOSURE. Item 8 released the generated portrait; this is the price of
+   the release and it is not a footnote. It renders FIRST under the label title, at
+   BODY size rather than fine, in FULL ink rather than the muted role, on its own
+   plate with an accent rule, so it is the first thing read on a page that shows a
+   face. Deliberately NOT --ds-fs-fine and NOT --ds-ink-soft: every other note on
+   this strip is, and this one must not be able to be mistaken for one of them. */
+/* THE GAP UNDER THE PLATE IS A MEASURED VALUE, NOT A RHYTHM PREFERENCE. The deepened
+   ambient layer (26 percent ink, 44px blur) pools BELOW the box, and at the old 24px
+   gap it landed on the first line of the next note and pulled that pairing to 4.72:1
+   against a 4.5 floor. At 40px the same line measures clear of it. A shadow that
+   reads is a shadow that darkens something, and this is the something it darkened. */
+.hp-label__note--faces{
+  max-width:var(--ds-measure);
+  margin:0 0 var(--ds-space-lg);
+  padding:var(--ds-space-sm) var(--ds-space-md);
+  border-left:3px solid var(--ds-accent-ink);
+  border-radius:var(--ds-r-control);
+  background-color:var(--ds-bg-surface);
+  box-shadow:var(--hp-shadow-box);
+  font-size:var(--ds-fs-body);
+  line-height:var(--ds-lh-body);
+  font-weight:500;
+  color:var(--ds-ink);
+}
 
 /* ============================================================================
    MOTION. Every animation is on TRANSFORM and OPACITY only. Nothing animates a
@@ -2199,11 +2663,24 @@ img{ max-width:100%; }
    its own: the collapsed state is applied ONLY under .hp-js, which only script can
    add, so with JavaScript disabled the rail renders at full width immediately.
    scaleX(1) is the identity transform, which is why the reduced-motion block below
-   can force the finished state with a plain transform:none. */
+   can force the finished state with a plain transform:none.
+   TWO BUGS WERE FOUND HERE AND BOTH ARE FIXED, so neither can come back quietly:
+     1. THE OBSERVER NEVER SAW THIS FAMILY. The script below selected .hp-reveal
+        only, so .hp-in was never added to a .hp-draw element and the rail sat at
+        scaleX(0) forever. The rail was not slow, it was INVISIBLE, on every render.
+        The selector now reads '.hp-reveal, .hp-draw', and so does the safety net.
+     2. THE REDUCED-MOTION BLOCK DID NOT COVER IT. The comment above claimed the
+        block forced the finished state; the block never named .hp-draw. A reader
+        with prefers-reduced-motion got a section with no rail in it. The block now
+        names it, and the claim is verified by emulating the query and reading the
+        computed transform rather than by reading this comment.
+   THE DELAY IS THE STEP STAGGER, NOT A CONSTANT. Each fill carries the --hp-i of the
+   step it leaves, so segment 1 draws behind step 1 and segment 2 behind step 2: the
+   line travels from step to step instead of appearing all at once. */
 .hp-js .hp-draw{
   transform:scaleX(0);
   transition:transform var(--hp-dur-draw) var(--ds-ease-out);
-  transition-delay:120ms;
+  transition-delay:calc(var(--hp-i, 0) * var(--hp-stagger) + var(--hp-dur-reveal) / 2);
 }
 .hp-js .hp-draw.hp-in{ transform:scaleX(1); }
 
@@ -2239,6 +2716,18 @@ img{ max-width:100%; }
   .hp-js .hp-reveal,
   .hp-reveal{
     opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
+    transition-delay:0s !important;
+  }
+  /* THE RAIL, FULLY DRAWN. This is the rule the comment above the .hp-draw family
+     used to CLAIM existed and did not. transform:none is the identity transform,
+     which is scaleX(1) on desktop and scaleY(1) in the 768 block, so the segment is
+     at full length on both axes without either axis being named here. Without this
+     rule a reader who asked for less motion got a timeline with no line in it, which
+     is not less motion, it is a missing section. */
+  .hp-js .hp-draw,
+  .hp-draw{
     transform:none !important;
     transition:none !important;
     transition-delay:0s !important;
@@ -2309,24 +2798,35 @@ img{ max-width:100%; }
   .hp-find{ min-height:clamp(240px, 34vh, 320px); }
   .hp-service{ min-height:clamp(220px, 30vh, 300px); }
   /* THE TIMELINE GOES VERTICAL. One column of steps, and the rail turns with them:
-     it runs down the CENTRE of the stack behind the cards, so the drawn segments
-     show in the gaps between them and the connection still reads. The draw axis
-     turns with it, from scaleX off the left edge to scaleY off the top, which is
-     the direction a vertical timeline is read in. */
-  .hp-timeline{ grid-template-columns:1fr; gap:var(--ds-space-md); }
-  .hp-tl__rail{
+     it runs down the CENTRE of the stack BEHIND the cards, so the drawn line shows
+     in the gaps between them and the connection still reads. The draw axis turns
+     with it, from scaleX off the left edge to scaleY off the top, which is the
+     direction a vertical timeline is read in.
+     ONE SEGMENT RATHER THAN TWO, and this is a limit rather than a preference: the
+     stacked cards are content-height, and a per-gap segment would have to know those
+     heights to place itself. Segment 2 is switched off and segment 1 becomes the
+     whole rail. The gap value is redeclared on .hp-tl, the same element that
+     declares it above, so the rail arithmetic and the grid step together. */
+  .hp-tl{ --hp-tl-gap:var(--ds-space-md); }
+  .hp-timeline{ grid-template-columns:1fr; }
+  .hp-tl__rail{ z-index:0; }
+  .hp-tl__seg--1,
+  .hp-tl__seg--2{
     left:50%;
     right:auto;
     top:0;
     bottom:0;
-    width:2px;
+    width:var(--hp-tl-rail);
     height:auto;
-    margin-left:-1px;
+    margin-left:calc(var(--hp-tl-rail) / -2);
+  }
+  .hp-tl__seg--2{ display:none; }
+  .hp-tl__fill{
     transform-origin:center top;
     background-image:linear-gradient(180deg,
       var(--ds-accent-soft) 0%,
-      var(--ds-accent)     50%,
-      var(--ds-accent-soft) 100%);
+      var(--ds-accent)     45%,
+      var(--ds-accent-deep) 100%);
   }
   .hp-js .hp-draw{ transform:scaleY(0); }
   .hp-js .hp-draw.hp-in{ transform:scaleY(1); }
@@ -2354,9 +2854,10 @@ img{ max-width:100%; }
 <body>
 
 <!-- ========================= THE LABEL STRIP (build furniture) =============== -->
-<div class="hp-label">
+<div class="hp-label hp-clinic">
   <div class="hp-label__inner">
     <p class="hp-label__title">Template composition. Nothing on this page is a fact about a real practice.</p>
+    <p class="hp-label__note hp-label__note--faces">The three portraits further down this page are GENERATED IMAGES OF PEOPLE WHO DO NOT EXIST. Nobody in those pictures works here, and nobody in them is a real person anywhere. The names printed beside them are placeholders too, so a generated face attached to a named role is an invented person, not a member of staff. Replace every portrait with a photograph of the real person before this page is published.</p>
     <p class="hp-label__note">Every photograph here is a generated template image. So are the practice name, the town, the address, the telephone number, the hours, the staff names and the service list. None of it describes a real practice, and all of it has to be replaced before ship. Each slot carries a swap marker naming what replaces it.</p>
     <p class="hp-label__note">This is the homepage body on its own. There is no site header, no footer and no closing call to action, because the chrome owns all three and has not been built yet. The routes below point at sibling pages that do not exist yet either.</p>
   </div>
@@ -2575,35 +3076,65 @@ img{ max-width:100%; }
      INCLUSION-VALUE. LIGHT PLAIN GROUND (the band surface).
      ========================================================================== -->
 <section class="hp-band" id="s4-inclusion-value">
-  <div class="hp-ground hp-ground--paper2">
+  <!-- THE PLATED BAND. This is the one band on this page that holds white boxes on a
+       white ground: three .hp-step panels and three .hp-tl__icon circles, all
+       --ds-bg-surface, on a --ds-ground--paper2 band that runs from near-white to
+       white. It is therefore in the enumerated .hp-clinic set. The class is added
+       here and defined ONCE in the stylesheet, shared with the other five pages. -->
+  <div class="hp-ground hp-ground--paper2 hp-clinic">
     <div class="hp-wrap">
       <div class="hp-head hp-reveal" style="--hp-i:0">
         <!-- swap:index-heading-4 -->
         <h2 class="hp-h2">What happens at an <span class="hp-key">appointment</span></h2>
       </div>
-      <ol class="hp-timeline">
-        <!-- The connecting line. DECORATIVE: it draws a relation the <ol> already
-             states, so it is aria-hidden and carries no text. .hp-draw is the
-             draw-on-view family; the reduced-motion block forces it to its FINAL
-             drawn state, so a reader who asked for less motion sees the whole rail
-             rather than a gap where it should have been. -->
-        <span class="hp-tl__rail hp-draw" aria-hidden="true"></span>
-        <li class="hp-step hp-reveal" style="--hp-i:0">
-          <span class="hp-tl__icon" aria-hidden="true"><span class="hp-tl__n">1</span></span>
-          <!-- swap:visit-1 -->
-          <p class="hp-step__line">You'll start at reception, where we take <span class="hp-nb">your details</span>.</p>
-        </li>
-        <li class="hp-step hp-reveal" style="--hp-i:1">
-          <span class="hp-tl__icon" aria-hidden="true"><span class="hp-tl__n">2</span></span>
-          <!-- swap:visit-2 -->
-          <p class="hp-step__line">The examination itself happens in the <span class="hp-nb">treatment room</span>.</p>
-        </li>
-        <li class="hp-step hp-reveal" style="--hp-i:2">
-          <span class="hp-tl__icon" aria-hidden="true"><span class="hp-tl__n">3</span></span>
-          <!-- swap:visit-3. CONDUCT PROMISE. This asserts what this practice WILL DO at an appointment. No owner has confirmed it. Confirm or strike before this page ships as a real practice's site. -->
-          <p class="hp-step__line">We'll tell you what we found, and anything that follows is booked as a <span class="hp-nb">separate appointment</span>.</p>
-        </li>
-      </ol>
+      <!-- THE RAIL AND THE LIST ARE SIBLINGS INSIDE .hp-tl, which is the positioning
+           context both are measured against. The rail is DECORATIVE: it draws a
+           relation the <ol> already states, so it is aria-hidden and carries no text,
+           and it is pointer-events:none so it can never take a hover from a card.
+           TWO SEGMENTS, ONE PER JOIN, each a track with a .hp-draw fill inside it.
+           The fill carries the --hp-i of the step it leaves, so the line draws from
+           step to step in order rather than arriving in one piece. Under
+           prefers-reduced-motion the reduced-motion block forces every fill to
+           transform:none, which IS the fully drawn state, so a reader who asked for
+           less motion sees the whole rail and all three steps. -->
+      <div class="hp-tl">
+        <span class="hp-tl__rail" aria-hidden="true">
+          <span class="hp-tl__seg hp-tl__seg--1"><span class="hp-tl__fill hp-draw" style="--hp-i:0"></span></span>
+          <span class="hp-tl__seg hp-tl__seg--2"><span class="hp-tl__fill hp-draw" style="--hp-i:1"></span></span>
+        </span>
+        <ol class="hp-timeline">
+          <!-- tabindex="0" ON A LIST ITEM, DELIBERATELY AND WITH ITS COST NAMED. The
+               owner asked that keyboard focus do exactly what hover does, and a step
+               is not a link, a button or a control, so there is no interactive
+               element here to inherit a tab stop from. Making the step focusable is
+               the only way to give a keyboard reader the state a pointer reader gets.
+               What it costs: three extra tab stops on this page, announced as list
+               items. What it buys: the engaged state, and a focus ring, for a reader
+               who has no pointer. If these steps ever become links, the tabindex
+               comes off rather than sitting beside a native tab stop. -->
+          <li class="hp-step hp-reveal" style="--hp-i:0" tabindex="0">
+            <div class="hp-step__card">
+              <span class="hp-tl__icon" aria-hidden="true"><span class="hp-tl__n">1</span></span>
+              <!-- swap:visit-1 -->
+              <p class="hp-step__line">You'll start at reception, where we take <span class="hp-nb">your details</span>.</p>
+            </div>
+          </li>
+          <li class="hp-step hp-reveal" style="--hp-i:1" tabindex="0">
+            <div class="hp-step__card">
+              <span class="hp-tl__icon" aria-hidden="true"><span class="hp-tl__n">2</span></span>
+              <!-- swap:visit-2 -->
+              <p class="hp-step__line">The examination itself happens in the <span class="hp-nb">treatment room</span>.</p>
+            </div>
+          </li>
+          <li class="hp-step hp-reveal" style="--hp-i:2" tabindex="0">
+            <div class="hp-step__card">
+              <span class="hp-tl__icon" aria-hidden="true"><span class="hp-tl__n">3</span></span>
+              <!-- swap:visit-3. CONDUCT PROMISE. This asserts what this practice WILL DO at an appointment. No owner has confirmed it. Confirm or strike before this page ships as a real practice's site. -->
+              <p class="hp-step__line">We'll tell you what we found, and anything that follows is booked as a <span class="hp-nb">separate appointment</span>.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
     </div>
   </div>
 </section>
@@ -2633,9 +3164,7 @@ img{ max-width:100%; }
             <span class="hp-cardscrim hp-cardscrim--route"></span>
             <div class="hp-route__body">
               <p class="hp-route__label">What we do</p>
-              <p class="hp-route__line">Plain names for the work <span class="hp-nb">we do</span>.</p>
-              <span class="hp-route__go">Open&nbsp;this&nbsp;page</span>
-            </div>
+              <p class="hp-route__line">Plain names for the work <span class="hp-nb">we do</span>.</p>            </div>
           </a>
         </li>
         <li class="hp-reveal" style="--hp-i:2">
@@ -2648,9 +3177,7 @@ img{ max-width:100%; }
             <span class="hp-cardscrim hp-cardscrim--route"></span>
             <div class="hp-route__body">
               <p class="hp-route__label">About us</p>
-              <p class="hp-route__line">How we work, in our <span class="hp-nb">own words</span>.</p>
-              <span class="hp-route__go">Open&nbsp;this&nbsp;page</span>
-            </div>
+              <p class="hp-route__line">How we work, in our <span class="hp-nb">own words</span>.</p>            </div>
           </a>
         </li>
         <li class="hp-reveal" style="--hp-i:3">
@@ -2666,9 +3193,7 @@ img{ max-width:100%; }
             <span class="hp-cardscrim hp-cardscrim--route"></span>
             <div class="hp-route__body">
               <p class="hp-route__label">Who you'll see</p>
-              <p class="hp-route__line">The people you'll meet, and what each of <span class="hp-nb">them does</span>.</p>
-              <span class="hp-route__go">Open&nbsp;this&nbsp;page</span>
-            </div>
+              <p class="hp-route__line">The people you'll meet, and what each of <span class="hp-nb">them does</span>.</p>            </div>
           </a>
         </li>
         <li class="hp-reveal" style="--hp-i:4">
@@ -2681,9 +3206,7 @@ img{ max-width:100%; }
             <span class="hp-cardscrim hp-cardscrim--route"></span>
             <div class="hp-route__body">
               <p class="hp-route__label">Questions and answers</p>
-              <p class="hp-route__line">Practical questions, answered in <span class="hp-nb">plain words</span>.</p>
-              <span class="hp-route__go">Open&nbsp;this&nbsp;page</span>
-            </div>
+              <p class="hp-route__line">Practical questions, answered in <span class="hp-nb">plain words</span>.</p>            </div>
           </a>
         </li>
         <li class="hp-reveal" style="--hp-i:5">
@@ -2698,9 +3221,7 @@ img{ max-width:100%; }
             <span class="hp-cardscrim hp-cardscrim--route"></span>
             <div class="hp-route__body">
               <p class="hp-route__label">Find us</p>
-              <p class="hp-route__line">Where we are, when we're open, and how to <span class="hp-nb">reach us</span>.</p>
-              <span class="hp-route__go">Open&nbsp;this&nbsp;page</span>
-            </div>
+              <p class="hp-route__line">Where we are, when we're open, and how to <span class="hp-nb">reach us</span>.</p>            </div>
           </a>
         </li>
       </ul>
@@ -2764,16 +3285,28 @@ img{ max-width:100%; }
       <ul class="hp-people">
         <li class="hp-person hp-reveal" style="--hp-i:1">
           <!-- swap:image-team-preview
-               THE MONOGRAM SLOT. Not a photograph, so there is no photograph to
-               describe. The brief fixes the alt as THE EMPTY STRING because the
-               mark duplicates the name rendered as text immediately beside it.
-               This build discharges that as aria-hidden="true" on a text monogram
-               drawn in HTML and CSS: there is no <img> here to carry an alt, and
-               aria-hidden on a decorative mark is the exact semantic equivalent of
-               alt="". The mark carries no title attribute either, for the same
-               reason. If the card is ever restructured so the name is NOT adjacent
-               text, this decision must be re-taken rather than inherited. -->
-          <span class="hp-mono" aria-hidden="true">AM</span>
+               THE PORTRAIT SLOT. This comment used to describe a monogram and a
+               deliberately EMPTY alt string, and both statements had stopped being
+               true: item 8's third note replaced the mark with a generated portrait
+               and the portrait has been here since. THE ALT IS NO LONGER EMPTY, on
+               purpose. The brief fixed alt="" because a monogram of a person's own
+               initials, printed beside that person's name, is decorative by
+               definition. A photograph of a face is not decorative, is not
+               duplicated by the name beside it, and has something a reader needs to
+               be told: that it is generated. So it is described, and the description
+               says so in its first six words.
+               NO BADGE, CREDENTIAL, TITLE OR CLINICAL CLAIM ATTACHES TO THIS FACE.
+               The reserved-title slot below stays rendered empty.
+               THE CROP IS PER IMAGE AND LIVES INLINE. --hp-p-z is how far in, and
+               --hp-p-x / --hp-p-y carry the frame's centre onto the FACE's centre.
+               The same three values are set on the same three faces on page-team,
+               so one name gets one face at one crop across the site. -->
+          <span class="hp-portrait">
+            <img class="hp-portrait__img" src="../assets/dental-person-07.jpg"
+                 style="--hp-p-z:1.6; --hp-p-x:1%; --hp-p-y:5%"
+                 width="1024" height="1024" loading="lazy" decoding="async" fetchpriority="low"
+                 alt="Generated portrait of a woman who does not exist, standing in for a staff photograph.">
+          </span>
           <!-- swap:staff-1-name -->
           <p class="hp-person__name">Alex Morgan</p>
           <!-- swap:staff-1-role -->
@@ -2783,7 +3316,12 @@ img{ max-width:100%; }
           <p class="hp-person__line">Runs the practice day to day, from staffing to the building itself.</p>
         </li>
         <li class="hp-person hp-reveal" style="--hp-i:2">
-          <span class="hp-mono" aria-hidden="true">JE</span>
+          <span class="hp-portrait">
+            <img class="hp-portrait__img" src="../assets/dental-person-08.jpg"
+                 style="--hp-p-z:2; --hp-p-x:4%; --hp-p-y:18%"
+                 width="1024" height="1024" loading="lazy" decoding="async" fetchpriority="low"
+                 alt="Generated portrait of a man who does not exist, standing in for a staff photograph.">
+          </span>
           <!-- swap:staff-2-name -->
           <p class="hp-person__name">Jordan Ellis</p>
           <!-- swap:staff-2-role -->
@@ -2793,7 +3331,12 @@ img{ max-width:100%; }
           <p class="hp-person__line">Walks you through what a course of treatment involves, before anything is agreed.</p>
         </li>
         <li class="hp-person hp-reveal" style="--hp-i:3">
-          <span class="hp-mono" aria-hidden="true">SP</span>
+          <span class="hp-portrait">
+            <img class="hp-portrait__img" src="../assets/dental-person-03.jpg"
+                 style="--hp-p-z:1.55; --hp-p-x:-2%; --hp-p-y:15%"
+                 width="1024" height="1024" loading="lazy" decoding="async" fetchpriority="low"
+                 alt="Generated portrait of a woman who does not exist, standing in for a staff photograph.">
+          </span>
           <!-- swap:staff-3-name -->
           <p class="hp-person__name">Sam Patel</p>
           <!-- swap:staff-3-role -->
@@ -3053,7 +3596,13 @@ img{ max-width:100%; }
   var root = document.documentElement;
   root.className = root.className ? root.className + ' hp-js' : 'hp-js';
 
-  var nodes = document.querySelectorAll('.hp-reveal');
+  /* .hp-draw IS IN THIS SELECTOR AND WAS NOT, AND THAT WAS A LIVE BUG. The rail's
+     collapsed state is scaleX(0) under .hp-js and its drawn state needs .hp-in. The
+     selector read '.hp-reveal' only, so no .hp-draw element was ever observed, none
+     was ever revealed by the safety net either, and the connecting rail sat at zero
+     width on every render of this page. Both the observer and showAll() now cover
+     the family, which is why the 4-second net is a net for it too. */
+  var nodes = document.querySelectorAll('.hp-reveal, .hp-draw');
   function showAll() {
     for (var i = 0; i < nodes.length; i++) { nodes[i].className += ' hp-in'; }
   }

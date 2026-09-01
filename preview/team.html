@@ -102,21 +102,27 @@
        three animate TRANSFORM and OPACITY only, so nothing here can reflow while it
        runs.
 
-     ITEM 8, AMENDED AND NARROWED BY THE OWNER IN THE SAME BREATH.
+     ITEM 8, AMENDED TWICE, AND THE SECOND AMENDMENT IS THE ONE THIS PAGE RUNS ON.
        As written: "No photograph of a person, generated or licensed, anywhere, and
        specifically no face on a team card. The team cards take a designed monogram
        avatar."
-       RELEASED: hands, and cropped mouths. STILL ABSOLUTE: never a full face, never
-       eyes, and THE TEAM CARDS STILL TAKE THE DESIGNED MONOGRAM AVATAR AND CARRY NO
-       PHOTOGRAPH AT ALL.
-       THIS IS THE PAGE THAT CLAUSE WAS WRITTEN FOR, so it is worth stating in the
-       affirmative rather than only as a prohibition. The three profile cards at
-       section 3 render the homepage's monogram pattern unchanged: a --ds-r-pill
-       circle in --ds-accent-soft carrying the person's initials in the display face,
-       aria-hidden because the name renders as text immediately beside it. There is
-       no <img> on any card, no face, no eyes, and no photograph of a person anywhere
-       in this file. COUNTED: three photographs are used, and their subjects are a
-       reception counter, a corridor and two pairs of hands across a desk.
+       FIRST NOTE released hands and cropped mouths and kept the face absolute.
+       THIRD NOTE RELEASED THE TEAM CARD ITSELF: the owner asked for generated
+       portraits on the team cards, centred and generously sized. The homepage landed
+       that first, and this page carried monograms for a pass afterwards, which is
+       exactly the drift the consistency instruction names: two pages, three shared
+       names, two different treatments and one of them out of date.
+       AS BUILT NOW: the three profile cards at section 3 carry the SAME THREE
+       GENERATED PORTRAITS the homepage gives the same three names, in the same
+       circle, at the same size, with the same per-image crop. What has NOT moved,
+       and could not: no badge, no credential, no protected title and no clinical
+       claim attaches to any face, the four reserved register slots are still
+       rendered empty, and the label strip at the top of this page states in body
+       type, above every other note, that these are generated images of people who do
+       not exist standing in for staff whose names are themselves placeholders.
+       COUNTED: six photographs are used on this page. Three are band grounds, and
+       their subjects are a reception counter, a corridor and two pairs of hands
+       across a desk. Three are the portraits on the profile cards.
        WHAT THIS FILE ACTUALLY USES that touches the release at all: one photograph
        containing hands (dental-hands-consult.jpg, two pairs of hands across a desk,
        no face and no eyes in frame), at section 7. No cropped-mouth photograph is
@@ -155,12 +161,15 @@
                the IMAGERY DECISION LEDGER. Zero colour literals are authored in
                this file, so no new hue can enter through the stylesheet.
        item 5  "No pill controls and no fully rounded corners" other than the
-               monogram avatar. THE RESERVED EXCEPTION HAS A SUBJECT ON THIS PAGE,
-               unlike on the services page where it had none. COUNTED over the live
-               style block with its CSS comments stripped: --ds-r-pill is referenced
-               exactly ONCE, on .hp-mono, which is the monogram avatar the exception
-               is reserved for. Every control uses --ds-r-control (4px); every
-               surface uses --ds-r-surface (6px). There is no pill CONTROL.
+               avatar. THE RESERVED EXCEPTION HAS A SUBJECT ON THIS PAGE, unlike on
+               the services page where it had none. COUNTED over the live style block
+               with its CSS comments stripped: --ds-r-pill is referenced exactly
+               ONCE, on .hp-portrait, which is the avatar the exception is reserved
+               for. It was the monogram's circle and it is now the portrait's circle:
+               the reservation names the AVATAR, and item 8's third note changed what
+               the avatar is made of, not that there is one. Every control uses
+               --ds-r-control (4px); every surface uses --ds-r-surface (6px). There
+               is no pill CONTROL.
        item 9  no testimonial, review, star row, rating, review count, award,
                accreditation mark, certification badge, logo strip or statistic, in
                any form, at any size, and NOT behind a caption calling it an
@@ -214,7 +223,7 @@
      ./feel-specimen.html and the services page at ./page-services.html are the locked
      visual language, and this page is written to look like the same hand designed it
      on the same day: same grid, same gutters, same padding ladder, same type steps,
-     same gradient grounds, same plate treatment, same monogram avatar, same button
+     same gradient grounds, same plate treatment, same portrait avatar, same button
      geometry, same motion curves, same reduced-motion handling, same swap-marker
      convention, same selection-ledger convention.
 
@@ -222,8 +231,8 @@
      reader decide whether to call at all. The services page explains what each kind
      of work involves. THIS page answers one question and stops: who will I actually
      be dealing with. So its repeating unit is a PERSON rather than a service or a
-     room, its one dark card band carries three monograms rather than three
-     photographs, and the two bands that would normally sell something (an ecosystem
+     room, its one dark card band carries three portraits of people rather than three
+     photographs of rooms, and the two bands that would normally sell something (an ecosystem
      rail and a pricing block) carry four bare labels and a table of who to ask about
      what. Its warmth is in being specific about who does what, never in reassurance.
      No sentence here reassures, and none was written to.
@@ -343,20 +352,23 @@
      declares exactly three photograph slots (swap:image-team-hero,
      swap:image-team-pillars, swap:image-team-closing) and this composition renders
      exactly those three, in the sections that section names: the head block, beside
-     the pillars, and the closing beat. Section 3's monogram slots
-     (swap:image-team-card-1 / -2 / -3) are the brief's own three avatar markers and
-     are not a fourth, fifth and sixth photograph: they carry a designed mark, which
-     the brief's own floor table says is "not offered against" the imagery count.
-     So the derived swap index for this page needs NO reconciliation before ship.
+     the pillars, and the closing beat.
+     SECTION 3'S THREE AVATAR SLOTS (swap:image-team-card-1 / -2 / -3) NOW CARRY
+     PHOTOGRAPHS, AND THAT IS A RECONCILIATION THIS PAGE OWES RATHER THAN ONE IT
+     ESCAPES. They used to carry a designed mark, which the brief's own floor table
+     says is "not offered against" the imagery count, so the old note that the swap
+     index needed no reconciliation was true then and is not true now. What the owner
+     has to know before ship, stated once and plainly: this page renders SIX
+     photographic <img> elements, not three. Three are the brief's declared band
+     grounds. Three are generated PORTRAITS on the profile cards, landed under item
+     8's third note, and each carries its swap marker naming the owner photography
+     that replaces it. Nothing here is claimed as owner photography.
 
-     THE IMAGERY FLOOR IS MET ON SLOT COUNT AND ON RENDER. verify-applied-design.mjs
-     sets IMAGERY_FLOOR = 3 with T-PERSONA in the floor set, so this page owes three
-     qualifying images. Three photographic <img> elements render, none of them a
-     monogram, none an empty CSS placeholder tile, none a text wordmark and none a
-     pure CSS-gradient background, which are the gate's own three exclusions. What
-     the brief could not say from P6, and what is now a build fact, is that the three
-     are present. What is still NOT claimed: that they are owner photography. They
-     are generated template images and every one carries a swap marker saying so.
+     THE IMAGERY FLOOR IS MET SEVERAL TIMES OVER. verify-applied-design.mjs sets
+     IMAGERY_FLOOR = 3 with T-PERSONA in the floor set, so this page owes three
+     qualifying images and renders six. None of the six is an empty CSS placeholder
+     tile, a text wordmark or a pure CSS-gradient background, which are the gate's
+     own three exclusions.
 
      SEVEN INSTALLED FILES ARE NOT USED HERE. Four are unused WITHOUT PREJUDICE and
      are simply not needed on a page with three ground slots:
@@ -515,12 +527,14 @@
         card photograph runs at FULL COLOUR under a BOTTOM-UP scrim only, 90 percent
         ink at the very bottom and clear by about 72 percent height, never a flat wash
         across a whole card, with a white-text floor of 9.35:1 against a pure white
-        pixel. THERE IS NO PHOTOGRAPHIC CARD IN THIS FILE. Every photograph is a band
-        ground, and the one card family on the page (the three profile cards at
-        section 3) carries a designed monogram and no photograph at all, because item
-        8's team-card clause is not amended. COUNTED: zero elements carry a card
-        scrim, and there is no background-color on any scrim in this file other than
-        the two flat plate veils, which are band grounds and not cards.
+        pixel. THERE IS STILL NO SCRIMMED PHOTOGRAPHIC CARD IN THIS FILE, and the
+        three portraits on the profile cards are not one: a portrait inside a circle
+        is a MARK on a card, not a card-sized photograph with type laid over it, so
+        no text sits on any of them and there is nothing for a scrim to rescue. Every
+        one runs at full colour with no wash of any kind. COUNTED: zero elements
+        carry a card scrim, and there is no background-color on any scrim in this
+        file other than the two flat plate veils, which are band grounds and not
+        cards.
         WHAT IS ACHIEVED WHERE WHITE TEXT DOES SIT OVER A PHOTOGRAPH: 11.58:1 at the
         hero and 11.58:1 on the ink plate, both against a PURE WHITE pixel, against
         the owner's 9.35:1 floor. Against a realistic mid-grey backdrop both read
@@ -536,13 +550,14 @@
         The dark gradient grounds run #0B1A2B to #1C2A3A to #0B2140, so #1C2A3A is
         the lightest ground stop and the #1C2A3A row above is their worst case. The
         three profile cards fill --ds-bg-surface-2, which the dark flip sets to
-        #1C2A3A, so that row is also the card's own worst case: the name and the
-        monogram initials read 14.57:1 and the role and line read 7.04:1.
-        THE MONOGRAM. --ds-accent-soft flips to #0B2855 inside .surface-dark and the
-        initials are set in --ds-accent-light #B7CEFF, which returns 9.79:1 on that
-        fill. The mark is aria-hidden, so that figure is decoration rather than a
-        requirement, and it is measured anyway because a mark nobody can see is a
-        design defect even when it is not an accessibility one.
+        #1C2A3A, so that row is also the card's own worst case: the name reads
+        14.57:1 and the role and line read 7.04:1.
+        THE PORTRAIT CARRIES NO TEXT AND SO CARRIES NO CONTRAST DUTY. The monogram it
+        replaced set initials in --ds-accent-light on --ds-accent-soft and was
+        measured at 9.79:1 on that fill; there are no initials now, no text of any
+        kind inside the circle, and nothing overlaid on the picture. The one thing
+        the circle still owes is a visible EDGE against the card it sits on, which is
+        --hp-shadow-box, the same ring plus drop the rest of the page uses.
         CONTROLS. The two controls on this page are the section 5 route on a dark
         gradient band and the section 6 route on light paper.
           dark  #0B1A2B on --ds-accent (#85AFFF after the flip) = 8.00:1,
@@ -674,6 +689,11 @@
   --hp-sh-key:  color-mix(in srgb, var(--ds-primary-deep) 10%, transparent);
   --hp-sh-amb:  color-mix(in srgb, var(--ds-primary-deep) 14%, transparent);
   --hp-shadow-box:    0 1px 2px var(--hp-sh-key), 0 14px 32px var(--hp-sh-amb), var(--ds-shadow-rest);
+
+  /* the generated portrait's circle, carried from the homepage BYTE FOR BYTE so the
+     two person grids cannot drift apart. The homepage's own comment on this token
+     says the same thing from the other side. */
+  --hp-portrait-size: clamp(96px, 8.6vw, 128px);
 
   /* ---- THE TYPE STEPS. The locked sheet is NOT edited and NOT shadowed:
      --ds-fs-display and --ds-fs-h2 still read exactly what stomatology-tokens.css
@@ -1161,6 +1181,18 @@ img{ max-width:100%; }
   -webkit-background-clip:text;
   background-clip:text;
 }
+/* THE SUBSTITUTION TRAP, THE SAME ONE THE HOMEPAGE'S GROUND STOPS HIT, FOUND HERE BY
+   READING getComputedStyle ON A DARK ELEMENT RATHER THAN BY READING THIS STYLESHEET.
+   --hp-shadow-box ends in var(--ds-shadow-rest), the 1px ring, and --ds-shadow-rest
+   FLIPS: 0 0 0 1px #E3E8EE at :root, 0 0 0 1px #283544 inside .surface-dark. A custom
+   property is substituted at computed-value time on the element that DECLARES it, and
+   the already-substituted value is what inherits, so declaring --hp-shadow-box only on
+   :root baked the LIGHT #E3E8EE ring in and carried it into the dark band. The three
+   .hp-portrait cards there were drawing a near-white hairline on a #0B1A2B ground.
+   Redeclaring here forces the substitution to happen against the dark surface. */
+.surface-dark{
+  --hp-shadow-box: 0 1px 2px var(--hp-sh-key), 0 14px 32px var(--hp-sh-amb), var(--ds-shadow-rest);
+}
 .surface-dark .hp-key{
   color:var(--ds-accent);
   -webkit-text-fill-color:var(--ds-accent);
@@ -1360,21 +1392,28 @@ img{ max-width:100%; }
 }
 
 /* ============================================================================
-   SECTION 3. THREE PROFILE CARDS WITH A DESIGNED MONOGRAM, NEVER A FACE.
+   SECTION 3. THREE PROFILE CARDS WITH A CENTRED GENERATED PORTRAIT.
    pick: SECTION-COMPONENTS.md #18 (Team grid 3-col) | considered:
    CARD-VARIATIONS.md #7 team photo card (full-bleed image + name overlay),
-   CARD-VARIATIONS.md #8 team bio card (photo + extended bio) | why: #7 and #8 both
-   require a photograph of a person on a team card, and item 8's amendment released
-   hands and cropped mouths and left "specifically no face on a team card" standing.
-   On the homepage that refusal cost a preview band; here it governs the page's whole
-   repeating unit, which is why the pattern is copied across without a single change
-   rather than re-picked. #18 is the plain three-column grid the monogram treatment
-   lives in. The beauty reason, and it is the homepage's own: a monogram set in the
-   display face at the locked pill radius is the only circle on a page whose every
-   other corner is 4px, so the three of them read as a deliberate mark rather than as
-   three missing photographs.
+   CARD-VARIATIONS.md #8 team bio card (photo + extended bio) | why the pick did NOT
+   change when item 8 did: #7 and #8 were refused because item 8 barred a face on a
+   team card, and item 8's third note has since released exactly that. They are still
+   refused, on their own merits now rather than by prohibition. #7 lays type over a
+   full-bleed photograph, which would put white text on a generated face and turn a
+   picture that must be read as a placeholder into a designed portrait plate. #8
+   wants an extended bio, and every sentence this page could add about a person it
+   has invented is a sentence somebody has to notice is fiction. #18 keeps the
+   picture as a MARK and the words as words, which is the honest shape for a face
+   nobody has verified. The beauty reason, and it is the homepage's own: the portrait
+   sits at the locked pill radius and is the only circle on a page whose every other
+   corner is 4px, so the three of them read as a deliberate mark.
+   WHAT THE PORTRAIT DOES NOT DO. It carries no badge, no credential, no protected
+   title and no clinical claim, the four reserved register slots under it stay
+   rendered empty, and the label strip at the top of this page says in body type that
+   the faces are generated and the names are placeholders.
    THE CARD IS THE HOMEPAGE'S .hp-person, RULE FOR RULE. Same fill, same ring, same
-   radius, same monogram geometry, same name / role / reserved-title / line order. One
+   radius, same portrait geometry, same per-image crop, same centring, same name /
+   role / reserved-title / line order, and the same face for the same name. One
    thing is ADDED and it is a height, not a treatment: above the 900px full-viewport
    floor the card takes a min-height, because three short cards floating in the middle
    of a 900px band read as an unfinished section rather than as a restrained one. That
@@ -1393,15 +1432,21 @@ img{ max-width:100%; }
   gap:var(--ds-space-md);
   margin:0; padding:0;
   list-style:none;
-  text-align:left;
 }
 .hp-person{
   display:flex;
   flex-direction:column;
+  /* CENTRED, BY OWNER INSTRUCTION and byte for byte with the homepage: "the boxes
+     here should have centred profile pictures". The list used to carry
+     text-align:left, which was the correct answer for a monogram sitting on the
+     card's top left corner and is the wrong one for a portrait: a centred portrait
+     over left-ragged type reads as a mistake. The homepage settled this and this
+     page follows it rather than re-deciding it. */
+  text-align:center;
   /* THE MARK AT THE TOP, THE IDENTITY AT THE FOOT, AND THIS IS A RENDER FINDING.
      With the card given a height so it carries the band, its content sat at the top
      and left a third of the card empty underneath, which reads as an unfinished card
-     rather than a restrained one. space-between puts the monogram on the card's top
+     rather than a restrained one. space-between puts the portrait on the card's top
      edge and the name / role / line block on its floor, which is the SAME anchoring
      the photographic cards on both sibling pages use (their .hp-service__body and
      .hp-route__body sit at flex-end). The card family changes material from page to
@@ -1416,21 +1461,41 @@ img{ max-width:100%; }
 @media (min-width:900px){
   .hp-person{ min-height:clamp(300px, 38svh, 420px); }
 }
-.hp-mono{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  width:56px; height:56px;
-  margin-bottom:var(--ds-space-md);
+/* THE GENERATED PORTRAIT, CARRIED FROM THE HOMEPAGE RULE FOR RULE. The monogram
+   avatar this page used to draw is GONE, class and rule both, rather than left
+   behind as an orphan the next reader has to test to find dead. Item 8 as written
+   mandated the monogram; item 8 as amended replaced it with a generated portrait,
+   and the homepage landed that first. This page carried monograms afterwards, which
+   is exactly the drift the consistency instruction names: two pages, three shared
+   names, two different treatments.
+   IT IS A FRAME AND AN IMAGE, NOT ONE <img>, for the reason the homepage's own
+   comment on this rule gives: the sources are 1024 by 1024 SQUARES and the circle is
+   a square box, so object-fit:cover has nothing left over to crop and object-position
+   moves NOTHING. Panning inside a frame is the only way to actually choose what the
+   circle holds. --hp-p-z is how far in; --hp-p-x and --hp-p-y carry the frame's
+   centre onto the FACE's centre. THE VALUES ARE THE HOMEPAGE'S OWN, per image, so a
+   name gets not only the same face on both pages but the same crop of it. */
+.hp-portrait{
+  display:block;
+  position:relative;
+  width:var(--hp-portrait-size);
+  height:var(--hp-portrait-size);
+  margin:0 auto var(--ds-space-md);
   border-radius:var(--ds-r-pill);
-  background-color:var(--ds-accent-soft);
-  color:var(--ds-accent-ink);
-  font-family:var(--ds-font-display);
-  font-size:20px;
-  font-weight:var(--ds-weight-head);
-  letter-spacing:.02em;
+  overflow:hidden;
+  background-color:var(--ds-bg-surface-2);
+  box-shadow:var(--hp-shadow-box);
 }
-.surface-dark .hp-mono{ color:var(--ds-accent-light); }
+.hp-portrait__img{
+  position:absolute;
+  inset:0;
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform-origin:center center;
+  transform:scale(var(--hp-p-z, 1.5)) translate(var(--hp-p-x, 0%), var(--hp-p-y, 0%));
+}
 .hp-person__name{
   margin:0 0 var(--ds-space-2xs);
   font-family:var(--ds-font-display);
@@ -1507,9 +1572,10 @@ img{ max-width:100%; }
      link colour as its computed colour and currentColor inside the panel resolves to
      it. */
   color:var(--ds-ink);
-  transition:transform var(--ds-dur-slow) var(--ds-ease-out);
+  transition:transform var(--ds-dur-slow) var(--ds-ease-out),
+             border-color var(--ds-dur) var(--ds-ease);
 }
-.hp-rail:hover{ transform:translate3d(0,-6px,0); }
+.hp-rail:hover{ transform:translate3d(0,-6px,0); border-top-color:var(--ds-accent); }
 .hp-rail__label{
   margin:0 0 var(--ds-space-xs);
   font-family:var(--ds-font-display);
@@ -1518,22 +1584,31 @@ img{ max-width:100%; }
   font-weight:var(--ds-weight-head);
   color:var(--ds-ink-heading);
 }
-.hp-rail__go{
-  display:inline-block;
-  margin-top:var(--ds-space-md);
-  padding-bottom:var(--ds-space-2xs);
-  border-bottom:2px solid var(--ds-accent-ink);
-  font-size:var(--ds-fs-fine);
-  letter-spacing:var(--ds-track-eyebrow);
-  text-transform:uppercase;
-  font-weight:500;
-  color:var(--ds-accent-ink);
-  transition:border-color var(--ds-dur) var(--ds-ease), color var(--ds-dur) var(--ds-ease);
-}
-.hp-rail:hover .hp-rail__go{ color:var(--ds-ink); border-bottom-color:var(--ds-ink); }
-/* The action label sits at the FOOT of the panel whatever the label's length, so four
-   panels of unequal copy still line their affordances up. */
-.hp-rail__spacer{ flex:1 1 auto; }
+/* THE ACTION LABEL IS GONE, AND IT SHOULD HAVE GONE A PASS AGO. The owner: "I do not
+   like the OPEN THIS PAGE CTAs on every box, it is already given. REMOVE THOSE
+   COMPLETELY ACROSS ALL PAGES and move down the text on top, if there is any."
+   FOUR labels removed from this file, and the .hp-rail__go rule and its hover rule
+   were DELETED with them rather than left behind, because a CSS rule whose class no
+   longer appears in any markup is an orphan the next reader has to test to find dead.
+   WHY THEY SURVIVED THE PASS THAT WAS SUPPOSED TO REMOVE THEM, recorded so the same
+   miss is not repeated: the markup writes the string as Open&nbsp;this&nbsp;page, so
+   a search for the plain words "Open this page" returned nothing on this file and on
+   page-faq.html, and both were reported clean while four and three labels
+   respectively were still rendering. A visible-text check has to normalise the
+   entities before it counts. page-services.html had already been done correctly and
+   is the pattern this follows, rule for rule.
+   THE PANEL STILL READS AS CLICKABLE, and that is a requirement rather than a hope:
+     1. the WHOLE PANEL is the <a>, so the full column is the link target;
+     2. the HOVER MOVES, translate3d six pixels up, AND takes the top rule to the
+        accent. Movement plus colour, never colour alone, which is item 11;
+     3. the FOCUS RING is declared in the shared focus rule and is not touched here.
+   THE SPACER CHANGED SIDES, AND THAT IS THE "MOVE DOWN THE TEXT" HALF OF THE
+   INSTRUCTION. It used to sit AFTER the label and push the action label to the panel
+   floor. With the label gone it would have pushed nothing and left the copy at the
+   top of the panel with a hole underneath, which is the exact complaint. order:-1
+   moves it ABOVE the copy, so the label now anchors to the panel floor. This is the
+   same anchoring .hp-person and the services page's own rail already use. */
+.hp-rail__spacer{ flex:1 1 auto; order:-1; }
 /* ABOVE THE FULL-VIEWPORT FLOOR the panels take a height of their own, and the reason
    is the band rather than the panel. At 900px and up every band fills the viewport,
    and four short labels floating in the middle of a 900px band read as an unfinished
@@ -1720,6 +1795,25 @@ img{ max-width:100%; }
   color:var(--ds-ink-soft);
 }
 .hp-label__note:last-child{ margin-bottom:0; }
+/* THE FACES NOTE, CARRIED FROM THE HOMEPAGE RULE FOR RULE. It is NOT a footnote and
+   it is deliberately NOT --ds-fs-fine and NOT --ds-ink-soft: every other note on this
+   strip is, and this one must not be able to be mistaken for one of them. It is body
+   size, full ink, on the page surface, inside a rule, above every other note, so a
+   reader who reads nothing else on this strip reads that the faces below are not
+   real people and the names beside them are not real names. */
+.hp-label__note--faces{
+  max-width:var(--ds-measure);
+  margin:0 0 var(--ds-space-lg);
+  padding:var(--ds-space-sm) var(--ds-space-md);
+  border-left:3px solid var(--ds-accent-ink);
+  border-radius:var(--ds-r-control);
+  background-color:var(--ds-bg-surface);
+  box-shadow:var(--hp-shadow-box);
+  font-size:var(--ds-fs-body);
+  line-height:var(--ds-lh-body);
+  font-weight:500;
+  color:var(--ds-ink);
+}
 
 /* ============================================================================
    MOTION. Every animation is on TRANSFORM and OPACITY only. Nothing animates a
@@ -1911,10 +2005,11 @@ img{ max-width:100%; }
 <div class="hp-label">
   <div class="hp-label__inner">
     <p class="hp-label__title">Template composition. Nothing on this page is a fact about a real practice.</p>
+    <p class="hp-label__note hp-label__note--faces">The three portraits on the cards below are GENERATED IMAGES OF PEOPLE WHO DO NOT EXIST. Nobody in those pictures works here, and nobody in them is a real person anywhere. The names printed beside them are placeholders too, so a generated face attached to a named role is an invented person, not a member of staff. No qualification, registration or title attaches to any of these faces. Replace every portrait with a photograph of the real person before this page is published.</p>
     <p class="hp-label__note">Every photograph here is a generated template image. So are the practice name, the town, the street address, and all three staff names with their roles and the lines beside them. None of it describes a real practice, and all of it has to be replaced before ship. Each slot carries a swap marker naming what replaces it.</p>
     <p class="hp-label__note">THE REGISTER ENTRIES ARE AN OPEN OWNER BLOCKER AND THIS IS THE PAGE THEY BLOCK. Every card below reserves a clinical title, a register name, a registration number and a verification line, and renders all four EMPTY. That is by design and it is not a rendering fault: a template credential is a fabricated qualification and an invented registration number is the one invention with legal teeth. What the owner owes, one item per empty slot: real names, the register named, the registration number for each, the title string exactly as that register prints it, and the name and date of whoever verified each entry. Nothing else releases them.</p>
     <p class="hp-label__note">A SECOND THING IS FLAGGED FOR THE OWNER RATHER THAN FOR THE SWAPPER, and the brief calls it the largest finish gap on the site. The navigation label, the browser title and the heading of this page all say who you will see, and the three people on it are a Practice Manager, a Treatment Coordinator and a Reception Lead. No clinician appears, because a name beside a clinical role implies a licence nobody has supplied. The page does not apologise for that in its own copy and it is not meant to: the standfirst under the heading is the string that scopes what this page covers, and it is the string to re-read on the day real clinical profiles arrive.</p>
-    <p class="hp-label__note">This is the team page body on its own. There is no site header, no footer and no closing call to action, because the chrome owns all three and has not been built yet. The links below point at sibling pages that are not all built yet either. The four route labels and both routes to the questions page are working identifiers the owner may replace, not approved copy. The brief declares three photograph slots for this page and this composition renders exactly three, so unlike the homepage and the services page there is no image-slot reconciliation owed here.</p>
+    <p class="hp-label__note">This is the team page body on its own. There is no site header, no footer and no closing call to action, because the chrome owns all three and has not been built yet. The links below point at sibling pages that are not all built yet either. The four route labels and both routes to the questions page are working identifiers the owner may replace, not approved copy. The brief declares three photograph slots for this page and this composition renders six: the three declared band grounds, plus the three generated portraits on the cards above, which used to be drawn marks and are now pictures. That difference is an image-slot reconciliation the owner is owed rather than one this page escapes, and it is listed here so nobody has to find it by counting.</p>
   </div>
 </div>
 
@@ -2109,21 +2204,27 @@ img{ max-width:100%; }
       <ul class="hp-people">
         <li class="hp-person hp-reveal" style="--hp-i:1">
           <!-- swap:image-team-card-1
-               THE MONOGRAM SLOT. Not a photograph, so there is no photograph to
-               describe. The brief fixes the alt as THE EMPTY STRING because the mark
-               contains the person's own initials and the person's name renders as text
-               immediately beside it, which is the technical definition of decorative.
-               This build discharges that as aria-hidden="true" on a text monogram
-               drawn in HTML and CSS: there is no <img> here to carry an alt, and
-               aria-hidden on a decorative mark is the exact semantic equivalent of
-               alt="". The mark carries no title attribute either, for the reason the
-               brief gives: a title would announce a design decision to the one reader
-               who cannot see it. If the card is ever restructured so the name is NOT
-               adjacent text, this decision must be re-taken rather than inherited.
-               THE MARKER STAYS REGARDLESS. Its swap target is the real initials, or
-               the owner photography that one day replaces the treatment, and an empty
-               alt string is not an empty slot. -->
-          <span class="hp-mono" aria-hidden="true">AM</span>
+               THE PORTRAIT SLOT. It was a monogram and it is now a generated
+               portrait, which is item 8 as AMENDED, and it is the same portrait the
+               homepage gives this name. THE ALT IS NO LONGER THE EMPTY STRING, and
+               that is not a deviation from the brief so much as a consequence of the
+               slot changing kind: the brief fixed alt="" because a monogram of a
+               person's own initials, printed beside that person's name, is decorative
+               by definition. A photograph of a face is not decorative and it is not
+               duplicated by the name beside it, so it gets a description, and the
+               description says what the picture actually is: a generated face, not a
+               member of staff. The label strip at the top of this page says the same
+               thing in full, for the reader who can see the picture.
+               NO BADGE, CREDENTIAL, TITLE OR CLINICAL CLAIM ATTACHES TO THIS FACE.
+               The four reserved slots below stay empty, exactly as they were.
+               THE MARKER STAYS. Its swap target is the owner photography of the real
+               person, and the crop values move with it. -->
+          <span class="hp-portrait">
+            <img class="hp-portrait__img" src="../assets/dental-person-07.jpg"
+                 style="--hp-p-z:1.6; --hp-p-x:1%; --hp-p-y:5%"
+                 width="1024" height="1024" loading="lazy" decoding="async" fetchpriority="low"
+                 alt="Generated portrait of a woman who does not exist, standing in for a staff photograph.">
+          </span>
           <div class="hp-person__body">
             <!-- swap:staff-1-name -->
             <h3 class="hp-person__name">Alex Morgan</h3>
@@ -2144,9 +2245,14 @@ img{ max-width:100%; }
         </li>
         <li class="hp-person hp-reveal" style="--hp-i:2">
           <!-- swap:image-team-card-2
-               THE MONOGRAM SLOT. alt="" discharged as aria-hidden on a text mark, for
-               the reason given at card 1. -->
-          <span class="hp-mono" aria-hidden="true">JE</span>
+               THE PORTRAIT SLOT, described for the reason given at card 1. Same face
+               this name carries on the homepage, same crop values. -->
+          <span class="hp-portrait">
+            <img class="hp-portrait__img" src="../assets/dental-person-08.jpg"
+                 style="--hp-p-z:2; --hp-p-x:4%; --hp-p-y:18%"
+                 width="1024" height="1024" loading="lazy" decoding="async" fetchpriority="low"
+                 alt="Generated portrait of a man who does not exist, standing in for a staff photograph.">
+          </span>
           <div class="hp-person__body">
           <!-- swap:staff-2-name -->
           <h3 class="hp-person__name">Jordan Ellis</h3>
@@ -2168,9 +2274,14 @@ img{ max-width:100%; }
         </li>
         <li class="hp-person hp-reveal" style="--hp-i:3">
           <!-- swap:image-team-card-3
-               THE MONOGRAM SLOT. alt="" discharged as aria-hidden on a text mark, for
-               the reason given at card 1. -->
-          <span class="hp-mono" aria-hidden="true">SP</span>
+               THE PORTRAIT SLOT, described for the reason given at card 1. Same face
+               this name carries on the homepage, same crop values. -->
+          <span class="hp-portrait">
+            <img class="hp-portrait__img" src="../assets/dental-person-03.jpg"
+                 style="--hp-p-z:1.55; --hp-p-x:-2%; --hp-p-y:15%"
+                 width="1024" height="1024" loading="lazy" decoding="async" fetchpriority="low"
+                 alt="Generated portrait of a woman who does not exist, standing in for a staff photograph.">
+          </span>
           <div class="hp-person__body">
           <!-- swap:staff-3-name -->
           <h3 class="hp-person__name">Sam Patel</h3>
@@ -2233,7 +2344,6 @@ img{ max-width:100%; }
                  marker rather than being treated as fixed chrome. -->
             <p class="hp-rail__label">About us</p>
             <span class="hp-rail__spacer" aria-hidden="true"></span>
-            <span class="hp-rail__go">Open&nbsp;this&nbsp;page</span>
           </a>
         </li>
         <li class="hp-reveal" style="--hp-i:2">
@@ -2241,7 +2351,6 @@ img{ max-width:100%; }
             <!-- swap:team-rail-2 -->
             <p class="hp-rail__label">What we do</p>
             <span class="hp-rail__spacer" aria-hidden="true"></span>
-            <span class="hp-rail__go">Open&nbsp;this&nbsp;page</span>
           </a>
         </li>
         <li class="hp-reveal" style="--hp-i:3">
@@ -2249,7 +2358,6 @@ img{ max-width:100%; }
             <!-- swap:team-rail-3 -->
             <p class="hp-rail__label">Questions and answers</p>
             <span class="hp-rail__spacer" aria-hidden="true"></span>
-            <span class="hp-rail__go">Open&nbsp;this&nbsp;page</span>
           </a>
         </li>
         <li class="hp-reveal" style="--hp-i:4">
@@ -2257,7 +2365,6 @@ img{ max-width:100%; }
             <!-- swap:team-rail-4 -->
             <p class="hp-rail__label">Find us</p>
             <span class="hp-rail__spacer" aria-hidden="true"></span>
-            <span class="hp-rail__go">Open&nbsp;this&nbsp;page</span>
           </a>
         </li>
       </ul>

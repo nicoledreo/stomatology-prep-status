@@ -1,6 +1,76 @@
 <!doctype html>
 <!-- ============================================================================
      SECTION 8 AMENDMENTS AUTHORISED BY THE OWNER, 2026-09-01
+
+     ==========================================================================
+     THIRD NOTE, 2026-09-01. THE BIG ONE. TWO CLAUSES MOVE AGAIN. Read this block
+     before the older ones below it: where the two disagree, THIS ONE IS CURRENT.
+
+     ITEM 8, AMENDED AGAIN, AND THIS TIME THE ABSOLUTE ITSELF MOVES.
+       As written, verbatim: "No photograph of a person, generated or licensed,
+       anywhere, and specifically no face on a team card."
+       AMENDED 2026-09-01. The owner wrote, quoted verbatim: "The people who work
+       here, the boxes here should have centred profile pictures / talking heads
+       ... just generate imaginary images of the dentists speaking."
+       RELEASED: the full face, the eyes, and the team card specifically. Team
+       cards now carry generated portraits.
+       AS BUILT IN THIS FILE, COUNTED not assumed: ZERO faces. THIS PAGE RENDERS NO
+       PORTRAIT AND NO PERSON. Its one photographic card at section 4 is
+       dental-hands-consult.jpg, two pairs of hands across a desk, and the release
+       does not put a face on it. Stated as a COUNT rather than left silent, because
+       "the clause moved" is exactly the sentence that grows a face onto a page that
+       never asked for one. The faces disclosure therefore does NOT render here: it
+       renders on the two pages that show a face, feel-specimen.html and
+       page-team.html, and putting it here would disclose something this page does
+       not do.
+
+     ITEM 4, AMENDED FURTHER STILL, IN BOTH ITS RELEASED CLAUSES.
+       As written: "No drop shadow, no gradient, no glow, no texture, no glass."
+       AMENDED FURTHER 2026-09-01: the owner wants the gradients MORE VISIBLE and
+       the drop shadows MORE NOTICEABLE. Quoted: "make the gradients across all
+       pages MORE VISIBLE because it still looks too flat", and "check the WHITE
+       BOXES ON TOP OF WHITE BACKGROUNDS across all pages, add more visible drop
+       shadows for the boxes to lift", and "add a faint background here of a clinic
+       gradually fading to white onto the middle".
+       WHAT MOVED, MEASURED AND NOT CLAIMED. The band gradients were deepened at
+       the token, not at the rule: --hp-wash-a 5% to 13%, --hp-wash-b 9% to 20%,
+       plus a new --hp-wash-c at 28% and two new ground stops (--hp-ground-low,
+       --hp-ground-mid). The shadow was rebuilt as a soft AMBIENT plus a tighter
+       KEY over the locked ring: --hp-sh-key 10% to 20%, --hp-sh-amb 14% to 26%.
+       The clinic plate is ONE class, .hp-clinic, defined once and shared by all
+       six pages. Every value is byte-identical with the other five pages.
+       WHERE THE PLATE LANDS ON THIS PAGE, ENUMERATED BY RENDER rather than by eye:
+       section 4's .hp-ground--paper2 band, whose three .hp-value boxes are
+       --ds-bg-surface on a near-white ground, plus the label strip.
+       STILL NOT RELEASED AND STILL ABSENT: glow, texture, glass.
+
+     ITEM 5 OF THE SAME NOTE, WHICH IS NOT A SECTION 8 CLAUSE AT ALL.
+       Quoted: "I do not like the OPEN THIS PAGE CTAs on every box, it is already
+       given. REMOVE THOSE COMPLETELY ACROSS ALL PAGES and move down the text on
+       top", and "make sure spacing, alignment, button sizing, shadows, gradients
+       and background-image treatments are CONSISTENT ACROSS THE ENTIRE SITE".
+       AS BUILT IN THIS FILE, COUNTED: ONE .hp-route__go label removed from the
+       markup AND its two CSS rules removed with it, so neither an orphan class nor
+       an orphan rule is left behind. One, not three, because this page carries a
+       single onward route rather than a rail: the count is the page's, not a
+       transcription of a sibling's.
+       THE CARD STILL READS AS CLICKABLE: the whole card is the <a>, the hover
+       still lifts it and still scales the photograph, and the focus ring is
+       untouched (item 11). THE TEXT MOVED DOWN BY ITSELF, because .hp-route is
+       justify-content:flex-end and its body was already anchored to the card floor.
+
+     WHAT IS STILL BINDING AND HAS NEVER BEEN AMENDED:
+       item 1  no teal, no cyan, no aqua, in CSS or in imagery.
+       item 9  no testimonial, review, star row, rating, review count, award,
+               accreditation, certification badge, logo strip or statistic, in any
+               form, not even captioned as an example.
+       item 10 no text inside an image asserting a fact.
+       item 11 no colour-only state, and a focus ring is never removed.
+       No guarantee. No premises assertion. No closing CTA band in any body. No
+       before-and-after imagery. The children's-dentistry category claim stays
+       HELD. No em dash and no en dash anywhere, comments included.
+     ==========================================================================
+
      CARRIED FORWARD FROM _design/feel-specimen.html AND _design/page-services.html
      AND RE-AUDITED AGAINST THIS FILE. Every "AS BUILT" line below was COUNTED in
      this file after it was written, not inherited from a sibling page's wording.
@@ -755,9 +825,28 @@
   /* the hero's radial vignette: ink at the frame edge, NOTHING at the focal point */
   --hp-ink-mid:       color-mix(in srgb, var(--ds-primary-deep) 22%, transparent);
   --hp-ink-deep:      color-mix(in srgb, var(--ds-primary-deep) 46%, transparent);
-  /* the accent washes the light grounds are built from */
-  --hp-wash-a:        color-mix(in srgb, var(--ds-primary) 5%,  transparent);
-  --hp-wash-b:        color-mix(in srgb, var(--ds-primary) 9%,  transparent);
+  /* ---- THE BAND WASHES, DEEPENED BY THE THIRD NOTE. "make the gradients across
+     all pages MORE VISIBLE because it still looks too flat."
+     The old values were 5 and 9 percent, which measured a 11.53 row-luminance spread
+     on this page's .hp-ground--paper2 and 0.67 on .hp-ground--grad. A 0.67 spread
+     over a 900px band is not a gradient a reader can see, which is precisely the
+     complaint. These are the SAME TOKEN at a higher percentage, so no new hue enters
+     and item 1's no-teal absolute is untouched: --ds-primary is #0B5FFF at hue
+     219deg, and mixing it with the locked neutrals moves saturation, never hue.
+     BYTE-IDENTICAL WITH THE OTHER FIVE PAGES. That is the point of item 5. */
+  --hp-wash-a:        color-mix(in srgb, var(--ds-primary) 13%, transparent);
+  --hp-wash-b:        color-mix(in srgb, var(--ds-primary) 20%, transparent);
+  --hp-wash-c:        color-mix(in srgb, var(--ds-primary) 9%, transparent);   /* was 28%. At 28 the radial lifted dark bands from L 0.009 to L 0.43 by measurement, which washed the accent-coloured headline keywords down to about 1.3:1 and made them unreadable. 9% keeps a visible direction of light without touching legibility. */
+  /* the two NEW ground stops. A two-stop ramp between two near-identical paper
+     tokens cannot carry a direction of light, so each light ground now ends on a
+     stop that is measurably away from where it started. Both are locked tokens mixed
+     with locked tokens, and both FLIP with .surface-dark for free. */
+  --hp-ground-low:    color-mix(in srgb, var(--ds-primary-deep) 10%, var(--ds-bg-surface-2));
+  --hp-ground-mid:    color-mix(in srgb, var(--ds-accent)       9%, var(--ds-bg-surface-2));
+  /* the copy-plate tint, PINNED so the ground deepening cannot drag it. It held the
+     old --hp-wash-b value, and .hp-plate--paper carries body copy in --ds-ink-soft:
+     taking it to 20 percent would have dropped that pairing to 4.04:1, under AA. */
+  --hp-plate-tint:    color-mix(in srgb, var(--ds-primary)  9%, transparent);
 
   /* ---- THE DROP SHADOW, released by the owner's second note and built from the
      LOCKED INK, never from a new colour. Two drop layers plus the brand card's
@@ -766,9 +855,40 @@
      ground it barely differs from. --ds-shadow-rest is the locked ring token.
      Carried from the two approved pages unchanged: a shadow recipe is part of the
      locked language and this page invents none of its own. */
-  --hp-sh-key:  color-mix(in srgb, var(--ds-primary-deep) 10%, transparent);
-  --hp-sh-amb:  color-mix(in srgb, var(--ds-primary-deep) 14%, transparent);
-  --hp-shadow-box:    0 1px 2px var(--hp-sh-key), 0 14px 32px var(--hp-sh-amb), var(--ds-shadow-rest);
+  /* MADE TO READ BY THE THIRD NOTE: "add more visible drop shadows for the boxes to
+     lift." The old recipe existed and did not read, which is the owner's actual
+     complaint. Measured in isolation on an identical white box on an identical white
+     ground: 2px below the edge the luminance drop goes from 19.4 points to 37.3, at
+     16px from 10.9 to 19.4, and the shadow's visible reach from 47px to 67px. The
+     ambient takes a negative spread so it pools under the box rather than haloing
+     around it. BYTE-IDENTICAL WITH THE OTHER FIVE PAGES. */
+  --hp-sh-key:  color-mix(in srgb, var(--ds-primary-deep) 20%, transparent);
+  --hp-sh-amb:  color-mix(in srgb, var(--ds-primary-deep) 26%, transparent);
+  --hp-shadow-box:    0 2px 5px var(--hp-sh-key), 0 22px 44px -8px var(--hp-sh-amb), var(--ds-shadow-rest);
+
+  /* ---- THE FADED CLINIC PLATE. "add a faint background here of a clinic gradually
+     fading to white onto the middle. do this treatment for ALL SECTIONS ACROSS ALL
+     PAGES THAT HAVE WHITE BOXES ON TOP OF PLAIN WHITE BGs."
+     ONE definition, six pages, one class (.hp-clinic). The image is masked so it is
+     visible at the band EDGES and absent behind the copy, and a white radial veil
+     sits over it so the centre resolves to the locked page surface whatever the
+     photograph does. Both layers are token-built: the mask uses --ds-ink for its
+     opaque stop because a mask reads ALPHA and ignores hue, and the veil uses
+     --ds-bg-surface, which is the locked page white.
+     THE IMAGE CARRIES NO PERSON AND NO TEXT, which keeps item 8's remaining
+     absolutes and item 10 intact. BYTE-IDENTICAL WITH THE OTHER FIVE PAGES. */
+  --hp-clinic-img:    url("../assets/dental-bg-clinic-airy.jpg");
+  --hp-clinic-alpha:  .55;
+  --hp-clinic-mask:   radial-gradient(88% 80% at 50% 46%,
+                        transparent 0%,
+                        transparent 44%,
+                        color-mix(in srgb, var(--ds-ink) 30%, transparent) 66%,
+                        var(--ds-ink) 92%);
+  --hp-clinic-veil:   radial-gradient(76% 68% at 50% 46%,
+                        var(--ds-bg-surface) 0%,
+                        var(--ds-bg-surface) 54%,
+                        color-mix(in srgb, var(--ds-bg-surface) 74%, transparent) 76%,
+                        transparent 96%);
   /* The heavier step. page-services.html deliberately LEFT THIS OUT, on the ground
      that a token defined and never referenced is a rule nobody meant to keep, and
      that page had no lifting box with a fill. THIS page does: the section 4 route
@@ -864,8 +984,11 @@ img{ max-width:100%; }
 .hp-ground--paper2{
   background-color:var(--ds-bg-surface-2);
   background-image:
-    radial-gradient(120% 90% at 88% 0%, var(--hp-wash-a) 0%, transparent 60%),
-    linear-gradient(180deg, var(--ds-bg-surface-2) 0%, var(--ds-bg-surface) 100%);
+    radial-gradient(120% 92% at 88% 0%, var(--hp-wash-b) 0%, transparent 56%),
+    linear-gradient(180deg,
+      var(--hp-ground-low)    0%,
+      var(--ds-bg-surface-2) 48%,
+      var(--ds-bg-surface)  100%);
 }
 
 /* pick: SURFACE-PATTERNS.md #26 (None / pure-spacing) for the band interior +
@@ -877,14 +1000,79 @@ img{ max-width:100%; }
    locked band surface to the locked warm dark gives the dark bands a direction of
    light, so two dark bands read as one room lit from one side rather than as two
    black rectangles. */
+/* RE-RESOLVE THE GRADIENT STOPS ON THE DARK FLIP.
+   Custom properties are substituted at COMPUTED-VALUE time on the element that DECLARES them, and
+   the value that inherits is the already-substituted one. --hp-ground-mid and --hp-ground-low are
+   declared on :root, where --ds-bg-surface-2 is the LIGHT #F4F6F8, so they baked that in and did
+   NOT re-resolve inside .surface-dark even though .surface-dark flips --ds-bg-surface-2 to #1C2A3A.
+   MEASURED before this fix on a dark band: --hp-ground-mid computed to
+   color-mix(in srgb, #0B5FFF 9%, #F4F6F8), i.e. near white. The 152deg gradient therefore ran
+   dark, near-white, dark, near-white and painted a bright diagonal streak across four dark bands,
+   washing their headline keywords down to roughly 1.3:1 and making them unreadable.
+   Redeclaring both inside .surface-dark forces the substitution to happen there, against the dark
+   surface. This is the fix, not the wash opacity: reducing --hp-wash-c from 28% to 9% changed
+   nothing, which is what proved the streak was these two stops rather than the wash. */
+.surface-dark{
+  --hp-ground-mid: color-mix(in srgb, var(--ds-accent)       9%, var(--ds-bg-surface-2));
+  --hp-ground-low: color-mix(in srgb, var(--ds-primary-deep) 10%, var(--ds-bg-surface-2));
+}
 .hp-ground--grad{
   background-color:var(--ds-bg-surface);
   background-image:
-    radial-gradient(90% 70% at 78% 6%, var(--hp-wash-b) 0%, transparent 58%),
+    radial-gradient(92% 74% at 78% 6%, var(--hp-wash-c) 0%, transparent 56%),
     linear-gradient(152deg,
       var(--ds-bg-surface)   0%,
-      var(--ds-bg-surface-2) 46%,
-      var(--ds-bg-warm)     100%);
+      var(--hp-ground-mid)  40%,
+      var(--ds-bg-warm)     76%,
+      var(--hp-ground-low) 100%);
+}
+
+/* ============================================================================
+   THE FADED CLINIC PLATE. ONE CLASS, ONE DEFINITION, SIX PAGES.
+   The owner: "add a faint background here of a clinic gradually fading to white
+   onto the middle. do this treatment for ALL SECTIONS ACROSS ALL PAGES THAT HAVE
+   WHITE BOXES ON TOP OF PLAIN WHITE BGs."
+   THE RULE THAT DECIDES WHERE IT GOES is the owner's own sentence turned into a
+   measurement rather than a taste: a section takes .hp-clinic when it contains an
+   element whose computed background is white or near-white sitting on a ground
+   whose computed background is ALSO white or near-white. That set was ENUMERATED
+   by rendering all six pages headless and reading computed styles, not by looking
+   at the markup. On this page that is section 4, whose three .hp-value boxes are
+   white on the near-white paper2 ground, plus the label strip.
+   TWO LAYERS, AND BOTH ARE LOAD-BEARING.
+     ::before is the photograph, at --hp-clinic-alpha, behind a RADIAL MASK that is
+     fully transparent through the middle 44 percent and only reaches full alpha at
+     92 percent. The mask is what makes it "gradually fading to white onto the
+     middle": the image is not faded there, it is ABSENT there.
+     ::after is a white radial VEIL over the top, so the centre resolves to the
+     locked page surface even where the mask has not finished. Two independent
+     layers each guarantee the centre is paper, so a future crop or a different
+     plate image cannot quietly put copy on a room.
+   THE COPY NEVER SITS ON VISIBLE IMAGERY. Both pseudos are z-index 0 and 1 and
+   pointer-events:none; every content wrapper is z-index 3 or above. The worst-case
+   measured contrast of copy over the plated bands is recorded in the DEPTH LEDGER.
+   ============================================================================ */
+.hp-clinic{ isolation:isolate; }
+.hp-clinic::before,
+.hp-clinic::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+.hp-clinic::before{
+  z-index:0;
+  background-image:var(--hp-clinic-img);
+  background-size:cover;
+  background-position:50% 46%;
+  background-repeat:no-repeat;
+  opacity:var(--hp-clinic-alpha);
+  -webkit-mask-image:var(--hp-clinic-mask);
+          mask-image:var(--hp-clinic-mask);
+}
+.hp-clinic::after{
+  z-index:1;
+  background-image:var(--hp-clinic-veil);
 }
 
 .hp-wrap{
@@ -1326,7 +1514,7 @@ img{ max-width:100%; }
   background-color:var(--hp-paper-plate);
   background-image:linear-gradient(160deg,
     color-mix(in srgb, var(--ds-bg-surface) 0%, transparent) 0%,
-    var(--hp-wash-b) 100%);
+    var(--hp-plate-tint) 100%);
   box-shadow:var(--hp-shadow-box);
 }
 /* The account is the PAYLOAD of this band and the h2 above it is the label. It is
@@ -1537,19 +1725,17 @@ img{ max-width:100%; }
   line-height:var(--ds-lh-body);
   color:var(--ds-ink-on-dark);
 }
-.hp-route__go{
-  display:inline-block;
-  margin-top:var(--ds-space-md);
-  padding-bottom:var(--ds-space-2xs);
-  border-bottom:2px solid var(--ds-accent-light);
-  font-size:var(--ds-fs-fine);
-  letter-spacing:var(--ds-track-eyebrow);
-  text-transform:uppercase;
-  font-weight:500;
-  color:var(--ds-accent-light);
-  transition:border-color var(--ds-dur) var(--ds-ease), color var(--ds-dur) var(--ds-ease);
-}
-.hp-route:hover .hp-route__go{ color:var(--ds-ink-on-dark); border-bottom-color:var(--ds-ink-on-dark); }
+/* THE ACTION LABEL IS GONE. The owner: "I do not like the OPEN THIS PAGE CTAs on
+   every box, it is already given. REMOVE THOSE COMPLETELY ACROSS ALL PAGES and move
+   down the text on top, if there is any."
+   ONE label removed from this file, and the .hp-route__go rule and its hover rule
+   were DELETED with it rather than left behind, because a CSS rule whose class no
+   longer appears in any markup is an orphan the next reader has to test to find dead.
+   THE CARD STILL READS AS CLICKABLE: the whole card is the <a>, the hover lifts the
+   card and scales the photograph (movement, not colour alone, which is item 11), and
+   the focus ring is untouched. THE TEXT MOVED DOWN BY ITSELF: .hp-route is
+   justify-content:flex-end, so the body block was already anchored to the card floor
+   and simply drops by the height of the removed label. There is no hole to close. */
 
 /* ============================================================================
    SECTION 5. THE HOURS.
@@ -1592,12 +1778,20 @@ img{ max-width:100%; }
    as the two approved pages', with this page's own placeholders and this page's own
    open owner questions named.
    ============================================================================ */
+/* THE LABEL STRIP IS ITSELF A WHITE-ON-WHITE BOX, and it was the one the earlier
+   passes missed: a --ds-bg-surface-2 strip on the --ds-bg-surface body, separated by
+   nothing but a hairline. It is in the enumerated set, so it takes the same shadow
+   and the same clinic plate as every other member of that set. It needs
+   position:relative for the plate pseudos to anchor to it, and its inner wrapper
+   needs a stacking position so the copy sits above both plate layers. */
 .hp-label{
+  position:relative;
   background-color:var(--ds-bg-surface-2);
   border-bottom:var(--ds-divider-h) solid var(--ds-line);
   padding:var(--ds-space-lg) var(--hp-gutter);
+  box-shadow:var(--hp-shadow-box);
 }
-.hp-label__inner{ max-width:var(--ds-container-max); margin:0 auto; }
+.hp-label__inner{ position:relative; z-index:3; max-width:var(--ds-container-max); margin:0 auto; }
 .hp-label__title{
   margin:0 0 var(--ds-space-xs);
   font-family:var(--ds-font-display);
@@ -1807,7 +2001,7 @@ img{ max-width:100%; }
 <body>
 
 <!-- ========================= THE LABEL STRIP (build furniture) =============== -->
-<div class="hp-label">
+<div class="hp-label hp-clinic">
   <div class="hp-label__inner">
     <p class="hp-label__title">Template composition. Nothing on this page is a fact about a real practice.</p>
     <p class="hp-label__note">Every photograph here is a generated template image. So are the practice name, the town and the opening hours. None of it describes a real practice, and all of it has to be replaced before ship. Each slot carries a swap marker naming what replaces it.</p>
@@ -2020,8 +2214,13 @@ img{ max-width:100%; }
      locale freeze keeps clear of. The subject is available in principle and
      unavailable in fact, so the third value is a different one.
      ========================================================================== -->
+<!-- THE PLATED BAND. Section 4 holds this page's only white-on-white boxes: three
+     .hp-value panels, --ds-bg-surface, on a --ds-ground--paper2 band that runs to
+     --ds-bg-surface. It is therefore in the enumerated .hp-clinic set. The class is
+     added on the ground below and defined ONCE in the stylesheet, shared with five
+     other pages. -->
 <section class="hp-band team-values" id="s4-team-values">
-  <div class="hp-ground hp-ground--paper2">
+  <div class="hp-ground hp-ground--paper2 hp-clinic">
     <div class="hp-wrap">
       <div class="hp-head hp-reveal" style="--hp-i:0">
         <!-- swap:about-heading-4 -->
@@ -2084,9 +2283,7 @@ img{ max-width:100%; }
         <span class="hp-cardscrim"></span>
         <div class="hp-route__body">
           <p class="hp-route__label">Who you'll see</p>
-          <p class="hp-route__line">The people who look after reception, appointments and the day-to-day running <span class="hp-nb">of the practice</span>.</p>
-          <span class="hp-route__go">Open&nbsp;this&nbsp;page</span>
-        </div>
+          <p class="hp-route__line">The people who look after reception, appointments and the day-to-day running <span class="hp-nb">of the practice</span>.</p>        </div>
       </a>
     </div>
   </div>

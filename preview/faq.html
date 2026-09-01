@@ -1479,9 +1479,10 @@ img{ max-width:100%; }
      link colour as its computed colour and currentColor inside the panel resolves to
      it. */
   color:var(--ds-ink);
-  transition:transform var(--ds-dur-slow) var(--ds-ease-out);
+  transition:transform var(--ds-dur-slow) var(--ds-ease-out),
+             border-color var(--ds-dur) var(--ds-ease);
 }
-.hp-rail:hover{ transform:translate3d(0,-6px,0); }
+.hp-rail:hover{ transform:translate3d(0,-6px,0); border-top-color:var(--ds-accent); }
 .hp-rail__label{
   margin:0;
   font-family:var(--ds-font-display);
@@ -1490,24 +1491,29 @@ img{ max-width:100%; }
   font-weight:var(--ds-weight-head);
   color:var(--ds-ink-heading);
 }
-.hp-rail__go{
-  display:inline-block;
-  margin-top:var(--ds-space-md);
-  padding-bottom:var(--ds-space-2xs);
-  border-bottom:2px solid var(--ds-accent-ink);
-  font-size:var(--ds-fs-fine);
-  letter-spacing:var(--ds-track-eyebrow);
-  text-transform:uppercase;
-  font-weight:500;
-  color:var(--ds-accent-ink);
-  transition:border-color var(--ds-dur) var(--ds-ease), color var(--ds-dur) var(--ds-ease);
-}
-.hp-rail:hover .hp-rail__go{ color:var(--ds-ink); border-bottom-color:var(--ds-ink); }
-/* The action label sits at the FOOT of the panel whatever the label's length, so
-   three panels of unequal copy still line their affordances up. With the supporting
-   line gone the three labels are one or two words each and the spacer is what stops
-   the rail reading as three loose words on three rules. */
-.hp-rail__spacer{ flex:1 1 auto; }
+/* THE ACTION LABEL IS GONE, AND IT SHOULD HAVE GONE A PASS AGO. The owner: "I do not
+   like the OPEN THIS PAGE CTAs on every box, it is already given. REMOVE THOSE
+   COMPLETELY ACROSS ALL PAGES and move down the text on top, if there is any."
+   THREE labels removed from this file, and the .hp-rail__go rule and its hover rule
+   were DELETED with them rather than left behind, because a CSS rule whose class no
+   longer appears in any markup is an orphan the next reader has to test to find dead.
+   WHY THEY SURVIVED THE PASS THAT WAS SUPPOSED TO REMOVE THEM, recorded so the same
+   miss is not repeated: the markup writes the string as Open&nbsp;this&nbsp;page, so
+   a search for the plain words "Open this page" returned nothing on this file and on
+   page-team.html, and both were reported clean while three and four labels
+   respectively were still rendering. A visible-text check has to normalise the
+   entities before it counts. page-services.html had already been done correctly and
+   is the pattern this follows, rule for rule.
+   THE PANEL STILL READS AS CLICKABLE: the whole panel is the <a>, the hover lifts it
+   six pixels AND takes the top rule to the accent (movement plus colour, never
+   colour alone, which is item 11), and the shared focus ring is untouched.
+   THE SPACER CHANGED SIDES, AND THAT IS THE "MOVE DOWN THE TEXT" HALF OF THE
+   INSTRUCTION. It used to sit AFTER the label and push the action label to the panel
+   floor; with the label gone it would push nothing and leave the copy at the top
+   with a hole underneath, which is the exact complaint. order:-1 puts it ABOVE the
+   copy so the label anchors to the panel floor, which is also what stops three one
+   and two word labels reading as three loose words on three rules. */
+.hp-rail__spacer{ flex:1 1 auto; order:-1; }
 /* ABOVE THE FULL-VIEWPORT FLOOR the panels take a height of their own, and the reason
    is the band rather than the panel. At 900px and up every band fills the viewport,
    and three short labels floating in the middle of a 900px band read as an unfinished
@@ -2169,7 +2175,6 @@ img{ max-width:100%; }
                  marker rather than being treated as fixed chrome. -->
             <p class="hp-rail__label">What we do</p>
             <span class="hp-rail__spacer" aria-hidden="true"></span>
-            <span class="hp-rail__go">Open&nbsp;this&nbsp;page</span>
           </a>
         </li>
         <li class="hp-reveal" style="--hp-i:2">
@@ -2177,7 +2182,6 @@ img{ max-width:100%; }
             <!-- swap:faq-rail-2 -->
             <p class="hp-rail__label">Who you'll see</p>
             <span class="hp-rail__spacer" aria-hidden="true"></span>
-            <span class="hp-rail__go">Open&nbsp;this&nbsp;page</span>
           </a>
         </li>
         <li class="hp-reveal" style="--hp-i:3">
@@ -2185,7 +2189,6 @@ img{ max-width:100%; }
             <!-- swap:faq-rail-3 -->
             <p class="hp-rail__label">About us</p>
             <span class="hp-rail__spacer" aria-hidden="true"></span>
-            <span class="hp-rail__go">Open&nbsp;this&nbsp;page</span>
           </a>
         </li>
       </ul>
