@@ -37,6 +37,33 @@ animation curves. Its findings are in section 15 of the main README.
 | `faq.html` | Questions and answers |
 | `contact.html` | Find us |
 
+## The chrome, up for review separately
+
+The six pages above still carry **no header and no footer**. That is deliberate: the chrome is drawn
+once, against finished bodies, rather than guessed at before there is anything to frame. It is why the
+links between the six pages work but nothing sits above them.
+
+The first of three chrome directions is now viewable on its own:
+
+| File | Direction | Nav | Footer |
+|---|---|---|---|
+| `chrome-a.html` | Reception Desk | right-aligned link cluster with a phone pill | hours and contact, three columns |
+
+**It is a candidate, not the decision.** Two more directions are being built, and the owner picks
+between them. Judge it on the states you cannot see from a screenshot: hover "What we do" for the
+grouped panel, hover "Questions" for the plain dropdown, scroll to watch the bar go from transparent
+to solid, and narrow the window past 900px for the drawer.
+
+Two things worth knowing while you look at it:
+
+- **The menus group real sections, not invented categories.** This site is six flat pages with no
+  sub-pages, and the page list is a closed manifest that may not be added to. So every row in those
+  panels points at a section that already exists on the page it names.
+- **The telephone number in the bar carries a visible PLACEHOLDER mark.** Chrome repeats on every
+  page, so a placeholder in it is a placeholder shown six times. It is marked where it sits rather
+  than disclosed only in the footer.
+
+
 ## What the build refuses to do, and why that shows
 
 There are no testimonials, no star ratings, no review counts, no awards, no accreditation badges and

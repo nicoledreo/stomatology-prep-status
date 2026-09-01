@@ -14,11 +14,15 @@
 > or clone and open `preview/index.html`.
 >
 > Read [`preview/README.md`](preview/README.md) first. In short: every business fact and every
-> photograph on those pages is a placeholder, there is no site header or footer yet because the chrome
-> is drawn once against finished bodies, and the pages have not been adversarially verified because
-> that pass is batched to the end.
+> photograph on those pages is a placeholder, and the pages have not been adversarially verified
+> because that pass is batched to the end.
+>
+> The six page bodies still carry **no header or footer**, because the chrome is drawn once against
+> finished bodies rather than guessed at first. The first of three chrome directions is now up for
+> review on its own, at **[`preview/chrome-a.html`](preview/chrome-a.html)**. It is a candidate, not
+> the decision: two more are being built and the owner picks between them.
 
-**Status as of 2026-09-01.** Run of the `client-site-prep` skill, and now
+**Status as of 2026-09-02.** Run of the `client-site-prep` skill, and now
 `client-site-build`, against
 `https://stomatology.axiomthemes.com/childrens-dentistry/`.
 
@@ -1068,6 +1072,173 @@ that compounds and is expensive to catch late.
 The eight launch-scope blockers are unchanged and remain entirely the owner's: jurisdiction, intake,
 photography, clinician register entries, and the service menu. None of them blocks a template. All of
 them block a website.
+
+---
+
+## 16. The system got signed off, and a revision turned out to have reached half the site
+
+**2026-09-02.** Three things happened: a claim from the previous entry was corrected, the styling
+system was built and signed off, and the chrome tournament opened.
+
+### The correction, first, because it invalidates something this repo published
+
+The previous entry reported that the owner's third revision note had been applied "across all pages":
+deeper band gradients, drop shadows that actually read, and a faint clinic plate behind every section
+that puts white boxes on a plain white ground. **It had reached three of the six pages.** The
+homepage, services and about carried it. Team, questions and contact did not.
+
+The gap was not subtle and it was not cosmetic:
+
+| Token | team / questions / contact | home / services / about | Now |
+|---|---|---|---|
+| `--hp-wash-a` | 5% | 13% | 13% on all six |
+| `--hp-wash-b` | 9% | 20% | 20% on all six |
+| `--hp-sh-key` | 10% | 20% | 20% on all six |
+| `--hp-sh-amb` | 14% | 26% | 26% on all six |
+| `.hp-clinic` | absent entirely | 2 bands each | on all six |
+
+Every one of those tokens was **in use** on the lagging pages, so those three pages genuinely rendered
+at roughly half the shadow depth and about 40 percent of the wash strength the owner had asked for.
+
+Worse than the gap: three of the finished pages carried comments asserting **"BYTE-IDENTICAL WITH THE
+OTHER FIVE PAGES"**, which was false when it was written. A file that documents a claim about its
+siblings is only as good as the check behind the claim, and there had been no check.
+
+**How the verification failed.** Two changed sections of the homepage and one on the team page were
+rendered and read at full resolution. They were correct. Site-wide completion was then reported from
+that page-local evidence. The right shape of check, run this time, was a token-level diff across all
+six files at once, and it took under a minute.
+
+### Two things the repair caught that would otherwise have shipped
+
+Propagating the values was not a copy-paste, and the two obstacles are worth recording because both
+were invisible until the propagation was attempted.
+
+**A contrast regression, pre-empted.** Raising `--hp-wash-b` to 20 percent would have dragged the copy
+plate's body text to **4.04:1**, under AA. The three finished pages had already solved this by pinning
+a separate `--hp-plate-tint` at the old 9 percent and repointing the plate at it. The three lagging
+pages had never received that token, so a naive token bump would have broken text those pages had
+been passing on.
+
+**A dark-band failure, pre-empted.** The questions and contact pages had **no `.surface-dark` token
+block at all**. The new ground stops are mixed against a surface, and a custom property is substituted
+at computed-value time on the element that declares it, so a `:root` value mixed against the light
+ground bakes the light value in and never re-resolves inside a dark band. Without inserting the flip,
+those pages' dark sections would have taken near-white stops.
+
+After the repair: **46 shared token declarations compared across the six pages, 0 conflicting values**,
+down from 6. Every band recipe byte-identical. Five bands rendered and read at full resolution,
+including two dark ones specifically to prove the inserted flip resolves correctly.
+
+### The stage that was reported blocked was never blocked
+
+The previous entry recorded the SYSTEM sign-off as held on a missing structural sheet. Reading the
+gate's source settled it: `verify-phase-owner-approved` classes `<slug>-structural.css` and the two
+tier sheets as **SYSTEM-lock artifacts requiring only the FEEL stamp**, which the owner gave on
+1 September. The sheet was never a missing input. It is this stage's own deliverable, and the stage had
+been available the whole time.
+
+### The system sheets were measured, not authored
+
+Three sheets now exist, and the load-bearing fact about them is that **nothing in any of them was
+written fresh**:
+
+- `stomatology-structural.css` carries only rules **already byte-identical across all six approved
+  pages** (42 of them), plus the 26 `--hp-*` tokens present in all six `:root` blocks. A rule that
+  differed on even one page was left page-level.
+- `brand-card-standard.css` is the control tier every page uses (12 rules).
+- `brand-card-bespoke.css` is the marquee tier only a home or marquee page adds (48 rules, 16 tokens).
+
+A pleasant side effect of the propagation above: the byte-identical intersection grew from 37 rules to
+42. The site got more consistent and the system sheet got more honest in the same pass.
+
+### The generator bypasses the gates, so the gates were run by hand
+
+`fs.writeFileSync` does not trigger PreToolUse, so a sheet written by a generator is never gated. Each
+sheet was therefore fed back through the real gates as a synthetic write payload rather than assumed
+clean.
+
+The first run **blocked all three**, on a `ch` max-width the check could read as neither display type
+nor a reading measure. The rule was not worked around. The markup was checked: the element is always a
+paragraph, three of three, it sets no font-family so it inherits the body face, and a 34ch measure on
+it is precisely the reading measure the check's own whitelist exists to exempt. That whitelist is
+spelled for other codebases' class names. Qualifying the selector with the tag it always carries
+states a fact rather than hiding one, and specificity was checked to be behaviourally identical.
+Second run: clean on all three sheets across four gates.
+
+### A card that was called stale, and was not
+
+The owner was told the token lock card predated the last revision round. That was wrong in the way that
+matters: the card embeds the confirmed feel through a **live `<iframe>`**, so it always renders the
+current homepage. The regenerated file is byte-identical to the previous one for exactly that reason.
+
+The card also shows two red contrast badges on `--ds-ink-on-dark`. Rather than repeat the card's own
+disclaimer, the token was traced to where it actually lands, the solid button, and measured:
+**5.13:1** on the light surface, **8.00:1** on the dark. Both pass AA. The card's estimator was
+comparing that text against the page ground instead of the chip it sits on.
+
+### A title that promised a clinician the page does not have
+
+`team` shipped with the title **"Dentist in Riverbend"**, on a page that deliberately names no
+clinician. The SEO record's defence of it is careful and correct as far as it goes: a bare singular in
+a title slot is a category label and fixes no headcount, which answers the constraint that section was
+reasoning about.
+
+It does not answer the other reading, which the build's own brief had already written down in full:
+the tab says Dentist, the reader scrolls, and meets a Practice Manager, a Treatment Coordinator and a
+Reception Lead. Every clinical slot is empty and nothing on the page says so.
+
+The owner was asked and chose to change it. It now reads **"Dental team in Riverbend"**: 45
+characters, keyword at index 0, no headcount, no service-class claim, swap markers untouched. The
+`_handoff/` copy was **deliberately not edited**, because the seam receipt hashes it and a prep
+decision is re-locked upstream in prep, never by hand at the seam. The divergence is recorded as OVR-1
+in `BUILD-OVERRIDES.md`.
+
+**What it does not fix:** the clinical slots are still empty. A title that no longer promises a dentist
+is not a team page with a dentist on it.
+
+### The chrome tournament opened, and direction A is up
+
+The first of three chrome directions is published at
+[`preview/chrome-a.html`](preview/chrome-a.html). It is **"Reception Desk"**: a right-aligned link
+cluster with a phone pill, over an hours-and-contact footer. Both picks are cited to the pattern
+catalogs, and both are patterns those catalogs name **for medical practices** where the telephone is
+the conversion, which this site's own FAQ confirms it is.
+
+**One deliberate deviation from doctrine, stated in the file.** The doctrine asks for a category
+mega-menu. This site is six flat pages with no sub-pages, and the sitemap calls the page list a closed
+manifest that may not be added to. So the panels group **real section anchors that already exist** on
+those pages rather than invented categories. Nothing in that menu goes anywhere that does not exist.
+
+**Six defects were found on it, and only two by looking at the code:**
+
+| Found by | What it was |
+|---|---|
+| flat-pilot detector | the first draft was all-light, which for a brand whose confirmed feel is named "Low Light" is a real flatness, not a technicality |
+| selection-rationale gate | composed sections carried no defended pick |
+| nav-consistency gate | drawer labels had drifted from the header: `+` suffixes became part of the label, and the close button counted as a nav item |
+| chrome-parity gate | the hamburger sat **54px short** of the header edge at 375, because `margin-left:auto` lived on a nav that is hidden at that width |
+| **the render** | the mega panel, anchored to a far-right trigger, ran **off the left edge** of the viewport with its first card cut off |
+| **the render** | the bar's white text crossed the hero's bright side, which is a transparent bar that breaks the first time a page uses a lighter photograph |
+
+The last two were invisible in the source. The panel fix anchors the mega to the bar's own gutter
+rather than to its trigger, which keeps the composition instead of shrinking it to fit; the legibility
+scrim went on the **bar** rather than the hero, so every page inherits the same floor.
+
+The hover-intent contract was verified by walking a real pointer from the trigger, across the seam,
+into the panel centre and onto an item, checking visibility at each step. The panel stays open
+throughout. That failure mode cannot be caught by reading CSS.
+
+### Where it stands
+
+Fifteen of the ladder's twenty-two stages are cleared, which is **68 percent by stage count**. That
+number over-reads how close this is to finished, and it would be misleading to publish it alone: **no
+page has been assembled yet.** There is no `pages/` tree and no `_build/` shell on disk. The six page
+designs are designs, and chrome, the shared shell, assembly, mobile and final QA all remain. By work
+remaining it is nearer 55 to 60 percent.
+
+Directions B and C of the chrome tournament are being built. The eight launch-scope blockers are
+unchanged and remain entirely the owner's.
 
 ---
 

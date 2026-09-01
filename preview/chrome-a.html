@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chrome direction A, Reception Desk - Alder Grove Dental</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="stomatology-tokens.css">
+<link rel="stylesheet" href="stomatology-structural.css">
+<link rel="stylesheet" href="brand-card-standard.css">
+
+<!-- ===========================================================================
+     CHROME DIRECTION A, "RECEPTION DESK"
+
+     THE PICKS, cited.
+       NAV-PATTERNS.md #3 Right-aligned link cluster + phone pill.
+       Justified by that catalog's own "when to use", which names this pattern for
+       "medical practices (single practitioner) ... any vertical where the phone
+       number is the primary conversion mechanic". This site's own FAQ answers the
+       booking question with "By telephone or by email. There is no online
+       booking." The conversion IS the phone, so the pattern built around a phone
+       pill is not a stylistic pick here, it is the accurate one.
+       Considered and rejected: NAV-PATTERNS.md #1 floating pill, whose stated fit
+       is SaaS and tech products, and NAV-PATTERNS.md #9 ecommerce mega-nav, which
+       needs categories this six-page site does not have.
+
+       FOOTER-STYLES.md #14 Hours-and-contact prominent.
+       That catalog names "small clinics" in its when-to-use. Three columns:
+       address plus telephone, an hours table, and the closing action. Explicitly
+       NOT FOOTER-STYLES.md #1, which the catalog itself opens by flagging as the
+       overused reflex, and which would give this six-page site four columns with
+       nothing to put in them.
+
+       Technique ceiling: _MODERN-WOW-SPEC (glass, layered depth, hover
+       micro-interaction, scroll-state transition).
+       Sector blueprint: composition-medical-health.
+
+     WHY THE NAV IS NOT A CATEGORY MEGA-MENU. The doctrine asks for grouped nav
+     with dropdowns and a category mega-menu. This site is six pages, flat, with
+     no sub-pages and no verticals; sitemap.yaml calls the page list a closed
+     manifest and forbids inventing pages. So the panels below group REAL section
+     anchors that already exist on those pages rather than invented categories.
+     Every card in the mega panel resolves to a real id in page-services.html,
+     and every dropdown row to a real id in page-faq.html.
+
+     FIGURE AND GROUND. Dark hero, dark closing band, light bands between and
+     after. The first draft of this file ran all-light and the flat-pilot detector
+     refused it, correctly: a brand whose confirmed feel is called "Low Light"
+     cannot carry an all-light frame. The dark bands are .surface-dark, so every
+     token flips through the locked dual-surface system rather than being
+     restyled by hand.
+
+     THE HONESTY PROBLEM THIS DIRECTION CREATES, and how it is answered.
+       page-contact.html says, in its own words, that "THE ADDRESS, THE TELEPHONE
+       NUMBER, THE EMAIL ADDRESS AND THE OPENING HOURS ON THIS PAGE ARE ALL
+       PLACEHOLDERS". A phone pill in the nav and an hours table in the footer put
+       those placeholders on EVERY page instead of on one. The more prominent a
+       placeholder, the more likely it ships by accident. So this direction
+       carries the disclosure in the chrome itself, at the same volume as the
+       data: the footer states it in full, and the pill carries a visible
+       unfinished mark a reader cannot mistake for a real number.
+     =========================================================================== -->
+<style>
+/* ---------------------------------------------------------------------------
+   All colour reaches for the locked tokens. Zero hex in this sheet.
+   Namespace .ca- (chrome A) for everything EXCEPT the canonical interactivity
+   hooks the functional gate drives, which must keep their canonical names.
+   --------------------------------------------------------------------------- */
+:root{
+  --ca-bar-h: 76px;
+  --ca-glass: color-mix(in srgb, var(--ds-bg-surface) 82%, transparent);
+  --ca-panel-shadow:
+    0 1px 0 color-mix(in srgb, var(--ds-primary-deep) 8%, transparent),
+    0 28px 60px -18px color-mix(in srgb, var(--ds-primary-deep) 38%, transparent);
+  --ca-glow: color-mix(in srgb, var(--ds-accent) 26%, transparent);
+}
+/* the dark flip, re-declared for the same computed-value reason the system sheet
+   documents: a value mixed against the light ground never re-resolves inside a
+   dark band. */
+.surface-dark{
+  --ca-glass: color-mix(in srgb, var(--ds-bg-surface) 82%, transparent);
+  --ca-glow:  color-mix(in srgb, var(--ds-accent) 30%, transparent);
+}
+
+/* ---- ONE focus ring, never removed, only restyled. Applies _MODERN-WOW-SPEC
+       without letting the WOW layer eat the a11y layer. ---- */
+.ca-skip:focus-visible,
+.ca-brand:focus-visible,
+.ca-link:focus-visible,
+.ca-tel:focus-visible,
+.ca-card:focus-visible,
+.ca-drop__item:focus-visible,
+.ca-feat__link:focus-visible,
+.ca-a:focus-visible,
+.site-header__hamburger:focus-visible,
+.ca-drawer__close:focus-visible,
+.ca-drawer__sum:focus-visible,
+.ca-drawer__link:focus-visible,
+.ca-drawer__sub a:focus-visible{
+  outline:2px solid var(--ds-accent);
+  outline-offset:3px;
+  border-radius:var(--ds-r-control);
+}
+
+/* ---- skip link: the first focusable thing on the page ---- */
+.ca-skip{
+  position:absolute; left:var(--ds-space-md); top:calc(var(--ds-space-md) * -4);
+  z-index:var(--ds-z-skip, 90);
+  padding:var(--ds-space-sm) var(--ds-space-md);
+  background-color:var(--ds-bg-surface); color:var(--ds-ink);
+  border:1px solid var(--ds-line); border-radius:var(--ds-r-control);
+  text-decoration:none; font-weight:500;
+  transition:top var(--ds-dur) var(--ds-ease);
+}
+.ca-skip:focus-visible{ top:var(--ds-space-md); }
+
+/* ---- a plain inline link, defined here rather than borrowed, so this concept
+       carries no class it does not itself define ---- */
+.ca-a{ color:var(--ds-accent-ink); text-decoration:none; border-bottom:1px solid color-mix(in srgb, var(--ds-accent) 40%, transparent); padding-bottom:1px; }
+.ca-a:hover{ border-bottom-color:var(--ds-accent); }
+
+/* ---- the bar. Transparent over the hero, solid on scroll, which is archetype
+       #3's own stated sticky behaviour. The glass is built from the locked ink. ---- */
+.ca-bar{
+  position:fixed; inset:0 0 auto 0; z-index:var(--ds-z-header, 60);
+  height:var(--ca-bar-h);
+  display:flex; align-items:center;
+  padding:0 var(--hp-gutter);
+  background-color:transparent;
+  border-bottom:1px solid transparent;
+  transition:
+    background-color var(--ds-dur) var(--ds-ease),
+    border-color     var(--ds-dur) var(--ds-ease),
+    box-shadow       var(--ds-dur) var(--ds-ease);
+}
+.ca-bar.is-solid{
+  background-color:var(--ca-glass);
+  -webkit-backdrop-filter:saturate(1.6) blur(14px);
+          backdrop-filter:saturate(1.6) blur(14px);
+  border-bottom-color:var(--ds-line);
+  box-shadow:0 1px 0 color-mix(in srgb, var(--ds-primary-deep) 5%, transparent),
+             0 14px 30px -22px color-mix(in srgb, var(--ds-primary-deep) 40%, transparent);
+}
+/* THE LEGIBILITY SCRIM UNDER THE TRANSPARENT BAR.
+   Found by rendering, not by reading the CSS: at scroll 0 the bar's white text
+   runs across whatever the hero happens to be, and this hero is bright on its
+   right side, where "Find us" and the phone pill sit. A transparent bar that
+   depends on the photograph behind it being dark is a bar that breaks the first
+   time a page uses a lighter image. This gradient belongs to the BAR rather than
+   to the hero, so every page inherits the same floor, and it fades out as the
+   solid state fades in so the two treatments never stack. */
+.ca-bar::before{
+  content:""; position:absolute; inset:0 0 auto 0; z-index:-1;
+  height:calc(var(--ca-bar-h) * 2.1); pointer-events:none;
+  background-image:linear-gradient(to bottom,
+    color-mix(in srgb, var(--ds-primary-deep) 66%, transparent)  0%,
+    color-mix(in srgb, var(--ds-primary-deep) 34%, transparent) 54%,
+    transparent 100%);
+  transition:opacity var(--ds-dur) var(--ds-ease);
+}
+.ca-bar.is-solid::before{ opacity:0; }
+.ca-bar__in{ display:flex; align-items:center; gap:var(--ds-space-lg); width:100%; max-width:var(--ds-maxw, 1440px); margin:0 auto; }
+
+/* ---- wordmark. An instrument mark: a hairline square with one accent stroke,
+       taken from the brand card's "Instrument" pick rather than invented. ---- */
+.ca-brand{ display:inline-flex; align-items:center; gap:var(--ds-space-sm); text-decoration:none; color:var(--ds-ink-on-dark); }
+.ca-bar.is-solid .ca-brand{ color:var(--ds-ink); }
+.ca-brand__mark{
+  width:26px; height:26px; flex:none; position:relative;
+  border:1px solid currentColor; border-radius:var(--ds-r-control);
+  opacity:.85;
+}
+.ca-brand__mark::after{
+  content:""; position:absolute; left:50%; top:5px; bottom:5px; width:2px;
+  transform:translateX(-50%);
+  background-color:var(--ds-accent-light);
+}
+.ca-bar.is-solid .ca-brand__mark::after{ background-color:var(--ds-accent); }
+.ca-brand__name{ font-weight:600; font-size:var(--ds-fs-body); letter-spacing:-.01em; white-space:nowrap; }
+
+/* ---- the link cluster, pushed all the way right. Archetype #3 is explicit that
+       these are NOT centered. ---- */
+.ca-nav{ margin-left:auto; display:flex; align-items:center; gap:var(--ds-space-2xs); }
+.ca-nav__item{ position:relative; }
+.ca-link{
+  position:relative;
+  display:inline-flex; align-items:center; gap:6px;
+  height:40px; padding:0 var(--ds-space-sm);
+  color:var(--ds-ink-on-dark); text-decoration:none;
+  font-size:var(--ds-fs-body); font-weight:500; white-space:nowrap;
+  border-radius:var(--ds-r-control);
+  background:none; border:0; cursor:pointer; font-family:inherit;
+  transition:color var(--ds-dur) var(--ds-ease), background-color var(--ds-dur) var(--ds-ease);
+}
+.ca-bar.is-solid .ca-link{ color:var(--ds-ink); }
+.ca-link:hover{ background-color:color-mix(in srgb, var(--ds-accent) 14%, transparent); }
+.ca-link[aria-expanded="true"]{ background-color:color-mix(in srgb, var(--ds-accent) 18%, transparent); }
+/* the active-underline indicator archetype #3 specifies */
+.ca-link.is-active::after{
+  content:""; position:absolute; left:var(--ds-space-sm); right:var(--ds-space-sm); bottom:4px; height:2px;
+  background-color:var(--ds-accent-light);
+}
+.ca-bar.is-solid .ca-link.is-active::after{ background-color:var(--ds-accent); }
+.ca-caret{ width:7px; height:7px; border-right:1.5px solid currentColor; border-bottom:1.5px solid currentColor;
+  transform:rotate(45deg) translateY(-2px); transition:transform var(--ds-dur) var(--ds-ease); }
+.ca-link[aria-expanded="true"] .ca-caret{ transform:rotate(-135deg) translateY(1px); }
+
+/* ---- the phone pill: archetype #3's far-right outlined pill ---- */
+.ca-tel{
+  display:inline-flex; align-items:center; gap:var(--ds-space-2xs);
+  height:40px; margin-left:var(--ds-space-sm); padding:0 var(--ds-space-md);
+  border:1px solid color-mix(in srgb, var(--ds-ink-on-dark) 45%, transparent);
+  border-radius:var(--ds-r-pill);
+  color:var(--ds-ink-on-dark); text-decoration:none;
+  font-size:var(--ds-fs-body); font-weight:500; white-space:nowrap;
+  background-color:transparent; background-clip:padding-box;
+  transition:border-color var(--ds-dur) var(--ds-ease), background-color var(--ds-dur) var(--ds-ease), color var(--ds-dur) var(--ds-ease);
+}
+.ca-bar.is-solid .ca-tel{ border-color:var(--ds-line); color:var(--ds-ink); }
+.ca-tel:hover{ background-color:var(--ds-accent); border-color:var(--ds-accent); color:var(--ds-ink-on-dark); }
+/* the visible unfinished mark. A placeholder in site-wide chrome shows on every
+   page, so it is marked where it sits, not only disclosed once in the footer. */
+.ca-ph{
+  font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+  padding:1px 5px; border-radius:2px;
+  background-color:color-mix(in srgb, var(--ds-accent) 22%, transparent);
+  border:1px solid color-mix(in srgb, var(--ds-accent) 60%, transparent);
+  color:inherit; white-space:nowrap;
+}
+
+/* ---- HOVER-INTENT, all three mechanisms together ----
+   (a) the trigger and the panel share ONE hover scope (.ca-nav__item), so
+       :hover and :focus-within on the parent drive the panel;
+   (b) a bridge element covers the seam, so there is no un-hoverable pixel band
+       between the trigger's bottom edge and the panel's top edge;
+   (c) a JS close-delay that clears on re-enter, in the script below.
+   A menu that closes on the trigger-to-panel traverse is a fail. */
+.ca-panel{
+  position:absolute; top:calc(100% + 10px); right:0;
+  min-width:min(760px, 92vw);
+  opacity:0; visibility:hidden; transform:translateY(-6px);
+  transition:opacity var(--ds-dur) var(--ds-ease), transform var(--ds-dur) var(--ds-ease-out), visibility 0s linear var(--ds-dur);
+  z-index:var(--ds-z-dropdown, 70);
+}
+.ca-nav__item.is-open > .ca-panel,
+.ca-nav__item:hover > .ca-panel,
+.ca-nav__item:focus-within > .ca-panel{
+  opacity:1; visibility:visible; transform:translateY(0);
+  transition-delay:0s;
+}
+.ca-panel::before{                       /* (b) the hover bridge across the seam */
+  content:""; position:absolute; left:0; right:0; top:-12px; height:12px;
+}
+/* THE MEGA PANEL IS ANCHORED TO THE BAR, NOT TO ITS TRIGGER.
+   Found by rendering: the trigger sits far right because archetype #3 pushes the
+   whole cluster right, so a 760px panel anchored to the trigger ran off the LEFT
+   edge of the viewport and cut its first card. Shrinking the panel would have
+   solved the overflow by destroying the composition instead. Anchoring it to the
+   bar's own right gutter keeps the featured-zone layout at full width and cannot
+   overflow, because 760 is comfortably inside 1440 minus two gutters. It also
+   removes the seam entirely: the panel now starts exactly at the bar's foot. */
+.ca-panel--mega{
+  position:fixed; top:calc(var(--ca-bar-h) - 2px); right:var(--hp-gutter); left:auto;
+  min-width:min(760px, calc(100vw - var(--hp-gutter) * 2));
+}
+.ca-panel__in{
+  border:1px solid var(--ds-line);
+  border-radius:var(--ds-r-surface);
+  box-shadow:var(--ca-panel-shadow);
+  overflow:hidden;
+  /* the inset highlight. A panel reads as a raised surface rather than a
+     rectangle because its top edge catches light and its foot sits darker. */
+  background-color:var(--ds-bg-surface);
+  background-image:linear-gradient(180deg, var(--ds-bg-surface) 0%, var(--ds-bg-surface-2) 100%);
+}
+
+/* ---- the MEGA panel: a featured zone BESIDE the cards, never a plain grid ---- */
+.ca-mega{ display:grid; grid-template-columns:1.05fr .95fr; }
+.ca-mega__cards{ padding:var(--ds-space-md); display:grid; grid-template-columns:1fr 1fr; gap:var(--ds-space-2xs); align-content:start; }
+.ca-card{
+  display:block; padding:var(--ds-space-sm) var(--ds-space-md);
+  border-radius:var(--ds-r-control); text-decoration:none;
+  border:1px solid transparent;
+  transition:background-color var(--ds-dur) var(--ds-ease), border-color var(--ds-dur) var(--ds-ease), transform var(--ds-dur) var(--ds-ease-out), box-shadow var(--ds-dur) var(--ds-ease);
+}
+.ca-card:hover{
+  background-color:var(--ds-bg-surface);
+  border-color:var(--ds-line);
+  transform:translate3d(0,-2px,0);
+  box-shadow:0 2px 5px color-mix(in srgb, var(--ds-primary-deep) 12%, transparent),
+             0 14px 28px -12px color-mix(in srgb, var(--ds-primary-deep) 28%, transparent);
+}
+.ca-card__name{ display:block; font-weight:600; color:var(--ds-ink); font-size:var(--ds-fs-body); }
+.ca-card__line{ display:block; margin-top:2px; color:var(--ds-ink-soft); font-size:var(--ds-fs-small); line-height:var(--ds-lh-body); }
+.ca-mega__eyebrow{
+  grid-column:1 / -1; margin:0 0 var(--ds-space-2xs); padding:0 var(--ds-space-md);
+  font-size:var(--ds-fs-small); letter-spacing:.13em; text-transform:uppercase; color:var(--ds-ink-soft);
+}
+
+/* the featured zone: graded photograph, eyebrow, one editorial line, a link */
+.ca-feat{ position:relative; isolation:isolate; min-height:300px; display:flex; flex-direction:column; justify-content:flex-end; padding:var(--ds-space-md); overflow:hidden; }
+.ca-feat__img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+.ca-feat__grade{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background-image:linear-gradient(to top,
+    color-mix(in srgb, var(--ds-primary-deep) 92%, transparent)  0%,
+    color-mix(in srgb, var(--ds-primary-deep) 74%, transparent) 34%,
+    color-mix(in srgb, var(--ds-primary-deep) 30%, transparent) 62%,
+    transparent 88%);
+}
+.ca-feat__body{ position:relative; z-index:2; }
+.ca-feat__eyebrow{ font-size:var(--ds-fs-small); letter-spacing:.13em; text-transform:uppercase; color:var(--ds-accent-light); margin:0 0 var(--ds-space-2xs); }
+.ca-feat__line{ margin:0 0 var(--ds-space-sm); color:var(--ds-ink-on-dark); font-size:var(--hp-fs-h3); line-height:var(--ds-lh-head); font-weight:var(--ds-weight-head); font-family:var(--ds-font-display); }
+.ca-feat__link{ color:var(--ds-ink-on-dark); text-decoration:none; font-weight:500; border-bottom:1px solid color-mix(in srgb, var(--ds-ink-on-dark) 50%, transparent); padding-bottom:2px; }
+.ca-feat__link:hover{ border-bottom-color:var(--ds-accent-light); color:var(--ds-accent-light); }
+
+/* ---- the plain dropdown, the second open state the owner judges ---- */
+.ca-drop{ min-width:360px; }
+.ca-drop .ca-panel__in{ padding:var(--ds-space-2xs); }
+.ca-drop__item{ display:block; padding:var(--ds-space-sm) var(--ds-space-md); border-radius:var(--ds-r-control); text-decoration:none; color:var(--ds-ink); transition:background-color var(--ds-dur) var(--ds-ease); }
+.ca-drop__item:hover{ background-color:color-mix(in srgb, var(--ds-accent) 10%, transparent); }
+.ca-drop__item span{ display:block; color:var(--ds-ink-soft); font-size:var(--ds-fs-small); margin-top:2px; }
+
+/* ---- the hamburger and mobile drawer. CANONICAL selectors: the functional gate
+       drives .site-header__hamburger and #mobile-drawer via aria-hidden.
+       STRUCTURE NOTE, load-bearing: the drawer's close control and its call
+       action sit OUTSIDE the drawer <nav>. The nav-consistency gate reads the
+       drawer's top-level triggers and compares them to the header's, so a close
+       button or a CTA inside that nav reads as a nav item that the header does
+       not have, which is drift. They are siblings of the nav, not children. ---- */
+.site-header__hamburger{
+  display:none; width:44px; height:44px; margin-left:var(--ds-space-sm);
+  align-items:center; justify-content:center;
+  background:none; border:1px solid color-mix(in srgb, var(--ds-ink-on-dark) 34%, transparent);
+  border-radius:var(--ds-r-control); cursor:pointer;
+}
+.ca-bar.is-solid .site-header__hamburger{ border-color:var(--ds-line); }
+.site-header__hamburger span{ display:block; width:18px; height:1.5px; background-color:var(--ds-ink-on-dark); position:relative; }
+.ca-bar.is-solid .site-header__hamburger span{ background-color:var(--ds-ink); }
+.site-header__hamburger span::before,
+.site-header__hamburger span::after{ content:""; position:absolute; left:0; width:18px; height:1.5px; background-color:inherit; }
+.site-header__hamburger span::before{ top:-6px; }
+.site-header__hamburger span::after{ top:6px; }
+
+#mobile-drawer{
+  position:fixed; inset:0 0 0 auto; width:min(310px, 86vw); z-index:var(--ds-z-drawer, 80);
+  background-color:var(--ds-bg-surface);
+  border-left:1px solid var(--ds-line);
+  box-shadow:-24px 0 60px -30px color-mix(in srgb, var(--ds-primary-deep) 60%, transparent);
+  transform:translateX(100%);
+  transition:transform var(--ds-dur-slow, 320ms) var(--ds-ease-out);
+  display:flex; flex-direction:column; padding:var(--ds-space-md);
+  overflow-y:auto;
+}
+#mobile-drawer[aria-hidden="false"]{ transform:translateX(0); }
+.ca-scrim{ position:fixed; inset:0; z-index:var(--ds-z-scrim, 79); background-color:var(--ds-scrim); opacity:0; visibility:hidden; transition:opacity var(--ds-dur) var(--ds-ease), visibility 0s linear var(--ds-dur); }
+.ca-scrim.is-on{ opacity:1; visibility:visible; transition-delay:0s; }
+.ca-drawer__head{ display:flex; justify-content:flex-end; }
+.ca-drawer__close{ width:40px; height:40px; border:1px solid var(--ds-line); background:none; border-radius:var(--ds-r-control); cursor:pointer; color:var(--ds-ink); font-size:18px; line-height:1; }
+.ca-drawer__nav{ display:flex; flex-direction:column; }
+.ca-drawer__group{ border-bottom:1px solid var(--ds-line); }
+.ca-drawer__sum{ display:flex; align-items:center; justify-content:space-between; width:100%; padding:var(--ds-space-md) 0; background:none; border:0; cursor:pointer; font:inherit; font-weight:500; color:var(--ds-ink); text-align:left; }
+/* the open/closed marker is drawn, not written: a text "+" inside the button
+   would become part of the trigger's LABEL and read as drift against the
+   header, which lists the same item without one. */
+.ca-drawer__sum::after{ content:""; width:9px; height:9px; flex:none; border-right:1.5px solid currentColor; border-bottom:1.5px solid currentColor; transform:rotate(45deg) translateY(-2px); transition:transform var(--ds-dur) var(--ds-ease); }
+.ca-drawer__sum[aria-expanded="true"]::after{ transform:rotate(-135deg) translateY(1px); }
+.ca-drawer__sub{ display:none; padding:0 0 var(--ds-space-sm) var(--ds-space-sm); }
+.ca-drawer__group.is-open .ca-drawer__sub{ display:block; }
+.ca-drawer__sub a{ display:block; padding:7px 0; color:var(--ds-ink-soft); text-decoration:none; font-size:var(--ds-fs-small); }
+.ca-drawer__sub a:hover{ color:var(--ds-accent-ink); }
+.ca-drawer__link{ display:block; padding:var(--ds-space-md) 0; border-bottom:1px solid var(--ds-line); color:var(--ds-ink); text-decoration:none; font-weight:500; }
+.ca-drawer__cta{ margin-top:var(--ds-space-md); }
+
+/* ---- THE CLOSING BAND. A designed moment, not a thin band: an oversized
+       headline, a spotlight plus accent glow on the dark ground, a
+       risk-reversal line and one primary action.
+       The risk-reversal line is NOT a guarantee. This practice cannot make one,
+       and item 9 of the locked visual direction forbids invented proof. The line
+       is the FAQ page's own answer carried across: booking is by telephone or
+       email and there is no online booking. That is a TRUE thing which removes a
+       reader's uncertainty, which is what the slot is actually for. ---- */
+.ca-closing{ position:relative; isolation:isolate; overflow:hidden; padding:calc(var(--hp-py) * 1.15) var(--hp-gutter); text-align:center; background-color:var(--ds-bg-surface-2); }
+.ca-closing::before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    radial-gradient(72% 130% at 50% 4%, var(--ca-glow) 0%, transparent 64%),
+    linear-gradient(180deg, var(--hp-ground-mid) 0%, var(--ds-bg-surface-2) 52%, var(--hp-ground-low) 100%);
+}
+.ca-closing__in{ position:relative; z-index:1; max-width:820px; margin:0 auto; }
+.ca-closing__eyebrow{ font-size:var(--ds-fs-small); letter-spacing:.14em; text-transform:uppercase; color:var(--ds-accent-ink); margin:0 0 var(--ds-space-sm); }
+.ca-closing__h{ font-family:var(--ds-font-display); font-size:var(--hp-fs-h2); line-height:var(--ds-lh-head); font-weight:var(--ds-weight-head); color:var(--ds-ink-heading); margin:0 0 var(--ds-space-md); text-wrap:balance; }
+.ca-closing__sub{ margin:0 auto var(--ds-space-lg); max-width:58ch; color:var(--ds-ink-soft); font-size:var(--ds-fs-body); line-height:var(--ds-lh-body); }
+.ca-closing__acts{ display:flex; gap:var(--ds-space-sm); justify-content:center; flex-wrap:wrap; }
+
+/* ---- FOOTER-STYLES #14: address plus phone / hours table / closing action ---- */
+.ca-foot{ background-color:var(--ds-bg-surface); border-top:1px solid var(--ds-line); padding:var(--hp-py) var(--hp-gutter) var(--ds-space-lg); }
+.ca-foot__grid{ max-width:var(--ds-maxw, 1440px); margin:0 auto; display:grid; grid-template-columns:1.1fr 1fr 1fr; gap:var(--ds-space-xl); }
+.ca-foot h3{ font-size:var(--ds-fs-small); letter-spacing:.13em; text-transform:uppercase; color:var(--ds-ink-soft); margin:0 0 var(--ds-space-sm); font-weight:500; }
+.ca-foot p{ margin:0 0 var(--ds-space-2xs); color:var(--ds-ink); line-height:var(--ds-lh-body); }
+.ca-hours{ width:100%; border-collapse:collapse; }
+.ca-hours td{ padding:7px 0; border-bottom:1px solid var(--ds-line); color:var(--ds-ink); font-variant-numeric:tabular-nums; }
+.ca-hours td:last-child{ text-align:right; }
+.ca-foot__note{ max-width:var(--ds-maxw, 1440px); margin:var(--ds-space-xl) auto 0; padding-top:var(--ds-space-md); border-top:1px solid var(--ds-line); color:var(--ds-ink-soft); font-size:var(--ds-fs-small); line-height:var(--ds-lh-body); }
+.ca-foot__note b{ color:var(--ds-ink); }
+
+/* ---- the stand-in body, so the bar has a hero to sit over and a scroll to test ---- */
+.ca-demo{ min-height:100vh; position:relative; isolation:isolate; display:flex; align-items:center; padding:0 var(--hp-gutter); overflow:hidden; background-color:var(--ds-bg-surface-2); }
+.ca-demo__img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+.ca-demo__scrim{ position:absolute; inset:0; z-index:1; background-image:linear-gradient(105deg,
+  color-mix(in srgb, var(--ds-primary-deep) 90%, transparent) 0%,
+  color-mix(in srgb, var(--ds-primary-deep) 64%, transparent) 46%,
+  color-mix(in srgb, var(--ds-primary-deep) 24%, transparent) 100%); }
+.ca-demo__body{ position:relative; z-index:2; max-width:var(--ds-maxw,1440px); margin:0 auto; width:100%; }
+.ca-demo h1{ font-family:var(--ds-font-display); font-size:var(--hp-fs-h2); line-height:1.04; color:var(--ds-ink-on-dark); margin:0 0 var(--ds-space-md); font-weight:var(--ds-weight-head); }
+.ca-demo p{ color:color-mix(in srgb, var(--ds-ink-on-dark) 84%, transparent); max-width:52ch; margin:0; line-height:var(--ds-lh-body); }
+.ca-band{ padding:var(--hp-py) var(--hp-gutter); background-color:var(--ds-bg-surface); border-bottom:1px solid var(--ds-line); }
+.ca-band__in{ max-width:var(--ds-maxw,1440px); margin:0 auto; color:var(--ds-ink-soft); }
+
+/* ---- responsive ---- */
+@media (max-width:900px){
+  .ca-nav, .ca-tel{ display:none; }
+  /* margin-left:auto lived on .ca-nav, which is hidden at this width. Without
+     moving it, the hamburger sits against the wordmark instead of the header's
+     right edge: measured at 375, its right edge was 54px short of the header
+     content edge. The parity gate caught this before the render did. */
+  .site-header__hamburger{ display:inline-flex; margin-left:auto; }
+  .ca-foot__grid{ grid-template-columns:1fr; gap:var(--ds-space-lg); }
+}
+@media (max-width:640px){
+  .ca-mega{ grid-template-columns:1fr; }
+}
+@media (prefers-reduced-motion: reduce){
+  .ca-bar, .ca-panel, .ca-card, #mobile-drawer, .ca-scrim, .ca-tel, .ca-link, .ca-skip, .ca-drawer__sum::after{
+    transition-duration:1ms !important; transition-delay:0s !important;
+  }
+  .ca-card:hover{ transform:none !important; }
+}
+</style>
+</head>
+<body>
+
+<a class="ca-skip" href="#main">Skip to content</a>
+
+<header class="ca-bar" id="ca-bar">
+  <div class="ca-bar__in">
+
+    <a class="ca-brand" href="index.html">
+      <span class="ca-brand__mark" aria-hidden="true"></span>
+      <span class="ca-brand__name">Alder Grove Dental</span>
+    </a>
+
+    <nav class="ca-nav" aria-label="Primary">
+
+      <div class="ca-nav__item">
+        <a class="ca-link is-active" href="index.html">Home</a>
+      </div>
+
+      <!-- MEGA, opening on "What we do". Every card below is a REAL section that
+           exists on page-services.html. No category was invented to fill a grid. -->
+      <div class="ca-nav__item" data-menu>
+        <button class="ca-link" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="ca-mega-services">
+          What we do <span class="ca-caret" aria-hidden="true"></span>
+        </button>
+        <div class="ca-panel ca-panel--mega" id="ca-mega-services" role="region" aria-label="What we do">
+          <div class="ca-panel__in ca-mega">
+            <div class="ca-mega__cards">
+              <p class="ca-mega__eyebrow">On that page</p>
+              <a class="ca-card" href="services.html#s2-why-this-area-wedge">
+                <span class="ca-card__name">Why this area</span>
+                <span class="ca-card__line">What the practice takes on, and why.</span>
+              </a>
+              <a class="ca-card" href="services.html#s3-sub-area-blocks">
+                <span class="ca-card__name">The areas of work</span>
+                <span class="ca-card__line">Set out one block at a time.</span>
+              </a>
+              <a class="ca-card" href="services.html#s6-where-the-work-happens">
+                <span class="ca-card__name">Where the work happens</span>
+                <span class="ca-card__line">The rooms, and what is in them.</span>
+              </a>
+              <a class="ca-card" href="services.html#s5-routing-band">
+                <span class="ca-card__name">Where to go next</span>
+                <span class="ca-card__line">If you are not sure what you need.</span>
+              </a>
+            </div>
+            <div class="ca-feat">
+              <img class="ca-feat__img" src="../assets/image-treatment-room.jpg" alt="" loading="lazy">
+              <span class="ca-feat__grade" aria-hidden="true"></span>
+              <div class="ca-feat__body">
+                <p class="ca-feat__eyebrow">Before you come in</p>
+                <p class="ca-feat__line">What an appointment actually involves, step by step.</p>
+                <a class="ca-feat__link" href="index.html#s4-inclusion-value">Read the steps</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ca-nav__item">
+        <a class="ca-link" href="about.html">About us</a>
+      </div>
+
+      <div class="ca-nav__item">
+        <a class="ca-link" href="team.html">Who you'll see</a>
+      </div>
+
+      <!-- DROPDOWN, the second open state. Real sections of page-faq.html. -->
+      <div class="ca-nav__item" data-menu>
+        <button class="ca-link" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="ca-drop-faq">
+          Questions <span class="ca-caret" aria-hidden="true"></span>
+        </button>
+        <div class="ca-panel ca-drop" id="ca-drop-faq" role="region" aria-label="Questions and answers">
+          <div class="ca-panel__in">
+            <a class="ca-drop__item" href="faq.html#s4-objection-faq">Questions for the appointment<span>What to raise when you call, and what to raise in the room.</span></a>
+            <a class="ca-drop__item" href="faq.html#s3-sub-area-blocks">The practical answers<span>Where we are, when we are open, how to reach us.</span></a>
+            <a class="ca-drop__item" href="faq.html#s7-cost-posture">On cost<span>How the practice talks about what things cost.</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ca-nav__item">
+        <a class="ca-link" href="contact.html">Find us</a>
+      </div>
+    </nav>
+
+    <!-- The phone pill archetype #3 is built around. It carries a visible
+         unfinished mark because the number is a placeholder and this bar puts it
+         on every page of the site. -->
+    <a class="ca-tel" href="tel:+15555550142">
+      <span>(555) 555-0142</span>
+      <span class="ca-ph">placeholder</span>
+    </a>
+
+    <button class="site-header__hamburger" type="button"
+            aria-label="Open menu" aria-controls="mobile-drawer" aria-expanded="false">
+      <span aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<div class="ca-scrim" id="ca-scrim" hidden></div>
+
+<aside id="mobile-drawer" aria-hidden="true" aria-label="Menu">
+
+  <div class="ca-drawer__head">
+    <button class="ca-drawer__close" type="button" aria-label="Close menu">&times;</button>
+  </div>
+
+  <nav class="ca-drawer__nav" aria-label="Primary, mobile">
+    <a class="ca-drawer__link" href="index.html">Home</a>
+
+    <div class="ca-drawer__group">
+      <button class="ca-drawer__sum" type="button" aria-expanded="false">What we do</button>
+      <div class="ca-drawer__sub">
+        <a href="services.html#s2-why-this-area-wedge">Why this area</a>
+        <a href="services.html#s3-sub-area-blocks">The areas of work</a>
+        <a href="services.html#s6-where-the-work-happens">Where the work happens</a>
+        <a href="services.html#s5-routing-band">Where to go next</a>
+      </div>
+    </div>
+
+    <a class="ca-drawer__link" href="about.html">About us</a>
+    <a class="ca-drawer__link" href="team.html">Who you'll see</a>
+
+    <div class="ca-drawer__group">
+      <button class="ca-drawer__sum" type="button" aria-expanded="false">Questions</button>
+      <div class="ca-drawer__sub">
+        <a href="faq.html#s4-objection-faq">Questions for the appointment</a>
+        <a href="faq.html#s3-sub-area-blocks">The practical answers</a>
+        <a href="faq.html#s7-cost-posture">On cost</a>
+      </div>
+    </div>
+
+    <a class="ca-drawer__link" href="contact.html">Find us</a>
+  </nav>
+
+  <div class="ca-drawer__cta">
+    <a class="hp-go hp-go--solid" href="tel:+15555550142">Call the practice</a>
+  </div>
+</aside>
+
+<main id="main">
+
+  <!-- pick: HERO-COMPOSITIONS.md #5 | considered: #1,#9 | rigor: heavy | why: the bar's whole judgement is its transparent-over-hero to solid-on-scroll transition, which needs one uninterrupted dark ground behind it; the split #1 would put the bar over a light half and a dark half at once and make that state unreadable, and the letterbox #9 is too short to scroll against -->
+  <section class="ca-demo surface-dark">
+    <img class="ca-demo__img" src="../assets/image-hero-reception.jpg" alt="">
+    <span class="ca-demo__scrim" aria-hidden="true"></span>
+    <div class="ca-demo__body">
+      <h1>Chrome direction A</h1>
+      <p>A stand-in band, here so the bar can be judged transparent over a dark hero and solid on scroll. The page body is not part of this concept.</p>
+    </div>
+  </section>
+
+  <!-- pick: DIVIDER-PATTERNS.md #1 | considered: #8,#9 | rigor: heavy | why: this band exists only to give the bar light ground and scroll distance, so a hard colour-change edge keeps the eye on the bar; the shadow band #8 and the gradient fade #9 would each add a decorative event the owner would then be judging instead of the chrome -->
+  <section class="ca-band">
+    <div class="ca-band__in">
+      <p>Scroll past the hero and the bar takes its solid state: glass, a hairline rule, and a shadow that only appears once there is content behind it.</p>
+    </div>
+  </section>
+
+  <!-- pick: CTA-PATTERNS.md #11 | considered: #7,#4 | rigor: heavy | why: the closing moment is site-wide chrome, so it has to hold a full band on its own rather than sit inside a page's rhythm; the bare cluster #7 reads as a leftover row at the foot of every page, and the phone pill #4 is already spent in the bar, where repeating it would flatten the one action this band exists to escalate -->
+  <section class="ca-closing surface-dark">
+    <div class="ca-closing__in">
+      <p class="ca-closing__eyebrow">Booking</p>
+      <h2 class="ca-closing__h">Call the practice and we will find you a time.</h2>
+      <p class="ca-closing__sub">Appointments are made by telephone or by email. There is no online booking, so nothing is waiting behind a form: you speak to reception and you leave with a time.</p>
+      <div class="ca-closing__acts">
+        <a class="hp-go hp-go--solid" href="tel:+15555550142">Call the practice</a>
+        <a class="hp-go hp-go--quiet" href="contact.html">See where we are</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="ca-foot">
+  <div class="ca-foot__grid">
+    <div>
+      <h3>Where we are</h3>
+      <p>114 Alder Street<br>Riverbend</p>
+      <p><a class="ca-a" href="tel:+15555550142">(555) 555-0142</a></p>
+      <p><a class="ca-a" href="mailto:hello@aldergrovedental.example">hello@aldergrovedental.example</a></p>
+    </div>
+    <div>
+      <h3>When we are open</h3>
+      <table class="ca-hours">
+        <tbody>
+          <tr><td>Monday to Thursday</td><td>8:00 to 17:00</td></tr>
+          <tr><td>Friday</td><td>8:00 to 14:00</td></tr>
+          <tr><td>Saturday and Sunday</td><td>Closed</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>Getting seen</h3>
+      <p>By telephone or by email, the same way an appointment is changed.</p>
+      <p><a class="hp-go hp-go--quiet" href="contact.html">Find us</a></p>
+    </div>
+  </div>
+
+  <p class="ca-foot__note">
+    <b>Nothing on this site is a fact about a real practice.</b> The practice name, the town, the address,
+    the telephone number, the email address and the opening hours above are all placeholders, and every
+    photograph is a generated template image. Replace each one with the real value before this site is
+    published.
+  </p>
+</footer>
+
+<script>
+/* ---------------------------------------------------------------------------
+   (c) of the hover-intent contract: a close-delay that clears on re-enter, so a
+   brief diagonal traverse from the trigger into the panel never collapses it.
+   (a) and (b) are CSS above: a shared hover scope, and a bridge across the seam.
+   Keyboard: click toggles, Escape closes and returns focus to the trigger.
+   --------------------------------------------------------------------------- */
+(function () {
+  var CLOSE_DELAY = 240;
+
+  document.querySelectorAll('[data-menu]').forEach(function (item) {
+    var trigger = item.querySelector('.ca-link[aria-haspopup]');
+    var timer = null;
+
+    function open() { clearTimeout(timer); item.classList.add('is-open'); trigger.setAttribute('aria-expanded', 'true'); }
+    function close() { item.classList.remove('is-open'); trigger.setAttribute('aria-expanded', 'false'); }
+    function closeSoon() { clearTimeout(timer); timer = setTimeout(close, CLOSE_DELAY); }
+
+    item.addEventListener('mouseenter', open);
+    item.addEventListener('mouseleave', closeSoon);
+    trigger.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (item.classList.contains('is-open')) { close(); } else { open(); }
+    });
+    item.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { close(); trigger.focus(); }
+    });
+  });
+
+  /* scroll state: transparent over the hero, solid once there is content behind */
+  var bar = document.getElementById('ca-bar');
+  function onScroll() { bar.classList.toggle('is-solid', window.scrollY > 40); }
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* the drawer, on the canonical contract the functional gate drives */
+  var burger = document.querySelector('.site-header__hamburger');
+  var drawer = document.getElementById('mobile-drawer');
+  var scrim = document.getElementById('ca-scrim');
+  var closeBtn = drawer.querySelector('.ca-drawer__close');
+
+  function setDrawer(on) {
+    drawer.setAttribute('aria-hidden', on ? 'false' : 'true');
+    burger.setAttribute('aria-expanded', on ? 'true' : 'false');
+    scrim.hidden = !on;
+    scrim.classList.toggle('is-on', on);
+    document.body.style.overflow = on ? 'hidden' : '';
+    if (on) { closeBtn.focus(); } else { burger.focus(); }
+  }
+  burger.addEventListener('click', function () { setDrawer(drawer.getAttribute('aria-hidden') === 'true'); });
+  closeBtn.addEventListener('click', function () { setDrawer(false); });
+  scrim.addEventListener('click', function () { setDrawer(false); });
+  addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && drawer.getAttribute('aria-hidden') === 'false') { setDrawer(false); }
+  });
+
+  /* accordion groups inside the drawer. The marker is CSS, so the button's text
+     stays exactly the header's label and the nav-consistency gate stays happy. */
+  drawer.querySelectorAll('.ca-drawer__sum').forEach(function (sum) {
+    sum.addEventListener('click', function () {
+      var on = sum.parentElement.classList.toggle('is-open');
+      sum.setAttribute('aria-expanded', on ? 'true' : 'false');
+    });
+  });
+})();
+</script>
+</body>
+</html>
