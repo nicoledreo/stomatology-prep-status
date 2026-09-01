@@ -1,4 +1,11 @@
-# Stomatology — children's dentistry site prep
+# Alder Grove Dental — Dentistry site prep and build
+
+> **"Alder Grove Dental" is not a real practice.** It is the invented template identity this build
+> runs on, together with its town, address, telephone, email, opening hours, staff names and service
+> list. The telephone sits in the range reserved for fiction and the email uses the reserved
+> `.example` domain, so neither reaches anybody. Every one of those values is a placeholder carrying
+> a swap marker, and all of them must be replaced before anything ships. The reason the identity had
+> to be invented at all is §1.
 
 **Status as of 2026-09-01.** Run of the `client-site-prep` skill, and now
 `client-site-build`, against
