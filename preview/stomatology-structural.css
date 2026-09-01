@@ -1,0 +1,311 @@
+/* stomatology-structural.css — the SYSTEM layer. Token-pure: every colour in this
+   sheet reaches for var(--*) and the only place a brand hex exists is
+   stomatology-tokens.css.
+
+   PROVENANCE, so this sheet is auditable rather than asserted. Nothing here was
+   written for this file. Every rule below is present, byte for byte, in ALL SIX
+   approved page designs (feel-specimen, services, about, team, faq, contact); that
+   intersection is what "shared" means here, measured rather than judged. A rule that
+   differs on even one page is page-level and is deliberately NOT hoisted.
+
+   The token block that opens the sheet is the same test applied to custom properties:
+   only --hp-* declarations present in all six :root blocks. Page-local steps (the
+   timeline rails, the display type steps, the card ink) stay on their pages or move
+   to the bespoke tier.
+
+   Load order: stomatology-tokens.css -> THIS -> brand-card-standard.css
+               (+ brand-card-bespoke.css on a marquee page) -> stomatology-chrome.css. */
+
+
+/* ============================================================================
+   THE SYSTEM TOKENS
+   the --hp-* layer, derived entirely from the locked --ds-* sheet.
+   Present in all six pages, so a page cannot drift off it silently.
+   ============================================================================ */
+
+:root{
+  --hp-gutter: calc(var(--ds-space-xl) + var(--ds-space-md));
+  --hp-py: calc(var(--ds-space-2xl) + var(--ds-space-md));
+  --hp-ink-plateau: color-mix(in srgb, var(--ds-primary-deep) 86%, transparent);
+  --hp-ink-open: color-mix(in srgb, var(--ds-primary-deep) 20%, transparent);
+  --hp-ink-mid: color-mix(in srgb, var(--ds-primary-deep) 22%, transparent);
+  --hp-ink-deep: color-mix(in srgb, var(--ds-primary-deep) 46%, transparent);
+  --hp-wash-a: color-mix(in srgb, var(--ds-primary) 13%, transparent);
+  --hp-wash-b: color-mix(in srgb, var(--ds-primary) 20%, transparent);
+  --hp-wash-c: color-mix(in srgb, var(--ds-primary) 9%, transparent);
+  --hp-ground-low: color-mix(in srgb, var(--ds-primary-deep) 10%, var(--ds-bg-surface-2));
+  --hp-ground-mid: color-mix(in srgb, var(--ds-accent)       9%, var(--ds-bg-surface-2));
+  --hp-plate-tint: color-mix(in srgb, var(--ds-primary)  9%, transparent);
+  --hp-sh-key: color-mix(in srgb, var(--ds-primary-deep) 20%, transparent);
+  --hp-sh-amb: color-mix(in srgb, var(--ds-primary-deep) 26%, transparent);
+  --hp-shadow-box: 0 2px 5px var(--hp-sh-key), 0 22px 44px -8px var(--hp-sh-amb), var(--ds-shadow-rest);
+  --hp-clinic-img: url("../assets/dental-bg-clinic-airy.jpg");
+  --hp-clinic-alpha: .55;
+  --hp-clinic-mask: radial-gradient(88% 80% at 50% 46%,
+                        transparent 0%,
+                        transparent 44%,
+                        color-mix(in srgb, var(--ds-ink) 30%, transparent) 66%,
+                        var(--ds-ink) 92%);
+  --hp-clinic-veil: radial-gradient(76% 68% at 50% 46%,
+                        var(--ds-bg-surface) 0%,
+                        var(--ds-bg-surface) 54%,
+                        color-mix(in srgb, var(--ds-bg-surface) 74%, transparent) 76%,
+                        transparent 96%);
+  --hp-fs-h2: clamp(30px, 3.2vw, 44px);
+  --hp-fs-h3: clamp(18px, 1.45vw, 21px);
+  --hp-fs-boxline: clamp(17px, 1.5vw, 22px);
+  --hp-dur-reveal: 620ms;
+  --hp-dur-rise: 760ms;
+  --hp-stagger: 90ms;
+  --hp-i: 0;
+}
+
+
+/* ============================================================================
+   THE DARK FLIP
+   a custom property is substituted at computed-value time on the element that
+   DECLARES it, so a :root value mixed against a LIGHT surface bakes that light
+   value in and never re-resolves inside a dark band. These re-declare.
+   ============================================================================ */
+
+.surface-dark{
+  --hp-ground-mid: color-mix(in srgb, var(--ds-accent)       9%, var(--ds-bg-surface-2));
+  --hp-ground-low: color-mix(in srgb, var(--ds-primary-deep) 10%, var(--ds-bg-surface-2));
+  
+  --hp-shadow-box:    0 2px 5px var(--hp-sh-key), 0 22px 44px -8px var(--hp-sh-amb), var(--ds-shadow-rest);
+  --hp-shadow-box-hi: 0 4px 10px var(--hp-sh-key), 0 40px 72px -10px var(--hp-sh-amb), var(--ds-shadow-rest);
+}
+
+
+/* ============================================================================
+   THE SHARED SYSTEM
+   42 rules, each byte-identical across all six approved pages:
+   the reset, the band/ground/wrap geometry, the photograph and scrim system,
+   the type application, the ground recipes and the motion primitives.
+   ============================================================================ */
+
+*,*::before,*::after{ box-sizing:border-box; }
+
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+
+body{
+  margin:0;
+  background-color:var(--ds-bg-surface);
+  color:var(--ds-ink);
+  font-family:var(--ds-font-body);
+  font-size:var(--ds-fs-body);
+  line-height:var(--ds-lh-body);
+  font-weight:var(--ds-weight-body);
+  overflow-x:hidden;
+}
+
+img{ max-width:100%; }
+
+.hp-band{ position:relative; width:100%; }
+
+.hp-ground{ position:relative; width:100%; }
+
+.hp-ground--grad{
+  background-color:var(--ds-bg-surface);
+  background-image:
+    radial-gradient(92% 74% at 78% 6%, var(--hp-wash-c) 0%, transparent 56%),
+    linear-gradient(152deg,
+      var(--ds-bg-surface)   0%,
+      var(--hp-ground-mid)  40%,
+      var(--ds-bg-warm)     76%,
+      var(--hp-ground-low) 100%);
+}
+
+.hp-clinic{ isolation:isolate; }
+
+.hp-clinic::before,
+.hp-clinic::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+
+.hp-clinic::before{
+  z-index:0;
+  background-image:var(--hp-clinic-img);
+  background-size:cover;
+  background-position:50% 46%;
+  background-repeat:no-repeat;
+  opacity:var(--hp-clinic-alpha);
+  -webkit-mask-image:var(--hp-clinic-mask);
+          mask-image:var(--hp-clinic-mask);
+}
+
+.hp-clinic::after{
+  z-index:1;
+  background-image:var(--hp-clinic-veil);
+}
+
+.hp-wrap{
+  position:relative;
+  z-index:3;
+  max-width:var(--ds-container-max);
+  margin:0 auto;
+  padding:var(--hp-py) 0;
+}
+
+.hp-band{ padding-left:var(--hp-gutter); padding-right:var(--hp-gutter); }
+
+.hp-ground{ width:auto; margin-left:calc(var(--hp-gutter) * -1); margin-right:calc(var(--hp-gutter) * -1); padding-left:var(--hp-gutter); padding-right:var(--hp-gutter); }
+
+@media (min-width:900px){
+  .hp-band > .hp-ground{
+    min-height:100vh;          
+    min-height:100svh;         
+    display:flex;
+    flex-direction:column;
+    justify-content:center;    
+  }
+  .hp-band > .hp-ground > .hp-wrap{ width:100%; }
+}
+
+.hp-band:not(.hp-band--hero) .hp-wrap{ text-align:center; }
+
+.hp-ground--photo{ isolation:isolate; overflow:hidden; }
+
+.hp-photo{ position:absolute; inset:0; z-index:0; overflow:hidden; contain:paint; }
+
+.hp-photo__scrim{ position:absolute; inset:0; z-index:1; display:block; }
+
+.hp-photo__edge{ position:absolute; inset:0; z-index:2; display:block; pointer-events:none; }
+
+.hp-ground--ink .hp-photo__scrim{
+  background-image:linear-gradient(90deg,
+    var(--hp-ink-plateau)  0%,
+    var(--hp-ink-plateau) 58%,
+    var(--hp-ink-open)    86%,
+    var(--hp-ink-open)   100%);
+}
+
+.hp-ground--photo .hp-wrap{ max-width:var(--ds-container-max); }
+
+.hp-textzone{ max-width:min(600px, 44vw); }
+
+.hp-band--hero .hp-wrap{ width:100%; }
+
+.hp-nb{ white-space:nowrap; }
+
+.hp-key{ white-space:nowrap; }
+
+.hp-h2{
+  margin:0 0 var(--ds-space-md);
+  font-family:var(--ds-font-display);
+  font-size:var(--hp-fs-h2);
+  line-height:var(--ds-lh-head);
+  letter-spacing:var(--ds-track-display);
+  font-weight:var(--ds-weight-head);
+  color:var(--ds-ink-heading);
+  
+  max-width:none;
+}
+
+.hp-lead{
+  margin:0;
+  max-width:var(--ds-measure);
+  font-size:var(--ds-fs-body);
+  line-height:var(--ds-lh-body);
+  color:var(--ds-ink);
+}
+
+.hp-head{ margin:0 0 var(--ds-space-xl); }
+
+.hp-key{
+  color:var(--ds-accent-ink);
+  -webkit-text-fill-color:var(--ds-accent-ink);
+  background-image:linear-gradient(96deg, var(--ds-accent-deep) 0%, var(--ds-accent) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+}
+
+.surface-dark .hp-key{
+  color:var(--ds-accent);
+  -webkit-text-fill-color:var(--ds-accent);
+  background-image:linear-gradient(96deg, var(--ds-accent) 0%, var(--ds-accent-light) 100%);
+}
+
+.hp-label__title{
+  margin:0 0 var(--ds-space-xs);
+  font-family:var(--ds-font-display);
+  
+  font-size:var(--hp-fs-h3);
+  line-height:var(--ds-lh-head);
+  font-weight:var(--ds-weight-head);
+  color:var(--ds-ink-heading);
+}
+
+.hp-label__note{
+  margin:0 0 var(--ds-space-xs);
+  max-width:var(--ds-measure);
+  font-size:var(--ds-fs-fine);
+  line-height:var(--ds-lh-body);
+  color:var(--ds-ink-soft);
+}
+
+.hp-label__note:last-child{ margin-bottom:0; }
+
+@keyframes hp-drift{
+  from{ transform:scale(1.04) translate3d(0,0,0); }
+  to  { transform:scale(1.13) translate3d(-1.6%,-1.4%,0); }
+}
+
+.hp-band--hero .hp-photo__img{
+  animation:hp-drift 44s cubic-bezier(.37,0,.63,1) infinite alternate;
+  
+  will-change:transform;
+}
+
+@keyframes hp-rise{
+  from{ opacity:0; transform:translate3d(0,20px,0); }
+  to  { opacity:1; transform:translate3d(0,0,0); }
+}
+
+.hp-rise{
+  opacity:0;
+  animation:hp-rise var(--hp-dur-rise) var(--ds-ease-out) forwards;
+  animation-delay:calc(var(--hp-i, 0) * 140ms + 120ms);
+}
+
+.hp-reveal{ }
+
+.hp-js .hp-reveal{
+  opacity:0;
+  transform:translate3d(0,18px,0);
+  transition:
+    opacity   var(--hp-dur-reveal) var(--ds-ease-out),
+    transform var(--hp-dur-reveal) var(--ds-ease-out);
+  transition-delay:calc(var(--hp-i, 0) * var(--hp-stagger));
+}
+
+.hp-js .hp-reveal.hp-in{
+  opacity:1;
+  transform:translate3d(0,0,0);
+}
+
+@media (max-width:1440px){
+  :root{ --hp-gutter:var(--ds-space-xl); --hp-py:var(--ds-space-2xl); }
+}
+
+
+/* ============================================================================
+   THE PADDING LADDER, remaining steps
+   the :root steps only. Their sibling grid rules differ per page, so they are
+   page-level by the same measured test and are not hoisted here.
+   ============================================================================ */
+
+@media (max-width:1024px){
+  :root{--hp-gutter:calc(var(--ds-space-lg) + var(--ds-space-xs)); --hp-py:calc(var(--ds-space-xl) + var(--ds-space-xs)); }
+}
+
+@media (max-width:768px){
+  :root{--hp-gutter:calc(var(--ds-space-md) + var(--ds-space-xs)); --hp-py:calc(var(--ds-space-xl) - var(--ds-space-xs)); }
+}
+
+@media (max-width:390px){
+  :root{--hp-gutter:calc(var(--ds-space-md) - var(--ds-space-2xs)); --hp-py:var(--ds-space-lg); }
+}

@@ -678,8 +678,29 @@
   --hp-ink-mid:       color-mix(in srgb, var(--ds-primary-deep) 22%, transparent);
   --hp-ink-deep:      color-mix(in srgb, var(--ds-primary-deep) 46%, transparent);
   /* the accent washes the light grounds are built from */
-  --hp-wash-a:        color-mix(in srgb, var(--ds-primary) 5%,  transparent);
-  --hp-wash-b:        color-mix(in srgb, var(--ds-primary) 9%,  transparent);
+  /* ---- THE BAND WASHES, DEEPENED BY THE THIRD NOTE. "make the gradients across
+     all pages MORE VISIBLE because it still looks too flat." These are the SAME
+     TOKENS at a higher percentage, carried here from the homepage byte for byte, so
+     no new hue enters and item 1's no-teal absolute is untouched: --ds-primary sits
+     at hue 219deg, and mixing it with the locked neutrals moves saturation, never
+     hue.
+     CORRECTED 2026-09-02. This page had been left on the pre-note 5/9 values while
+     the homepage, the services page and the about page ran 13/20. The note said "all
+     pages" and the pass reached three of six. That gap is what this block closes. */
+  --hp-wash-a:        color-mix(in srgb, var(--ds-primary) 13%, transparent);
+  --hp-wash-b:        color-mix(in srgb, var(--ds-primary) 20%, transparent);
+  --hp-wash-c:        color-mix(in srgb, var(--ds-primary) 9%, transparent);
+  /* the two ground stops that give a light band a direction of light. A two-stop
+     ramp between two near-identical paper tokens cannot carry one, which is the
+     flatness the owner kept seeing. Locked tokens mixed with locked tokens, and both
+     FLIP under .surface-dark below for free. */
+  --hp-ground-low:    color-mix(in srgb, var(--ds-primary-deep) 10%, var(--ds-bg-surface-2));
+  --hp-ground-mid:    color-mix(in srgb, var(--ds-accent)       9%, var(--ds-bg-surface-2));
+  /* the copy-plate tint, PINNED so the ground deepening cannot drag it. It keeps the
+     OLD --hp-wash-b value ON PURPOSE: .hp-plate--paper carries body copy in
+     --ds-ink-soft, and taking its end stop to 20 percent drops that pairing to
+     4.04:1, under AA. The homepage found this the same way. */
+  --hp-plate-tint:    color-mix(in srgb, var(--ds-primary)  9%, transparent);
 
   /* ---- THE DROP SHADOW, released by the owner's second note and built from the
      LOCKED INK, never from a new colour. Two drop layers plus the brand card's hairline
@@ -688,9 +709,17 @@
      differs from. --ds-shadow-rest is the locked ring token. Carried from the sibling
      pages unchanged: a shadow recipe is part of the locked language and this page
      invents none of its own. */
-  --hp-sh-key:  color-mix(in srgb, var(--ds-primary-deep) 10%, transparent);
-  --hp-sh-amb:  color-mix(in srgb, var(--ds-primary-deep) 14%, transparent);
-  --hp-shadow-box:    0 1px 2px var(--hp-sh-key), 0 14px 32px var(--hp-sh-amb), var(--ds-shadow-rest);
+  /* MADE TO READ BY THE THIRD NOTE: "add more visible drop shadows for the boxes to
+     lift." Measured on an identical white box on an identical white ground: 2px
+     below the edge the luminance drop goes from 19.4 points to 37.3, at 16px from
+     10.9 to 19.4, and the shadow's visible reach from 47px to 67px. The ambient
+     takes a negative spread so it pools UNDER the box rather than haloing around it.
+     CORRECTED 2026-09-02, for the same reason as the washes above: this page was
+     left on the shallower pre-note recipe. These three values are now byte-identical
+     with the other five pages. */
+  --hp-sh-key:  color-mix(in srgb, var(--ds-primary-deep) 20%, transparent);
+  --hp-sh-amb:  color-mix(in srgb, var(--ds-primary-deep) 26%, transparent);
+  --hp-shadow-box:    0 2px 5px var(--hp-sh-key), 0 22px 44px -8px var(--hp-sh-amb), var(--ds-shadow-rest);
   /* The homepage's heavier second step (--hp-shadow-box-hi) is NOT carried. It exists
      there for a card that lifts on hover, and no box on this page lifts: the route index
      at section 3 moves, but it is a ruled list with no fill, so there is nothing for a
@@ -721,6 +750,40 @@
   --hp-dur-rise:   760ms;
   --hp-stagger:    90ms;
   --hp-i: 0;                 /* stagger index; set per element inline */
+
+  /* ---- THE FADED CLINIC PLATE. "add a faint background here of a clinic gradually
+     fading to white onto the middle. do this treatment for ALL SECTIONS ACROSS ALL
+     PAGES THAT HAVE WHITE BOXES ON TOP OF PLAIN WHITE BGs."
+     ONE definition, one class (.hp-clinic), carried here from the homepage byte for
+     byte. The image is masked so it shows at the band EDGES and is absent behind the
+     copy, and a white radial veil sits over it so the centre resolves to the locked
+     page surface whatever the photograph does. Both layers are token-built: the mask
+     uses --ds-ink for its opaque stop because a mask reads ALPHA and ignores hue,
+     and the veil uses --ds-bg-surface, which is the locked page white.
+     THE IMAGE CARRIES NO PERSON AND NO TEXT, which keeps item 10 intact. */
+  --hp-clinic-img:    url("../assets/dental-bg-clinic-airy.jpg");
+  --hp-clinic-alpha:  .55;
+  --hp-clinic-mask:   radial-gradient(88% 80% at 50% 46%,
+                        transparent 0%,
+                        transparent 44%,
+                        color-mix(in srgb, var(--ds-ink) 30%, transparent) 66%,
+                        var(--ds-ink) 92%);
+  --hp-clinic-veil:   radial-gradient(76% 68% at 50% 46%,
+                        var(--ds-bg-surface) 0%,
+                        var(--ds-bg-surface) 54%,
+                        color-mix(in srgb, var(--ds-bg-surface) 74%, transparent) 76%,
+                        transparent 96%);
+}
+
+.surface-dark{
+  /* THE DARK FLIP. A custom property is substituted at computed-value time on the
+     element that DECLARES it, and the already-substituted value is what inherits. A
+     :root declaration that mixes against a LIGHT surface therefore bakes the light
+     value in and never re-resolves inside a dark band. These three are re-declared
+     here so a dark band mixes against the DARK ground instead. */
+  --hp-ground-mid: color-mix(in srgb, var(--ds-accent)       9%, var(--ds-bg-surface-2));
+  --hp-ground-low: color-mix(in srgb, var(--ds-primary-deep) 10%, var(--ds-bg-surface-2));
+  --hp-shadow-box:    0 2px 5px var(--hp-sh-key), 0 22px 44px -8px var(--hp-sh-amb), var(--ds-shadow-rest);
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
@@ -754,8 +817,11 @@ img{ max-width:100%; }
 .hp-ground--paper{
   background-color:var(--ds-bg-surface);
   background-image:
-    radial-gradient(120% 90% at 12% 0%, var(--hp-wash-b) 0%, transparent 62%),
-    linear-gradient(180deg, var(--ds-bg-surface) 0%, var(--ds-bg-surface-2) 100%);
+    radial-gradient(120% 92% at 12% 0%, var(--hp-wash-c) 0%, transparent 58%),
+    linear-gradient(180deg,
+      var(--ds-bg-surface)    0%,
+      var(--ds-bg-surface-2) 52%,
+      var(--hp-ground-low)  100%);
 }
 
 /* pick: SURFACE-PATTERNS.md #26 (None / pure-spacing) for the band interior +
@@ -769,12 +835,41 @@ img{ max-width:100%; }
 .hp-ground--grad{
   background-color:var(--ds-bg-surface);
   background-image:
-    radial-gradient(90% 70% at 78% 6%, var(--hp-wash-b) 0%, transparent 58%),
+    radial-gradient(92% 74% at 78% 6%, var(--hp-wash-c) 0%, transparent 56%),
     linear-gradient(152deg,
       var(--ds-bg-surface)   0%,
-      var(--ds-bg-surface-2) 46%,
-      var(--ds-bg-warm)     100%);
+      var(--hp-ground-mid)  40%,
+      var(--ds-bg-warm)     76%,
+      var(--hp-ground-low) 100%);
 }
+/* ---- THE FADED CLINIC PLATE, the class itself. Two pseudo-layers on the band
+   ground: the masked photograph underneath, the white radial veil over it. Both are
+   pointer-events:none and neither is in the tab order, so nothing about reading or
+   operating the band changes. isolation:isolate keeps the two layers' z-indices
+   local to the band. Carried from the homepage byte for byte. */
+.hp-clinic{ isolation:isolate; }
+.hp-clinic::before,
+.hp-clinic::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+.hp-clinic::before{
+  z-index:0;
+  background-image:var(--hp-clinic-img);
+  background-size:cover;
+  background-position:50% 46%;
+  background-repeat:no-repeat;
+  opacity:var(--hp-clinic-alpha);
+  -webkit-mask-image:var(--hp-clinic-mask);
+          mask-image:var(--hp-clinic-mask);
+}
+.hp-clinic::after{
+  z-index:1;
+  background-image:var(--hp-clinic-veil);
+}
+
 
 .hp-wrap{
   position:relative;
@@ -1456,7 +1551,7 @@ img{ max-width:100%; }
   background-color:var(--hp-paper-plate);
   background-image:linear-gradient(160deg,
     color-mix(in srgb, var(--ds-bg-surface) 0%, transparent) 0%,
-    var(--hp-wash-b) 100%);
+    var(--hp-plate-tint) 100%);
   box-shadow:var(--hp-shadow-box);
 }
 .hp-channels{
@@ -1843,7 +1938,7 @@ img{ max-width:100%; }
      premises particular of any kind.
      ========================================================================== -->
 <section class="hp-band contact-details" id="s2-contact-details">
-  <div class="hp-ground hp-ground--paper">
+  <div class="hp-ground hp-ground--paper hp-clinic">
     <div class="hp-wrap">
       <div class="hp-head hp-reveal" style="--hp-i:0">
         <!-- swap:contact-heading-2

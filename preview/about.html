@@ -895,7 +895,11 @@
      card is a filled, photographic box that lifts, which is the homepage's own case
      for this token. It is carried back in because it has a referent here, and its
      value is the homepage's byte for byte. */
-  --hp-shadow-box-hi: 0 2px 6px var(--hp-sh-key), 0 26px 54px var(--hp-sh-amb), var(--ds-shadow-rest);
+  /* CORRECTED 2026-09-02: the comment above said this value was the homepage byte
+     for byte and it was not. The homepage deepened its lifted step with the third
+     note and this page kept the earlier one, so a route card lifted less here than
+     the same card on the homepage. It is now genuinely byte identical. */
+  --hp-shadow-box-hi: 0 4px 10px var(--hp-sh-key), 0 40px 72px -10px var(--hp-sh-amb), var(--ds-shadow-rest);
 
   /* ---- THE TYPE STEPS. The locked sheet is NOT edited and NOT shadowed:
      --ds-fs-display and --ds-fs-h2 still read exactly what stomatology-tokens.css
