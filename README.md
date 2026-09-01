@@ -1,6 +1,6 @@
 # Stomatology — children's dentistry site prep
 
-**Status as of 2026-08-28.** Run of the `client-site-prep` skill, and now
+**Status as of 2026-09-01.** Run of the `client-site-prep` skill, and now
 `client-site-build`, against
 `https://stomatology.axiomthemes.com/childrens-dentistry/`.
 
@@ -14,8 +14,8 @@ manifests, arriving this time in the status record itself.
 
 | | |
 |---|---|
-| Phases closed | **10 of 19** — P0, P1, P2, P3, P4, P5, P6, P7, P7.5, P8, re-derived from the project's own dashboard generator at publication time. **P0.0 is not among them**: the generator scores it *pending* because of a tooling defect, now diagnosed to the line. Its probe reads the slug root, `<slug>/`, while every other phase reads `<slug>/_spec/`. The file it wants is on disk, one directory deeper than it looks. It is a **wrong-directory** bug, not the filename-case bug an earlier revision of this row reported (§5 bug 1, still open). The previous row reached the same total by a different route — "P0.0 to P7, plus P7.5" — and that membership is wrong at both ends: it counts P0.0, which does not close, and omits P8, which does |
-| Current phase | **FEEL — feel confirm** is the active row in the generated dashboard. P8 design-system instantiation scores **done** there, because the generator's whole test for P8 is that a `-tokens.css` file exists. Brand card owner-picked and stamped; token sheet locked, grafted complete and independently verified; the feel specimen is composing and **unstamped** |
+| Phases closed | **10 of 19** by the project's own generator, run against the live folders. Step 1 is done in substance and the counter misses it: its probe reads the slug root while every other step reads the spec folder one level deeper |
+| Current phase | **Page composition.** All six page bodies are built. They carry no chrome yet, by design |
 | Owner gates passed | **4 of 8** canonical gates — intake, positioning, site plan, content/claims briefs. The remaining four (feel, system, chrome, flagship page) are all downstream. Three further owner decisions were taken outside that list: the GO acknowledgement, the visual direction, and the brand card |
 | Verdict | **GO at TEMPLATE scope** — re-tiered, not discharged; see §14 |
 | Blockers | **0** at template scope · **8** at launch scope, per the census evidence file that derives them and names the eight rows. Both are published — but **not cleanly**: the manifest carries `blocker_count_at_launch_scope` **twice**, as 8 and again as 10, and every conforming JSON parser takes the last, so a machine reading that file gets **10**. See §14. The gap to template scope is the owner debt |
@@ -62,14 +62,14 @@ absent and must never be invented.**
 | # | Phase | State |
 |---|---|---|
 | P7.5 | Asset intake + tonal lock | **done** — 9 generated template images; 106 crawled files quarantined (§14) |
-| P8 | Design-system instantiation | **in progress** by our reckoning; the dashboard scores it **done**, its test being only that a `-tokens.css` exists. Brand card stamped; token sheet locked + grafted; feel specimen composing |
-| FEEL | Feel confirm (owner) | **composing** — a single specimen, iterate rather than fan out |
-| SYSTEM | Token lock card (owner) | not started — held by FEEL |
-| P9 | Global chrome (owner) | not started — held by SYSTEM; brief researched ahead (§14) |
+| P8 | Design-system instantiation | **done** — brand card "Instrument" stamped, token sheet locked, grafted and independently verified (17 colours, all traceable to the picked concept, none invented) |
+| FEEL | Feel confirm (owner) | **done** — three directions offered after the first was called too flat, each measured; the owner picked C "Low Light" |
+| SYSTEM | Token lock card (owner) | not started — held by FEEL being stamped |
+| P9 | Global chrome (owner) | **not started, and deliberately so.** The header, footer, navigation and the single closing CTA band are drawn ONCE against finished page bodies rather than guessed at first. This is why links between the six previews do not resolve |
 | P10 | Pipeline setup | not started |
 | P11 | Content + proof to briefs | not started |
-| P12 | Page build, home last (owner) | not started |
-| P13 | Mobile + revision loop | not started |
+| P12 | Page build | **six page BODIES composed**: home, services, about, team, questions, contact. Not yet assembled into real pages, and not yet adversarially verified: that pass is batched to the end at the owner's instruction |
+| P13 | Mobile + revision loop | not started — the owner's per-page revisions land here |
 | P14 | Final QA + publish | not started |
 
 ---
@@ -899,6 +899,157 @@ the record went stale about the repair.
 declaration, no owner intake, no photography, no clinician register entries, no ruling on the service
 menu. Re-scoping to a template did not make them go away. It made them honest about being the owner's
 to answer, and stopped them blocking work that does not depend on them.
+
+---
+
+## 15. Six pages exist. Four of the things that got them there were mistakes.
+
+Between the last entry and this one the build crossed from specification into rendered pages. The
+owner picked a feel direction, sent sixteen revisions, and all six pages were composed. The useful
+content of this section is not that; it is the four places the process was wrong, and one place a
+tool was wrong in a way worth writing down.
+
+### The owner could not choose from abstractions, twice, and both times they were right
+
+Three feel directions went out. The owner's reply was that the first specimen was **"a bit too
+flat"** and that they wanted full-width background imagery.
+
+That judgement was correct, and it had already been flagged: the specimen's own review had said bands
+one and three read *quieter rather than deliberately quiet*. Being right first and shipping it anyway
+is not a defence.
+
+What made the second attempt reviewable was refusing to argue about it. Each direction was **measured**
+rather than described. Rendering every page and computing relative luminance per row gives a number
+for "flat":
+
+| | mean luminance | deep-dark rows |
+|---|---|---|
+| The specimen the owner rejected | 0.6120 | 27.0% |
+| Direction A | 0.5587 | 30.5% |
+| Direction B, first cut | **0.6913** | **11.9%** |
+| Direction C | 0.3057 | 69.8% |
+
+**Direction B was lighter than the thing the owner had already rejected.** Not marginally: less than
+half its deep-dark area. It was sent back before the owner ever saw it. An opinion would have called
+B "a clean, restrained option"; the measurement called it a failure to answer the brief.
+
+Two different baselines for that rejected specimen were reported during this work, 27.1% and 35.3%.
+Rather than pick the flattering one, the harness re-measured it and got **27.0%**, and the
+disagreement was published alongside the result.
+
+### A gate measured the container and missed the defect one level inside it
+
+The homepage hero looked wrong at full resolution: a pale strip down the right where the photograph
+should have reached the edge.
+
+The automated check disagreed. Every band measured 0 to 1440 pixels, zero horizontal overflow, and it
+reported **"0 bands not full width"**. By that evidence the eye was wrong.
+
+Probing the element chain rather than accepting either verdict:
+
+```
+SECTION  .hp-band--hero      w = 1440   correct
+DIV      .hp-ground--photo   w = 1312   128px short, and invisible to a band-level check
+IMG                          renders 1364 at x = -26, uncovering 102px
+```
+
+The cause was `width:100%` fighting a negative-margin breakout. A percentage width resolves against
+the band's **content** box, which is already inset by two gutters, so the margins shifted the element
+without ever widening it. The band was full width; the thing painting the photograph inside it was
+not, and the check only ever looked at the band.
+
+Fixing it also moved the page's deep-dark share from 42.8% to 49.8%. **The bug had been quietly
+making the page lighter than designed**, which is the sort of thing that gets mistaken for a taste
+problem and argued about instead of measured.
+
+### The images looked like a furniture catalogue, and the model would not stop making them teal
+
+The owner's words: the imagery **"gives off a home furnishing shop / IKEA vibe."** True, and the
+reason was in this project's own record: the first set was generated to a deliberately cautious brief
+of rooms and objects, no people, no clinical detail. Correct at the time. Wrong result now.
+
+Generating replacements took three passes and the failure in the middle is the interesting one.
+
+**Pass one produced four unusable images.** One showed a patient's **full face**, eyes and all, mid
+procedure, which is the most sensitive category on this build. Four were strongly teal, the colour
+family the locked direction bans by name and which the owner has never amended.
+
+**Pass two failed.** The prompt said *"absolutely no teal, no cyan, no aqua, no turquoise"* and the
+model returned teal scrubs, teal drapes, mint walls and a cyan radiograph. There is no true negative
+channel on that endpoint, and teal-and-white **is** the stock convention of dental photography, which
+is precisely why the direction excluded it in the first place: the theme demo reached for it too.
+
+**Pass three worked by inverting the technique.** Instead of naming what to exclude, name the palette
+to include: *"a strict palette of black, charcoal, walnut, cream and amber, sepia-leaning colour
+grade, desaturated."* Clean on the first attempt. **Affirmative palette specification beats negation**
+in this model, and that is worth keeping.
+
+The teal question was then settled by **counting pixels** rather than by eye, because a ban that
+absolute cannot rest on an impression. Measuring hue 160 to 200 degrees at usable saturation:
+
+```
+REJECTED    49.2%  ·  39.7% (also a partial face)  ·  11.4%  ·  10.2%
+BORDERLINE   5.3%  ·   5.0%  ·  4.9%  ·  4.3%   specular highlight on steel and enamel, physics
+CLEAN        2.8%  ·   1.6%  ·  1.0%  ·  0.5%  ·  0.0%  ·  0.0%
+```
+
+Ten installed, four quarantined. The measurement agreed with the visual read exactly, which is the
+point: it made the call defensible rather than merely correct.
+
+### A flat wash was blamed on the gradient
+
+The owner asked for the card photographs at full colour with a gradient only where the text sits.
+The photographs looked drained, and the obvious suspect was the gradient.
+
+It was not. Each card carried a **flat background colour at 82 to 86 percent ink across the entire
+card**, dimming the top where no text sits at all, with the gradient merely layered on top of that
+wash. Reducing the gradient would have changed nothing.
+
+The replacement was computed rather than eyeballed. The worst possible backdrop for white text is a
+**pure white pixel**, since nothing is brighter, which yields a floor no photograph can beat:
+
+```
+alpha 0.90 -> 13.25:1     0.80 -> 9.35:1     0.70 -> 6.53:1
+alpha 0.60 ->  4.64:1     0.55 -> 3.95:1  (fails normal text)
+```
+
+So the ramp is 90 percent ink at the very bottom, 80 percent at 22 percent height, and **completely
+clear by 72 percent**. The text sits where alpha is 0.80 or higher, giving it **9.35:1 against the
+brightest backdrop physically possible**, while the photograph above it is untouched.
+
+### The tool died and the work survived, which is not the same as the work being reported
+
+Three background jobs were killed when the host process exited. The owner asked four times for a
+preview that never came.
+
+The work had been **written to disk**. Only the report was lost. The file had grown from 130,746 to
+167,828 bytes and fifteen of sixteen revisions had landed. Worse, the status checks run against it
+were themselves returning **false negatives** from malformed patterns, so the report was "nothing has
+landed" when almost everything had.
+
+Two things follow. A dead job is not evidence of absent output, so check the artifact rather than the
+runner. And a status check is code like any other: it can be wrong, and a reassuring answer from a
+broken check is worse than no check, because it stops the looking.
+
+### Where it stands
+
+All six page bodies are composed: home, services, about, team, questions, contact. They carry **no
+chrome** yet, by design, because the header, footer and navigation are drawn once against finished
+bodies rather than guessed at first, and that is why links between the previews do not resolve.
+
+Two decisions were surfaced by the build rather than resolved by it, and both appear on the page's own
+face rather than in a note somewhere: **the appointment paragraph no owner has confirmed**, and **the
+service menu with two competing versions on record**, whose four rendered names were deliberately
+chosen to reproduce neither so that nothing downstream picks a side.
+
+Per-page adversarial verification is **deliberately deferred** at the owner's instruction, since
+revisions are coming. That is a reasonable trade with one exception that could not wait: consistency
+across six pages, because pages that each look fine alone but were not designed together is the defect
+that compounds and is expensive to catch late.
+
+The eight launch-scope blockers are unchanged and remain entirely the owner's: jurisdiction, intake,
+photography, clinician register entries, and the service menu. None of them blocks a template. All of
+them block a website.
 
 ---
 
