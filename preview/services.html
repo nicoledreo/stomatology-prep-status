@@ -955,6 +955,43 @@ img{ max-width:100%; }
 .hp-band--hero .hp-wrap{ width:100%; }
 .hp-band--photoband .hp-ground{ display:flex; flex-direction:column; justify-content:center; }
 .hp-band--photoband .hp-wrap{ width:100%; }
+/* ============================================================================
+   THE DESKTOP CADENCE. ADDED 2026-09-01, AND THE STEPS ARE THE HOMEPAGE'S OWN
+   RATHER THAN NEW NUMBERS.
+   Measured at 1440x900 before this block, every band on this page rendered exactly
+   900 and the page beat one drum end to end, while the homepage rendered
+   792 900 900 900 1019 900 900 648 900 900 900 541. Scrolled back to back that is
+   the difference between a designed site and a template.
+   THE OWNER'S RULE IS KEPT AS THE DEFAULT. "Every section fills the desktop
+   viewport" still owns every band not named below: the 100svh rule above is
+   untouched and remains the rule for ordinary content bands. What this block does
+   is give the band types that do NOT carry a screen's worth of content the SHORTER
+   floors the homepage already gives them.
+   THE STEPS, COPIED FROM feel-specimen.html AND NOT INVENTED:
+     88vh  a hero                    ->  792 at a 900 tall viewport
+     72vh  a photographic ink band   ->  648   (the homepage's s8 renders exactly this)
+     72vh  a sparse routing rail     ->  648
+     56vh  a paperphoto band         ->  504 floor, and content wins above it
+   WHY THESE BEAT THE FULL VIEWPORT RULE: '.hp-band--hero .hp-ground' and
+   '.hp-band > .hp-ground' have the SAME specificity (0,2,0), so the later one in
+   source order wins and this block is later. That is the identical mechanism the
+   homepage uses, so both files behave the same way for the same reason rather than
+   by coincidence.
+   IT IS SCOPED min-width:900px ON PURPOSE, AND THAT IS THE HALF THAT PROTECTS
+   MOBILE. Below the full viewport floor these rules DO NOT EXIST, so the
+   max-width:899px block immediately following is reached unchanged and every band
+   keeps the natural height it had before this edit. The two blocks cannot overlap.
+   A FLOOR IS A min-height AND NEVER A height, so nothing can be cropped or
+   crammed: a rail whose copy is taller than its floor simply grows, exactly as the
+   homepage's s12 renders 541 over a 504 floor.
+   ============================================================================ */
+@media (min-width:900px){
+  .hp-band--hero .hp-ground{ min-height:clamp(620px, 88vh, 880px); }
+  .hp-band--photoband .hp-ground--ink{ min-height:clamp(560px, 72vh, 760px); }
+  .hp-band--photoband .hp-ground--paperphoto{ min-height:clamp(460px, 56vh, 620px); }
+  .hp-band--rail > .hp-ground{ min-height:clamp(560px, 72vh, 760px); }
+}
+
 @media (max-width:899px){
   .hp-band--hero .hp-ground{ min-height:clamp(520px, 74vh, 700px); }
   .hp-band--photoband .hp-ground--paperphoto{ min-height:clamp(460px, 56vh, 620px); }
@@ -2028,7 +2065,7 @@ img{ max-width:100%; }
      practice's own story, a qualification, or an answer to the worry a visitor
      arrived with.
      ========================================================================== -->
-<section class="hp-band cross-link-rail" id="s4-cross-link-rail">
+<section class="hp-band hp-band--rail cross-link-rail" id="s4-cross-link-rail">
   <div class="hp-ground hp-ground--paper2">
     <div class="hp-wrap">
       <div class="hp-head hp-reveal" style="--hp-i:0">
@@ -2093,7 +2130,7 @@ img{ max-width:100%; }
      which can never be registered anywhere. Both controls work and both identities
      are template.
      ========================================================================== -->
-<section class="hp-band cross-link-rail routing-band" id="s5-routing-band">
+<section class="hp-band hp-band--rail cross-link-rail routing-band" id="s5-routing-band">
   <div class="hp-ground hp-ground--grad surface-dark">
     <div class="hp-wrap">
       <div class="hp-head hp-reveal" style="--hp-i:0">

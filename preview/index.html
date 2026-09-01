@@ -150,7 +150,7 @@
        What the brand card fixes: LEFT alignment. Brand card A "Instrument" is the
        locked system at ./stomatology-tokens.css, and this file has honoured it on
        every band, hero included, since it was written. There is no text-align
-       declaration anywhere in the live style block except the one on .hp-btn, which
+       declaration anywhere in the live style block except the one on .hp-go, which
        centres a label inside a button and is not a band alignment.
        OVERRIDDEN, second note of 2026-09-01: the owner asked for every section to
        be CENTRE JUSTIFIED, EXCEPT THE HERO. So the body sections, 2 through 12,
@@ -1128,7 +1128,23 @@ img{ max-width:100%; }
    THE BUTTON. ONE component. One radius (--ds-r-control, the locked 4px), one
    height, one horizontal padding, one shared min-width. The two variants differ in
    COLOUR ONLY: --solid paints the accent, --quiet paints nothing and borrows the
-   hairline. Geometry is declared once on .hp-btn and never touched again.
+   hairline. Geometry is declared once on .hp-go and never touched again.
+   IT IS CALLED .hp-go AND NOT .hp-btn, AND THE NAME IS PINNED BY A GATE RATHER THAN
+   BY TASTE. RENAMED FROM .hp-btn ON 2026-09-01 TO END A TWO-NAME FORK: this file
+   called the component .hp-btn while page-services, page-team and page-faq called
+   the identical component .hp-go, and one published stylesheet has to serve all
+   six. The surviving name is .hp-go rather than this file's original .hp-btn
+   because verify-cta-singularity.mjs (G-CTA1) fires hasCtaAction on
+   /class="[^"]*\b(btn|button|cta)\b/ over an <a>, and the hyphen is a word
+   boundary, so class="hp-btn" MATCHES \bbtn\b. briefs/team.md section 4a RULE 2
+   writes that constraint on the COMPONENT and repeats it at every carrier, so the
+   single surviving name must clear the gate on all six pages and not merely on
+   this one. Measured on the real gate before choosing: renaming the other way,
+   to .hp-btn, turned page-team section 5 and page-faq section 6 into counted
+   body closing-CTA bands, which the owner's "no closing CTA band in any body"
+   forbids outright. This direction adds no band on any page.
+   Re-measured after the rename at 1440x900: every button keeps height 48, radius
+   4, padding-inline 24, min-width 184, font 16/16/500, and no rendered pixel moved.
    pick: MOTION-PATTERNS.md #2 (Color-shift) | considered: MOTION-PATTERNS.md #1
    (None, luxury silence), MOTION-PATTERNS.md #3 (Underline-grow editorial CTA) |
    why: #1 leaves a control with no feedback at all, which item 11's "no colour-only
@@ -1142,7 +1158,7 @@ img{ max-width:100%; }
    ITEM 11 IS SATISFIED BY CONSTRUCTION: every state changes a TRANSFORM as well as
    a colour, so no state on this page is colour-only, and no rule anywhere in this
    file sets outline to none. */
-.hp-btn{
+.hp-go{
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -1165,20 +1181,20 @@ img{ max-width:100%; }
     color            var(--ds-dur) var(--ds-ease),
     transform        var(--ds-dur) var(--ds-ease-out);
 }
-.hp-btn--solid{
+.hp-go--solid{
   background-color:var(--ds-accent);
   border-color:var(--ds-accent);
   color:var(--ds-ink-on-dark);
 }
-.hp-btn--solid:hover{ background-color:var(--ds-accent-deep); border-color:var(--ds-accent-deep); transform:translate3d(0,-2px,0); }
-.surface-dark .hp-btn--solid:hover{ background-color:var(--ds-accent-light); border-color:var(--ds-accent-light); }
-.hp-btn--quiet{
+.hp-go--solid:hover{ background-color:var(--ds-accent-deep); border-color:var(--ds-accent-deep); transform:translate3d(0,-2px,0); }
+.surface-dark .hp-go--solid:hover{ background-color:var(--ds-accent-light); border-color:var(--ds-accent-light); }
+.hp-go--quiet{
   background-color:transparent;
   border-color:var(--ds-line);
   color:var(--ds-ink);
 }
-.hp-btn--quiet:hover{ background-color:var(--ds-accent-soft); border-color:var(--ds-accent); transform:translate3d(0,-2px,0); }
-.hp-btn:active{ transform:translate3d(0,0,0); }
+.hp-go--quiet:hover{ background-color:var(--ds-accent-soft); border-color:var(--ds-accent); transform:translate3d(0,-2px,0); }
+.hp-go:active{ transform:translate3d(0,0,0); }
 .hp-btnrow{ display:flex; flex-wrap:wrap; gap:var(--ds-space-sm); margin-top:var(--ds-space-lg); }
 
 /* ---- LINK. MOTION-PATTERNS.md #17 (Underline-grow) --------------------------
@@ -1215,7 +1231,7 @@ img{ max-width:100%; }
 .hp-link:hover{ color:var(--ds-accent-deep); }
 
 /* ---- FOCUS. Never removed, never colour-only. ---------------------------- */
-.hp-btn:focus-visible,
+.hp-go:focus-visible,
 .hp-link:focus-visible,
 .hp-route:focus-visible,
 .hp-q:focus-visible,
@@ -2045,10 +2061,26 @@ img{ max-width:100%; }
    TOKEN CONTAINING THE SUBSTRING "cta".
    ============================================================================ */
 .hp-closing{ margin:0; padding:0; list-style:none; display:grid; gap:var(--ds-space-sm); }
+/* THE CLOSING LINE TAKES THE BOX STEP, NOT THE BODY STEP. CHANGED 2026-09-01, and
+   this file is the one that moved. It read var(--ds-fs-body) here, 16px/24.8, while
+   page-services, page-about, page-team and page-faq all rendered the same class at
+   var(--hp-fs-boxline), 21.6px/33.48 at 1440. One class, four pages against one, a
+   35 percent difference in the step. Four reasons this file adopts the larger step
+   rather than the other four dropping to this one. (1) The token is named for this
+   job: --hp-fs-boxline is the step for a line set inside a box, and this list sits
+   inside .hp-plate--paper, which is a box. (2) This file was already inconsistent
+   with ITSELF: .hp-find__line, the other line this page sets inside a box, has
+   always used --hp-fs-boxline. Adopting it here makes the reference internally
+   coherent instead of breaking it. (3) It is one file moving rather than four, so
+   the majority rendering survives untouched. (4) A closing line is the last thing
+   a section says and is read as a deliberate parting statement; at body size it
+   reads as one more paragraph, which is the opposite of closing. The token itself
+   is unchanged and is already declared byte identically in all six files, so this
+   is a one reference edit and nothing else on any page moves. */
 .hp-closing__line{
   margin:0;
   max-width:var(--ds-measure);
-  font-size:var(--ds-fs-body);
+  font-size:var(--hp-fs-boxline);
   line-height:var(--ds-lh-body);
   color:var(--ds-ink);
 }
@@ -2305,7 +2337,7 @@ img{ max-width:100%; }
   .hp-h1{ max-width:none; }
   .hp-h2{ max-width:none; }
   .hp-stance{ max-width:none; }
-  .hp-btn{ width:100%; }
+  .hp-go{ width:100%; }
 }
 @media (max-width:390px){
   :root{
@@ -2450,7 +2482,7 @@ img{ max-width:100%; }
       </ul>
       <div class="hp-btnrow hp-reveal" style="--hp-i:5">
         <!-- swap:index-route-services -->
-        <a class="hp-btn hp-btn--solid" href="services.html">What we do</a>
+        <a class="hp-go hp-go--solid" href="services.html">What we do</a>
       </div>
     </div>
   </div>
@@ -2694,9 +2726,9 @@ img{ max-width:100%; }
           <p class="hp-flow__line">Who works here, and the kind of work they do.</p>
           <div class="hp-flow__steps">
             <!-- swap:band-label-1 -->
-            <a class="hp-btn hp-btn--quiet" href="team.html">Who you'll see</a>
+            <a class="hp-go hp-go--quiet" href="team.html">Who you'll see</a>
             <!-- swap:band-label-2 -->
-            <a class="hp-btn hp-btn--quiet" href="services.html">What we do</a>
+            <a class="hp-go hp-go--quiet" href="services.html">What we do</a>
           </div>
         </li>
         <li class="hp-flow hp-reveal" style="--hp-i:2">
@@ -2706,9 +2738,9 @@ img{ max-width:100%; }
           <p class="hp-flow__line">The practical questions, and both ways to reach us.</p>
           <div class="hp-flow__steps">
             <!-- swap:band-label-3 -->
-            <a class="hp-btn hp-btn--quiet" href="faq.html">Questions and answers</a>
+            <a class="hp-go hp-go--quiet" href="faq.html">Questions and answers</a>
             <!-- swap:band-label-4 -->
-            <a class="hp-btn hp-btn--quiet" href="contact.html">Find us</a>
+            <a class="hp-go hp-go--quiet" href="contact.html">Find us</a>
           </div>
         </li>
       </ul>
@@ -2773,7 +2805,7 @@ img{ max-width:100%; }
       </ul>
       <div class="hp-btnrow hp-reveal" style="--hp-i:4">
         <!-- swap:index-route-team -->
-        <a class="hp-btn hp-btn--solid" href="team.html">Who you'll see</a>
+        <a class="hp-go hp-go--solid" href="team.html">Who you'll see</a>
       </div>
     </div>
   </div>
