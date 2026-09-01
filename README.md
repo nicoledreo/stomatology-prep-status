@@ -7,6 +7,17 @@
 > a swap marker, and all of them must be replaced before anything ships. The reason the identity had
 > to be invented at all is §1.
 
+> ### See the pages, not just the write-up
+>
+> The six page bodies are in [`preview/`](preview/), and the links between them work, so you can
+> browse the site. **[Open the live preview](https://nicoledreo.github.io/stomatology-prep-status/preview/)**
+> or clone and open `preview/index.html`.
+>
+> Read [`preview/README.md`](preview/README.md) first. In short: every business fact and every
+> photograph on those pages is a placeholder, there is no site header or footer yet because the chrome
+> is drawn once against finished bodies, and the pages have not been adversarially verified because
+> that pass is batched to the end.
+
 **Status as of 2026-09-01.** Run of the `client-site-prep` skill, and now
 `client-site-build`, against
 `https://stomatology.axiomthemes.com/childrens-dentistry/`.
@@ -72,7 +83,7 @@ absent and must never be invented.**
 | P8 | Design-system instantiation | **done** — brand card "Instrument" stamped, token sheet locked, grafted and independently verified (17 colours, all traceable to the picked concept, none invented) |
 | FEEL | Feel confirm (owner) | **done** — three directions offered after the first was called too flat, each measured; the owner picked C "Low Light" |
 | SYSTEM | Token lock card (owner) | not started — held by FEEL being stamped |
-| P9 | Global chrome (owner) | **not started, and deliberately so.** The header, footer, navigation and the single closing CTA band are drawn ONCE against finished page bodies rather than guessed at first. This is why links between the six previews do not resolve |
+| P9 | Global chrome (owner) | **not started, and deliberately so.** The header, footer, navigation and the single closing CTA band are drawn ONCE against finished page bodies rather than guessed at first. This is why the preview has no menu bar at the top of any page: the in-page links between the six do work, but there is no persistent navigation yet because none has been designed |
 | P10 | Pipeline setup | not started |
 | P11 | Content + proof to briefs | not started |
 | P12 | Page build | **six page BODIES composed**: home, services, about, team, questions, contact. Not yet assembled into real pages, and not yet adversarially verified: that pass is batched to the end at the owner's instruction |

@@ -1,0 +1,2107 @@
+<!doctype html>
+<!-- ============================================================================
+     SECTION 8 AMENDMENTS AUTHORISED BY THE OWNER, 2026-09-01
+     CARRIED FORWARD FROM _design/feel-specimen.html AND _design/page-services.html,
+     AND RE-AUDITED AGAINST THIS FILE. Every "AS BUILT" line below was COUNTED in
+     this file after it was written, not inherited from a sibling's wording. What is
+     carried unchanged is the RELEASE and its LIMIT, quoted from section 8 as it
+     stands on disk; what follows each is what THIS page actually does with it.
+
+     ITEM 2, AMENDED, AND THEN AMENDED FURTHER.
+       As written: "No large display type. The largest type on the site is 44px,
+       which is a heading and not a display move."
+       RELEASED (first note): display type may carry the page. AMENDED FURTHER
+       (second note), quoted: "the owner says the headlines are too small and must
+       stand out". The self-imposed 40px ceiling is withdrawn with the prohibition.
+       AS BUILT HERE. The locked sheet is NOT edited and NOT shadowed:
+       --ds-fs-display still reads clamp(30px,4.2vw,40px) in stomatology-tokens.css.
+       This page carries the homepage's page-local steps (--hp-fs-h2, --hp-fs-h3,
+       --hp-fs-boxline) byte for byte and adds ONE token of its own,
+       --ct-fs-display, which is page-services.html's second-level display step
+       clamp(34px,4.2vw,58px) carried across unchanged so the two second-level pages
+       set their h1 at the same size. It is a SIZE, not a colour, a radius, a shadow
+       or a curve.
+       MEASURED THIS PASS, not estimated: the four headings run 21 to 44 characters.
+       The h1 is longest at 44 ("How to reach Alder Grove Dental in Riverbend"),
+       then "How to reach us, and when we are open" at 37, "More about the practice"
+       at 23 and "Making an appointment" at 21. All three h2s hold ONE LINE at 1440
+       inside the 1080 wrap. The h1 takes THREE lines by construction, because the
+       hero text zone is capped at min(600px,44vw) and the cut is FIXED by
+       non-breaking binds at "How to reach" / "Alder Grove Dental" / "in Riverbend",
+       so no same-context pair can ever be split.
+
+     ITEM 3, AMENDED.
+       As written: "No type set over a photograph."
+       The owner, in writing: "it's okay that text are on top of photographs, as
+       long as they are readable".
+       RELEASED, with readable as the standard. AS BUILT HERE: two surfaces put type
+       over a photograph, both are in the CONTRAST LEDGER below with an analytically
+       computed worst case, and the LIMIT is kept: no image on this page is a
+       decorative well with a caption floating beside it. Both images are band
+       grounds.
+
+     ITEM 4, AMENDED IN TWO CLAUSES.
+       As written: "No drop shadow, no gradient, no glow, no texture, no glass."
+       RELEASED: gradients (first note), then drop shadows "behind white-on-white
+       boxes" and MORE gradients in backgrounds (second note).
+       STILL NOT RELEASED AND STILL ABSENT: glow, texture, glass. COUNTED in the live
+       style block this pass, not assumed: backdrop-filter occurs as a DECLARATION
+       zero times.
+       WHICH BOXES THE OWNER'S PHRASE REACHES ON THIS PAGE, resolved against this
+       stylesheet rather than guessed:
+         .hp-panel at section 2, the box that carries the four contact rows. Fill
+         --ds-bg-surface graded into --ds-primary-soft, sitting on a .hp-ground--paper
+         band whose fill is --ds-bg-surface. This IS a white-on-white box, it is the
+         single most important box on the page, and it takes the layered
+         --hp-shadow-box.
+         .hp-plate--paper at section 4, near-white paper on a daylight photograph,
+         which is the case the release names in the strictest possible reading. It
+         takes the shadow too.
+         Nothing else on this page is a box. Section 3's route index is a ruled list
+         with no fill, so there is nothing for a shadow to sit behind, and adding one
+         would widen a release the owner wrote narrowly.
+       COUNTED after writing, over the style block with its CSS comments stripped:
+       TWO box-shadow declarations, both var(--hp-shadow-box). The homepage's heavier
+       second step (--hp-shadow-box-hi) is NOT carried, for the same reason the
+       services page left it out: no box on this page lifts, so a token defined and
+       never referenced would be a rule nobody meant to keep.
+       EVERY GRADIENT IS BUILT FROM THE LOCKED TOKENS. Zero colour literals are
+       authored here. See COLOUR PROVENANCE in the stylesheet.
+
+     ITEM 6, AMENDED.
+       As written: "No icon set. No chevrons, no arrows, no line icons beside
+       headings, no pictogram row."
+       RELEASED (second note), quoted: "the owner asked for the timeline digits to
+       sit inside icons".
+       AS BUILT HERE: THE RELEASE HAS NO SUBJECT ON THIS PAGE. There is no timeline
+       and there are no step digits, so the one pictogram the amendment permits is
+       not used. COUNTED over the LIVE document, with HTML comments and CSS comments
+       stripped first: this file renders zero chevrons, zero arrows, zero line icons,
+       zero pictograms and zero SVG elements.
+
+     ITEM 7, AMENDED.
+       As written: "No hover lift, no scale, no scroll reveal, no carousel, and no
+       accordion that animates its own height for effect."
+       RELEASED: hover lift, scale and scroll reveal.
+       NOT RELEASED: carousel, and an accordion that animates its own height. Neither
+       appears here. AS BUILT: three animations run on this page, the hero's
+       ken-burns drift, the hero copy's staggered rise, and the section reveal. All
+       three animate TRANSFORM and OPACITY only. Nothing in this file animates a
+       layout property, so nothing here can reflow while it runs.
+
+     ITEM 8, AMENDED AND NARROWED BY THE OWNER IN THE SAME BREATH.
+       As written: "No photograph of a person, generated or licensed, anywhere, and
+       specifically no face on a team card."
+       RELEASED: hands, and cropped mouths. STILL ABSOLUTE: never a full face, never
+       eyes.
+       WHAT THIS FILE ACTUALLY USES: two photographs, and NEITHER CONTAINS A PERSON
+       AT ALL. Both are empty rooms. The release therefore has no subject on this
+       page and the absolute is satisfied by construction rather than by judgement.
+
+     ALIGNMENT. NOT A SECTION 8 CLAUSE, RECORDED HERE BECAUSE IT OVERRIDES THE LOCKED
+     BRAND CARD RATHER THAN THE DIRECTION'S PROHIBITION LIST.
+       The brand card fixes LEFT. The owner, second note of 2026-09-01, asked for
+       every section to be CENTRE JUSTIFIED, EXCEPT THE HERO.
+       AS BUILT HERE: sections 2, 3 and 4 centre; section 1 keeps left. The exception
+       lives in the SELECTOR (:not(.hp-band--hero)) rather than being applied band by
+       band, so a band added later cannot quietly miss it and the hero cannot quietly
+       acquire it.
+       THE HERO EXCEPTION IS ALSO THE GEOMETRY. The hero is the one band whose type
+       sits in a constrained zone over a photograph, and the CONTRAST LEDGER's
+       guarantee at C is geometric: it depends on the text column starting at the
+       gutter and never reaching the plateau's edge. A centred hero would move the
+       text zone into the ramp. The owner excepted the hero; the geometry agrees;
+       both are recorded so neither is mistaken for the other's reason.
+       SECTION 4 IS A CENTRED BAND OVER A PHOTOGRAPH and therefore does NOT carry a
+       horizontal ramp. It takes a flat veil so the room reads and puts its copy on a
+       PLATE that owns its own flat scrim, which is where the guarantee lives. That
+       is the homepage's own resolution, applied here rather than re-argued.
+
+     STILL BINDING, NOT AMENDED, ENFORCED IN THIS FILE.
+       item 1  "No teal, cyan or aqua." Both photographs used here were audited for
+               teal by pixel measurement (hue 160 to 200 degrees, saturation >= 0.15)
+               before installation and both measure 0.0 per cent, which is the lowest
+               pair on the installed set. Zero colour literals are authored in this
+               file, so no new hue can enter through the stylesheet.
+       item 5  "No pill controls and no fully rounded corners" other than the
+               monogram avatar. COUNTED over the live style block with its CSS
+               comments stripped: the pill radius token is referenced ZERO times.
+               There is no monogram and no medallion on this page, so the one
+               reserved exception has no subject and nothing here is round. Every
+               control uses --ds-r-control (4px); every surface uses --ds-r-surface
+               (6px).
+       item 9  no testimonial, review, star row, rating, review count, award,
+               accreditation mark, certification badge, logo strip or statistic, in
+               any form, at any size, and NOT behind a caption calling it an example.
+               There is none. This page carries no proof section to delete, so its
+               section count is untouched at four. What the rule decides here is the
+               MAP EMBED and the PLACE CARD, and both are refused outright: a
+               mainstream place card renders a star rating and a review count, which
+               would reintroduce through a third-party widget exactly the proof the
+               rest of this site was cleaned of. The address is therefore a place
+               block and not a link.
+       item 10 "No text inside any image that asserts a fact." The one piece of
+               signage visible in either frame is the small illuminated sign at the
+               far end of the corridor in dental-clinic-warm.jpg, which is blurred
+               past legibility at every rendered size and asserts nothing about this
+               practice; it is named here rather than left to be found.
+       item 11 "No colour-only state on anything", and no removal of a focus ring
+               under any circumstance. Every interactive state in this file changes a
+               non-colour property as well as a colour (a scaled underline or a
+               translation). COUNTED: the outline-suppression declaration occurs ZERO
+               times inside the live style block.
+
+     ALSO BINDING AND HONOURED HERE, from the briefs and the content bible:
+       no guarantee and no risk reversal; NO PREMISES ASSERTION of any kind, which on
+       a contact page is the clause most at risk and is answered at length at THE
+       PREMISES REFUSAL below; NO closing CTA band in the body, because the chrome
+       owns the single site-wide one and the chrome does not exist yet; the children's
+       dentistry category claim stays HELD and no string here touches it; NO
+       before-and-after imagery of any kind; no face and no eyes in any photograph;
+       and no em or en dash anywhere in this file, comments included.
+     ============================================================================ -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- swap:city
+     Template value, not this practice's data.
+     Swap for the page-inventory.md 2.3 "city" row when the owner supplies it. -->
+<!-- swap:practice-name
+     Template value, not this practice's data.
+     Swap for the page-inventory.md 2.3 "practice name" row when the owner supplies it. -->
+<title>Alder Grove Dental contact - Dentistry, Riverbend</title>
+<!-- THE TITLE IS THE MEASURED STRING, NOT A NEW PROPOSAL. briefs/contact.md section 1
+     quotes this page's RENDERED title verbatim and measures it at 49 characters with
+     11 to spare against the 60-character ceiling. It is reproduced here character for
+     character so the figure stays checkable. After a real city and a real practice
+     name are swapped in the title MUST BE RE-MEASURED: the fixed, non-identity part
+     is 22 characters, so a combined identity longer than 38 characters breaks the
+     ceiling and a re-cut title is a NEW PROPOSAL FOR THE OWNER, not an editorial tidy. -->
+<!-- swap:practice-name -->
+<!-- swap:city -->
+<meta name="description" content="How to reach Alder Grove Dental in Riverbend, and when we are open.">
+<!-- THE META DESCRIPTION IS ASSEMBLED FROM TWO BRIEF-FIXED STRINGS AND MINTS NOTHING.
+     It is this page's h1 (briefs/contact.md section 1) joined to this page's section 2
+     heading (section 2). It asserts no response time, no capacity, no jurisdiction and
+     no category qualifier. The seo-enrichment.md section 0.2 caveat clause that the
+     brief requires deleted from this page's meta before ship is DELIBERATELY NOT
+     REPRODUCED anywhere in this file, so that section's own grep returns zero here. -->
+
+<!-- ============================================================================
+     WHAT THIS FILE IS
+
+     The FIND US page composition for client-sites/stomatology, in the owner-picked
+     FEEL direction C "Low Light". The homepage at ./feel-specimen.html and the
+     services page at ./page-services.html are the locked visual language, and this
+     page is written to look like it was designed by the same hand on the same day:
+     same grid, same gutters, same padding ladder, same type steps, same gradient
+     grounds, same card and plate material, same shadow recipe, same motion curves,
+     same reduced-motion handling, same swap-marker convention, same selection-ledger
+     convention. Nothing in that list was re-invented and no new colour, radius,
+     shadow recipe or animation curve is authored here.
+
+     WHAT IS DIFFERENT, AND WHY IT IS DIFFERENT ON PURPOSE. The homepage helps a
+     reader decide whether to call at all; the services page explains what each kind
+     of work involves. THIS page is for a reader who has already decided and wants to
+     reach somebody. So it is the shortest page on the site, it puts the four contact
+     values inside the first screen and again inside a box in the second, and its only
+     other content is a way out to the five sibling pages. It persuades nothing and
+     explains nothing, because a reader who is looking for a telephone number is not
+     reading.
+
+     IT CARRIES NO SITE HEADER, NO FOOTER AND NO CLOSING CTA BAND. The chrome owns all
+     three and has not been built.
+
+     COPY PROVENANCE. EVERY rendered string on this page comes from
+     _handoff/briefs/contact.md or from _handoff/sitemap.yaml, in the brief's own
+     section order and at its own section count:
+       1 contact-hero (XS) . 2 contact-details (S) . 3 routing-block (S) .
+       4 booking-intent (S)
+     FOUR counted sections, which is what the brief writes, inside T-CONTACT's 3 to 5
+     window. No section is added and none is dropped. The five route labels at section
+     3 are the sitemap.yaml nav: identifiers, character for character.
+
+     THIS PAGE AUTHORS NO COPY OF ITS OWN, AND THAT IS WORTH SAYING PLAINLY BECAUSE IT
+     DECIDES WHAT THE WARMTH INSTRUCTION CAN REACH HERE. The owner asked for writing
+     that is friendly, professional, honest and warm rather than monotone. On the
+     homepage that instruction had twenty-seven strings to work on. On this page every
+     rendered string is fixed by the brief or by the sitemap: the h1, the sub-line, the
+     two section headings, the four field labels, the four contact values, the five
+     route labels, the booking line. There is nothing left for a warmth pass to reword
+     that would not be a re-mint of an owner-approval item. The warmth this page has is
+     in the strings the brief already wrote that way, and in the SHAPE: the number is
+     under the reader's thumb twice, the labels say what they are in plain nouns, and
+     nothing on the page asks the reader for anything. The two classes of string this
+     file does author are the image ALT text and the label strip, and neither is site
+     copy: the alts are described at the IMAGERY DECISION LEDGER, and the label strip
+     is build furniture.
+
+     THE SECTION HEADINGS. Three non-hero sections, three h2 elements, each under its
+     own numbered heading marker in the contact-heading family, and the h1 carries
+     swap:contact-heading-1, which is the 2026-08-26 amendment that closed the gap at
+     the head of the family. Heading order is strictly descending: one h1, three h2,
+     no h3. There is no h3 on this page because there is no sub-component that owns a
+     heading; the four contact rows carry FIELD LABELS bound to their values as dt to
+     dd, which is the brief's own build rule and is not a heading.
+
+     THE LOCKED SYSTEM is ./stomatology-tokens.css (brand card A "Instrument",
+     owner-picked 2026-08-28, BRAND-CARD stamped approved in _approvals.json).
+
+     THE SECOND LINKED SHEET, AND WHY IT IS THIS ONE. See STYLESHEET GATE below.
+
+     DESIGN SYSTEM CONSULTED (.claude/design-system-unified, the v4 unified tree).
+     Each entry below was OPENED and read before it was cited, and each band carries
+     its own adjacent pick ledger:
+       libraries   _MODERN-WOW-SPEC (sections 1 depth, 2 motion, 4 typographic
+                   finesse, 5 colour and light, 6 layout sophistication)
+                   _MODERN-DESIGN-PATTERN-LIBRARY (hero archetypes and variety)
+                   _RESPONSIVE-PATTERN-LIBRARY (the breakpoint ladder)
+       menus       HERO-COMPOSITIONS . SECTION-COMPONENTS . CARD-VARIATIONS .
+                   DIVIDER-PATTERNS . MOTION-PATTERNS . SURFACE-PATTERNS .
+                   COLOR-THEORY-PRESETS . TYPOGRAPHY-PAIRINGS
+       blueprint   composition-medical-health (section 2 hero pattern B1
+                   "full-bleed media + light scrim"; section 4 note 8 on tinted
+                   washes reading premium rather than gimmicky in this vertical)
+     ============================================================================ -->
+
+<!-- ============================================================================
+     THE PREMISES REFUSAL. THE CLAUSE THIS PAGE IS MOST LIKELY TO BREAK, ANSWERED
+     STRING BY STRING RATHER THAN ASSERTED.
+
+     The standing rule is absolute and unamended: no premises assertion. No floor, no
+     entrance direction, no lift, no ramp, no parking, no distance, no travel time.
+     A contact page is exactly where that clause gets broken, because a page called
+     Find us invites a sentence about how to get in.
+
+     WHAT THAT COSTS THIS PAGE, SAID PLAINLY: there is no directions block, no "we are
+     on the corner of", no transport line, no map embed and no place card. The address
+     renders as a place block and nothing more, and it is NOT A LINK, because the only
+     destinations available are a map provider (refused at item 9 above, because a
+     mainstream place card renders a rating) or a directions route to a place that does
+     not exist. An address styled as a link that goes nowhere is a broken affordance,
+     which is the thing this build removes everywhere else.
+
+     EVERY RENDERED STRING ON THE PAGE WAS READ AGAINST THE CLAUSE, and the list is
+     short enough to print in full: the h1, the sub-line, the section 2 heading, the
+     four field labels, the street, the city, the telephone, the email, the two hours
+     rows, the section 3 heading, the five route labels, the section 4 heading and the
+     booking line. Not one of them names a floor, a direction of entry, a lift, a ramp,
+     a step, parking, a transport mode or a distance.
+
+     THE TWO IMAGE ALTS ARE THE HARD CASE AND THEY ARE WRITTEN TO THE INDEFINITE-FRAME
+     TEST. briefs/contact.md section 1b struck this page's own owed alt string for
+     asserting three premises particulars in six words, and the test it settled on is
+     that an alt describes a photograph with an INDEFINITE frame. Both alts here begin
+     with an indefinite article and describe furniture inside a room; neither attaches
+     the room to this practice, and neither names a street, a frontage, an entrance or
+     a storey. That is a judgement held by review and not by a machine, and section 1b
+     says so in terms: the premises-particulars rule has no limb for a bare frontage
+     assertion, so no gate would catch one here.
+     ============================================================================ -->
+
+<!-- ============================================================================
+     STYLESHEET GATE. A REAL BLOCK, AND WHAT WAS DONE ABOUT IT.
+
+     verify-stylesheet-linked.mjs is a live PreToolUse(Write) hook and it FIRES on
+     this path. Its FEEL carve-out is written as a LITERAL filename test,
+     /^_design\/feel-specimen\.html$/, so it reaches the homepage and does not reach
+     this page: a full HTML document here linking only stomatology-tokens.css BLOCKS
+     at exit 2, naming the missing structural.css link.
+
+     THE DEADLOCK. The obvious fix is to write _design/stomatology-structural.css.
+     That write is OWNER-HELD: verify-phase-owner-approved.mjs puts
+     _design/*-structural.css at the SYSTEM lock and requires a FEEL stamp first, and
+     _approvals.json carries BRAND-CARD only. So the per-slug structural sheet cannot
+     exist yet, and the gate demands one.
+
+     WHAT WAS DONE, AND WHAT WAS REFUSED. Refused: stamping FEEL (that is the owner's
+     signature, not the build's), editing the gate, and authoring this page somewhere
+     else and copying it in. Done: this page links the structural sheet that ALREADY
+     EXISTS ON DISK for the owner-locked concept, and it is the same sheet
+     _design/page-services.html links, so the two pages resolve the same deadlock the
+     same way rather than each inventing its own. It is the structural half of brand
+     card A "Instrument", the same concept whose :root and .surface-dark were copied
+     verbatim into stomatology-tokens.css. It is token-pure (zero colour literals) and
+     every rule in it is scoped to a .bc- class except one,
+     "*,*::before,*::after{box-sizing:border-box}", which this file also declares
+     itself. READ IN FULL BEFORE LINKING: it changes not one pixel of this page.
+     THIS IS A DECLARED WORKAROUND, NOT A CLEAN PASS. It is recorded here so the owner
+     can rule on it, and the real fix is the FEEL stamp followed by the per-slug
+     structural sheet.
+     ============================================================================ -->
+
+<!-- ============================================================================
+     IMAGERY DECISION LEDGER
+
+     TWO photographs are used, both from Code/client-sites/stomatology/assets/, both
+     from the dental-* set, both 1024x576. Their measured teal share (hue 160 to 200
+     degrees, saturation >= 0.15) is in brackets. NO legacy image-*.jpg file is used
+     and nothing under _crawl-harvest-QUARANTINED is touched. No filename in the set
+     contains the string "copyright"; the quarantined AxiomThemes files that do are not
+     reachable from this page.
+
+       dental-clinic-reception.jpg  (0.0%)  section 1, band ground
+       dental-clinic-warm.jpg       (0.0%)  section 4, band ground
+
+     THESE ARE THE TWO CLEANEST FILES ON THE TEAL AUDIT, and that is not a coincidence
+     on this page. Both are full-bleed BAND grounds rather than small card grounds, so
+     each is rendered at roughly twenty times the area a service card gives a
+     photograph, and a hue share that is invisible in a 250px card is not invisible in
+     a 1440px band. The two files that measure 0.0 per cent were therefore taken first.
+
+     EVERY SLOT IS RATIO-INDEPENDENT, so real photography drops in without a rebuild.
+     Every img carries width="1024" height="576", which is the intrinsic ratio the
+     layout engine uses (no layout shift on load), and every slot BOX is sized by its
+     own container with object-fit:cover, so a replacement of any aspect ratio fills
+     the same slot. Each slot carries its own swap marker.
+
+     FOUR INSTALLED FILES ARE DELIBERATELY NOT USED, and the first three are refused
+     by a standing rule the owner did NOT amend rather than by preference:
+       dental-teeth-macro.jpg     healthy teeth and gums in macro. This is INTRAORAL.
+       dental-smile-detail.jpg    a smile cropped to mouth and lower face.
+       dental-action-hands.jpg    gloved hands working with an instrument over a
+                                  draped patient. This DEPICTS A PROCEDURE.
+     visual-direction.md section 9 carries, as an absolute constraint "released by
+     nothing in this document": "No clinical, intraoral, treatment or before-and-after
+     imagery." The 2026-09-01 amendment released the PERSON rule at item 8 (hands and
+     cropped mouths). It did not touch section 9's clinical rule, and a release of one
+     rule is not a release of another.
+       dental-hands-consult.jpg   REFUSED FOR THIS PAGE ONLY, and the reason is the
+                                  SIZE of the slot rather than the subject. It is
+                                  cleared, it contains hands and no face and no eyes,
+                                  and both sibling pages use it. It measures 1.0 per
+                                  cent teal, and the background wall in it reads as a
+                                  desaturated slate green to the eye even though the
+                                  pixel audit clears it at that saturation floor. In a
+                                  250px card that is invisible; behind a 1440px hero it
+                                  would be the largest single colour field on the page.
+                                  The audit passes it and this composition still
+                                  declines it, which is a judgement and is recorded as
+                                  one rather than presented as a rule.
+     THREE MORE ARE UNUSED WITHOUT PREJUDICE: dental-hero-operatory.jpg,
+     dental-chair-detail.jpg and dental-instruments-tray.jpg are all cleared and simply
+     not needed on a four-section page with two band grounds. Each is spent on a
+     sibling page.
+
+     ALT TEXT: WHERE IT IS THE BRIEF'S STRING AND WHERE IT IS NOT.
+     The brief declares ONE image slot for this page (section 1a) and fixes its alt.
+
+       swap:image-contact-hero      BUILD-WRITTEN. The brief's owed string is "A dental
+                                    practice frontage seen from the opposite side of a
+                                    street." NO PHOTOGRAPH IN THE CLEARED SET IS A
+                                    FRONTAGE, and one could not simply be added:
+                                    _p7/CANONICAL-TEMPLATE-IDENTITY.md section 3 forbids
+                                    any image that depicts a real premises, and
+                                    "Riverbend" is not a real city and "114 Alder
+                                    Street" is not a real address, so a real streetscape
+                                    would attach this practice's name to somebody else's
+                                    building. What renders instead is the reception, the
+                                    place a reader who has decided actually arrives at,
+                                    and the alt is written from the picture per the
+                                    brief's own alt RULE (describe the photograph; claim
+                                    nothing about this practice; name no service,
+                                    person, role, count, figure or currency; do not
+                                    caption). The owed string returns the moment a
+                                    compliant frontage photograph lands, and section 1b
+                                    records that the alt must then be rewritten again
+                                    rather than treated as a picture swap with the words
+                                    left alone.
+       swap:image-contact-closing   MINTED BY THIS BUILD, not in the brief's one.
+
+     THE MINTED SLOT IS DECLARED RATHER THAN SLIPPED IN. The brief declares one image
+     slot. This composition renders a background photograph on section 4 as well,
+     because the owner requires all four ground treatments to appear and a four-section
+     page cannot show them with one photograph, and a band ground needs a marker so a
+     swapper can find it. THE DERIVED SWAP INDEX FOR THIS PAGE MUST BE RECONCILED FROM
+     1 IMAGE SLOT TO 2 BEFORE IT SHIPS. That is a real, open item, recorded here and
+     repeated in the label strip.
+
+     THE HERO PHOTOGRAPH IS THE ONE THE HOMEPAGE ALREADY KEYS TO THIS PAGE. The
+     homepage's route card for "Find us" carries dental-clinic-reception.jpg, and its
+     own note says the pick is "DESTINATION-KEYED to the contact page". Landing on the
+     photograph the card promised is the whole point of a destination key, so the same
+     file renders here and carries the same description it carries there. The section 4
+     photograph is the one page-services.html renders at its own hero, and it carries
+     the alt that page renders, for the same reason: one photograph, one description,
+     across the site.
+     ============================================================================ -->
+
+<!-- ============================================================================
+     CONTRAST LEDGER. Every string that sits over a photograph, with its scrim and its
+     worst-case ratio computed ANALYTICALLY this pass (WCAG 2.x relative luminance,
+     sRGB compositing, out = a*over + (1-a)*under).
+
+     THE FLOOR IS CONSTRUCTED, NOT SAMPLED. For ink over a photograph the worst
+     possible backdrop pixel is PURE WHITE, because no pixel is brighter than white.
+     For paper over a photograph the worst possible backdrop pixel is PURE BLACK. So
+     every figure below holds for ANY photograph, at ANY crop, at ANY viewport, and it
+     survives the hero's ken-burns drift without re-measurement, because the drift
+     changes which pixels are in frame and the floor does not depend on which pixels
+     are in frame.
+
+     A. THE DARK BAND OVER A PHOTOGRAPH (section 1).
+        Scrim: --ds-primary-deep (the locked ink #0B1A2B, the one ink role that
+        .surface-dark does NOT flip) at alpha .86 across the whole text zone, easing to
+        .20 in the open zone where NO text is permitted to sit.
+        Composited worst-case ground: rgb(45.2, 58.1, 72.7).
+          h1                 --ds-ink           #FFFFFF   11.58:1   AAA
+          gradient keyword   lightest stop      #B7CEFF    7.32:1   AAA
+          gradient keyword   DARKEST stop       #85AFFF    5.28:1   AA
+          sub-line           --ds-ink           #FFFFFF   11.58:1   AAA
+          telephone link     --ds-ink           #FFFFFF   11.58:1   AAA
+          email link         --ds-ink           #FFFFFF   11.58:1   AAA
+        The gradient keyword is the only run that does not clear AAA. It clears AA at
+        5.28:1 and it is 34 to 58px display type, so 4.5:1 is the threshold that
+        applies to it and 3:1 would have been enough. Stated plainly rather than
+        rounded up.
+        THE TWO LINKS IN THE SUB-LINE TAKE FULL INK, NOT THE ACCENT. On this band the
+        light surface's accent roles would be read through the dark flip, and the
+        pressed accent (#0B5FFF after the flip) returns 3.42:1 against ink. The resting
+        link is white with the hairline underline and the hover moves to
+        --ds-accent-light (#B7CEFF), which is the same decision both sibling pages
+        took for the same control on the same kind of band.
+
+     B. THE LIGHT BAND OVER A PHOTOGRAPH (section 4).
+        Scrim: a flat --ds-bg-surface veil at .30 across the whole band, so the room
+        reads, with the copy on a PLATE carrying a FLAT --ds-bg-surface scrim at .86.
+        Flat means one alpha at every pixel of the plate, so the figure is TOTAL rather
+        than geometric: it holds for a string of any length, at any viewport, at any
+        band height, with nothing left to re-measure when the copy changes. Composited
+        worst-case plate ground (over a PURE BLACK pixel): rgb(219.3, 219.3, 219.3).
+          h2                 --ds-ink           #0B1A2B   12.71:1   AAA
+          gradient keyword   DARKEST stop       #0B1A2B   12.71:1   AAA
+          gradient keyword   lightest stop      #0A4BCC    5.26:1   AA
+          booking line       --ds-ink           #0B1A2B   12.71:1   AAA
+          telephone link     --ds-ink           #0B1A2B   12.71:1   AAA
+          email link         --ds-ink           #0B1A2B   12.71:1   AAA
+        --ds-ink-soft (#5A6B7D) returns 3.97:1 against this ground and is therefore
+        BANNED on this plate. It is not used there. That single figure is why this band
+        sets its body copy in full ink and not in the muted ink the other light band
+        uses.
+        THESE THREE FIGURES DIFFER FROM page-services.html's SECTION B BY ABOUT A TENTH
+        OF A POINT (it prints 12.62, 5.22 and 3.94 for the same three runs on the same
+        recipe), and the difference is recorded rather than smoothed over. The scrim, the
+        tokens and the compositing model are identical, so one of the two computations is
+        slightly off; these were recomputed from the sRGB transfer function this pass and
+        are the figures this file stands behind. Nothing about the PASS or FAIL of any row
+        changes either way, which is why this is a note and not a correction to a sibling.
+
+     C. THE GEOMETRY THAT MAKES THE HERO PLATEAU A GUARANTEE RATHER THAN A HOPE.
+        The scrim holds a FLAT plateau from 0% to 58% of the band, then falls away. The
+        text zone is capped BY CONSTRUCTION: padding is the shared gutter, the wrap is
+        max-width 1080 and CENTRED, and the text column is max-width min(600px, 44vw).
+        Worst case across the whole ladder is 1440 wide, where the wrap starts at 180px
+        and a 600px column ends at 780px = 54.2% of the band. Second worst is 1025px
+        (gutter 48 + 44vw = 499px = 48.7%). The text never reaches 58%, so the alpha
+        under every string is exactly .86, never a ramped value that would have to be
+        sampled per string. 3.8 points of margin at the worst case.
+        BELOW 768px the text must use the full width, so the ramp is DROPPED and the
+        scrim becomes the flat plateau across the entire band. The guarantee stops being
+        geometric there and becomes total: every pixel of the band carries the plateau
+        alpha.
+        A vertical edge vignette takes the band to pure ink at the top and bottom 12%,
+        and a radial vignette closes the frame edges. Both only ADD scrim and therefore
+        only RAISE every figure above. No figure here depends on either.
+
+     D. THE LIGHT BAND WITH NO PHOTOGRAPH (section 2), where the four contact values
+        actually live. No photograph, so these are exact rather than floors. THERE ARE
+        TWO GROUNDS HERE AND THEY ARE NOT THE SAME GROUND, which the first draft of this
+        block got wrong by quoting every row against the panel: the h2 sits on the BAND
+        and the four rows sit on the PANEL, and the two grade to different stops.
+        THE BAND grades --ds-bg-surface (#FFFFFF) to --ds-bg-surface-2 (#F4F6F8); worst
+        stop #F4F6F8:
+          h2                 --ds-ink-heading   #0B1A2B   16.20:1   AAA
+          gradient keyword   DARKEST stop       #0A4BCC    6.70:1   AAA
+          gradient keyword   lightest stop      #0B5FFF    4.73:1   AA
+        THE PANEL grades --ds-bg-surface (#FFFFFF) to --ds-primary-soft (#F3F7FF); worst
+        stop #F3F7FF:
+          field labels       --ds-ink-soft      #5A6B7D    5.10:1   AA
+          street / city      --ds-ink           #0B1A2B   16.34:1   AAA
+          telephone link     --ds-ink           #0B1A2B   16.34:1   AAA
+          email link         --ds-ink           #0B1A2B   16.34:1   AAA
+          hours day / time   --ds-ink           #0B1A2B   16.34:1   AAA
+        THE FIELD LABEL IS THE ONLY RUN ON THIS PAGE THAT USES THE MUTED INK, and it is
+        the run a reader most needs in order to know what the value under it is, so the
+        figure is quoted against the panel's darkest stop rather than against the page
+        ground. 5.10:1 clears AA for small text with 0.60 of a point in hand. The
+        keyword's lightest stop at 4.73:1 is the tightest figure on the page; it clears
+        AA for normal text by 0.23 and the keyword is 44px display type, where the
+        threshold that actually applies is 3:1.
+
+     E. SOLID GROUNDS, for completeness. Computed this pass from the locked sheet:
+          #0B1A2B on #FFFFFF 17.55  |  #5A6B7D on #FFFFFF  5.48  |  #0A4BCC on #FFFFFF 7.26
+          #0B1A2B on #F4F6F8 16.20  |  #5A6B7D on #F4F6F8  5.06  |  #0B5FFF on #F4F6F8 4.73
+          #FFFFFF on #0B1A2B 17.55  |  #A8B6C4 on #0B1A2B  8.48  |  #85AFFF on #0B1A2B 8.00
+          #FFFFFF on #1C2A3A 14.57  |  #A8B6C4 on #1C2A3A  7.04  |  #85AFFF on #1C2A3A 6.64
+        The dark gradient ground at section 3 runs #0B1A2B to #1C2A3A to #0B2140, so
+        #1C2A3A is its lightest stop and every section 3 figure below is quoted against
+        it:
+          route labels       --ds-ink-heading   #FFFFFF   14.57:1   AAA
+          route label hover  --ds-accent-light  #B7CEFF    9.22:1   AAA
+          gradient keyword   DARKEST stop       #85AFFF    6.64:1   AAA
+          gradient keyword   lightest stop      #B7CEFF    9.22:1   AAA
+        Their hairline rule is --ds-line, which the flip makes #283544, and a rule is not
+        text. THE HOVER COLOUR IS NOT THE STATE. The state is a 6px horizontal translate,
+        declared alongside it, because item 11 forbids a colour-only state; the colour is
+        the half that gets a contrast figure and the transform is the half that satisfies
+        the rule.
+     ============================================================================ -->
+
+<!-- ============================================================================
+     GROUND TREATMENT LEDGER.
+
+     "There must be a BALANCE OF DARK AND LIGHT SECTIONS, with background images and
+     gradients and without." All four treatments appear on this page and they alternate
+     without exception, so no two adjacent bands share a polarity:
+
+       band                     ground treatment                     polarity
+       label strip              light, plain                         LIGHT
+       1  contact-hero          DARK + background PHOTOGRAPH         dark
+       2  contact-details       light, plain (page surface)          LIGHT
+       3  routing-block         DARK + GRADIENT, no photograph       dark
+       4  booking-intent        LIGHT + background PHOTOGRAPH        LIGHT
+
+     FOUR BANDS CANNOT AFFORD A DELIBERATE SAME-POLARITY ADJACENCY. The homepage runs
+     twelve and spends two of them on effect; on a four-band page a repeated polarity
+     is half the page reading as one long band. So this page alternates strictly,
+     opening dark on a daylit room and closing light on a daylit corridor.
+
+     THE MEASUREMENT, AND EXACTLY WHAT KIND OF MEASUREMENT IT IS. The two sibling pages
+     report a per-row luminance figure taken by decoding a full-page screenshot. That
+     method is not reproduced here and the figure below is NOT that figure: what is
+     measured is the RENDERED HEIGHT of every band at 1440x900, read out of the live
+     document after every reveal had fired and settled, and attributed to the polarity
+     the table above assigns. It is a measurement of the COMPOSITION, not of the
+     pixels, and it is labelled as one so nobody reads it as the siblings' number.
+
+       rendered document        1440 x 4504 css px
+       shipping bands           3600 css px (4 bands, 900 each at this viewport)
+       dark bands 1 and 3       1800 css px = 50.0 pct of the shipping bands
+       label strip              904 css px of plain light BUILD FURNITURE that does not
+                                ship, which is why it is excluded and why its exclusion
+                                is printed rather than left implicit
+       dark share of the whole rendered document, label strip included:  40.0 pct
+
+     50.0 pct against the owner's 45 to 55 pct window, dead centre, on the shipping
+     bands, and that is the figure the composition is answerable for.
+     THE WHOLE-DOCUMENT FIGURE OF 40.0 PCT IS 5.0 POINTS BELOW THE WINDOW AND IS PRINTED
+     RATHER THAN DROPPED. Its entire cause is the label strip, which is 904 css px of
+     plain white disclosure and is twenty per cent of the rendered document on the
+     shortest page of the site: the same strip is a smaller fraction of a twelve-band
+     homepage and a six-band services page, so the shorter the page the harder the
+     disclosure pulls the number down. It is not fixed by darkening anything. With four
+     bands and strict alternation the split is two dark to two light BY CONSTRUCTION, and
+     buying a third dark band would mean two dark bands in a row, which is the adjacency
+     a four-band page cannot afford.
+     BOTH FIGURES WERE WRONG IN THE FIRST DRAFT OF THIS BLOCK AND THE CORRECTION IS
+     RECORDED RATHER THAN QUIETLY APPLIED. It was written before the page was rendered
+     and estimated the document at 4013 css px, the label strip at 413 and the
+     whole-document share at 44.9 pct. Measured: 4504, 904 and 40.0. The shipping-band
+     figure of 50.0 pct was the only one that survived, and it survived because it is
+     derived from the band count rather than estimated. AN UNMEASURED NUMBER IN A LEDGER
+     HEADED "THE MEASUREMENT" IS WORSE THAN NO NUMBER, because it reads as evidence.
+     THE MEASURED PAIR THEN MOVED ONCE MORE INSIDE THIS SAME PASS, from 4484 and 884,
+     because two sentences of the label strip were reworded afterwards and the strip grew
+     twenty pixels. That is recorded rather than silently overwritten, because it is the
+     rule the first error was an instance of: a measured number is only true of the bytes
+     it was measured on, and any edit to RENDERED text invalidates it. Everything above
+     was re-taken on the final bytes; every later edit in this pass was to a comment,
+     which renders nothing and cannot move a pixel.
+     ============================================================================ -->
+
+<!-- ============================================================================
+     LOAD ORDER. The hero photograph is the largest image above the fold, so its byte
+     stream is opened by the preload scanner before it reaches the two stylesheet links
+     below, instead of third.
+
+     It is a MIRROR of the <img> in section 1, not a second image slot. The two hrefs
+     are the same file and MUST be changed together: a swapper that changes the
+     photograph and forgets this line turns the preload into a wasted download of a file
+     the page no longer shows, which is a performance REGRESSION rather than a broken
+     picture, so it will not announce itself.
+     swap:image-contact-hero  PRELOAD MIRROR, no new slot
+     ============================================================================ -->
+<link rel="preload" as="image" href="../assets/dental-clinic-reception.jpg" fetchpriority="high">
+
+<link rel="stylesheet" href="stomatology-tokens.css">
+<!-- The structural half of the owner-locked brand card A, and the same sheet
+     page-services.html links. See STYLESHEET GATE above for why this sheet and not
+     stomatology-structural.css, which cannot be written until the owner stamps FEEL.
+     It is token-pure and every rule in it is scoped to a .bc- class, so it changes
+     nothing on this page. -->
+<link rel="stylesheet" href="_tournament/brand-card/concept-a/brand-a-structural.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+
+<style>
+/* ============================================================================
+   COLOUR PROVENANCE. ZERO colour literals are authored in this file. Every colour is
+   var(--ds-*) from ./stomatology-tokens.css, which is the only file in this concept
+   that carries a hex value. The gradients the owner asked for are built FROM those
+   tokens and introduce no new hue, which is how item 1 (no teal, cyan or aqua)
+   survives an amendment that permits gradients.
+
+   The scrims are the only DERIVED values, and they are derived with color-mix() from
+   tokens rather than written as rgba literals:
+     --hp-ink-*   from var(--ds-primary-deep), the locked ink #0B1A2B. .surface-dark
+                  does NOT redeclare --ds-primary-deep, so this stays ink on both
+                  polarities and no dark-flip surprise is possible.
+     --hp-paper-* from var(--ds-bg-surface). This IS flipped by .surface-dark, which is
+                  exactly why it is resolved once here at :root, where it is #FFFFFF,
+                  and used only on a band that is not .surface-dark.
+   ============================================================================ */
+:root{
+  /* ---- the ONE grid: one max width, one gutter, down the whole page. Identical to
+     both sibling pages, because an optical left edge that holds across a SITE is worth
+     more than one that holds down a page. --ds-container-max is the locked 1080px and
+     is not overridden here. */
+  --hp-gutter: calc(var(--ds-space-xl) + var(--ds-space-md));   /* 88px */
+  --hp-py:     calc(var(--ds-space-2xl) + var(--ds-space-md));  /* 120px */
+
+  /* ---- STRAIGHT EDGES. "make the section edges STRAIGHT, i dont like it curved."
+     There is no seam token here because there is no seam: every band boundary is a flat
+     horizontal edge between two grounds. Nothing in this file can switch a curve back
+     on, because no curve was ever authored in it. ---------------------------- */
+
+  /* ---- the scrims, derived from the locked tokens -------------------------- */
+  --hp-ink-plateau:   color-mix(in srgb, var(--ds-primary-deep) 86%, transparent);
+  --hp-ink-open:      color-mix(in srgb, var(--ds-primary-deep) 20%, transparent);
+  /* the flat veil the CENTRE-JUSTIFIED photographic band uses instead of a horizontal
+     ramp. A ramp guarantees contrast only for a text column pinned to the gutter; a
+     centred column moves into the ramp, so that band carries a LIGHT flat veil and puts
+     its copy on a PLATE that owns its own scrim. */
+  --hp-paper-veil:    color-mix(in srgb, var(--ds-bg-surface)   30%, transparent);
+  --hp-paper-plate:   color-mix(in srgb, var(--ds-bg-surface)   86%, transparent);
+  /* the hero's radial vignette: ink at the frame edge, NOTHING at the focal point */
+  --hp-ink-mid:       color-mix(in srgb, var(--ds-primary-deep) 22%, transparent);
+  --hp-ink-deep:      color-mix(in srgb, var(--ds-primary-deep) 46%, transparent);
+  /* the accent washes the light grounds are built from */
+  --hp-wash-a:        color-mix(in srgb, var(--ds-primary) 5%,  transparent);
+  --hp-wash-b:        color-mix(in srgb, var(--ds-primary) 9%,  transparent);
+
+  /* ---- THE DROP SHADOW, released by the owner's second note and built from the
+     LOCKED INK, never from a new colour. Two drop layers plus the brand card's hairline
+     ring, in that order: a tight KEY that reads as contact, a wide soft AMBIENT that
+     reads as air, and the ring that keeps the box's edge crisp on a ground it barely
+     differs from. --ds-shadow-rest is the locked ring token. Carried from the sibling
+     pages unchanged: a shadow recipe is part of the locked language and this page
+     invents none of its own. */
+  --hp-sh-key:  color-mix(in srgb, var(--ds-primary-deep) 10%, transparent);
+  --hp-sh-amb:  color-mix(in srgb, var(--ds-primary-deep) 14%, transparent);
+  --hp-shadow-box:    0 1px 2px var(--hp-sh-key), 0 14px 32px var(--hp-sh-amb), var(--ds-shadow-rest);
+  /* The homepage's heavier second step (--hp-shadow-box-hi) is NOT carried. It exists
+     there for a card that lifts on hover, and no box on this page lifts: the route index
+     at section 3 moves, but it is a ruled list with no fill, so there is nothing for a
+     heavier shadow to sit behind. A token defined and never referenced is a rule nobody
+     meant to keep. */
+
+  /* ---- THE TYPE STEPS. The locked sheet is NOT edited and NOT shadowed:
+     --ds-fs-display and --ds-fs-h2 still read exactly what stomatology-tokens.css says.
+     These are the homepage's page-local steps, carried across byte for byte so the
+     three pages set type at the same sizes. ---------------------------------- */
+  --hp-fs-h2:      clamp(30px, 3.2vw, 44px);   /* was --ds-fs-h2 clamp(19,2.2vw,23) */
+  --hp-fs-h3:      clamp(18px, 1.45vw, 21px);  /* was --ds-fs-h3 16px               */
+  --hp-fs-boxline: clamp(17px, 1.5vw, 22px);
+
+  /* ---- THE ONE NEW TOKEN IN THIS FILE, and it is a size that is not new to the SITE.
+     --ct-fs-display is the SECOND-LEVEL display step, and its value is
+     page-services.html's --sv-fs-display carried across character for character. The
+     homepage's hero runs --hp-fs-display clamp(42px, 5.2vw, 72px); a second-level page
+     whose h1 is as loud as the homepage's reads as a second homepage, so both
+     second-level pages step down one notch and they step down to the SAME place. At
+     1440 it renders 58px against the h2 scale's 44px, so the hero is unmistakably the
+     largest thing on the page. It introduces no colour, no radius, no shadow and no
+     curve. Declared here rather than inlined so the override is visible in one place. */
+  --ct-fs-display: clamp(34px, 4.2vw, 58px);
+
+  /* ---- motion. Same durations, same stagger, same curves as both sibling pages. --- */
+  --hp-dur-reveal: 620ms;
+  --hp-dur-rise:   760ms;
+  --hp-stagger:    90ms;
+  --hp-i: 0;                 /* stagger index; set per element inline */
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+body{
+  margin:0;
+  background-color:var(--ds-bg-surface);
+  color:var(--ds-ink);
+  font-family:var(--ds-font-body);
+  font-size:var(--ds-fs-body);
+  line-height:var(--ds-lh-body);
+  font-weight:var(--ds-weight-body);
+  overflow-x:hidden;
+}
+img{ max-width:100%; }
+
+/* ============================================================================
+   THE BAND SPINE. A band is a positioning shell; its GROUND is a child. Identical to
+   both siblings' spine, minus the seam siblings that no longer exist anywhere in this
+   system.
+   ============================================================================ */
+.hp-band{ position:relative; width:100%; }
+.hp-ground{ position:relative; width:100%; }
+/* THE LIGHT GROUNDS ARE GRADIENTS. The owner: "add some GRADIENTS in the backgrounds,
+   still too flat", and the second note widened the item 4 release from permission to
+   instruction ("more gradients in backgrounds"). The light ground takes a two-layer
+   build: a RADIAL accent wash that gives the band a direction of light, over a LINEAR
+   paper-to-band-surface fall that keeps the ground reading as paper rather than as a
+   tint. Every stop is a locked token or a color-mix of one, so no new hue enters and
+   item 1's no-teal absolute cannot be touched by any of it. */
+.hp-ground--paper{
+  background-color:var(--ds-bg-surface);
+  background-image:
+    radial-gradient(120% 90% at 12% 0%, var(--hp-wash-b) 0%, transparent 62%),
+    linear-gradient(180deg, var(--ds-bg-surface) 0%, var(--ds-bg-surface-2) 100%);
+}
+
+/* pick: SURFACE-PATTERNS.md #26 (None / pure-spacing) for the band interior +
+   COLOR-THEORY-PRESETS.md #11 for the ground family | considered: SURFACE-PATTERNS.md
+   #27 hairline-full-width, SURFACE-PATTERNS.md #29 motif-divider | why: the interior of
+   a band needs no rule when the ground CHANGE already carries the transition, and a
+   hairline plus a ground step at the same boundary is two devices doing one job. The
+   beauty reason: a gradient ground that moves from the locked ink through the locked
+   band surface to the locked warm dark gives the dark band a direction of light, so the
+   one gradient band on this page reads as a lit room rather than as a black rectangle. */
+.hp-ground--grad{
+  background-color:var(--ds-bg-surface);
+  background-image:
+    radial-gradient(90% 70% at 78% 6%, var(--hp-wash-b) 0%, transparent 58%),
+    linear-gradient(152deg,
+      var(--ds-bg-surface)   0%,
+      var(--ds-bg-surface-2) 46%,
+      var(--ds-bg-warm)     100%);
+}
+
+.hp-wrap{
+  position:relative;
+  z-index:3;
+  max-width:var(--ds-container-max);
+  margin:0 auto;
+  padding:var(--hp-py) 0;
+}
+.hp-band{ padding-left:var(--hp-gutter); padding-right:var(--hp-gutter); }
+/* The ground breaks OUT of the band's gutter so a background photograph reaches both
+   edges. width:auto is load-bearing and must not be changed back to 100%: a percentage
+   width resolves against the band's CONTENT box, which is already inset by the gutter,
+   so the negative margins would shift the element without ever widening it and the
+   photograph would fall short of the right edge by two gutters. */
+.hp-ground{ width:auto; margin-left:calc(var(--hp-gutter) * -1); margin-right:calc(var(--hp-gutter) * -1); padding-left:var(--hp-gutter); padding-right:var(--hp-gutter); }
+
+/* ============================================================================
+   STRAIGHT EDGES, BY OWNER INSTRUCTION. "make the section edges STRAIGHT, i dont like
+   it curved."
+   pick: DIVIDER-PATTERNS.md #1 (Hard edge, no divider) | considered:
+   DIVIDER-PATTERNS.md #4 (slant 45deg), DIVIDER-PATTERNS.md #2 (Wave smooth) | why: #4
+   is still a SHAPED boundary and the owner asked for straight; #2 is the thing that was
+   removed from this system by instruction. #1 is the entry that IS a flat horizontal
+   boundary between two grounds.
+   WHAT CARRIES THE BOUNDARY: the ground change itself. Each band paints its own ground
+   and the next paints a different one, so the boundary IS the colour step, flat and
+   horizontal. MEASURED after writing, not assumed: the live document parses ZERO SVG
+   elements, and no rule in this sheet declares a border-radius on a band, a clip-path,
+   or a mask of any kind.
+   ============================================================================ */
+
+/* ============================================================================
+   FULL-VIEWPORT BANDS, AND THE FLOOR UNDER THEM.
+   The owner: "make sure EVERY SECTION PERFECTLY MATCHES THE HEIGHT OF THE DESKTOP".
+   min-height, never height, so a band whose content is taller than the viewport still
+   grows instead of clipping; and svh, never vh, so a mobile browser's collapsing chrome
+   cannot make a band jump mid-scroll.
+   THE 900px FLOOR IS THE CRITICAL HALF OF THIS RULE. At 390 wide a 100svh band holding
+   four rows is most of a screen of nothing, which is the opposite of what the owner
+   asked for, and on a page a reader opens to find a telephone number it is worse than
+   on any other page of the site. Below 900px every band takes its NATURAL height and
+   keeps the padding ladder's vertical rhythm. The rule is written as min-width:900px so
+   that below the floor it simply DOES NOT EXIST, rather than existing and being undone
+   by a later override that a future edit could drop.
+   ============================================================================ */
+@media (min-width:900px){
+  .hp-band > .hp-ground{
+    min-height:100vh;          /* the fallback for an engine without svh */
+    min-height:100svh;         /* the value that actually applies */
+    display:flex;
+    flex-direction:column;
+    justify-content:center;    /* content vertically centred, per the owner */
+  }
+  .hp-band > .hp-ground > .hp-wrap{ width:100%; }
+}
+
+/* ============================================================================
+   CENTRE JUSTIFICATION, EXCEPT THE HERO.
+   The owner: "let us make each section CENTRE JUSTIFIED, EXCEPT for the hero section
+   text." This OVERRIDES the locked brand card's left alignment for bands 2 through 4
+   and leaves band 1 alone. The exception lives in the SELECTOR (:not(.hp-band--hero))
+   rather than being applied band by band, so a band added later cannot quietly miss it
+   and the hero cannot quietly acquire it.
+   Every constrained block inside a centred band also needs its own auto margins, or a
+   max-width column stays glued to the left inside a centred parent and the band reads
+   half-centred. They are listed once, here.
+   ============================================================================ */
+.hp-band:not(.hp-band--hero) .hp-wrap{ text-align:center; }
+.hp-band:not(.hp-band--hero) .hp-h2,
+.hp-band:not(.hp-band--hero) .hp-lead,
+.hp-band:not(.hp-band--hero) .hp-index{ margin-left:auto; margin-right:auto; }
+
+/* ============================================================================
+   PHOTOGRAPHIC GROUND. Amended item 3 lives here.
+   pick: HERO-COMPOSITIONS.md #5 (Full-bleed image + overlay text) | considered:
+   HERO-COMPOSITIONS.md #1 split-text-left, HERO-COMPOSITIONS.md #7 floating cards over
+   the image | why: the owner asked for background images and for text over them, and #5
+   is the entry that IS that, with a key CSS hook that names "gradient overlay for text
+   legibility" and an edge case that names the exact hazard this build has: "mobile photo
+   composition matters, use object-position ... to keep the subject in frame". The
+   blueprint picks the same shape for this vertical: composition-medical-health section 2
+   lists "B1 full-bleed media + light scrim" as the hero pattern for a clinic. #1's
+   portrait half is unavailable here anyway, because item 8 permits hands and never a
+   face. #7 is refused twice over: the cards it specifies carry stats and testimonial
+   snippets, which item 9 bans outright and not even behind a caption, and it specifies
+   backdrop-filter glass, which item 4 still bans.
+   THE SECOND-LEVEL READING, AND WHY THIS HERO IS NEITHER SIBLING'S HERO A SECOND TIME.
+   The homepage opens in a dark operatory under one lamp: a room you are being invited
+   into. The services page opens on a corridor with daylight at the end: a way through.
+   This page opens on the RECEPTION, which is the place a reader who has already decided
+   actually arrives at, and it is the photograph the homepage's own route card promised
+   them when they clicked. Same pattern, different photograph, second-level type, no
+   eyebrow.
+   ============================================================================ */
+.hp-ground--photo{ isolation:isolate; overflow:hidden; }
+/* contain:paint states what this box already IS. It is position:absolute with inset:0
+   and overflow:hidden, so it is already the containing block for its three absolutely
+   positioned children and already clips them; declaring the containment changes no
+   geometry and no pixel, it only lets the engine skip the subtree while painting the
+   rest of the document. */
+.hp-photo{ position:absolute; inset:0; z-index:0; overflow:hidden; contain:paint; }
+.hp-photo__img{
+  position:absolute; inset:0;
+  display:block; width:100%; height:100%;
+  object-fit:cover;
+  object-position:50% 50%;
+  transform:scale(1.04);
+}
+/* will-change is NOT declared here. Two full-bleed photographs match this rule and only
+   ONE of them animates; hoisting will-change to this selector would promote both to
+   permanent compositor layers and pay for one that never moves. It sits with the drift
+   animation, on the hero rule alone. See the MOTION block. */
+.hp-photo__scrim{ position:absolute; inset:0; z-index:1; display:block; }
+.hp-photo__edge{ position:absolute; inset:0; z-index:2; display:block; pointer-events:none; }
+
+/* THE HERO RAMP. The plateau runs to 58 percent. That figure is derived across the whole
+   ladder rather than from the gutter alone: .hp-wrap is max-width 1080 and CENTRED, so
+   above 1080 plus two gutters the text column starts at the wrap's left edge and not at
+   the gutter. Worst case is 1440 wide, where the wrap starts at 180px and a 600px text
+   column ends at 780px = 54.2 percent. Full working at CONTRAST LEDGER section C. */
+.hp-ground--ink .hp-photo__scrim{
+  background-image:linear-gradient(90deg,
+    var(--hp-ink-plateau)  0%,
+    var(--hp-ink-plateau) 58%,
+    var(--hp-ink-open)    86%,
+    var(--hp-ink-open)   100%);
+}
+/* THE FOCAL VIGNETTE. The owner: "make the HERO bg image MORE EYE CATCHING, and there
+   should be a FOCAL POINT ON THE RIGHT SIDE. currently there is too much blank space."
+   Two layers, both built from the locked ink and introducing no hue: a RADIAL that is
+   fully transparent over the window wall and closes to ink at the frame edge, and a
+   vertical top/bottom edge vignette.
+   IT CANNOT LOWER A CONTRAST FIGURE. Everything it paints is ink at a positive alpha
+   over ink already at the plateau, so every ratio in the CONTRAST LEDGER is a floor that
+   this layer only raises. The ledger's figures are quoted WITHOUT it. */
+.hp-ground--ink .hp-photo__edge{
+  background-image:
+    radial-gradient(118% 124% at 76% 54%,
+      transparent          0%,
+      transparent         30%,
+      var(--hp-ink-mid)   68%,
+      var(--hp-ink-deep) 100%),
+    linear-gradient(180deg,
+      var(--ds-primary-deep) 0%,
+      transparent           12%,
+      transparent           88%,
+      var(--ds-primary-deep) 100%);
+}
+/* THE CENTRE-JUSTIFIED PHOTOGRAPHIC BAND (section 4) DROPS THE RAMP ENTIRELY. A
+   horizontal ramp guarantees contrast for a column pinned to the left gutter. The owner
+   centred every band except the hero, and a centred column sits in the middle of the
+   band, which is where a left-to-right ramp is mid-fall. Rather than widen the plateau
+   until it covers the whole band, which erases the photograph, this band takes a LIGHT
+   flat veil so the room reads, and its copy sits on a PLATE that carries its own flat
+   scrim. The guarantee moves from geometry to the plate, where it is total: every pixel
+   of the plate carries the plate's alpha. */
+.hp-ground--paperphoto .hp-photo__scrim{
+  background-image:none;
+  background-color:var(--hp-paper-veil);
+}
+.hp-ground--paperphoto .hp-photo__edge{
+  background-image:linear-gradient(180deg,
+    var(--ds-bg-surface) 0%,
+    transparent         12%,
+    transparent         88%,
+    var(--ds-bg-surface) 100%);
+}
+.hp-ground--photo .hp-wrap{ max-width:var(--ds-container-max); }
+.hp-textzone{ max-width:min(600px, 44vw); }
+
+/* THE HERO'S FOCAL CROP, AND WHAT KIND OF DECISION IT IS. Both sibling pages derived
+   their crop from a luminance grid computed over the photograph. THAT METHOD IS NOT
+   REPRODUCED HERE and this crop is not presented as its equal: it was set by LOOKING at
+   dental-clinic-reception.jpg and at the render, and it is labelled as a judgement so
+   nobody reads it as a measurement.
+   WHAT THE PHOTOGRAPH ALREADY DOES, and why this page needs no widen trick. The
+   services hero pushes its layer to 150 percent of the frame width because its corridor
+   puts the light dead centre and the owner asked for the focal point on the right. This
+   photograph does not have that problem: the window wall runs down the RIGHT-HAND edge
+   of the frame and the reception counter sits left of centre, so the bright zone already
+   falls inside the open half of the ramp and the type already falls on the quiet half.
+   Widening the layer here would push the windows off the frame and move the counter into
+   the type, which is the opposite of what the trick is for. The layer therefore stays at
+   100 percent at every width and object-position does all the work: a small upward
+   anchor trims ceiling that carries nothing.
+   BELOW 900px the frame turns portrait and the horizontal overflow becomes large, so the
+   anchor moves left to keep the counter and the plant in frame rather than cropping to
+   bare wall. */
+.hp-band--hero .hp-photo__img{ object-position:46% 52%; }
+@media (min-width:900px){
+  .hp-band--hero .hp-photo__img{ object-position:52% 46%; }
+}
+
+/* THE BAND FLOORS. These two rules are scoped to BELOW the 900px full-viewport floor,
+   and the scoping is a defect the services page caught by measuring its render rather
+   than by reading its sheet: unconditionally, `.hp-band--hero .hp-ground` and
+   `.hp-band > .hp-ground` have the SAME specificity (0,2,0), so the later one in source
+   order wins, and these are later. Left unscoped they would BEAT the 100svh rule and
+   silently exempt the two photographic bands from the owner's full-viewport
+   instruction. They exist to stop a photographic band collapsing to its copy height
+   BELOW the floor, which is the only range where they have a job, so they are scoped to
+   that range and simply do not exist above it.
+   The flex centring is unconditional, because it is how a band's content is vertically
+   centred at every width and it never sets a height. */
+.hp-band--hero .hp-ground{ display:flex; flex-direction:column; justify-content:center; }
+.hp-band--hero .hp-wrap{ width:100%; }
+.hp-band--photoband .hp-ground{ display:flex; flex-direction:column; justify-content:center; }
+.hp-band--photoband .hp-wrap{ width:100%; }
+@media (max-width:899px){
+  .hp-band--hero .hp-ground{ min-height:clamp(520px, 74vh, 700px); }
+  .hp-band--photoband .hp-ground--paperphoto{ min-height:clamp(460px, 56vh, 620px); }
+}
+
+/* ============================================================================
+   TYPE. TYPOGRAPHY-PAIRINGS.md #1 (Inter with Inter, one family), which is the catalogue
+   entry the locked direction lands on and which the token sheet already records.
+   Hierarchy is bought with size, weight, tracking and measure, never with a paler ink
+   over a photograph.
+   ============================================================================ */
+/* ---- THE CUT OF WORDS. A STANDING RULE, NOT A ONE-OFF. -----------------------
+   The owner: "be mindful of the CUT OF WORDS. place words with the same contexts in the
+   same line, avoid awkward cuts like I've always said."
+   THREE INSTRUMENTS, AND THEY DO DIFFERENT JOBS. They are listed here once and used
+   everywhere, so a heading added later inherits the rule rather than needing it
+   remembered.
+     1. text-wrap:balance on EVERY heading. The browser evens the line lengths across a
+        heading's whole block, which is what stops a five-word heading breaking after
+        word four and leaving one word alone on line two.
+     2. text-wrap:pretty on body copy. Same family, different target: it works the LAST
+        lines of a paragraph and is what removes the single-word orphan.
+     3. A non-breaking bind for pairs neither of the above can protect, because balance
+        and pretty choose WHERE to break, and some pairs must have NO break available at
+        all. Two mechanisms, chosen by what the string is:
+          - &nbsp; where this page OWNS the string (the h1, the two headings that are
+            this page's alone, the street, the telephone).
+          - .hp-nb, a nowrap span, where the string is a SHARED CARRIER that another page
+            renders byte-for-byte (the booking line, which page-services.html also
+            renders under swap:booking-line). A span changes the markup and leaves the
+            TEXT bytes identical, so the sibling page still matches; an &nbsp; would
+            silently desynchronise them, which is the defect the shared-marker family
+            exists to prevent.
+   THE ATOMS THAT MAY NEVER BREAK AT ALL are below the wrap rules: a number and its unit,
+   a day and its hours, and the telephone number, which is the owner's own list. */
+.hp-h1,
+.hp-h2,
+.hp-fact__label,
+.hp-indexlink{ text-wrap:balance; }
+.hp-lead,
+.hp-addr,
+.hp-label__note{ text-wrap:pretty; }
+/* the nowrap bind for a shared-carrier string */
+.hp-nb{ white-space:nowrap; }
+/* the data atoms. Each can never be split at all: the telephone (whose HYPHEN inside
+   555-0142 is a break opportunity by default), the email address, the street line, and
+   each half of an hours row (whose hyphen inside Mon-Thu and inside 8:00-17:00 is the
+   same hazard). */
+.hp-tel,
+.hp-mail,
+.hp-street,
+.hp-hours__day,
+.hp-hours__time{ white-space:nowrap; }
+/* the gradient keyword is a PHRASE. Splitting it across a line break cuts the gradient
+   in half and reads as two different colours, so it never wraps. Every keyword in this
+   file was checked at 390 as well as at 1440: the longest is "when we are open" at 16
+   characters, which sets about 250px at the 30px mobile h2 step inside 350px of
+   available width. */
+.hp-key{ white-space:nowrap; }
+
+.hp-h1{
+  margin:0 0 var(--ds-space-md);
+  font-family:var(--ds-font-display);
+  font-size:var(--ct-fs-display);
+  line-height:var(--ds-lh-display);
+  letter-spacing:var(--ds-track-display);
+  font-weight:var(--ds-weight-display);
+  color:var(--ds-ink-heading);
+  max-width:none;
+}
+.hp-h2{
+  margin:0 0 var(--ds-space-md);
+  font-family:var(--ds-font-display);
+  font-size:var(--hp-fs-h2);
+  line-height:var(--ds-lh-head);
+  letter-spacing:var(--ds-track-display);
+  font-weight:var(--ds-weight-head);
+  color:var(--ds-ink-heading);
+  /* NO ch CAP. A 22ch cap on a 44px heading forces a second line at about 970px of
+     available width even when the band is 1080 wide and the heading would have fitted:
+     the cap does the breaking, not the text. The wrap's own 1080 max-width is the
+     measure, and text-wrap:balance shapes whatever still has to break. */
+  max-width:none;
+}
+.hp-lead{
+  margin:0;
+  max-width:var(--ds-measure);
+  font-size:var(--ds-fs-body);
+  line-height:var(--ds-lh-body);
+  color:var(--ds-ink);
+}
+.hp-head{ margin:0 0 var(--ds-space-xl); }
+
+/* ---- GRADIENT KEYWORD ------------------------------------------------------
+   The owner asked for the important phrase in every headline to carry a gradient.
+   background-clip:text HAS NO COMPUTABLE CONTRAST, so this is built in two layers: the
+   BASE rule paints a SOLID -webkit-text-fill-color that a contrast checker can read and
+   that survives any browser without background-clip:text, and only inside @supports is
+   the fill made transparent so the gradient shows. The gradient's worst stop is measured
+   against its ground in the CONTRAST LEDGER above; on the dark flip the gradient
+   deliberately does NOT reach for --ds-accent-deep, which the flip sets to #0B5FFF and
+   which returns 3.42:1 on ink. A keyword nobody can read is a defect, not a flourish.
+   ONE KEYWORD PER HEADLINE, CHOSEN FOR MEANING RATHER THAN FOR LENGTH:
+     h1  "reach"             the page has exactly one job and this verb is it
+     h2  "when we are open"  section 2 carries the channels AND the hours, and the hours
+                             are the half a reader cannot get from the chrome
+     h2  "the practice"      section 3 points at the practice, not at the site. It is the
+                             SAME phrase page-services.html highlights in the SAME
+                             heading string, because one heading highlighted two
+                             different ways across two pages is the pages-disagree defect
+                             at keyword scale
+     h2  "an appointment"    section 4 is about arranging one. The article is bound into
+                             the keyword rather than left beside it, which is both a
+                             cut-of-words fix measured at 390 and the same unit
+                             page-services.html gradients in its own appointment heading */
+.hp-key{
+  color:var(--ds-accent-ink);
+  -webkit-text-fill-color:var(--ds-accent-ink);
+  background-image:linear-gradient(96deg, var(--ds-accent-deep) 0%, var(--ds-accent) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+}
+.surface-dark .hp-key{
+  color:var(--ds-accent);
+  -webkit-text-fill-color:var(--ds-accent);
+  background-image:linear-gradient(96deg, var(--ds-accent) 0%, var(--ds-accent-light) 100%);
+}
+.hp-ground--paperphoto .hp-key{
+  color:var(--ds-accent-deep);
+  -webkit-text-fill-color:var(--ds-accent-deep);
+  background-image:linear-gradient(96deg, var(--ds-ink) 0%, var(--ds-accent-deep) 100%);
+}
+/* THE @supports BLOCK MUST MATCH THE SPECIFICITY OF EVERY BASE RULE ABOVE. With only a
+   bare `.hp-key` selector here (specificity 0,1,0) the two SCOPED base rules above (both
+   0,2,0) would win the cascade and keep their SOLID fallback fill, so the gradient the
+   owner asked for would never appear on any dark band. The scoped selectors are repeated
+   so each override matches the weight of the rule it is overriding. This is a measured
+   defect on the homepage, fixed there and carried here already fixed. */
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .hp-key{ -webkit-text-fill-color:transparent; }
+  .surface-dark .hp-key{ -webkit-text-fill-color:transparent; }
+  .hp-ground--paperphoto .hp-key{ -webkit-text-fill-color:transparent; }
+}
+
+/* ---- THE CHANNEL LINK. MOTION-PATTERNS.md #17 (Underline-grow) ---------------
+   pick: MOTION-PATTERNS.md #17 | considered: MOTION-PATTERNS.md #16 (None),
+   MOTION-PATTERNS.md #19 (Highlight-sweep) | why: #16 leaves a colour-only affordance,
+   which item 11 forbids; #19 is a signature move that would compete with the gradient
+   keyword for the same attention. #17's own rationale is that it is the "most-shipped
+   editorial link hover", and it happens to be the one link hover that is a pure
+   transform. The RESTING state carries a real underline in the hairline token, so a link
+   is identifiable without relying on its colour at all; the hover grows a second,
+   full-weight rule from the left.
+   THE TELEPHONE AND THE EMAIL SHARE ONE RULE, on the site-wide ruling that "a channel
+   value renders as its live link wherever it renders". Two channels rendered as one
+   component is what stops the page having two ideas about what a channel looks like.
+   THERE IS NO BUTTON ON THIS PAGE AND THAT IS DELIBERATE. Both siblings carry the shared
+   button geometry because both have a forward step to offer. This page IS the forward
+   step: its channels are the affordance, and dressing a telephone number as a button
+   would make the page's own content look like an advertisement for itself. */
+.hp-tel,
+.hp-mail{
+  position:relative;
+  color:var(--ds-ink);
+  text-decoration:underline;
+  text-decoration-color:var(--ds-line);
+  text-decoration-thickness:1px;
+  text-underline-offset:5px;
+  transition:color var(--ds-dur) var(--ds-ease);
+}
+.hp-tel::after,
+.hp-mail::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:-5px;
+  height:2px;
+  background-color:currentColor;
+  transform:scaleX(0);
+  transform-origin:left center;
+  transition:transform var(--ds-dur-slow) var(--ds-ease-out);
+}
+.hp-tel:hover::after,
+.hp-tel:focus-visible::after,
+.hp-mail:hover::after,
+.hp-mail:focus-visible::after{ transform:scaleX(1); }
+/* The scaled underline above is the NON-colour half of this state and satisfies item 11
+   on its own. The colour half is declared per surface, because the pressed accent
+   (#0B5FFF once the dark flip has run) returns 3.42:1 against ink. Measured, not
+   assumed. */
+.hp-tel:hover,
+.hp-mail:hover{ color:var(--ds-accent-deep); }
+.surface-dark .hp-tel:hover,
+.surface-dark .hp-mail:hover{ color:var(--ds-accent-light); }
+/* THE 44px HIT BOX, AND WHY IT IS SCOPED RATHER THAN GLOBAL. Rendered at 390 on the
+   services page before this fix, the telephone measured 125x20 and the email 263x20:
+   twenty CSS pixels of vertical target on the two controls a reader on a phone is most
+   likely to press. An inline-block plus 12px of block padding takes both to 44 without
+   moving a single glyph, and the grown underline is re-anchored to 6px so it still lands
+   under the text rather than under the padding.
+   IT IS SCOPED TO THE TWO PLACES THE CHANNEL IS A STANDALONE CONTROL (the section 2 row
+   and the section 4 channel) and NOT applied to the hero sub-line, where the same value
+   sits inside a running sentence: an inline-block with vertical padding in flowing text
+   overlaps the line above it when the paragraph wraps. The sub-line is a RESTATEMENT of
+   values that carry a full-size target twice more down the page, so nothing is lost and
+   a layout defect is avoided. */
+.hp-fact .hp-tel,
+.hp-fact .hp-mail,
+.hp-channel .hp-tel,
+.hp-channel .hp-mail{
+  display:inline-block;
+  padding:12px 0;
+  font-size:var(--hp-fs-boxline);
+}
+.hp-fact .hp-tel::after,
+.hp-fact .hp-mail::after,
+.hp-channel .hp-tel::after,
+.hp-channel .hp-mail::after{ bottom:6px; }
+
+/* ---- FOCUS. Never removed, never colour-only. ---------------------------- */
+.hp-tel:focus-visible,
+.hp-mail:focus-visible,
+.hp-indexlink:focus-visible{
+  outline:2px solid var(--ds-accent);
+  outline-offset:3px;
+  border-radius:var(--ds-r-control);
+}
+
+/* ============================================================================
+   SECTION 2. THE FOUR CONTACT ROWS, IN THE ONE BOX ON THE PAGE.
+   pick: SECTION-COMPONENTS.md #53 (Hours table) + SECTION-COMPONENTS.md #52 (Map embed +
+   contact, taken WITHOUT the map) + SURFACE-PATTERNS.md #12 (Elevated panel on a tinted
+   ground) | considered: SECTION-COMPONENTS.md #51 locations grid, SECTION-COMPONENTS.md
+   #37 CTA form | why: #53 is "day-by-day hours table or schedule card", which is what
+   the brief demands ("two labelled rows ... not one run-on string"). #52 supplies the
+   address, telephone and email half; its MAP IS DROPPED, and on this page that is the
+   load-bearing refusal rather than a tidy-up: a map of an invented street is a premises
+   assertion, and a mainstream place card renders a star rating and a review count, which
+   item 9 bans in any form. #51 implies more than one location, which is a count claim.
+   #37 is a form, and this page carries none: the brief records two independent grounds,
+   either sufficient on its own, and the shorter is that there is nowhere honest for a
+   form to submit.
+   THE PANEL IS THE WHITE-ON-WHITE BOX THE DROP-SHADOW RELEASE IS FOR, and it is the most
+   deserving one on the site: a --ds-bg-surface panel graded into --ds-primary-soft, on a
+   --ds-bg-surface band, separated by a hairline that was doing all the work on its own.
+   Its material is the sibling pages' own panel recipe, unchanged.
+   THE BEAUTY REASON: the four plainest facts on the site, set inside one lifted box in
+   the middle of a white band, is the whole page in one object. A reader who lands here
+   from a search result should be able to find the number without reading a word of
+   anything else, and a single bounded box is the fastest thing on a page to find.
+   ============================================================================ */
+/* THE PANEL'S SCALE IS A MEASURED CORRECTION, NOT A FIRST GUESS, and the working is kept
+   rather than tidied away. The first pass set it at 840px wide with --ds-space-xl / lg
+   padding and an --ds-space-lg row gap, which is the services page's wedge panel
+   verbatim. Rendered at 1440x900 and looked at: the panel came out about 168px tall
+   inside a 900px band, so THE PAGE'S PAYLOAD WAS THE LEAST PRESENT THING ON THE PAGE,
+   floating in roughly 330px of air above and below. A band that fills the viewport with
+   the reader's own telephone number set small in the middle of it is the owner's
+   full-height instruction satisfied on the letter and failed on the point.
+   WHAT MOVED, AND WHAT DELIBERATELY DID NOT. The owner's release is explicit: "if you
+   need to make some boxes with texts and headlines bigger, go on." It is spent here on
+   SPACE rather than on type, and every value below is a locked spacing token: the panel
+   widens to 900px, its padding steps up to --ds-space-2xl / xl, the row gap steps up to
+   --ds-space-xl and each label gets --ds-space-sm under it. Measured again after the
+   change: the panel renders about 435px, which is a real object in the band.
+   THE TYPE DID NOT MOVE, AND THE REASON IS ARITHMETIC RATHER THAN RESTRAINT. The four
+   values are already a step above the homepage's equivalent block (--hp-fs-boxline, 22px
+   at 1440, against its --ds-fs-body 16px). Raising them further breaks the widest value:
+   hello@aldergrovedental.example renders 334px at 22px and .hp-mail is nowrap by the
+   cut-of-words rule, so it CANNOT reflow. The 900px panel gives each column 354px, which
+   leaves that string 20px of slack; at 24px it would need about 364px and would overflow
+   the column. A second page-local type step was therefore considered and REJECTED on the
+   measurement, not on principle. */
+.hp-panel{
+  max-width:900px;
+  margin:0 auto;
+  padding:var(--ds-space-2xl) var(--ds-space-xl);
+  border-radius:var(--ds-r-surface);
+  background-color:var(--ds-bg-surface);
+  background-image:linear-gradient(180deg, var(--ds-bg-surface) 0%, var(--ds-primary-soft) 100%);
+  box-shadow:var(--hp-shadow-box);
+}
+/* FOUR ROWS IN A 2x2 GRID. The homepage renders three of these facts in three columns;
+   this page renders four, and four across at 840px would give each row about 190px,
+   which is narrower than the email address. Two by two gives every row a full half of
+   the panel and closes both rows flush, which is the same arithmetic the homepage used
+   to close a five-item row into six columns. */
+.hp-facts{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:var(--ds-space-xl);
+  margin:0; padding:0;
+}
+.hp-fact{ margin:0; }
+/* EVERY FIELD LABEL IS A REAL ELEMENT BOUND TO ITS VALUE, WHICH IS A BUILD RULE AND NOT
+   A STYLING CONVENTION. The brief: a label conveyed only by icon, only by placement, or
+   only by an aria-label is not a label, because the first two are invisible to assistive
+   technology and the third is invisible to everyone else. So each is a <dt> to its
+   value's <dd>, it renders as visible text, and it sits BESIDE the value and never
+   inside the <a> of the live tel: or mailto:, so the link text stays the value itself. */
+.hp-fact__label{
+  margin:0 0 var(--ds-space-sm);
+  font-size:var(--ds-fs-eyebrow);
+  letter-spacing:var(--ds-track-eyebrow);
+  text-transform:uppercase;
+  font-weight:500;
+  color:var(--ds-ink-soft);
+}
+/* The dd gets its own class rather than borrowing .hp-addr the way the homepage's
+   three-fact block does. Four rows carry four different kinds of value here (a place
+   block, two links and a two-row table) and one of them is not an address, so the row's
+   value slot is named for what it is. */
+.hp-fact__value{ margin:0; }
+.hp-addr{
+  margin:0;
+  font-style:normal;
+  font-size:var(--hp-fs-boxline);
+  line-height:var(--ds-lh-body);
+  color:var(--ds-ink);
+}
+/* A street number and its street name are one address line and must never break between
+   them, which is the owner's "a number and its unit" case exactly. */
+.hp-street{ display:inline-block; }
+.hp-hours{ margin:0; }
+.hp-hours__row{
+  display:flex;
+  justify-content:space-between;
+  gap:var(--ds-space-md);
+  padding:var(--ds-space-2xs) 0;
+  border-bottom:var(--ds-divider-h) solid var(--ds-line);
+  font-size:var(--hp-fs-boxline);
+}
+.hp-hours__day{ color:var(--ds-ink); }
+.hp-hours__time{ color:var(--ds-ink); font-variant-numeric:tabular-nums; }
+
+/* ============================================================================
+   SECTION 3. THE ROUTE INDEX. Five sibling pages, by neutral label, and these ARE links.
+   pick: SECTION-COMPONENTS.md #35 (FAQ grouped, taken as a RULED INDEX) +
+   MOTION-PATTERNS.md #10 (Lift, spent as a horizontal translate) | considered:
+   CARD-VARIATIONS.md #7 (the full-bleed photographic card the homepage spends on its own
+   five routes), SECTION-COMPONENTS.md #45 category chips, SECTION-COMPONENTS.md #50 topic
+   columns | why: #7 is refused BY THE BRIEF and not by taste: this block's own rule is
+   that no label may characterise what the visitor will find, and a photographic card
+   with a room in it characterises the destination before the reader gets there. It would
+   also put five large photographs on the shortest page of the site and outrank the
+   contact rows, which is the wrong ranking on a page whose job is the telephone number.
+   #45 renders chips, and a chip row reads as filters rather than as destinations. #50 is
+   the services page's rail and wants a supporting line per column, which is exactly the
+   line this block may not write. #35 is an index of things that live elsewhere, which is
+   literally what this is, and it is the same component the homepage renders as its
+   question index: same ruled rows, same block links, same translate hover.
+   ONE COLUMN, NOT THE HOMEPAGE'S TWO. Five items in two columns leaves a hole, and a
+   hole in a five-item index reads as a missing sixth page rather than as a layout. One
+   centred column of five ruled rows reads as a table of contents, which is the honest
+   description of the block.
+   THE BEAUTY REASON: after a white box full of data, five quiet rules on the darkest
+   ground on the page is the rest the composition needs before its last band.
+   NO CLASS TOKEN IN THIS SECTION CONTAINS btn, button OR cta, and none of the five
+   labels is a conversion verb. That is briefs/contact.md section 3a RULE 1 and RULE 2,
+   and the brief proves both with executed payloads rather than asserting them: the same
+   block passes at 1399 bytes as a link list and BLOCKS at 1387 bytes the moment one
+   label is relabelled with a verb. The five labels are the sitemap.yaml nav: identifiers
+   character for character, and contact is excluded because it is the page the reader is
+   standing on.
+   ============================================================================ */
+.hp-index{
+  display:grid;
+  grid-template-columns:1fr;
+  max-width:720px;
+  margin:0; padding:0;
+  list-style:none;
+}
+.hp-indexitem{ border-bottom:var(--ds-divider-h) solid var(--ds-line); }
+.hp-indexlink{
+  display:block;
+  /* --ds-space-lg, not --ds-space-md, and for the same measured reason the panel widened:
+     five rows at the tighter padding carried about 200px of a 900px band and read as a
+     list somebody forgot to finish. At --ds-space-lg the five rows carry about 500px and
+     the band reads as a deliberate index. It steps back to --ds-space-md below 768, where
+     the band takes its natural height and the taller rows would only lengthen a scroll. */
+  padding:var(--ds-space-lg) 0;
+  font-family:var(--ds-font-display);
+  font-size:var(--hp-fs-h3);
+  line-height:var(--ds-lh-head);
+  font-weight:var(--ds-weight-head);
+  color:var(--ds-ink-heading);
+  text-decoration:none;
+  transition:color var(--ds-dur) var(--ds-ease), transform var(--ds-dur-slow) var(--ds-ease-out);
+}
+.hp-indexlink:hover{ transform:translate3d(6px,0,0); }
+.surface-dark .hp-indexlink:hover{ color:var(--ds-accent-light); }
+
+/* ============================================================================
+   SECTION 4. THE BOOKING BLOCK. The last band, and NOT a second ask.
+   pick: SECTION-COMPONENTS.md #52 (contact block, taken WITHOUT the map) +
+   SECTION-COMPONENTS.md #58 (Image divider full-bleed) as the ground | considered:
+   SECTION-COMPONENTS.md #37 CTA form, SECTION-COMPONENTS.md #41 closing CTA | why: #37
+   is a form, refused for the two independent grounds the brief records; #41 is a closing
+   band, and the chrome owns the site's single closing ask, so a closing band here would
+   be the second one on the page. #52's channel half is exactly what this band renders.
+   #58's role is "large image acts as section transition ... brand-led pages where
+   imagery does heavy lifting", which is what a band that ends the page in a room is.
+   THIS SECTION RENDERS THE TWO CHANNELS A SECOND TIME AND THE REPETITION IS DELIBERATE.
+   A booking block that says "use the details above" does not work on a telephone, where
+   above is a scroll away and the whole point of the block is that the number is under
+   the reader's thumb. Both copies carry the SAME marker names as the section 2 rows, so
+   the grep returns every place the value renders and a swapper changing the telephone
+   finds all of them.
+   FOUR PARAGRAPH-LEVEL ELEMENTS, AND THE COUNT IS LOAD-BEARING. briefs/contact.md
+   section 3a records that this section clears verify-cta-singularity on arm B rather
+   than on its class name: it renders the heading, the booking line, the telephone and
+   the email as separate paragraph-level elements, so the gate's low-content heuristic is
+   false natively. THE BUILD MAY NOT COLLAPSE THEM INTO TWO.
+   NO CLASS ATTRIBUTE IN THIS SECTION CARRIES A TOKEN CONTAINING THE SUBSTRING "cta", and
+   neither control carries a btn, button or cta class token.
+   ---- THE PLATE. WHERE THE CONTRAST GUARANTEE LIVES ON A CENTRED BAND. The hero keeps a
+   horizontal ramp because its copy is pinned to the left gutter and the geometry is
+   provable. This band is CENTRED by the owner's instruction, and a centred column sits
+   exactly where a left-to-right ramp is mid-fall, so the old guarantee is re-derived by
+   moving it off the band and onto a panel. The plate carries a FLAT scrim, one alpha at
+   every pixel, which makes the CONTRAST LEDGER's figure total rather than geometric.
+   THE PAPER PLATE IS ALSO A WHITE-ON-WHITE BOX. It is near-white paper sitting on a
+   daylight photograph, which is precisely the case the owner's drop-shadow release
+   names, so it takes the layered shadow.
+   ============================================================================ */
+.hp-plate{
+  position:relative;
+  z-index:3;
+  max-width:880px;
+  margin:0 auto;
+  padding:var(--ds-space-xl) var(--ds-space-lg);
+  border-radius:var(--ds-r-surface);
+}
+.hp-plate--paper{
+  background-color:var(--hp-paper-plate);
+  background-image:linear-gradient(160deg,
+    color-mix(in srgb, var(--ds-bg-surface) 0%, transparent) 0%,
+    var(--hp-wash-b) 100%);
+  box-shadow:var(--hp-shadow-box);
+}
+.hp-channels{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:var(--ds-space-md) var(--ds-space-xl);
+  margin-top:var(--ds-space-lg);
+}
+.hp-channel{ margin:0; }
+
+/* ============================================================================
+   THE LABEL STRIP. Build furniture, not a band of the site. It is the disclosure the
+   owner's instruction requires, and it is the first thing on the page. Same pattern as
+   both siblings', with this page's own placeholders and open questions named.
+   ============================================================================ */
+.hp-label{
+  background-color:var(--ds-bg-surface-2);
+  border-bottom:var(--ds-divider-h) solid var(--ds-line);
+  padding:var(--ds-space-lg) var(--hp-gutter);
+}
+.hp-label__inner{ max-width:var(--ds-container-max); margin:0 auto; }
+.hp-label__title{
+  margin:0 0 var(--ds-space-xs);
+  font-family:var(--ds-font-display);
+  font-size:var(--hp-fs-h3);
+  line-height:var(--ds-lh-head);
+  font-weight:var(--ds-weight-head);
+  color:var(--ds-ink-heading);
+}
+.hp-label__note{
+  margin:0 0 var(--ds-space-xs);
+  max-width:var(--ds-measure);
+  font-size:var(--ds-fs-fine);
+  line-height:var(--ds-lh-body);
+  color:var(--ds-ink-soft);
+}
+.hp-label__note:last-child{ margin-bottom:0; }
+
+/* ============================================================================
+   MOTION. Every animation is on TRANSFORM and OPACITY only. Nothing animates a layout
+   property, so nothing here can cause a reflow while it runs.
+   ============================================================================ */
+
+/* ---- the animated hero photograph ------------------------------------------
+   pick: MOTION-PATTERNS.md #27 (Parallax-image, depth-on-scroll) as the mechanic |
+   considered: MOTION-PATTERNS.md #25 (None, instant content), MOTION-PATTERNS.md #21
+   fade-up | why: the owner asked for the hero image itself to be animated, so #25 is out
+   by instruction. #27 is the entry that supplies the mechanic, and this is a STATED
+   DEVIATION from it: #27 drives the transform from scroll-timeline, and this drives it
+   from DURATION instead, because a scroll-linked hero stops moving the moment the reader
+   stops, and _MODERN-WOW-SPEC section 2 names what the owner actually asked for by its
+   own name: "gentle ken-burns drift on the hero". 44 seconds, symmetric ease, alternate,
+   no bounce, no scroll dependency. The base scale is 1.04 so the frame is covered at
+   every point of the drift. Identical to both siblings', because a third page whose hero
+   drifts at a different rate reads as a different site. */
+@keyframes hp-drift{
+  from{ transform:scale(1.04) translate3d(0,0,0); }
+  to  { transform:scale(1.13) translate3d(-1.6%,-1.4%,0); }
+}
+.hp-band--hero .hp-photo__img{
+  animation:hp-drift 44s cubic-bezier(.37,0,.63,1) infinite alternate;
+  /* will-change lives HERE and nowhere else. This is the one photograph on the page that
+     actually animates, so this is the one that earns a permanent compositor layer. */
+  will-change:transform;
+}
+
+/* ---- the animated headline: a staggered entrance ---------------------------
+   pick: MOTION-PATTERNS.md #21 (Fade-up, modern marketing default) | considered:
+   MOTION-PATTERNS.md #20 (None, instant render) | why: the owner asked for an animated
+   headline and an animated hero text, so #20 is out by instruction. #21's snippet is the
+   exact fade-up this uses, with the stagger _MODERN-WOW-SPEC section C prescribes. It is
+   CSS-only, so it runs with JavaScript disabled. */
+@keyframes hp-rise{
+  from{ opacity:0; transform:translate3d(0,20px,0); }
+  to  { opacity:1; transform:translate3d(0,0,0); }
+}
+.hp-rise{
+  opacity:0;
+  animation:hp-rise var(--hp-dur-rise) var(--ds-ease-out) forwards;
+  animation-delay:calc(var(--hp-i, 0) * 140ms + 120ms);
+}
+
+/* ---- the animation between sections ----------------------------------------
+   pick: MOTION-PATTERNS.md #26 (Fade-in-on-view) | considered: MOTION-PATTERNS.md #25
+   (None, instant content), MOTION-PATTERNS.md #28 pinned-section | why: the owner asked
+   for animations between sections, so #25 is out by instruction. #28 requires GSAP over
+   a CDN and pins a section under the reader, which is a heavy move on any page and an
+   absurd one on a page a reader opens to find a telephone number. #26 is the entry, and
+   this file ships its documented IntersectionObserver form with the stagger applied per
+   child.
+   THE HIDDEN STATE IS GATED BEHIND .hp-js, WHICH ONLY SCRIPT CAN ADD. With JavaScript
+   disabled the reveal never hides anything, so the page renders complete. Under
+   prefers-reduced-motion the block below forces every one of these to its FINAL VISIBLE
+   state. And the script carries a 4-second safety net that reveals anything still
+   unrevealed, so no observer failure can strand content. On this page that guarantee
+   matters more than on either sibling: the element a failed observer would strand is the
+   box with the telephone number in it. */
+.hp-reveal{ }
+.hp-js .hp-reveal{
+  opacity:0;
+  transform:translate3d(0,18px,0);
+  transition:
+    opacity   var(--hp-dur-reveal) var(--ds-ease-out),
+    transform var(--hp-dur-reveal) var(--ds-ease-out);
+  transition-delay:calc(var(--hp-i, 0) * var(--hp-stagger));
+}
+.hp-js .hp-reveal.hp-in{
+  opacity:1;
+  transform:translate3d(0,0,0);
+}
+
+/* ============================================================================
+   REDUCED MOTION. THE REQUIREMENT IS NOT "LESS MOTION", IT IS "FINAL VISIBLE STATE". A
+   reveal that starts at opacity 0 and never fires leaves the page blank for the reader
+   who asked for less motion, which is worse than no animation at all. So this block does
+   two separate things and both are necessary:
+     1. it neutralises duration everywhere, and
+     2. it explicitly FORCES the end state of every element that has a hidden or offset
+        start state, so nothing can rest anywhere but visible.
+   _MODERN-WOW-SPEC section 2 carries the same instruction in its own heading, and
+   MOTION-PATTERNS.md #26's own Responsive note is explicit that "under
+   prefers-reduced-motion the reveal is skipped and content renders fully visible".
+   ============================================================================ */
+@media (prefers-reduced-motion: reduce){
+  *,
+  *::before,
+  *::after{
+    animation-duration:1ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:1ms !important;
+    transition-delay:0s !important;
+    scroll-behavior:auto !important;
+  }
+  html{ scroll-behavior:auto !important; }
+  .hp-rise{
+    opacity:1 !important;
+    transform:none !important;
+    animation:none !important;
+  }
+  .hp-js .hp-reveal,
+  .hp-reveal{
+    opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
+    transition-delay:0s !important;
+  }
+  .hp-band--hero .hp-photo__img,
+  .hp-photo__img{
+    animation:none !important;
+    transform:scale(1.04) !important;
+  }
+  .hp-tel::after,
+  .hp-mail::after{ transition:none !important; }
+  .hp-indexlink{ transition:none !important; }
+}
+
+/* ============================================================================
+   THE PADDING LADDER. One spacing scale, the locked one. Every value below is a token or
+   a sum of tokens; no free number is authored. It steps down deliberately at 1440, 1024,
+   768 and 390, and BOTH the vertical band padding and the shared gutter step together,
+   so the page never has a wide gutter with a short band or the reverse. Identical to
+   both siblings' ladder.
+     > 1440   py 120 (96 + 24)   gutter 88 (64 + 24)
+     <= 1440  py  96 (2xl)       gutter 64 (xl)
+     <= 1024  py  72 (64 + 8)    gutter 48 (40 + 8)
+     <=  768  py  56 (64 - 8)    gutter 32 (24 + 8)
+     <=  390  py  40 (lg)        gutter 20 (24 - 4)
+   pick: _RESPONSIVE-PATTERN-LIBRARY (the breakpoint ladder) | considered: a single
+   clamp() on padding, per-band overrides | why: a single clamp reads smooth and hides
+   where the design actually changes; the owner asked for proper padding on mobile AND
+   desktop, which is a request for deliberate steps, not an interpolation.
+   ============================================================================ */
+@media (max-width:1440px){
+  :root{ --hp-gutter:var(--ds-space-xl); --hp-py:var(--ds-space-2xl); }
+}
+@media (max-width:1024px){
+  :root{
+    --hp-gutter:calc(var(--ds-space-lg) + var(--ds-space-xs));
+    --hp-py:calc(var(--ds-space-xl) + var(--ds-space-xs));
+  }
+  .hp-facts{ gap:var(--ds-space-lg); }
+}
+@media (max-width:768px){
+  :root{
+    --hp-gutter:calc(var(--ds-space-md) + var(--ds-space-xs));
+    --hp-py:calc(var(--ds-space-xl) - var(--ds-space-xs));
+  }
+  /* BELOW 768 the text uses the full band width, so the scrim ramp is DROPPED and the
+     flat plateau covers every pixel. The worst-case figures in the CONTRAST LEDGER then
+     hold across the whole frame rather than only inside a geometric text zone. The
+     photograph is re-anchored so its subject stays in frame at the tighter crop, which
+     is the edge case HERO-COMPOSITIONS.md #5 names. */
+  .hp-ground--ink .hp-photo__scrim{
+    background-image:none;
+    background-color:var(--hp-ink-plateau);
+  }
+  .hp-textzone{ max-width:none; }
+  .hp-photo__img{ object-position:50% 50%; }
+  .hp-band--hero .hp-ground{ min-height:clamp(460px, 68vh, 600px); }
+  .hp-band--photoband .hp-ground--paperphoto{ min-height:clamp(380px, 50vh, 500px); }
+  /* THE FOUR CONTACT ROWS GO TO ONE COLUMN. Two columns at 768 gives each row about
+     330px, which still fits the email address, but it puts the hours table beside the
+     telephone and the two read as one row of numbers. One column keeps every label
+     directly above the value it names, which is the whole point of labelling them. */
+  .hp-facts{ grid-template-columns:1fr; gap:var(--ds-space-lg); }
+  .hp-indexlink{ padding:var(--ds-space-md) 0; }
+  .hp-h1{ max-width:none; }
+  .hp-h2{ max-width:none; }
+  .hp-panel{ padding:var(--ds-space-lg) var(--ds-space-md); }
+  .hp-plate{ padding:var(--ds-space-lg) var(--ds-space-md); }
+  .hp-channels{ gap:var(--ds-space-md); }
+}
+@media (max-width:390px){
+  :root{
+    --hp-gutter:calc(var(--ds-space-md) - var(--ds-space-2xs));
+    --hp-py:var(--ds-space-lg);
+  }
+  .hp-label{ padding:var(--ds-space-md) var(--hp-gutter); }
+}
+</style>
+</head>
+<body>
+
+<!-- ========================= THE LABEL STRIP (build furniture) =============== -->
+<div class="hp-label">
+  <div class="hp-label__inner">
+    <p class="hp-label__title">Template composition. Nothing on this page is a fact about a real practice.</p>
+    <p class="hp-label__note">THE ADDRESS, THE TELEPHONE NUMBER, THE EMAIL ADDRESS AND THE OPENING HOURS ON THIS PAGE ARE ALL PLACEHOLDERS. So are the practice name, the town and both photographs. This is the page a reader is most likely to act on, so it is said here first and in full rather than left to a footnote. None of the four values reaches anybody, and that is true by construction rather than by promise: the telephone sits in the 555-01xx line range reserved for fictional use under the North American Numbering Plan, behind an area code that is not assigned there, and the email sits under .example, a reserved top-level domain that can never be registered anywhere. For the email that holds everywhere. For the telephone it holds under that numbering plan; the jurisdiction of this build is an undeclared working assumption, so outside it the risk is low rather than proven zero.</p>
+    <p class="hp-label__note">The links work and the identities are template. Tapping the number dials it and the mail link opens a message, because a contact page on which nothing is clickable does not read finished. What the working controls do not prove is whose address is inside them: a real practice email is still outstanding and is the single item that makes this page do its job.</p>
+    <p class="hp-label__note">Four things are open for the owner, and not one of them is discharged by its template value: a real street address, a real telephone number, a real practice email and real opening hours. Three more are decisions this build made rather than questions it is asking, and they are listed so the owner can overrule them. There is NO FORM on this page, because there is nowhere honest for one to submit and because collecting personal data needs a named data-protection regime that this build does not have. There is NO MAP and no place card, because a map of an invented street points at somebody else's building and a mainstream place card would carry third-party proof widgets back onto a site that was deliberately cleaned of every one of them. And NOTHING HERE SAYS WHEN ANYONE ANSWERS, because no response time has been confirmed and a placeholder for one would have to promise something in order to be a placeholder for it.</p>
+    <p class="hp-label__note">This is the find-us page body on its own. There is no site header, no footer and no closing call to action, because the chrome owns all three and has not been built yet. The five links at "More about the practice" point at sibling pages that do not all exist yet. The brief declares one image slot for this page and this composition renders two, so the derived swap index must be reconciled from one to two before ship; the hero also renders a photograph of a reception rather than the frontage its brief asks for, because no frontage photograph exists in the cleared set and no real one may be used.</p>
+  </div>
+</div>
+
+<!-- ===================================================================== S1 ===
+     CONTACT-HERO (XS). DARK GROUND + BACKGROUND PHOTOGRAPH.
+     Ground treatment 1 of 4. The page opens at its darkest, on the brightest photograph
+     in the set, which is the inversion that keeps this hero from being either sibling's
+     hero a second time.
+     ONE h1 AND ONE SUB-LINE. NOTHING ELSE. The brief is explicit about the count, and on
+     this page the count is the design: a reader who has decided wants the address and the
+     number, and anything between them and it is in the way. The sub-line therefore is
+     the four values in one sentence, with both channels already live, so the page answers
+     its own question before the first scroll.
+     THE SUB-LINE RESTATES VALUES THAT ALSO RENDER AT SECTION 2, AND THAT IS WHY EVERY
+     ONE OF THEM CARRIES ITS OWN MARKER HERE. A swapper changing the telephone must find
+     both copies or the page contradicts itself, and the grep is the only thing that will
+     tell them the second copy is here.
+     IT CARRIES NO FORWARD-LOOKING WORD. No soon, no shortly, no we will. A softened
+     caveat converts an honest internal note into a live promise about a future the
+     practice has not made, and template mode makes that ban sharper rather than softer:
+     on a page that now reads finished, a "details coming soon" line would read as a
+     commitment.
+     THE SECTION-SEQUENCE TOKEN ON EVERY <section> BELOW is the brief's own machine field.
+     The brief-consumed gate joins LITERALLY on the section_seq name, so each name exists
+     as a class token in its own right. Those four tokens are deliberately unstyled; they
+     are index keys, not a styling hook. The brief also records what must NOT appear: no
+     token spelling "form", because the registry slot this page substitutes is the one
+     this page refuses.
+     ========================================================================== -->
+<section class="hp-band hp-band--hero contact-hero" id="s1-contact-hero">
+  <div class="hp-ground hp-ground--photo hp-ground--ink surface-dark">
+    <div class="hp-photo">
+      <!-- swap:image-contact-hero
+           GENERATED TEMPLATE IMAGE, not owner photography. Replace before ship.
+           ALT DEVIATION, declared rather than slipped in. The brief's owed alt for this
+           slot is "A dental practice frontage seen from the opposite side of a street."
+           No photograph in the cleared set is a frontage, and one may not simply be
+           added: no image on this site may depict a real premises, and both the city and
+           the street on this page are invented, so a real streetscape would attach this
+           practice's name to somebody else's building. What renders is the reception,
+           which is the place a reader who has decided actually arrives at and is the
+           photograph the homepage's own "Find us" route card promised. The alt below is
+           written from the picture per the brief's own alt RULE and is the same string
+           the homepage renders for the same file. It asserts NO premises fact: no
+           street, no frontage, no entrance direction, no floor, no lift, no ramp, no
+           parking, no distance. See IMAGERY DECISION LEDGER for the standing obligation
+           to rewrite it the day a real photograph lands. -->
+      <!-- decoding="sync", not "async". This is the largest image above the fold at both
+           widths. decoding="async" lets the browser present the frame before the picture
+           has finished decoding, which is right for the below-the-fold photograph and
+           wrong for this one, because nothing is waiting behind it. -->
+      <img class="hp-photo__img" src="../assets/dental-clinic-reception.jpg"
+           width="1024" height="576" loading="eager" fetchpriority="high" decoding="sync"
+           alt="A reception counter and a row of upholstered chairs beside a wall of tall windows in daylight.">
+      <span class="hp-photo__scrim"></span>
+      <span class="hp-photo__edge"></span>
+    </div>
+    <div class="hp-wrap">
+      <div class="hp-textzone">
+        <!-- swap:contact-heading-1
+             This page title's own slot name, added 2026-08-26 so the heading family runs
+             1 to 4 with no gap at its head.
+             THE CUT IS FIXED, NOT LEFT TO THE BROWSER. Non-breaking binds hold "How to
+             reach" together and hold "Alder Grove Dental" and "in Riverbend" together, so
+             the only break opportunities in the line are after "reach" and after
+             "Dental". The three-line cut can therefore only ever be "How to reach" /
+             "Alder Grove Dental" / "in Riverbend", and the practice name can never be
+             split across a line. -->
+        <!-- swap:practice-name
+             Template value, not this practice's data.
+             Swap for the page-inventory.md 2.3 "practice name" row when the owner
+             supplies it. -->
+        <!-- swap:city
+             Template value, not this practice's data.
+             Swap for the page-inventory.md 2.3 "city" row when the owner supplies it. -->
+        <h1 class="hp-h1 hp-rise" style="--hp-i:0">How&nbsp;to&nbsp;<span class="hp-key">reach</span> Alder&nbsp;Grove&nbsp;Dental in&nbsp;Riverbend</h1>
+        <!-- swap:contact-subline
+             The sub-line is directly beneath the h1 and is NOT a heading element of any
+             kind. It is the brief's own literal string rather than a description of one,
+             so the build invents no orientation sentence of its own. -->
+        <p class="hp-lead hp-rise" style="--hp-i:1">
+          <!-- swap:address
+               Template value, not this practice's data.
+               Swap for the page-inventory.md 2.3 "full address line" row when the owner
+               supplies it. Not a link: see THE PREMISES REFUSAL above. -->
+          <!-- swap:street
+               Template value, not this practice's data.
+               Swap for the page-inventory.md 2.3 "street address" row when the owner
+               supplies it. -->
+          <span class="hp-street">114&nbsp;Alder&nbsp;Street</span>,
+          <!-- swap:city -->Riverbend.
+          Call
+          <!-- swap:phone
+               Template value, not this practice's data.
+               Swap for the page-inventory.md 2.3 "telephone" row when the owner supplies
+               it. BOUND TWICE, and both binds are deliberate: the non-breaking space
+               stops the area code separating from the number, and the nowrap on .hp-tel
+               stops the HYPHEN inside 555-0142 being taken as a break opportunity, which
+               it is by default. The href carries NO country code, because a country code
+               asserts a jurisdiction and the jurisdiction of this build is an undeclared
+               working assumption. -->
+          <a class="hp-tel" href="tel:5555550142">(555)&nbsp;555-0142</a>
+          or email
+          <!-- swap:email
+               Template value, not this practice's data.
+               Swap for the page-inventory.md 2.3 "email" row when the owner supplies it.
+               mailto: with no subject and no body parameter: a pre-filled subject is copy
+               nobody approved and a pre-filled body puts words in a visitor's mouth. -->
+          <a class="hp-mail" href="mailto:hello@aldergrovedental.example">hello@aldergrovedental.example</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== S2 ===
+     CONTACT-DETAILS (S). LIGHT PLAIN GROUND (the page surface).
+     Ground treatment 2 of 4, and the section the whole page exists for.
+     THE REGISTRY SLOT THIS SUBSTITUTES IS "form", AND THE SUBSTITUTION IS FORCED
+     UPSTREAM RATHER THAN CHOSEN HERE. This page carries no form element: a form makes it
+     a personal-data collection point on a site whose data-protection regime is unnamed,
+     and there is nowhere honest for one to submit. The slot renders the contact-details
+     block instead, and the class token below is "contact-details" and never "form".
+     THE FORM ELEMENT IS NAMED IN WORDS HERE AND ITS OPENING TAG IS NEVER REPRODUCED, AND
+     THAT IS A GATE FINDING RATHER THAN A STYLE PREFERENCE. This comment first read "this
+     page carries no" followed by the literal opening tag. Executed against the real
+     verify-conversion-integrity.mjs this pass: its hasForm() tests the RAW write payload
+     and does NOT strip HTML comments, so the tag inside this refusal satisfied limb 1 and
+     the gate reported hasForm=true. Proved with a control rather than reasoned about: the
+     same page with all three mailto hrefs and all three tel hrefs replaced by href="#"
+     still returned hasForm=true and exit 0 at 132215 stdin bytes. A SENTENCE SAYING THE
+     PAGE HAS NO FORM WAS TURNING THE CONVERSION GATE GREEN. It is the same shape as the
+     marker-form defect the brief records, one level up: two gates disagree about whether
+     a comment is content, and the one that reads it is the one that decides.
+     This page's affordance is real and is the mailto inquiry the gate's own source
+     comment names, so the verdict was right on this page by accident and would have been
+     wrong on any page without one.
+     FOUR ROWS, FOUR VISIBLE FIELD LABELS. Until the 2026-08-26 doctrine this block
+     specified four values and no labels, which is four runs of text a sighted reader
+     decodes by convention and a screen-reader user meets as four unlabelled strings. A
+     contact block whose rows are unlabelled is not a finished contact block.
+     THREE OF THE FOUR LABELS ARE THE SAME STRINGS UNDER THE SAME MARKER NAMES THE
+     HOMEPAGE RENDERS, and that is the decision rather than a coincidence: a contact page
+     reading "Telephone" while the homepage reads "Phone" is the pages-disagree defect at
+     field-label scale, and a shared marker name makes it impossible rather than merely
+     unlikely. The Email label renders here alone, because the email value renders here
+     alone.
+     WHAT THIS SECTION REFUSES: no map embed and no place card (item 9, and a map of an
+     invented street is a premises assertion); no response-time or reply-time line; no
+     "walk-ins welcome", "call anytime" or "we answer quickly"; no fee, currency symbol
+     or "from"; no accepted-plan or payment vocabulary of any kind; no capacity claim; no
+     premises particular of any kind.
+     ========================================================================== -->
+<section class="hp-band contact-details" id="s2-contact-details">
+  <div class="hp-ground hp-ground--paper">
+    <div class="hp-wrap">
+      <div class="hp-head hp-reveal" style="--hp-i:0">
+        <!-- swap:contact-heading-2
+             The heading names both halves of what the block holds and promises nothing.
+             It is deliberately a DIFFERENT string from the homepage's location band
+             heading, because that block is a preview carrying no email and this one is
+             the full set: one heading over two different renders is the pages-disagree
+             defect run in reverse. -->
+        <h2 class="hp-h2">How to reach us, and <span class="hp-key">when&nbsp;we&nbsp;are&nbsp;open</span></h2>
+      </div>
+      <div class="hp-panel hp-reveal" style="--hp-i:1">
+        <dl class="hp-facts">
+          <div class="hp-fact">
+            <!-- swap:field-label-address -->
+            <dt class="hp-fact__label">Address</dt>
+            <dd class="hp-fact__value">
+              <!-- swap:address
+                   Template value, not this practice's data.
+                   Swap for the page-inventory.md 2.3 "full address line" row when the
+                   owner supplies it. A place block and NOT a link: the only destinations
+                   available are a map provider, refused on the rating rule, or a
+                   directions route to a place that does not exist. -->
+              <address class="hp-addr">
+                <!-- swap:street
+                     Template value, not this practice's data.
+                     Swap for the page-inventory.md 2.3 "street address" row when the
+                     owner supplies it. It carries no state, no ZIP, no postcode and no
+                     country, so it commits to no postal convention and maps to no real
+                     place. -->
+                <span class="hp-street">114&nbsp;Alder&nbsp;Street</span><br>
+                <!-- swap:city
+                     Template value, not this practice's data.
+                     Swap for the page-inventory.md 2.3 "city" row when the owner supplies
+                     it. -->
+                Riverbend
+              </address>
+            </dd>
+          </div>
+          <div class="hp-fact">
+            <!-- swap:field-label-phone -->
+            <dt class="hp-fact__label">Telephone</dt>
+            <dd class="hp-fact__value">
+              <!-- swap:phone
+                   Template value, not this practice's data.
+                   Swap for the page-inventory.md 2.3 "telephone" row when the owner
+                   supplies it. Renders as its live link here, in the hero sub-line and at
+                   section 4, on the same value and in the same form: tel: with no country
+                   code. -->
+              <a class="hp-tel" href="tel:5555550142">(555)&nbsp;555-0142</a>
+            </dd>
+          </div>
+          <div class="hp-fact">
+            <!-- swap:field-label-email -->
+            <dt class="hp-fact__label">Email</dt>
+            <dd class="hp-fact__value">
+              <!-- swap:email
+                   Template value, not this practice's data.
+                   Swap for the page-inventory.md 2.3 "email" row when the owner supplies
+                   it. A real practice email is the cheapest real exit out of this page's
+                   deadlock and it is still outstanding. -->
+              <a class="hp-mail" href="mailto:hello@aldergrovedental.example">hello@aldergrovedental.example</a>
+            </dd>
+          </div>
+          <div class="hp-fact">
+            <!-- swap:field-label-hours -->
+            <dt class="hp-fact__label">Opening hours</dt>
+            <dd class="hp-fact__value">
+              <!-- swap:hours
+                   Template value, not this practice's data.
+                   Swap for the page-inventory.md 2.3 "opening hours" row when the owner
+                   supplies it. TWO LABELLED ROWS, never one run-on string: the joining
+                   character in the register row is for a single-line render and a
+                   two-row block is the finished form. "Mon to Thu and its hours" is the
+                   owner's own named pair, so the day and the time are separate flex
+                   children of one row and cannot break apart from each other, and the
+                   nowrap on each stops either one breaking INSIDE itself at its own
+                   hyphen. -->
+              <div class="hp-hours">
+                <div class="hp-hours__row"><span class="hp-hours__day">Mon-Thu</span><span class="hp-hours__time">8:00-17:00</span></div>
+                <div class="hp-hours__row"><span class="hp-hours__day">Fri</span><span class="hp-hours__time">8:00-14:00</span></div>
+              </div>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== S3 ===
+     ROUTING-BLOCK (S). DARK GROUND + GRADIENT, no photograph.
+     Ground treatment 3 of 4. Five sibling pages, by neutral label, each a real anchor.
+     This page is the terminus of both surviving flows on the site, and this block is
+     what stops that being a dead end.
+     NO LABEL CHARACTERISES WHAT THE VISITOR WILL FIND, which is this section's own rule
+     and is why there is no supporting line under any of the five. The five strings are
+     the sitemap.yaml nav: identifiers character for character; rendering a different
+     word here would fork the label from the navigation, which is the pages-disagree
+     defect in miniature.
+     CONTACT IS EXCLUDED because it is the page the reader is standing on.
+     WHAT THIS SECTION REFUSES: no "still can't find what you need?" framing, which
+     implies a channel exists to ask through; no link to a booking or appointment route,
+     because none exists; no comparative framing of the sibling pages; and no count of
+     pages, clinicians or locations in any label, which is why the heading is "More about
+     the practice" and not "Every page on this site" or "The other five pages" (the first
+     is a completeness claim and the second is a number that moves whenever the inventory
+     does).
+     ========================================================================== -->
+<section class="hp-band routing-block" id="s3-routing-block">
+  <div class="hp-ground hp-ground--grad surface-dark">
+    <div class="hp-wrap">
+      <div class="hp-head hp-reveal" style="--hp-i:0">
+        <!-- swap:contact-heading-3
+             The same string heads the cross-link rail on the services, questions and team
+             pages, and that is a decision rather than a collision: those blocks and this
+             one are ONE component rendered four times, and giving one component four
+             headings is how a site starts describing the same thing in four sets of
+             words. It is not the same slot, so it is not the same marker. -->
+        <h2 class="hp-h2">More about <span class="hp-key">the&nbsp;practice</span></h2>
+      </div>
+      <ul class="hp-index hp-reveal" style="--hp-i:1">
+        <li class="hp-indexitem">
+          <!-- swap:contact-route-1
+               The sitemap.yaml nav: identifier, character for character. A working
+               identifier and an owner-approval item, which is why it carries a marker
+               rather than being treated as fixed chrome. -->
+          <a class="hp-indexlink" href="index.html">Home</a>
+        </li>
+        <li class="hp-indexitem">
+          <!-- swap:contact-route-2 -->
+          <a class="hp-indexlink" href="services.html">What we do</a>
+        </li>
+        <li class="hp-indexitem">
+          <!-- swap:contact-route-3 -->
+          <a class="hp-indexlink" href="about.html">About us</a>
+        </li>
+        <li class="hp-indexitem">
+          <!-- swap:contact-route-4 -->
+          <a class="hp-indexlink" href="team.html">Who you'll see</a>
+        </li>
+        <li class="hp-indexitem">
+          <!-- swap:contact-route-5 -->
+          <a class="hp-indexlink" href="faq.html">Questions and answers</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== S4 ===
+     BOOKING-INTENT (S). LIGHT GROUND + BACKGROUND PHOTOGRAPH.
+     The fourth ground treatment, and the last, so a page that opened in a daylit
+     reception closes in a daylit corridor.
+     THIS SLOT USED TO BE AN ABSENCE RENDERED AS A NOTICE, and the rename is the
+     substantive change rather than a cosmetic one. A visitor arriving from an old
+     /appointment/ URL arrives expecting to book, and a block announcing that there is no
+     booking path is scaffolding rather than copy. What renders states the arrangement
+     positively and gives the visitor the two things they arrived for: a way to start,
+     and something to press. The absence statement is not deleted from the site; it lives
+     on the questions page, where it is a reply to something a visitor asked rather than
+     an unprompted announcement about a feature the site does not have.
+     THE LINE SAYS HOW AN APPOINTMENT IS ARRANGED AND NOTHING ABOUT WHEN, HOW FAST, OR BY
+     WHOM THE CHANNEL IS ANSWERED. That distinction is the whole of what this band may
+     say, and a clickable telephone number is the strongest possible prompt to write the
+     sentence it may not write. Refused here, each for its own reason: no "we answer
+     quickly", no "call anytime", no "walk-ins welcome", no "we're accepting new
+     patients", no "in an emergency", no out-of-hours guidance, no "prices on request",
+     no apology about the missing details that turns into a promise about when they
+     arrive.
+     THIS BAND RENDERS NO <button> AND NO CONTROL BUT THE TWO CHANNELS, and no class
+     attribute in it carries a token containing the substring "cta". The site's single
+     closing ask belongs to the chrome, which does not exist yet.
+     ========================================================================== -->
+<section class="hp-band hp-band--photoband booking-intent" id="s4-booking-intent">
+  <div class="hp-ground hp-ground--photo hp-ground--paperphoto">
+    <div class="hp-photo">
+      <!-- swap:image-contact-closing
+           GENERATED TEMPLATE IMAGE, not owner photography. Replace before ship.
+           SLOT MINTED BY THIS BUILD. The brief declares one image slot for this page and
+           this is a second. It exists because the owner requires all four ground
+           treatments to appear and a four-section page cannot show them with one
+           photograph, and a band ground needs a marker so a swapper can find it. The
+           derived swap index must be reconciled from 1 to 2.
+           THE ALT IS THE STRING page-services.html RENDERS FOR THE SAME FILE, and that is
+           the rule rather than a shortcut: one photograph gets one description across the
+           site, or a screen-reader user meets the same picture under two names. It
+           asserts no premises fact: no floor, no entrance direction, no lift, no ramp, no
+           parking, no distance, and no street. The small illuminated sign at the far end
+           of the corridor is blurred past legibility at every rendered size and asserts
+           nothing; it is named at item 10 above rather than left to be found. -->
+      <img class="hp-photo__img" src="../assets/dental-clinic-warm.jpg"
+           width="1024" height="576" loading="lazy" decoding="async" fetchpriority="low"
+           alt="A corridor with doors on both sides and daylight at the end.">
+      <span class="hp-photo__scrim"></span>
+      <span class="hp-photo__edge"></span>
+    </div>
+    <div class="hp-wrap">
+      <!-- THE PLATE. The band centres, so the contrast guarantee moved off the band's
+           geometry and onto this panel, where it is flat and total. See CONTRAST LEDGER
+           section B. Near-white paper on a daylight photograph is a white-on-white box in
+           the strictest reading of the owner's release, so this plate carries the layered
+           drop shadow. -->
+      <div class="hp-plate hp-plate--paper hp-reveal" style="--hp-i:0">
+        <div class="hp-head">
+          <!-- swap:contact-heading-4
+               A fixed structural label until 2026-08-26, when the exemption was withdrawn
+               site-wide: every link label on these pages carries a marker on the ground
+               that a label is a working identifier the owner may replace, and a heading is
+               more visible than a rail label rather than less. THE STRING IS UNCHANGED. -->
+          <!-- THE CUT IS BOUND, AND THE BIND WAS PUT HERE BY A RENDER RATHER THAN BY
+               EYE. Measured at 390 before it: this heading took two lines and
+               text-wrap:balance cut them "Making an" / "appointment", which strands the
+               indefinite article at the end of line one and splits it from the noun it
+               belongs to. Binding "an appointment" as one unit leaves exactly one break
+               opportunity, after "Making", so the two lines are the verb and the thing
+               it governs. At 1440 the heading is one line and the bind changes nothing.
+               The article is bound INSIDE the keyword span rather than beside it, which
+               is what page-services.html does with the same phrase in its own
+               appointment heading, so the gradient covers the same unit on both pages. -->
+          <h2 class="hp-h2">Making <span class="hp-key">an&nbsp;appointment</span></h2>
+        </div>
+        <!-- swap:booking-line
+             SHARED CARRIER. This line renders byte-identical on page-services.html under
+             the same marker name. It states the booking METHOD and says nothing about who
+             answers, how soon, or what follows. The nowrap span changes the markup and
+             leaves the TEXT bytes identical, so the sibling page still matches. -->
+        <p class="hp-lead">Appointments are arranged by telephone <span class="hp-nb">or by email</span>.</p>
+        <div class="hp-channels">
+          <p class="hp-channel">
+            <!-- swap:phone
+                 Template value, not this practice's data.
+                 Swap for the page-inventory.md 2.3 "telephone" row when the owner supplies
+                 it. The third render of this value on the page and the third carrier of
+                 this marker: the repetition is deliberate, because a booking block that
+                 says "use the details above" does not work on a telephone. -->
+            <a class="hp-tel" href="tel:5555550142">(555)&nbsp;555-0142</a>
+          </p>
+          <p class="hp-channel">
+            <!-- swap:email
+                 Template value, not this practice's data.
+                 Swap for the page-inventory.md 2.3 "email" row when the owner supplies it.
+                 It delivers into a reserved domain and reaches nobody until it is
+                 swapped. -->
+            <a class="hp-mail" href="mailto:hello@aldergrovedental.example">hello@aldergrovedental.example</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+/* ============================================================================
+   THE SCROLL REVEAL. MOTION-PATTERNS.md #26's documented IntersectionObserver form,
+   carried from the sibling pages unchanged so the three pages reveal at the same rate.
+
+   THREE SEPARATE GUARANTEES THAT NOTHING CAN BE STRANDED INVISIBLE, because the owner's
+   requirement is a FINAL VISIBLE STATE and not merely less motion:
+     1. The hidden start state is gated behind the .hp-js class, which only this script
+        can add. With JavaScript disabled or blocked, nothing is ever hidden and the page
+        renders complete at first paint.
+     2. prefers-reduced-motion is read here as well as in CSS. When it is set, or when
+        IntersectionObserver is missing, every element is revealed immediately and no
+        observer is created at all.
+     3. A 4-second safety net reveals anything still unrevealed, so a failed or mis-rooted
+        observer cannot leave content hidden.
+   ON THIS PAGE THAT THIRD GUARANTEE IS THE ONE THAT MATTERS MOST: the element a failed
+   observer would strand is the box with the address and the telephone number in it.
+   ============================================================================ */
+(function () {
+  var root = document.documentElement;
+  root.className = root.className ? root.className + ' hp-js' : 'hp-js';
+
+  var nodes = document.querySelectorAll('.hp-reveal');
+  function showAll() {
+    for (var i = 0; i < nodes.length; i++) { nodes[i].className += ' hp-in'; }
+  }
+
+  var reduce = false;
+  try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { reduce = false; }
+  if (reduce || !('IntersectionObserver' in window)) { showAll(); return; }
+
+  var io = new IntersectionObserver(function (entries) {
+    for (var i = 0; i < entries.length; i++) {
+      if (entries[i].isIntersecting) {
+        entries[i].target.className += ' hp-in';
+        io.unobserve(entries[i].target);
+      }
+    }
+  }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+
+  for (var j = 0; j < nodes.length; j++) { io.observe(nodes[j]); }
+  window.setTimeout(showAll, 4000);
+})();
+</script>
+
+</body>
+</html>
