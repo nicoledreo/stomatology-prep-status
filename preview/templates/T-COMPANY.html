@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- swap:city -->
+<!-- swap:practice-name
+     Template value, not this practice's data.
+     Swap for the page-inventory.md 2.3 "practice name" row when the owner supplies
+     it. The markers sit on the title element because that is the one identity
+     surface a visitor never reads, so a swapper never notices it by reading the
+     page. If it is not in the grep index it is not findable at all. -->
+<title>Dental practice in Riverbend - Alder Grove Dental</title>
+
+<!-- swap:practice-name -->
+<!-- swap:city
+     Template value, not this practice's data.
+     Swap for the real town when the owner supplies it. "Riverbend" is an invented
+     place name and fixes no jurisdiction. -->
+<meta name="description" content="About Alder Grove Dental, a dental practice in Riverbend. How we work, in our own words.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+
+<!-- THE FOUR LOCKED SHEETS, in load order. Nothing below re-decides a colour, a type
+     step, a spacing step or a control. This file COMPOSES. -->
+<link rel="stylesheet" href="../stomatology-tokens.css">
+<link rel="stylesheet" href="../stomatology-structural.css">
+<link rel="stylesheet" href="../brand-card-standard.css">
+<link rel="stylesheet" href="../stomatology-chrome.css">
+
+<!-- ============================================================================
+     T-COMPANY PAGE TEMPLATE. Tournament entry. Covers: about.
+
+     WHAT THIS FILE IS. The page-type template for T-COMPANY, composed from the
+     locked visual direction and the approved page design at _design/page-about.html.
+     It carries that page's visual LANGUAGE (band rhythm, photographic scrims,
+     gradient grounds, the plate, the value boxes, the route card, the hours block)
+     and NOT its skeleton: the approved page is built on a bespoke band, ground and
+     wrap nest, and the forced DOM grammar replaces that nest wholesale.
+
+     THE FORCED GRAMMAR, which every band below obeys without exception:
+         section  ->  div.container  ->  div.row  ->  div.col  ->  OBJECT
+     The section carries the ground treatment and the dark flip. The container is the
+     max-width wrapper. The row is a horizontal group, the col is a cell, and the
+     OBJECT is the leaf that carries the visual skin. Structure classes carry LAYOUT
+     ONLY; not one of them below carries a skin class.
+
+     TWO CONTAINERS APPEAR IN A PHOTOGRAPHIC BAND, AND THAT IS DELIBERATE. A
+     full-bleed ground layer cannot live inside the max-width content wrapper without
+     being clipped to it, so a photographic band opens with a container--full holding
+     the ground layer and then carries its copy in the ordinary container. Both are
+     containers, so the section's children are containers exactly as the grammar
+     requires, and the ground layer is anchored to the section rather than to the
+     copy column. The container--full is deliberately left unpositioned so the
+     absolutely positioned ground object resolves against the section.
+
+     VARIANT: STANDARD, NOT FOUNDER-LED, AND THAT IS FORCED RATHER THAN PREFERRED.
+     The registry gives founder-led an 8 plus or minus 1 window and a floor that
+     requires a founder story captured VERBATIM plus at least one named bio per
+     founder. This build has NO owner-supplied founder data of any kind: no founder
+     name, no founder statement in the owner's words, no role, no register entry, no
+     interview. Composing founder-led here would mean inventing a person, which is
+     the one thing this build may never do. The standard variant's 5 to 7 window is
+     what this template writes to, and it writes FIVE, at the window's floor.
+
+     THE REGISTRY FLOOR, and the half of it this template CANNOT meet.
+     T-COMPANY standard declares two floor items:
+       1. "standard: story + the-why + team all present"  MET. S2 is the story, S3 is
+          the why, S4 is the values-and-people band that routes to the team page.
+       2. "standard: founding facts OWNER"                NOT MET, and unmeetable
+          here. content-bible.md 0.5 bullet 5 is a FLAT BAN on the "since a year" and
+          "established a year" idiom, not a hold on an unknown value, so no template
+          value rescues it: a template value substitutes for a missing fact and never
+          for a banned sentence. This page therefore carries no founding year, no
+          origin date and no timeline of any kind, and the floor item stays open as
+          owner data plus a content-bible amendment, not as a build task.
+
+     PROOF IS HELD ON THIS BUILD, WHICH IS WHY SECTION 5 IS NOT A PROOF STRIP.
+     The type registry's fifth slot for T-COMPANY standard is proof-logos at XS. This
+     build ships proof in NO form: no testimonial, review, rating, star widget, review
+     count, award, accreditation, statistic, proof strip or client logo, and not
+     behind a "representative example" caption either, because a captioned fake is
+     still a fake. There is no owner-supplied logo, no verifiable coverage and no
+     consented quote on disk to put in that slot. COMPANY-SECTIONS.md #5 answers this
+     case in its own words: "OMIT it (drop to one fewer section) when there is no
+     verifiable coverage - never fabricate a press bar." So the slot carries a PLAIN
+     FACTUAL STATEMENT instead, the opening hours and the booking method, which is
+     the one practical particular an institution page owes and which asserts nothing
+     about anybody's reputation. The section keeps the proof-logos class token so the
+     registry slot is still traceable, and carries opening-hours beside it, which is
+     the name the page brief's own section_seq gives this slot.
+
+     THE CLOSING CALL TO ACTION IS NOT IN THIS BODY AND MUST NOT BE ADDED. The site
+     has exactly one, the chrome owns it, it is built at _design/_chrome-block.html
+     and it appears on every page automatically. This body ends at the section before
+     it. Nothing below renders a second ask, and no class token below contains the
+     substring "cta".
+
+     PAGE-LEVEL DIVIDER PICK, recorded here because it governs every band boundary
+     rather than one section.
+     pick: DIVIDER-PATTERNS.md #1 Hard edge (no divider, color change only) |
+     considered: #2 Wave smooth (single curve), #9 Gradient fade | rigor: medium |
+     why: #2 puts a decorative curve between a corridor photograph and a paper band,
+     which reads as a marketing template rather than as a practice; #9 fades one
+     ground into the next and would erase the single largest luminance step this page
+     has, the scrimmed reception handing over to a daylit corridor, which is the
+     transition doing the most work. A ground CHANGE already carries every boundary
+     here, so a second device at the same seam is two devices doing one job.
+
+     HONESTY, ABSOLUTE AND WITHOUT EXCEPTION. Every practice value below is a
+     PLACEHOLDER: the name, the town, the hours, the account of a visit, the three
+     values and the three photographs. Nothing below is a fact about a real practice.
+     No guarantee, no unconditional promise about clinical conduct, no testimonial,
+     no rating, no award, no statistic. No clinician is named, implied or counted. No
+     children's dentistry focus in any form. No price, fee or currency. No health
+     advice and no health outcome. No superlative and no comparison. Every swappable
+     value carries a swap marker naming the datum that replaces it.
+
+     ZERO em dashes, ZERO en dashes, ZERO non-ASCII bytes, ZERO hex colour literals.
+     Every colour reaches through var(--ds-*) or a token derived from one.
+     ============================================================================ -->
+
+<style>
+/* ============================================================================
+   1. THE FEW TOKENS THIS FILE DERIVES, all from the locked sheets.
+   Nothing here invents a colour; each is a mix over a locked token, carried by name
+   from the approved page design so this template and that page set type and paper at
+   the same values rather than at two nearly-equal values.
+   ============================================================================ */
+:root{
+  --hp-paper-veil:    color-mix(in srgb, var(--ds-bg-surface) 30%, transparent);
+  --hp-paper-plate:   color-mix(in srgb, var(--ds-bg-surface) 86%, transparent);
+  --hp-shadow-box-hi: 0 4px 10px var(--hp-sh-key), 0 40px 72px -10px var(--hp-sh-amb), var(--ds-shadow-rest);
+  /* the second-level display step, carried by its existing name rather than minted:
+     a second-level page whose largest heading is as loud as the homepage's reads as
+     a second homepage. */
+  --sv-fs-display:    clamp(34px, 4.2vw, 58px);
+}
+
+/* ============================================================================
+   2. THE STRUCTURE LAYER. LAYOUT ONLY.
+   These three classes are the forced grammar's own vocabulary and they carry no
+   colour, no border, no shadow and no type. A page built from this template gets its
+   whole skeleton from here and its whole look from section 3.
+   ============================================================================ */
+
+/* the page band. Ground treatment and the dark flip go on the section itself, so a
+   band's ground is readable from its opening tag and never from a wrapper inside it. */
+.band{
+  position:relative;
+  width:100%;
+  padding:var(--hp-py) var(--hp-gutter);
+}
+
+/* the max-width wrapper. Positioned and raised so copy always sits above a ground
+   layer's photograph, scrim and plate pseudos. */
+.container{
+  position:relative;
+  z-index:3;
+  width:100%;
+  max-width:var(--ds-container-max);
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* the full-bleed wrapper. UNPOSITIONED ON PURPOSE: the ground object inside it is
+   absolutely positioned and must resolve against the SECTION, so that it fills the
+   whole band rather than the 1080px copy measure. */
+.container--full{
+  position:static;
+  width:100%;
+  max-width:none;
+}
+
+/* the horizontal group. One 12-track grid, one gutter, for every row on every page
+   built from this template. */
+.row{
+  display:grid;
+  grid-template-columns:repeat(12, minmax(0, 1fr));
+  gap:var(--ds-space-md);
+  align-items:start;
+}
+.row + .row{ margin-top:var(--ds-space-xl); }
+/* equal-height cells, for a row of cards that must share a baseline floor. */
+.row--stretch{ align-items:stretch; }
+/* a ground-layer row occupies no space: its one cell holds an absolutely positioned
+   object, so the row must not open a gap above the copy. */
+.row--ground{ gap:0; }
+
+/* the cell. min-width:0 is the media-fits-track anchor: without it an image or a
+   long unbroken string blows the track out past the row. */
+.col,
+.col--full{ grid-column:1 / -1; min-width:0; }
+.col--span-1{  grid-column:span 1;  min-width:0; }
+.col--span-2{  grid-column:span 2;  min-width:0; }
+.col--span-3{  grid-column:span 3;  min-width:0; }
+.col--span-4{  grid-column:span 4;  min-width:0; }
+.col--span-5{  grid-column:span 5;  min-width:0; }
+.col--span-6{  grid-column:span 6;  min-width:0; }
+.col--span-7{  grid-column:span 7;  min-width:0; }
+.col--span-8{  grid-column:span 8;  min-width:0; }
+.col--span-9{  grid-column:span 9;  min-width:0; }
+.col--span-10{ grid-column:span 10; min-width:0; }
+.col--span-11{ grid-column:span 11; min-width:0; }
+.col--span-12{ grid-column:span 12; min-width:0; }
+
+/* THE ONE BREAKPOINT THE STRUCTURE LAYER OWNS. Every span collapses to the full row
+   at the tablet step, so no page built from this template can ship a three-up card
+   row squeezed into a phone. The padding ladder itself is the locked sheets'; this
+   file adds no step to it. */
+@media (max-width:768px){
+  .col--span-1,.col--span-2,.col--span-3,.col--span-4,.col--span-5,.col--span-6,
+  .col--span-7,.col--span-8,.col--span-9,.col--span-10,.col--span-11{
+    grid-column:1 / -1;
+  }
+  .row + .row{ margin-top:var(--ds-space-lg); }
+}
+
+/* the band heights. Carried from the approved page's rhythm: the two photographic
+   bands hold a room-sized frame at desktop and release it below 900, where there is
+   no left column and no right third to compose against. */
+@media (min-width:900px){
+  .band--tall{ display:flex; flex-direction:column; justify-content:center; }
+  .band--hero{ min-height:clamp(620px, 92svh, 900px); }
+  .band--photo{ min-height:clamp(520px, 72svh, 760px); }
+}
+
+/* ============================================================================
+   3. THE SKIN LAYER. Every rule here targets an OBJECT or a section ground.
+   Carried from the approved design at _design/page-about.html so this template and
+   that page read as one site. The classes already defined by the locked structural
+   sheet are NOT redefined here: .hp-photo, .hp-photo__scrim, .hp-photo__edge, the
+   ink scrim ramp, .hp-clinic and its two plate pseudos, .hp-h2, .hp-lead, .hp-head,
+   .hp-key, .hp-nb, .hp-rise, .hp-reveal and the two keyframe sets all come from it
+   unchanged. Only what is genuinely missing is written below.
+   ============================================================================ */
+
+/* ---- grounds -------------------------------------------------------------- */
+
+/* the plain light band, tinted so it does not read as a hole between two darker
+   bands. It is the ground the three value boxes sit on. */
+.hp-ground--paper2{
+  background-color:var(--ds-bg-surface-2);
+  background-image:
+    radial-gradient(120% 92% at 88% 0%, var(--hp-wash-b) 0%, transparent 56%),
+    linear-gradient(180deg,
+      var(--hp-ground-low)    0%,
+      var(--ds-bg-surface-2) 48%,
+      var(--ds-bg-surface)  100%);
+}
+
+/* the photographic layer's own image. The locked sheet positions and stacks the
+   photo wrapper and its two overlays but does not size the picture itself. */
+.hp-photo__img{
+  position:absolute;
+  inset:0;
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:50% 50%;
+  transform:scale(1.04);
+}
+
+/* THE HERO'S FOCAL VIGNETTE. Two layers, both built from the locked ink, so no new
+   hue enters: a radial that is fully clear over the daylight in the window wall and
+   closes to ink at the frame edge, plus a top and bottom edge fade. Everything it
+   paints is ink over ink already at the scrim plateau, so it can only RAISE a
+   contrast ratio, never lower one. */
+.hp-ground--ink .hp-photo__edge{
+  background-image:
+    radial-gradient(118% 124% at 76% 54%,
+      transparent          0%,
+      transparent         30%,
+      var(--hp-ink-mid)   68%,
+      var(--hp-ink-deep) 100%),
+    linear-gradient(180deg,
+      var(--ds-primary-deep) 0%,
+      transparent           12%,
+      transparent           88%,
+      var(--ds-primary-deep) 100%);
+}
+
+/* THE CENTRED PHOTOGRAPHIC BAND DROPS THE HORIZONTAL RAMP. A left-to-right ramp
+   guarantees contrast for a column pinned to the gutter; a centred column sits where
+   that ramp is mid-fall. Rather than widen the plateau until the photograph is gone,
+   this band takes a light flat veil so the room still reads, and moves the guarantee
+   onto the plate, where every pixel carries the plate's own alpha. */
+.hp-ground--paperphoto .hp-photo__scrim{
+  background-image:none;
+  background-color:var(--hp-paper-veil);
+}
+.hp-ground--paperphoto .hp-photo__edge{
+  background-image:linear-gradient(180deg,
+    var(--ds-bg-surface) 0%,
+    transparent         12%,
+    transparent         88%,
+    var(--ds-bg-surface) 100%);
+}
+/* the gradient keyword needs its own darkest stop on a daylight photograph, because
+   the light band's ordinary keyword gradient is measured against paper, not against
+   a lit corridor. */
+.hp-ground--paperphoto .hp-key{
+  color:var(--ds-accent-deep);
+  -webkit-text-fill-color:var(--ds-accent-deep);
+  background-image:linear-gradient(96deg, var(--ds-ink) 0%, var(--ds-accent-deep) 100%);
+}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .hp-ground--paperphoto .hp-key{ -webkit-text-fill-color:transparent; }
+}
+
+/* ---- type objects --------------------------------------------------------- */
+
+.hp-h1{
+  margin:0 0 var(--ds-space-md);
+  font-family:var(--ds-font-display);
+  font-size:var(--sv-fs-display);
+  line-height:var(--ds-lh-display);
+  letter-spacing:var(--ds-track-display);
+  font-weight:var(--ds-weight-display);
+  color:var(--ds-ink-heading);
+  max-width:none;
+}
+/* THE CUT OF WORDS, bound once for the whole template rather than per heading.
+   balance evens the line lengths across a heading so a five-word heading cannot
+   break after word four and strand one word; pretty works the LAST line of a
+   paragraph and is what removes a single-word orphan. The nowrap binds for pairs
+   neither can protect are the locked sheet's .hp-nb and .hp-key. */
+.hp-h1,
+.hp-h2,
+.hp-route__label{ text-wrap:balance; }
+.hp-lead,
+.hp-wedge,
+.hp-value__line,
+.hp-route__line,
+.hp-closing__line{ text-wrap:pretty; }
+
+/* ---- the plate: a copy panel over a photograph ---------------------------- */
+
+.hp-plate{
+  position:relative;
+  z-index:3;
+  max-width:880px;
+  margin:0 auto;
+  padding:var(--ds-space-xl) var(--ds-space-lg);
+  border-radius:var(--ds-r-surface);
+}
+/* near-white paper sitting on a daylight photograph is a white-on-white box in the
+   strictest reading of the owner's release, so the plate takes the layered shadow. */
+.hp-plate--paper{
+  background-color:var(--hp-paper-plate);
+  background-image:linear-gradient(160deg,
+    color-mix(in srgb, var(--ds-bg-surface) 0%, transparent) 0%,
+    var(--hp-plate-tint) 100%);
+  box-shadow:var(--hp-shadow-box);
+}
+/* the account is the PAYLOAD of its band and the heading above it is the label, so
+   it is set at the box-line step rather than at body size. It is LEFT ALIGNED inside
+   a centred measure, which is this template's one considered departure from the
+   approved page's centred band: that page carried the account as ONE paragraph and
+   centred it, and the approved copy deck has since cut it into five short ones. Five
+   centred ragged paragraphs read as a poster; one centred paragraph does not. The
+   measure, the size and the bytes of the copy are unchanged. */
+.hp-wedge{
+  margin:0 auto var(--ds-space-md);
+  max-width:52ch;
+  font-size:var(--hp-fs-boxline);
+  line-height:var(--ds-lh-body);
+  color:var(--ds-ink);
+  text-align:left;
+}
+.hp-wedge:last-child{ margin-bottom:0; }
+
+/* ---- the unboxed paragraph, the only air in the composition --------------- */
+
+.hp-why{
+  margin:0 auto var(--ds-space-md);
+  max-width:52ch;
+  font-size:var(--hp-fs-boxline);
+  line-height:var(--ds-lh-body);
+  color:var(--ds-ink);
+}
+.hp-why:last-child{ margin-bottom:0; }
+
+/* ---- the value box -------------------------------------------------------- */
+
+/* the surface box graded into the accent tint, at the surface radius, with the
+   released layered shadow. It sits on the near-white band ground, which is exactly
+   the white-on-white case the clinic plate on the section answers. NO hover state
+   and NO pointer cursor: these are not links, and the one thing on this page that
+   IS a link moves when you touch it. That contrast is the honest signal. */
+.hp-value{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  height:100%;
+  padding:var(--ds-space-lg) var(--ds-space-md);
+  border-radius:var(--ds-r-surface);
+  background-color:var(--ds-bg-surface);
+  background-image:linear-gradient(180deg, var(--ds-bg-surface) 0%, var(--ds-primary-soft) 100%);
+  box-shadow:var(--hp-shadow-box);
+}
+.hp-value__line{
+  margin:0;
+  max-width:30ch;
+  font-family:var(--ds-font-display);
+  font-size:var(--hp-fs-boxline);
+  line-height:var(--ds-lh-head);
+  font-weight:var(--ds-weight-body);
+  color:var(--ds-ink);
+}
+
+/* ---- the route card, the page's ONE onward link -------------------------- */
+
+/* the floor is set from the contrast geometry rather than from taste: the card must
+   be tall enough that the top of its text block stays inside the part of the card
+   the scrim still holds at high alpha. */
+.hp-route{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  min-height:clamp(380px, 46svh, 480px);
+  padding:var(--ds-space-lg) var(--ds-space-md);
+  border-radius:var(--ds-r-surface);
+  background-color:var(--ds-primary-deep);
+  box-shadow:var(--ds-shadow-card);
+  text-decoration:none;
+  /* declared, not inherited: without it the anchor takes the user agent's default
+     link colour and currentColor inside the card resolves to it. */
+  color:var(--ds-ink-on-dark);
+  transition:
+    transform  var(--ds-dur-slow) var(--ds-ease-out),
+    box-shadow var(--ds-dur-slow) var(--ds-ease-out);
+}
+.hp-cardphoto{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  /* cropped a little high, because the picture SCALES on hover and a centred crop
+     would reveal its bottom edge as it grows. */
+  object-position:50% 44%;
+  transition:transform var(--ds-dur-slow) var(--ds-ease-out);
+}
+/* bottom-up only, holding high alpha to 52 percent of card height and fully clear by
+   72 percent, so the picture is untouched above the text. There is NO flat wash
+   across the whole card: a flat wash is the thing the owner struck, and it is absent
+   here rather than merely reduced. */
+.hp-cardscrim{
+  position:absolute; inset:0; z-index:1; display:block;
+  background-image:linear-gradient(to top,
+    color-mix(in srgb, var(--ds-primary-deep) 90%, transparent)  0%,
+    color-mix(in srgb, var(--ds-primary-deep) 80%, transparent) 52%,
+    color-mix(in srgb, var(--ds-primary-deep) 42%, transparent) 62%,
+    color-mix(in srgb, var(--ds-primary-deep) 14%, transparent) 68%,
+    transparent 72%);
+}
+.hp-route:hover{
+  transform:translate3d(0,-6px,0);
+  box-shadow:var(--hp-shadow-box-hi);
+}
+.hp-route:hover .hp-cardphoto{ transform:scale(1.06); }
+.hp-route__body{ position:relative; z-index:2; }
+.hp-route__label{
+  margin:0 0 var(--ds-space-2xs);
+  font-family:var(--ds-font-display);
+  font-size:var(--hp-fs-h3);
+  line-height:var(--ds-lh-head);
+  font-weight:var(--ds-weight-head);
+  color:var(--ds-ink-on-dark);
+}
+.hp-route__line{
+  margin:0 auto;
+  max-width:54ch;
+  font-size:var(--ds-fs-body);
+  line-height:var(--ds-lh-body);
+  color:var(--ds-ink-on-dark);
+}
+/* THE FOCUS RING. Never removed, never colour-only, and drawn OUTSIDE the card:
+   the card sets overflow:hidden to hold its photograph, and an inset ring on an
+   overflow-hidden box is the classic way a focus indicator disappears. The locked
+   standard card sheet already rings this class; this rule only re-draws it at the
+   card's own radius with a wider offset. */
+.hp-route:focus-visible{
+  outline:2px solid var(--ds-accent);
+  outline-offset:4px;
+  border-radius:var(--ds-r-surface);
+}
+
+/* ---- the hours block and the plain closing statements -------------------- */
+
+.hp-hours{ margin:0 auto; max-width:340px; }
+.hp-hours__row{
+  display:flex;
+  justify-content:space-between;
+  gap:var(--ds-space-md);
+  padding:var(--ds-space-2xs) 0;
+  border-bottom:var(--ds-divider-h) solid var(--ds-line);
+}
+/* the day and its hours are separate flex children of one row, so they cannot break
+   apart from each other at all, and the nowrap stops either breaking inside itself
+   at its own hyphen. */
+.hp-hours__day,
+.hp-hours__time{ white-space:nowrap; color:var(--ds-ink); }
+.hp-hours__time{ font-variant-numeric:tabular-nums; }
+.hp-closing{
+  margin:var(--ds-space-lg) 0 0;
+  padding:0;
+  list-style:none;
+  display:grid;
+  gap:var(--ds-space-sm);
+}
+.hp-closing__line{
+  margin:0 auto;
+  max-width:var(--ds-measure);
+  font-size:var(--hp-fs-boxline);
+  line-height:var(--ds-lh-body);
+  color:var(--ds-ink);
+}
+
+/* ---- band-level alignment ------------------------------------------------ */
+
+/* the hero composes against a left column; every other band centres, which is the
+   approved page's own rhythm. */
+.band--center{ text-align:center; }
+.band--center .hp-lead,
+.band--center .hp-value__line{ margin-left:auto; margin-right:auto; }
+
+/* ---- motion -------------------------------------------------------------- */
+
+/* the hero's slow drift. The keyframes are the locked structural sheet's; only the
+   binding to this template's own hero class is written here. will-change is declared
+   on this rule alone rather than hoisted, so the band photograph that does NOT move
+   is never promoted to a permanent compositor layer. */
+.band--hero .hp-photo__img{
+  animation:hp-drift 44s cubic-bezier(.37,0,.63,1) infinite alternate;
+  will-change:transform;
+}
+
+/* THE REDUCED-MOTION BLOCK, naming every animated class in this template by name:
+   .hp-rise (the hero's entrance), .hp-reveal (the scroll reveal on every other
+   band), .hp-photo__img (the hero drift), .hp-cardphoto and .hp-route (the route
+   card's lift and photograph scale). The requirement is a FINAL VISIBLE STATE and
+   not merely less motion, so every one of them resolves to its finished state here
+   rather than to a shorter animation. */
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto !important; }
+  .hp-rise{
+    opacity:1 !important;
+    transform:none !important;
+    animation:none !important;
+  }
+  .hp-js .hp-reveal,
+  .hp-reveal{
+    opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
+    transition-delay:0s !important;
+  }
+  .band--hero .hp-photo__img,
+  .hp-photo__img{
+    animation:none !important;
+    transform:scale(1.04) !important;
+  }
+  .hp-cardphoto{ transition:none !important; }
+  .hp-route{ transition:none !important; }
+  .hp-route:hover{ transform:none !important; }
+  .hp-route:hover .hp-cardphoto{ transform:none !important; }
+}
+</style>
+</head>
+<body>
+
+<main>
+
+<!-- pick: HERO-COMPOSITIONS.md #5 Full-bleed image + overlay text | considered: #1 Split-text-left + photo-right, #10 Centered headline only | rigor: heavy | why: #1 wants a portrait or scene column framed beside the type, and the only person-shaped assets on this build are licensed stock, which section 2b-S5 forbids presenting as staff; a framed inset would also spend one of three imagery slots on a crop too small to read as a room, which is the only imagery subject this page is allowed. #10 drops the photograph entirely, which would leave a page that owes three qualifying images with only two bands able to carry one, and it would open a page whose whole subject is a building on no picture of a building. #5 puts the room itself under the type and lets the locked ink ramp carry the contrast, which is why this band can be the page's darkest and still read. -->
+<section class="band band--tall band--hero hp-ground--photo hp-ground--ink surface-dark hero" id="s1-hero">
+
+  <!-- the ground layer. Full-bleed, unpositioned wrapper, so the picture resolves
+       against the section and fills the band rather than the copy measure. -->
+  <div class="container--full">
+    <div class="row row--ground">
+      <div class="col--full">
+        <!-- swap:image-about-1
+             GENERATED TEMPLATE IMAGE, not owner photography. Replace before ship.
+             Swap for owner photography of the practice's own premises. Until the
+             register entries exist it carries no patient and nobody presented as
+             staff.
+             ALT DEVIATION, declared rather than slipped in. The page brief owes this
+             slot the string "A corridor with doors down its length and daylight at
+             the far end." The installed photograph is a reception counter, not a
+             corridor, so the alt below is written FROM THE PICTURE per the brief's
+             own alt rule, and it was written after opening the file rather than from
+             its name. The owed string returns the moment a matching photograph lands
+             in this slot.
+             The indefinite article is the mechanical form of "never this practice's
+             room": it says a reception counter and never our reception counter. It
+             shows no person, so no stock portrait is presented as staff and no
+             patient appears. No child in any state. No text on the image, so no
+             badge, no rating overlay, no certification mark. It asserts no premises
+             fact: no floor, no entrance direction, no lift, no ramp, no parking, no
+             distance. It names no instrument, procedure, material or technique. -->
+        <figure class="hp-photo">
+          <!-- decoding is sync rather than async because this is the largest image
+               above the fold at both widths and nothing is waiting behind it. -->
+          <img class="hp-photo__img" src="../../assets/dental-clinic-reception.jpg"
+               width="1024" height="576" loading="eager" fetchpriority="high" decoding="sync"
+               alt="A reception counter and a row of upholstered chairs beside a wall of tall windows in daylight.">
+          <span class="hp-photo__scrim"></span>
+          <span class="hp-photo__edge"></span>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col--span-7">
+        <!-- swap:about-heading-1
+             This page title's own slot, so the heading family runs 1 to 5 with no
+             gap at its head. The gradient keyword is the practice name, and a
+             gradient keyword never wraps, so the only break opportunity in this line
+             is after the first word. The name can never be split. -->
+        <!-- swap:practice-name
+             Template value, not this practice's data.
+             Swap for the page-inventory.md 2.3 "practice name" row when the owner
+             supplies it. The same value sets the wordmark in the chrome, so the two
+             never disagree.
+             THE WORDMARK IS NOT RENDERED IN THIS BODY, and that is a decision rather
+             than an omission: a wordmark is CHROME and renders on every page from the
+             shell. Putting one here would place a piece of the site's frame inside
+             one page's body, where the chrome build would then have to find it and
+             remove it. The identity value this build binds as a verbatim is
+             discharged anyway, in prose a visitor reads, by the heading below. -->
+        <h1 class="hp-h1 hp-rise" style="--hp-i:0">About <span class="hp-key">Alder Grove Dental</span></h1>
+
+        <!-- swap:about-standfirst
+             The supporting line directly beneath the page title. It is NOT a heading
+             element of any kind. It is built only from the category words certified
+             against both unresolved service menus, and it carries NO qualifier on the
+             category noun, because a qualifier there is the held service-mix claim. -->
+        <!-- swap:city
+             Template value, not this practice's data.
+             Swap for the real town when the owner supplies it. "Riverbend" is an
+             invented place name and fixes no jurisdiction. This line QUOTES the
+             canonical city, so a swapper changing the town must find it here. -->
+        <p class="hp-lead hp-rise" style="--hp-i:1">A dental practice in Riverbend, and <span class="hp-nb">how it works</span>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- pick: SECTION-COMPONENTS.md #8 Manifesto / belief statement, taken as a plain statement band, plus SURFACE-PATTERNS.md #12 Elevated panel on a tinted ground for the copy plate | considered: SECTION-COMPONENTS.md #27 Numbered process steps, SECTION-COMPONENTS.md #7 Problem framing | rigor: heavy | why: #27 would number the account, and numbering asserts a step count nobody gave; worse, it chops prose that was cleared sentence by sentence into fragments that were never cleared as fragments, and the account swaps as one whole unit under one marker. #7 opens on a problem, and the only problem a dental page would name here is fear, which the frightened-child rule bars from every register of this page outright, so the pattern is unbuildable rather than merely unwise. #8 is a plain statement band, which is exactly what a short account of how a visit runs actually is. -->
+<section class="band band--tall band--photo band--center company-story hp-ground--photo hp-ground--paperphoto" id="s2-company-story">
+
+  <div class="container--full">
+    <div class="row row--ground">
+      <div class="col--full">
+        <!-- swap:image-about-2
+             GENERATED TEMPLATE IMAGE, not owner photography. Replace before ship.
+             Swap for owner photography on the same terms as the first slot.
+             ALT DEVIATION, declared rather than slipped in. The page brief owes this
+             slot the string "An appointment card on a counter beside the open
+             appointment book." The installed photograph is a corridor of doors, so
+             the alt below is written FROM THE PICTURE per the brief's own alt rule,
+             and it was written after opening the file. The owed string returns the
+             moment a matching photograph lands here.
+             It states no premises fact and names no instrument, procedure, material
+             or technique. No person, no child, no text on the image. -->
+        <figure class="hp-photo">
+          <img class="hp-photo__img" src="../../assets/dental-clinic-warm.jpg"
+               width="1024" height="576" loading="lazy" decoding="async" fetchpriority="low"
+               alt="A corridor of wooden doors, lit by daylight from the far end.">
+          <span class="hp-photo__scrim"></span>
+          <span class="hp-photo__edge"></span>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col--full">
+        <!-- THE PLATE. This band centres, so the contrast guarantee moved off the
+             band's geometry and onto this panel, where it is flat and total: near
+             white paper on a daylight photograph is a white-on-white box in the
+             strictest reading of the release, so it carries the layered shadow. -->
+        <div class="hp-plate hp-plate--paper hp-reveal" style="--hp-i:0">
+          <div class="hp-head">
+            <!-- swap:about-heading-2 -->
+            <h2 class="hp-h2">How <span class="hp-key">a visit here</span> works</h2>
+          </div>
+
+          <!-- swap:founder-statement
+               CONDUCT PROMISE. These sentences say what this practice does, in its
+               own voice. No owner has confirmed any of them. Confirm them or strike
+               them before this page ships as a real practice's site.
+               They are NOT ordinary template fill and the flag does not weaken them.
+               The flag marks the sentences as ones a swapper must VERIFY rather than
+               merely REPLACE.
+               THE UNIVERSAL IS HEDGED ON PURPOSE. The earlier draft opened "A visit
+               here runs the same way each time", which is an unconditional promise
+               about clinical conduct and is not true on the worst ordinary day. The
+               order of the visit, the rooms and every canonical noun are unchanged;
+               the limit now sits inside the sentence, and the examination is the
+               subject of its own verb rather than a first person plural the site
+               produces no clinician for.
+               THE CANONICAL NOUNS ARE FIXED. The place is "reception", lower case;
+               the room is "the treatment room"; the waiting place is "the waiting
+               area". Never the surgery, never a treatment room with an indefinite
+               article, never the chair, never the front desk.
+               WHAT IS REFUSED HERE, so a later pass does not reach for it: any
+               founding year, any "since a year" line and any timeline at all; any
+               named service, because the service menu is unresolved and naming one
+               is choosing for the owner; any duration, because a template duration
+               is a number a reader could plan a day around; and the whole comfort and
+               reassurance register.
+               Template value, not this practice's data.
+               Swap for the page-inventory.md 2.3 "founder statement" row, written in
+               the owner's own words and checked against the content-bible.md 3
+               conduct receipt. -->
+          <p class="hp-wedge">Most visits here follow the <span class="hp-nb">same few steps</span>.</p>
+          <p class="hp-wedge">You come in at <span class="hp-nb">reception</span> and give your details. The first time there's a bit more to take down than there will be afterwards.</p>
+          <p class="hp-wedge">You wait in the <span class="hp-nb">waiting area</span> until it's your turn. Then you go through to the <span class="hp-nb">treatment room</span>, where the examination happens.</p>
+          <p class="hp-wedge">Afterwards you hear what the examination turned up, in <span class="hp-nb">plain words</span>. You take it away in writing, so you can read it again later.</p>
+          <p class="hp-wedge">If there is work to do, nothing is agreed until you have heard what it involves. We book it as a <span class="hp-nb">separate appointment</span> rather than starting it <span class="hp-nb">on the spot</span>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- pick: SECTION-COMPONENTS.md #57 Quote / pull-quote standalone, taken for its SCALE and not for its quotation marks | considered: SECTION-COMPONENTS.md #26 Pull-quote section, SECTION-COMPONENTS.md #15 Comparison table | rigor: medium | why: #26 renders with attribution furniture, and attributing this paragraph would mean naming a person nobody has supplied, so the pattern needs a fact this build does not have. #15 is the shape a why-section reaches for by reflex, explaining an order BY CONTRAST with practices that work the other way, and that is an implied comparative about somebody else's practice, which is barred whether the comparison is named or merely implied. #57's stated role is to break the rhythm with a single beat "anywhere transitions feel mechanical and need a pause", and a band whose whole job is to say why the previous band's order is the order is exactly that pause. It is rendered as a plain paragraph and NOT as a quotation, because nobody said it. The composition reason is the same one: the page runs plate, then nothing, then boxes, and one unboxed paragraph on nothing but light is the only air between two panelled bands. -->
+<section class="band band--center the-why hp-ground--grad surface-dark" id="s3-the-why">
+  <div class="container">
+    <div class="row">
+      <div class="col--full">
+        <div class="hp-head hp-reveal" style="--hp-i:0">
+          <!-- swap:about-heading-3 -->
+          <h2 class="hp-h2">Why it runs in <span class="hp-key">that&nbsp;order</span></h2>
+        </div>
+
+        <!-- swap:why-statement
+             CONDUCT PROMISE. This block says what this practice does, in its own
+             voice. No owner has confirmed it. Confirm it or strike it before this
+             page ships as a real practice's site. It is NOT ordinary template fill.
+             IT STATES A PROPERTY OF THE ARRANGEMENT AND NEVER A BENEFIT THE
+             ARRANGEMENT DELIVERS, which is the line this band draws and the first
+             line an improvised why-paragraph crosses. It does not say the reader will
+             feel better informed, decide more calmly, or come to a better result.
+             The closing sentence says what the gap is FOR, in the second person,
+             rather than defending the gap against a complaint the reader has not
+             made.
+             Template value, not this practice's data.
+             Swap for the owner's own reason for the method, which is the datum the
+             intake rows for target customer and job to be done still hold open. -->
+        <p class="hp-why hp-reveal" style="--hp-i:1">The order is <span class="hp-nb">deliberate</span>.</p>
+        <p class="hp-why hp-reveal" style="--hp-i:2">Looking at something, explaining it, and deciding what to do about it are <span class="hp-nb">three separate steps</span>, and we keep them separate. The examination is its own appointment. What it turned up goes in writing, so you have it. Anything that follows is booked afterwards rather than started <span class="hp-nb">on the day</span>.</p>
+        <p class="hp-why hp-reveal" style="--hp-i:3">The gap is on purpose. It is your time to <span class="hp-nb">think it over</span>. Ask anything you still want to ask before you decide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- pick: COMPANY-SECTIONS.md #2 Manifesto / values creed type-block for the three statements, plus CARD-VARIATIONS.md #13 Category image-overlay tile for the onward route | considered: SECTION-COMPONENTS.md #18 Team grid 3-col, CARD-VARIATIONS.md #4 Circle-icon service card with arrow link | rigor: heavy | why: #18 needs named people with portraits and roles, and this build holds every clinical register entry open, so a team grid here would be three invented staff on the one band that must not name anybody. #4 is refused on the locked sheet's own terms rather than on taste: the token sheet reserves the pill radius for the monogram avatar and states that no control on this card is a pill, and the icon set #4 depends on does not exist in this direction, so the pattern would have to mint both. #2 is the T-COMPANY catalog's own creed treatment and it is why the three statements are set as TYPE in three cells rather than as icon tiles. #13 supplies a photographic tile with an overlay label that goes somewhere, and it is available here where a team photo card is not, because its picture is a desk and not a face. -->
+<section class="band band--center team-values hp-ground--paper2 hp-clinic" id="s4-team-values">
+  <div class="container">
+
+    <div class="row">
+      <div class="col--full">
+        <div class="hp-head hp-reveal" style="--hp-i:0">
+          <!-- swap:about-heading-4 -->
+          <h2 class="hp-h2">What we <span class="hp-key">keep&nbsp;to</span></h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- swap:values-creed
+         CONDUCT PROMISE. These three sentences say what this practice does, in its
+         own voice. No owner has confirmed any of them. Confirm them or strike them
+         before this page ships as a real practice's site. They are NOT ordinary
+         template fill.
+         ONE MARKER OVER THREE STATEMENTS, and that is a decision rather than an
+         omission: the three arrive together from a single owner conversation and are
+         replaced together, as one unit. Splitting them into three names would put
+         three entries on the swap index for one swap.
+         VALUE 1 NAMES THE READER RATHER THAN THE PRACTICE, because the earlier form
+         was an unconditional undertaking about in-surgery conduct. VALUE 2 MAKES THE
+         EXAMINATION THE SUBJECT, because the earlier form needed an examiner this
+         site never produces. VALUE 3 COUNTS JOBS, NOT CLINICIANS, which is why it
+         survives the no-headcount rule untouched.
+         Template value, not this practice's data.
+         Swap for the page-inventory.md 2.3 "values creed" row when the owner
+         supplies it. -->
+    <div class="row row--stretch">
+      <div class="col--span-4">
+        <article class="hp-value hp-reveal" style="--hp-i:1">
+          <p class="hp-value__line">You hear what something involves before it happens, and you hear it in <span class="hp-nb">plain words</span>.</p>
+        </article>
+      </div>
+      <div class="col--span-4">
+        <article class="hp-value hp-reveal" style="--hp-i:2">
+          <p class="hp-value__line">Whatever the examination turns up goes in writing, so you can read it again <span class="hp-nb">after the appointment</span>.</p>
+        </article>
+      </div>
+      <div class="col--span-4">
+        <article class="hp-value hp-reveal" style="--hp-i:3">
+          <p class="hp-value__line">Every part of the practice has <span class="hp-nb">one person</span> whose job it is, so you know <span class="hp-nb">who to ask</span>.</p>
+        </article>
+      </div>
+    </div>
+
+    <!-- swap:about-people-pointer
+         Template value, not this practice's data.
+         THE PAGE'S ONE ONWARD ROUTE IN THE BODY, and the only one the page declares.
+         The LABEL is the canonical navigation identifier for the team page, character
+         for character; rendering a different word here would fork the label from the
+         navigation. The supporting line beneath it is the team page's own standfirst,
+         deliberately, because a clause worded as its target's own description of
+         itself cannot over-promise what the target carries. The two change together
+         or not at all.
+         THE MARKER NAME IS NEVER RENAMED, even when the slot is restructured: a stale
+         grep returns zero hits, and zero hits reads exactly like "all done".
+         NO NAME, NO ROLE AND NO NUMBER OF PEOPLE APPEARS IN THIS SECTION. The
+         profiles live on the team page and are not repeated here, which is what keeps
+         the two pages distinct. -->
+    <div class="row">
+      <div class="col--full">
+        <a class="hp-route hp-reveal" style="--hp-i:4" href="team.html">
+          <!-- swap:image-about-3
+               GENERATED TEMPLATE IMAGE, not owner photography. Replace before ship.
+               Swap for owner photography on the same terms as the first slot, with
+               one addition: nobody may appear here who is presented as this
+               practice's staff until the register entry exists.
+               ALT DEVIATION, one word, declared rather than slipped in. The page
+               brief owes this slot "A desk lamp lit over a closed notebook and a
+               pen." The notebook in the installed photograph is OPEN, so the alt
+               below is written from the picture, after opening the file. Everything
+               else in the owed string is what the picture shows.
+               THE SLOT TAKES NO PORTRAIT AND NO MONOGRAM. A staff portrait is held
+               behind register entries that do not exist, and there is no person named
+               on this page for a monogram to stand in for. No face and no hands are
+               in frame. No text on the image. -->
+          <img class="hp-cardphoto" src="../../assets/image-desk-lamp.jpg"
+               width="1024" height="576" loading="lazy" decoding="async" fetchpriority="low"
+               alt="A lit desk lamp over an open notebook and a pen on a wooden desk.">
+          <span class="hp-cardscrim"></span>
+          <div class="hp-route__body">
+            <p class="hp-route__label">Who you'll see</p>
+            <p class="hp-route__line">The people who look after reception, appointments and the day-to-day running <span class="hp-nb">of the practice</span>.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- pick: SECTION-COMPONENTS.md #53 Hours table | considered: SECTION-COMPONENTS.md #2 Trust strip / logo wall, COMPANY-SECTIONS.md #5 Press / third-party coverage strip | rigor: heavy | why: this is the registry's proof-logos slot and BOTH considered patterns are the proof shapes it names, so the refusal has to be stated rather than assumed. #2 is a wall of client or partner logos and this build has not one owner-supplied logo on disk, so the pattern could only be filled by borrowing marks nobody granted, which is a fabricated endorsement and not a layout choice. #5 needs verifiable third-party coverage and there is none; that catalog entry answers its own absence in its own words, telling the author to omit the strip and drop to one fewer section rather than fabricate a press bar, which is exactly what this template does. #53 is "day-by-day hours table or schedule card", it asserts nothing about anyone's reputation, and it is the one practical particular an institution page owes a reader who has just read four bands of method. -->
+<!-- THE REGISTRY FLOOR AT THIS SLOT IS UNMET, and the reason is held data rather
+     than a build shortcut: proof of every kind is omitted on this build, not
+     templated and not captioned, because fabricated STRUCTURE is permitted here and
+     fabricated PROOF never is. A "representative example" caption does not convert
+     one into the other. The section keeps the registry's proof-logos class token so
+     the slot stays traceable, and carries opening-hours beside it, which is the name
+     the page brief's own section sequence gives this slot after the same deletion.
+     THIS BAND ENDS THE PAGE AND DOES NOT END THE VISIT. It renders no anchor, no
+     button and no control of any kind, and no class attribute in it carries a token
+     containing the substring "cta": the site's single closing ask lives in the
+     chrome and is spent once, on every page, including this one.
+     WHAT THIS BAND DOES NOT SAY. No promise about who answers, how soon, or what
+     happens outside these hours. No emergency, out-of-hours or urgent-care line in
+     any wording, which is a capability the unresolved service menu does not establish
+     and is the single most dangerous sentence available at this slot. No count, of
+     people, of rooms or of appointments. No figure, currency, fee or payment word. -->
+<section class="band band--center proof-logos opening-hours hp-ground--grad surface-dark" id="s5-opening-hours">
+  <div class="container">
+    <div class="row">
+      <div class="col--full">
+        <div class="hp-head hp-reveal" style="--hp-i:0">
+          <!-- swap:about-heading-5 -->
+          <h2 class="hp-h2">When <span class="hp-key">we&nbsp;are&nbsp;open</span></h2>
+        </div>
+
+        <!-- swap:hours
+             Template value, not this practice's data.
+             Swap for the page-inventory.md 2.3 "opening hours" row when the owner
+             supplies it. This value has several render carriers across the site, so a
+             swapper changing the hours must find every one of them.
+             TWO ROWS, NOT ONE STRING, AND THAT IS DECLARED HERE RATHER THAN LEFT TO
+             BE FOUND. The canonical identity prints this value as one string whose
+             two halves are joined by a middle dot. That glyph is a non-ASCII byte and
+             this build asserts zero of them, so the two days and their two time
+             ranges render as two rows instead. Same days, same times, same order,
+             same marker. No datum is moved and no separator is substituted for the
+             dot. The 24-hour clock and the abbreviated day range are the canonical
+             identity's own forms and assert no locale. -->
+        <div class="hp-hours hp-reveal" style="--hp-i:1">
+          <div class="hp-hours__row"><span class="hp-hours__day">Mon-Thu</span><span class="hp-hours__time">8:00-17:00</span></div>
+          <div class="hp-hours__row"><span class="hp-hours__day">Fri</span><span class="hp-hours__time">8:00-14:00</span></div>
+        </div>
+
+        <ul class="hp-closing">
+          <!-- swap:booking-line
+               SHARED CARRIER. The identical string renders on the services page and
+               the contact page under this same marker name, so the three pages cannot
+               disagree. Change all three together or none. It states the booking
+               METHOD and says nothing about who answers, how soon, or what follows;
+               that distinction is the whole of what this band may say. -->
+          <li class="hp-closing__line hp-reveal" style="--hp-i:2">Appointments are arranged by telephone <span class="hp-nb">or by email</span>.</li>
+          <!-- swap:about-closing-line
+               It asserts nothing the hours above it do not already entail: Monday to
+               Friday named, Saturday and Sunday absent. The practice speaks in the
+               first person here, as this band's own heading already does, so the band
+               does not switch voice between its heading and its last line. This
+               string has no second carrier. -->
+          <li class="hp-closing__line hp-reveal" style="--hp-i:3">We're closed <span class="hp-nb">at the weekend</span>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+/* ============================================================================
+   THE SCROLL REVEAL. MOTION-PATTERNS.md #26's documented IntersectionObserver form,
+   carried from the approved page design unchanged so every page built from this
+   template reveals at the same rate.
+
+   THREE SEPARATE GUARANTEES THAT NOTHING CAN BE STRANDED INVISIBLE, because the
+   requirement is a FINAL VISIBLE STATE and not merely less motion:
+     1. The hidden start state is gated behind the hp-js class, which only this
+        script can add. With JavaScript disabled or blocked, nothing is ever hidden
+        and the page renders complete at first paint.
+     2. prefers-reduced-motion is read here as well as in CSS. When it is set, or
+        when IntersectionObserver is missing, every element is revealed immediately
+        and no observer is created at all.
+     3. A 4-second safety net reveals anything still unrevealed, so a failed or
+        mis-rooted observer cannot leave content hidden.
+   ============================================================================ */
+(function () {
+  var root = document.documentElement;
+  root.className = root.className ? root.className + ' hp-js' : 'hp-js';
+
+  var nodes = document.querySelectorAll('.hp-reveal');
+  function showAll() {
+    for (var i = 0; i < nodes.length; i++) { nodes[i].className += ' hp-in'; }
+  }
+
+  var reduce = false;
+  try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { reduce = false; }
+  if (reduce || !('IntersectionObserver' in window)) { showAll(); return; }
+
+  var io = new IntersectionObserver(function (entries) {
+    for (var i = 0; i < entries.length; i++) {
+      if (entries[i].isIntersecting) {
+        entries[i].target.className += ' hp-in';
+        io.unobserve(entries[i].target);
+      }
+    }
+  }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+
+  for (var j = 0; j < nodes.length; j++) { io.observe(nodes[j]); }
+  window.setTimeout(showAll, 4000);
+})();
+</script>
+
+</body>
+</html>

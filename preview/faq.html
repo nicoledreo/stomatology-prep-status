@@ -1,3 +1,9 @@
+<!-- PREVIEW STITCH, not the built site.
+     This file was made by dropping the approved page body for "Questions and answers" into the LOCKED
+     chrome carrier (_design/_chrome-block.html) so the two can be seen together. It is
+     NOT the output of the build: real assembly writes pages/*.html through build.mjs
+     from copy and per-type templates that do not exist yet, and those writes are held
+     behind the per-type owner stamps. Generated 2026-09-02. -->
 <!doctype html>
 <!-- ============================================================================
      SECTION 8 AMENDMENTS AUTHORISED BY THE OWNER, 2026-09-01
@@ -632,7 +638,7 @@
      than a broken picture, so it will not announce itself.
      swap:image-faq-hero  PRELOAD MIRROR, no new slot
      ============================================================================ -->
-<link rel="preload" as="image" href="../assets/dental-clinic-reception.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="assets/dental-clinic-reception.jpg" fetchpriority="high">
 
 <link rel="stylesheet" href="stomatology-tokens.css">
 <!-- The structural half of the owner-locked brand card A. See STYLESHEET GATE
@@ -760,7 +766,7 @@
      uses --ds-ink for its opaque stop because a mask reads ALPHA and ignores hue,
      and the veil uses --ds-bg-surface, which is the locked page white.
      THE IMAGE CARRIES NO PERSON AND NO TEXT, which keeps item 10 intact. */
-  --hp-clinic-img:    url("../assets/dental-bg-clinic-airy.jpg");
+  --hp-clinic-img:    url("assets/dental-bg-clinic-airy.jpg");
   --hp-clinic-alpha:  .55;
   --hp-clinic-mask:   radial-gradient(88% 80% at 50% 46%,
                         transparent 0%,
@@ -1905,9 +1911,164 @@ img{ max-width:100%; }
   .hp-label{ padding:var(--ds-space-md) var(--hp-gutter); }
 }
 </style>
+<link rel="stylesheet" href="stomatology-chrome.css">
 </head>
 <body>
 
+<a class="cc-skip" href="#main">Skip to content</a>
+
+<header class="cc-bar surface-dark" id="cc-bar">
+  <div class="cc-bar__in">
+
+    <a class="cc-brand" href="index.html">
+      <span class="cc-brand__name">Alder Grove Dental</span>
+      <span class="cc-brand__rule" aria-hidden="true"></span>
+    </a>
+
+    <nav class="cc-nav" aria-label="Primary">
+
+      <div class="cc-nav__item">
+        <a class="cc-link is-active" href="index.html"><span class="cc-num">01</span> <span class="cc-link__label">Home</span></a>
+      </div>
+
+      <!-- THE CONTENTS INDEX, opening on "02 What we do". Every row below is a
+           REAL section id inside page-services.html. Nothing was invented. -->
+      <div class="cc-nav__item" data-menu>
+        <button class="cc-link" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="cc-index-services"><span class="cc-num">02</span> <span class="cc-link__label">What we do</span></button>
+        <div class="cc-panel cc-panel--index surface-dark" id="cc-index-services" role="region" aria-label="What we do, contents">
+          <div class="cc-panel__in cc-idx">
+            <div class="cc-idx__list">
+              <p class="cc-idx__head"><span class="cc-num">02</span> <b>What we do</b> <span class="cc-idx__kicker">contents</span></p>
+
+              <a class="cc-idx__row" href="services.html#s2-why-this-area-wedge">
+                <span class="cc-idx__n">02.1</span>
+                <span><span class="cc-idx__t">Why this area</span><span class="cc-idx__s">What the practice takes on, and why.</span></span>
+              </a>
+              <a class="cc-idx__row" href="services.html#s3-sub-area-blocks">
+                <span class="cc-idx__n">02.2</span>
+                <span><span class="cc-idx__t">The areas of work</span><span class="cc-idx__s">Set out one block at a time.</span></span>
+              </a>
+              <a class="cc-idx__row" href="services.html#s4-cross-link-rail">
+                <span class="cc-idx__n">02.3</span>
+                <span><span class="cc-idx__t">Related pages</span><span class="cc-idx__s">Where this page hands you on.</span></span>
+              </a>
+              <a class="cc-idx__row" href="services.html#s5-routing-band">
+                <span class="cc-idx__n">02.4</span>
+                <span><span class="cc-idx__t">Where to go next</span><span class="cc-idx__s">If you are not sure what you need.</span></span>
+              </a>
+              <a class="cc-idx__row" href="services.html#s6-where-the-work-happens">
+                <span class="cc-idx__n">02.5</span>
+                <span><span class="cc-idx__t">Where the work happens</span><span class="cc-idx__s">The rooms, and what is in them.</span></span>
+              </a>
+            </div>
+
+            <div class="cc-feat">
+              <img class="cc-feat__img" src="assets/image-corridor.jpg" alt="" loading="lazy">
+              <span class="cc-feat__grade" aria-hidden="true"></span>
+              <div class="cc-feat__body">
+                <p class="cc-feat__eyebrow">Before you come in</p>
+                <p class="cc-feat__line">What is included, set out before you are in the chair.</p>
+                <a class="cc-feat__link" href="index.html#s4-inclusion-value">Read that section</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cc-nav__item">
+        <a class="cc-link" href="about.html"><span class="cc-num">03</span> <span class="cc-link__label">About us</span></a>
+      </div>
+
+      <div class="cc-nav__item">
+        <a class="cc-link" href="team.html"><span class="cc-num">04</span> <span class="cc-link__label">Who you'll see</span></a>
+      </div>
+
+      <!-- THE PLAIN DROPDOWN, the second open state. Real sections of page-faq.html. -->
+      <div class="cc-nav__item" data-menu>
+        <button class="cc-link" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="cc-drop-faq"><span class="cc-num">05</span> <span class="cc-link__label">Questions</span></button>
+        <div class="cc-panel cc-drop surface-dark" id="cc-drop-faq" role="region" aria-label="Questions, contents">
+          <div class="cc-panel__in">
+            <a class="cc-drop__item" href="faq.html#s4-objection-faq"><span class="cc-idx__n">05.1</span><span><span class="cc-idx__t">The questions themselves</span><span class="cc-drop__sub">What to raise on the telephone, and what to raise in the room.</span></span></a>
+            <a class="cc-drop__item" href="faq.html#s3-sub-area-blocks"><span class="cc-idx__n">05.2</span><span><span class="cc-idx__t">The practical answers</span><span class="cc-drop__sub">Where we are, when we are open, how to reach us.</span></span></a>
+            <a class="cc-drop__item" href="faq.html#s7-cost-posture"><span class="cc-idx__n">05.3</span><span><span class="cc-idx__t">On cost</span><span class="cc-drop__sub">How the practice talks about what things cost.</span></span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cc-nav__item">
+        <a class="cc-link" href="contact.html"><span class="cc-num">06</span> <span class="cc-link__label">Find us</span></a>
+      </div>
+    </nav>
+
+    <!-- #11's right-corner slot. No year mark and no live status can be claimed
+         here, so the corner carries the telephone, which is the only conversion
+         this practice has, with the unfinished mark the number requires. -->
+    <a class="cc-tel" href="tel:+15555550142">
+      <span class="cc-tel__num">(555) 555-0142</span>
+      <span class="cc-unfinished">placeholder</span>
+    </a>
+
+    <button class="site-header__hamburger" type="button"
+            aria-label="Open menu" aria-controls="mobile-drawer" aria-expanded="false">
+      <span aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<div class="cc-scrim" id="cc-scrim" hidden></div>
+
+<aside id="mobile-drawer" class="surface-dark" aria-hidden="true" aria-label="Menu">
+
+  <div class="cc-drawer__head">
+    <button class="cc-drawer__close" type="button" aria-label="Close menu">&times;</button>
+  </div>
+
+  <nav class="cc-drawer__nav" aria-label="Primary, mobile">
+    <a class="cc-drawer__link" href="index.html"><span class="cc-num">01</span> <span class="cc-link__label">Home</span></a>
+
+    <div class="cc-drawer__group">
+      <button class="cc-drawer__sum" type="button" aria-expanded="false"><span class="cc-num">02</span> <span class="cc-link__label">What we do</span></button>
+      <div class="cc-drawer__sub">
+        <a href="services.html#s2-why-this-area-wedge">02.1 Why this area</a>
+        <a href="services.html#s3-sub-area-blocks">02.2 The areas of work</a>
+        <a href="services.html#s4-cross-link-rail">02.3 Related pages</a>
+        <a href="services.html#s5-routing-band">02.4 Where to go next</a>
+        <a href="services.html#s6-where-the-work-happens">02.5 Where the work happens</a>
+      </div>
+    </div>
+
+    <a class="cc-drawer__link" href="about.html"><span class="cc-num">03</span> <span class="cc-link__label">About us</span></a>
+    <a class="cc-drawer__link" href="team.html"><span class="cc-num">04</span> <span class="cc-link__label">Who you'll see</span></a>
+
+    <div class="cc-drawer__group">
+      <button class="cc-drawer__sum" type="button" aria-expanded="false"><span class="cc-num">05</span> <span class="cc-link__label">Questions</span></button>
+      <div class="cc-drawer__sub">
+        <a href="faq.html#s4-objection-faq">05.1 The questions themselves</a>
+        <a href="faq.html#s3-sub-area-blocks">05.2 The practical answers</a>
+        <a href="faq.html#s7-cost-posture">05.3 On cost</a>
+      </div>
+    </div>
+
+    <a class="cc-drawer__link" href="contact.html"><span class="cc-num">06</span> <span class="cc-link__label">Find us</span></a>
+  </nav>
+
+  <!-- GRAFTED FROM DIRECTION A. The second class is not decoration.
+       verify-chrome-drawer-reachable's in-page probe locates the drawer's action
+       block by the literal class drawer-foot, drawer-cta or drawer__foot. When it
+       finds none it SKIPS the file and then prints PASS, so a namespaced-only class
+       buys a green line that tested nothing: this concept reported
+       "skip (no-nav-or-foot)" followed by "PASS" until this class was added.
+       Carrying the canonical name beside the namespaced one makes the probe actually
+       run, exactly as .site-header__hamburger and #mobile-drawer do for the
+       functional gate. It stays invisible to the nav-consistency extractor, which
+       drops any block whose class ends in -cta, so the drawer's top-level labels
+       still match the header's. -->
+  <div class="cc-drawer__cta drawer-cta">
+    <a class="hp-go hp-go--solid" href="tel:+15555550142">Call the practice</a>
+  </div>
+</aside>
+
+<main id="main">
 <!-- ========================= THE LABEL STRIP (build furniture) =============== -->
 <div class="hp-label">
   <div class="hp-label__inner">
@@ -1960,7 +2121,7 @@ img{ max-width:100%; }
            present the frame before the picture has finished decoding, which is right
            for a below-the-fold photograph and wrong for this one, because nothing is
            waiting behind it. -->
-      <img class="hp-photo__img" src="../assets/dental-clinic-reception.jpg"
+      <img class="hp-photo__img" src="assets/dental-clinic-reception.jpg"
            width="1024" height="576" loading="eager" fetchpriority="high" decoding="sync"
            alt="A reception counter and a row of upholstered chairs beside a wall of tall windows in daylight.">
       <span class="hp-photo__scrim"></span>
@@ -2436,7 +2597,141 @@ img{ max-width:100%; }
     </div>
   </div>
 </section>
+</main>
 
+  <section class="cc-closing precta surface-dark">
+    <div class="cc-closing__in">
+      <div>
+        <p class="cc-closing__eyebrow">06 Find us</p>
+        <h2>Call the practice and we will find you a time.</h2>
+        <p>Appointments are made by telephone or by email. There is no online booking, so nothing waits behind a form: you speak to reception and you leave the call with a time.</p>
+        <p>The same two routes change an appointment as make one.</p>
+      </div>
+      <div class="cc-acts">
+        <a class="hp-go hp-go--solid" href="tel:+15555550142">Call the practice</a>
+        <a class="hp-go hp-go--quiet" href="contact.html">See where we are</a>
+        <small>The number this dials is a placeholder, as is every value in the masthead below.</small>
+      </div>
+    </div>
+  </section>
+
+
+<footer class="cc-foot surface-dark">
+  <div class="cc-foot__in">
+
+    <p class="cc-foot__mark">Alder Grove Dental</p>
+
+    <!-- THE MASTHEAD CREDITS. This is the slot FOOTER-STYLES #19 was picked for.
+         A periodical prints who made the edition and under what conditions here;
+         this build prints what in it is not yet real. Every value is marked at
+         the point where it sits, and the last credit states the record in full,
+         so the disclosure is a masthead block rather than buried fine print. -->
+    <div class="cc-mast">
+      <div>
+        <span class="cc-mast__k">Practice and town</span>
+        <p class="cc-mast__v">Alder Grove Dental, Riverbend <span class="cc-unfinished">placeholder</span></p>
+      </div>
+      <div>
+        <span class="cc-mast__k">Address</span>
+        <p class="cc-mast__v">114 Alder Street, Riverbend <span class="cc-unfinished">placeholder</span></p>
+      </div>
+      <div>
+        <span class="cc-mast__k">Telephone and email</span>
+        <p class="cc-mast__v"><a class="cc-a" href="tel:+15555550142">(555) 555-0142</a> <span class="cc-unfinished">placeholder</span><br><a class="cc-a" href="mailto:hello@aldergrovedental.example">hello@aldergrovedental.example</a> <span class="cc-unfinished">placeholder</span></p>
+      </div>
+      <div>
+        <span class="cc-mast__k">Opening hours</span>
+        <p class="cc-mast__v">Monday to Thursday 8:00 to 17:00<br>Friday 8:00 to 14:00<br>Saturday and Sunday Closed <span class="cc-unfinished">placeholder</span></p>
+      </div>
+      <div>
+        <span class="cc-mast__k">Photography</span>
+        <p class="cc-mast__v">Every photograph here is a generated template image <span class="cc-unfinished">not the practice</span></p>
+      </div>
+      <div class="cc-mast__record">
+        <span class="cc-mast__k">The record</span>
+        <p class="cc-mast__v">Nothing above is a fact about a real practice. The practice name, the town, the address, the telephone number, the email address and the opening hours are all placeholders. Replace each one before this site is published.</p>
+      </div>
+    </div>
+
+    <div class="cc-foot__bar">
+      <a class="cc-foot__link" href="index.html"><span class="cc-num">01</span> Home</a>
+      <a class="cc-foot__link" href="services.html"><span class="cc-num">02</span> What we do</a>
+      <a class="cc-foot__link" href="about.html"><span class="cc-num">03</span> About us</a>
+      <a class="cc-foot__link" href="team.html"><span class="cc-num">04</span> Who you'll see</a>
+      <a class="cc-foot__link" href="faq.html"><span class="cc-num">05</span> Questions</a>
+      <a class="cc-foot__link" href="contact.html"><span class="cc-num">06</span> Find us</a>
+      <p class="cc-foot__legal">Six pages, a closed set. Booking by telephone or by email only.</p>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+/* ---------------------------------------------------------------------------
+   (c) of the hover-intent contract: a close-delay cleared on re-enter, so a
+   diagonal traverse from the trigger into the panel never collapses it. (a) and
+   (b) are CSS above: one shared hover scope, and a bridge across the seam.
+   Keyboard: click toggles, Escape closes and returns focus to the trigger.
+   --------------------------------------------------------------------------- */
+(function () {
+  var CLOSE_DELAY = 240;
+
+  document.querySelectorAll('[data-menu]').forEach(function (item) {
+    var trigger = item.querySelector('.cc-link[aria-haspopup]');
+    var timer = null;
+
+    function open() { clearTimeout(timer); item.classList.add('is-open'); trigger.setAttribute('aria-expanded', 'true'); }
+    function close() { item.classList.remove('is-open'); trigger.setAttribute('aria-expanded', 'false'); }
+    function closeSoon() { clearTimeout(timer); timer = setTimeout(close, CLOSE_DELAY); }
+
+    item.addEventListener('mouseenter', open);
+    item.addEventListener('mouseleave', closeSoon);
+    trigger.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (item.classList.contains('is-open')) { close(); } else { open(); }
+    });
+    item.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { close(); trigger.focus(); }
+    });
+  });
+
+  /* the scroll state: the bar TIGHTENS once there is content behind it. */
+  var bar = document.getElementById('cc-bar');
+  function onScroll() { bar.classList.toggle('is-tight', window.scrollY > 40); }
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* the drawer, on the canonical contract the functional gate drives. */
+  var burger = document.querySelector('.site-header__hamburger');
+  var drawer = document.getElementById('mobile-drawer');
+  var scrim = document.getElementById('cc-scrim');
+  var closeBtn = drawer.querySelector('.cc-drawer__close');
+
+  function setDrawer(on) {
+    drawer.setAttribute('aria-hidden', on ? 'false' : 'true');
+    burger.setAttribute('aria-expanded', on ? 'true' : 'false');
+    scrim.hidden = !on;
+    scrim.classList.toggle('is-on', on);
+    document.body.style.overflow = on ? 'hidden' : '';
+    if (on) { closeBtn.focus(); } else { burger.focus(); }
+  }
+  burger.addEventListener('click', function () { setDrawer(drawer.getAttribute('aria-hidden') === 'true'); });
+  closeBtn.addEventListener('click', function () { setDrawer(false); });
+  scrim.addEventListener('click', function () { setDrawer(false); });
+  addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && drawer.getAttribute('aria-hidden') === 'false') { setDrawer(false); }
+  });
+
+  /* the drawer accordions. The marker is CSS, so each button's text stays exactly
+     its header twin's label and the nav-consistency gate stays satisfied. */
+  drawer.querySelectorAll('.cc-drawer__sum').forEach(function (sum) {
+    sum.addEventListener('click', function () {
+      var on = sum.parentElement.classList.toggle('is-open');
+      sum.setAttribute('aria-expanded', on ? 'true' : 'false');
+    });
+  });
+})();
+</script>
 <script>
 /* ============================================================================
    THE SCROLL REVEAL. MOTION-PATTERNS.md #26's documented IntersectionObserver form,
@@ -2484,6 +2779,5 @@ img{ max-width:100%; }
   window.setTimeout(showAll, 4000);
 })();
 </script>
-
 </body>
 </html>

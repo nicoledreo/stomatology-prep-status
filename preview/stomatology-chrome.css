@@ -1,0 +1,586 @@
+/* stomatology-chrome.css - the LOCKED site chrome, P9.
+   Derived on 2026-09-02 from the owner-picked tournament concept
+   _design/_tournament/chrome-c/preview.html ("The Index"), not re-authored.
+
+   Picks, cited: NAV-PATTERNS.md #11 editorial numbered nav (considered #3, #7);
+   FOOTER-STYLES.md #19 editorial masthead, deliberately NOT #1, which that catalog's
+   own opening flags as the overused reflex. Technique ceiling _MODERN-WOW-SPEC;
+   sector blueprint composition-medical-health.
+
+   Token-pure: every colour reaches for var(--ds-*). Load order is
+   stomatology-tokens.css -> stomatology-structural.css -> brand-card-standard.css
+   (+ brand-card-bespoke.css on a marquee page) -> THIS.
+
+   The concept's two stand-in bands were dropped in derivation: they existed so the bar
+   had something to sit over while it was judged, and are not part of the chrome. */
+
+/* ---------------------------------------------------------------------------
+   Namespace .cc- (chrome C) for everything EXCEPT the canonical interactivity
+   hooks the functional gate drives, which keep their canonical names.
+   ZERO colour literals: every colour reaches for var(--ds-*), mixed only with
+   color-mix(in srgb, var(--ds-*) N%, transparent).
+   --------------------------------------------------------------------------- */
+:root{
+  --cc-bar-h: 84px;
+  --cc-rule: 1px solid var(--ds-line);
+  --cc-lift:
+    0 1px 0 color-mix(in srgb, var(--ds-primary-deep) 10%, transparent),
+    0 30px 64px -20px color-mix(in srgb, var(--ds-primary-deep) 55%, transparent);
+  --cc-glow: color-mix(in srgb, var(--ds-accent) 24%, transparent);
+}
+/* the dark flip re-declares its mixes: a value mixed against the light ground is
+   baked at computed-value time and never re-resolves inside a dark band. */
+.surface-dark{
+  --cc-lift:
+    0 1px 0 color-mix(in srgb, var(--ds-primary-deep) 40%, transparent),
+    0 30px 64px -20px color-mix(in srgb, var(--ds-primary-deep) 80%, transparent);
+  --cc-glow: color-mix(in srgb, var(--ds-accent) 30%, transparent);
+}
+
+/* ---- ONE focus ring, never removed, only restyled ---- */
+.cc-skip:focus-visible,
+.cc-brand:focus-visible,
+.cc-link:focus-visible,
+.cc-tel:focus-visible,
+.cc-idx__row:focus-visible,
+.cc-drop__item:focus-visible,
+.cc-feat__link:focus-visible,
+.cc-a:focus-visible,
+.cc-foot__link:focus-visible,
+.site-header__hamburger:focus-visible,
+.cc-drawer__close:focus-visible,
+.cc-drawer__sum:focus-visible,
+.cc-drawer__link:focus-visible,
+.cc-drawer__sub a:focus-visible{
+  outline:2px solid var(--ds-accent);
+  outline-offset:3px;
+  border-radius:var(--ds-r-control);
+}
+
+/* ---- skip link: the first focusable thing on the page ---- */
+.cc-skip{
+  position:absolute; left:var(--ds-space-md); top:calc(var(--ds-space-md) * -4);
+  z-index:var(--ds-z-toast, 90);
+  padding:var(--ds-space-sm) var(--ds-space-md);
+  background-color:var(--ds-bg-surface); color:var(--ds-ink);
+  border:var(--cc-rule); border-radius:var(--ds-r-control);
+  text-decoration:none; font-weight:500;
+  transition:top var(--ds-dur) var(--ds-ease);
+}
+.cc-skip:focus-visible{ top:var(--ds-space-md); }
+
+/* ---- a plain inline link, defined here rather than borrowed: .hp-link is not
+       defined in any linked sheet, so this concept declares its own ---- */
+.cc-a{
+  color:var(--ds-accent-ink); text-decoration:none;
+  border-bottom:1px solid color-mix(in srgb, var(--ds-accent) 45%, transparent);
+  padding-bottom:1px;
+}
+.cc-a:hover{ border-bottom-color:var(--ds-accent); }
+
+/* ============================================================================
+   THE BAR. NAV-PATTERNS #11: bold wordmark left, the numbered list beside it, a
+   status slot in the right corner. Opaque from scroll zero (the entry's own
+   sticky note for a multi-section page), so it never depends on the photograph
+   behind it. The scroll state TIGHTENS rather than fades: the bar loses height,
+   the numbers drop back a shade, and the rule under it gains weight.
+   ============================================================================ */
+.cc-bar{
+  position:fixed; inset:0 0 auto 0; z-index:var(--ds-z-sticky, 60);
+  height:var(--cc-bar-h);
+  display:flex; align-items:center;
+  padding:0 var(--hp-gutter);
+  background-color:var(--ds-bg-surface);
+  border-bottom:1px solid color-mix(in srgb, var(--ds-line) 70%, transparent);
+  transition:
+    height var(--ds-dur-slow, 240ms) var(--ds-ease-out),
+    border-color var(--ds-dur) var(--ds-ease),
+    box-shadow var(--ds-dur) var(--ds-ease);
+}
+.cc-bar.is-tight{
+  height:calc(var(--cc-bar-h) - 20px);
+  border-bottom-color:var(--ds-line);
+  box-shadow:0 18px 34px -28px color-mix(in srgb, var(--ds-primary-deep) 90%, transparent);
+}
+.cc-bar__in{
+  display:flex; align-items:center; gap:var(--ds-space-lg);
+  width:100%; max-width:var(--ds-container-max); margin:0 auto;
+}
+
+/* ---- the wordmark. #11 wants it BOLD and first, and on this site the practice
+       name is the only asset the brand has, because every proof device is
+       barred. ---- */
+.cc-brand{
+  display:inline-flex; align-items:baseline; gap:var(--ds-space-2xs);
+  text-decoration:none; color:var(--ds-ink); white-space:nowrap;
+}
+.cc-brand__name{
+  font-family:var(--ds-font-display);
+  font-size:var(--hp-fs-h3);
+  font-weight:var(--ds-weight-display);
+  letter-spacing:var(--ds-track-display);
+}
+.cc-brand__rule{
+  width:26px; height:1px; flex:none;
+  background-color:color-mix(in srgb, var(--ds-accent-light) 70%, transparent);
+}
+
+/* ---- the numbered list ---- */
+.cc-nav{ display:flex; align-items:center; gap:var(--ds-space-2xs); }
+.cc-nav__item{ position:relative; }
+.cc-link{
+  position:relative;
+  display:inline-flex; align-items:baseline; gap:7px;
+  padding:var(--ds-space-xs);
+  color:var(--ds-ink); text-decoration:none;
+  font-size:var(--ds-fs-body); font-weight:500; white-space:nowrap;
+  background:none; border:0; cursor:pointer; font-family:inherit; line-height:1.2;
+  transition:color var(--ds-dur) var(--ds-ease);
+}
+/* the number is nav TYPOGRAPHY, not an icon: tabular, tracked, one step down,
+   carried in the accent so the sequence reads as a sequence. */
+.cc-num{
+  font-size:var(--ds-fs-fine);
+  font-variant-numeric:tabular-nums;
+  letter-spacing:.08em;
+  font-weight:var(--ds-weight-head);
+  color:color-mix(in srgb, var(--ds-accent-light) 78%, transparent);
+  transition:color var(--ds-dur) var(--ds-ease);
+}
+.cc-bar.is-tight .cc-num{ color:color-mix(in srgb, var(--ds-accent-light) 52%, transparent); }
+.cc-link:hover .cc-num,
+.cc-link[aria-expanded="true"] .cc-num{ color:var(--ds-accent-light); }
+.cc-link__label{ position:relative; }
+.cc-link__label::after{
+  content:""; position:absolute; left:0; right:0; bottom:-4px; height:1px;
+  background-color:var(--ds-accent-light);
+  transform:scaleX(0); transform-origin:left;
+  transition:transform var(--ds-dur) var(--ds-ease-out);
+}
+.cc-link:hover .cc-link__label::after,
+.cc-link[aria-expanded="true"] .cc-link__label::after{ transform:scaleX(1); }
+.cc-link.is-active .cc-link__label::after{ transform:scaleX(1); background-color:var(--ds-accent); }
+
+/* ---- the right corner. #11 puts a year mark or a status indicator here. This
+       build has no year to claim and no status it can verify, so the corner
+       carries the ONE true conversion mechanic instead: the telephone, marked
+       unfinished because the number is a placeholder on every page. ---- */
+.cc-tel{
+  margin-left:auto;
+  display:inline-flex; align-items:center; gap:var(--ds-space-2xs);
+  color:var(--ds-ink); text-decoration:none;
+  font-size:var(--ds-fs-fine); white-space:nowrap;
+  border-bottom:1px solid color-mix(in srgb, var(--ds-ink) 30%, transparent);
+  padding-bottom:2px;
+  transition:border-color var(--ds-dur) var(--ds-ease), color var(--ds-dur) var(--ds-ease);
+}
+.cc-tel:hover{ color:var(--ds-accent-light); border-bottom-color:var(--ds-accent-light); }
+.cc-tel__num{ font-variant-numeric:tabular-nums; letter-spacing:.02em; }
+/* the visible unfinished mark. Chrome puts placeholder data on every page, so it
+   is marked where the data SITS, not only disclosed once at the foot. */
+.cc-unfinished{
+  font-size:var(--ds-fs-eyebrow); letter-spacing:.1em; text-transform:uppercase;
+  padding:2px 6px; border-radius:2px;
+  background-color:color-mix(in srgb, var(--ds-accent) 20%, transparent);
+  border:1px solid color-mix(in srgb, var(--ds-accent) 55%, transparent);
+  color:inherit; white-space:nowrap;
+}
+
+/* ============================================================================
+   HOVER-INTENT, all three mechanisms together.
+   (a) trigger and panel share ONE hover scope (.cc-nav__item), so :hover and
+       :focus-within on the parent drive the panel;
+   (b) a bridge pseudo-element covers the seam, so no un-hoverable pixel band
+       exists between the trigger's foot and the panel's head;
+   (c) a JS close-delay cleared on re-enter, in the script below.
+   ============================================================================ */
+.cc-panel{
+  position:absolute; top:calc(100% + 12px); left:0;
+  min-width:380px;
+  opacity:0; visibility:hidden; transform:translateY(-6px);
+  transition:
+    opacity var(--ds-dur) var(--ds-ease),
+    transform var(--ds-dur) var(--ds-ease-out),
+    visibility 0s linear var(--ds-dur);
+  z-index:var(--ds-z-overlay, 70);
+}
+.cc-nav__item.is-open > .cc-panel,
+.cc-nav__item:hover > .cc-panel,
+.cc-nav__item:focus-within > .cc-panel{
+  opacity:1; visibility:visible; transform:translateY(0); transition-delay:0s;
+}
+.cc-panel::before{                    /* (b) the bridge across the seam */
+  content:""; position:absolute; left:0; right:0; top:-16px; height:16px;
+}
+/* THE CONTENTS INDEX IS ANCHORED TO THE BAR, NOT TO ITS TRIGGER. A contents sheet
+   this wide, hung off the second item of a left-aligned list, runs off the right
+   edge at 1024. Centring it under the bar cannot overflow at any width, and it
+   reads correctly: a contents page belongs to the publication, not to one line
+   of it. Anchoring it to the bar also removes the seam, because the panel starts
+   exactly at the bar's foot and follows the bar's tightened height. */
+.cc-panel--index{
+  position:fixed; top:calc(var(--cc-bar-h) - 1px); left:50%; right:auto;
+  width:min(880px, calc(100vw - var(--hp-gutter) * 2));
+  transform:translate(-50%, -6px);
+}
+.cc-bar.is-tight .cc-panel--index{ top:calc(var(--cc-bar-h) - 21px); }
+.cc-nav__item.is-open > .cc-panel--index,
+.cc-nav__item:hover > .cc-panel--index,
+.cc-nav__item:focus-within > .cc-panel--index{ transform:translate(-50%, 0); }
+.cc-panel--index::before{ top:-18px; height:18px; }
+.cc-panel__in{
+  border:var(--cc-rule);
+  border-radius:var(--ds-r-surface);
+  box-shadow:var(--cc-lift);
+  overflow:hidden;
+  background-color:var(--ds-bg-surface);
+  background-image:linear-gradient(180deg,
+    var(--ds-bg-surface-2) 0%,
+    var(--ds-bg-surface) 46%,
+    var(--ds-bg-surface) 100%);
+}
+
+/* ---- the numbered contents index, with a featured zone BESIDE it ---- */
+.cc-idx{ display:grid; grid-template-columns:1.15fr .85fr; }
+.cc-idx__list{ padding:var(--ds-space-md); }
+.cc-idx__head{
+  display:flex; align-items:baseline; gap:var(--ds-space-xs);
+  margin:0 0 var(--ds-space-2xs);
+  padding:0 0 var(--ds-space-xs);
+  border-bottom:var(--cc-rule);
+}
+.cc-idx__head b{ font-family:var(--ds-font-display); font-weight:var(--ds-weight-head); color:var(--ds-ink-heading); }
+.cc-idx__kicker{
+  font-size:var(--ds-fs-eyebrow); letter-spacing:var(--ds-track-eyebrow);
+  text-transform:uppercase; color:var(--ds-ink-soft);
+}
+.cc-idx__row{
+  display:grid; grid-template-columns:auto 1fr; align-items:baseline;
+  gap:var(--ds-space-sm);
+  padding:11px var(--ds-space-2xs);
+  border-bottom:1px solid color-mix(in srgb, var(--ds-line) 60%, transparent);
+  text-decoration:none; color:var(--ds-ink);
+  transition:background-color var(--ds-dur) var(--ds-ease), padding-left var(--ds-dur) var(--ds-ease-out);
+}
+.cc-idx__row:last-child{ border-bottom:0; }
+.cc-idx__row:hover{
+  background-color:color-mix(in srgb, var(--ds-accent) 12%, transparent);
+  padding-left:var(--ds-space-sm);
+}
+.cc-idx__n{
+  font-size:var(--ds-fs-fine); font-variant-numeric:tabular-nums; letter-spacing:.06em;
+  color:color-mix(in srgb, var(--ds-accent-light) 80%, transparent);
+}
+.cc-idx__t{ display:block; font-weight:500; }
+.cc-idx__s{ display:block; margin-top:2px; color:var(--ds-ink-soft); font-size:var(--ds-fs-fine); line-height:var(--ds-lh-body); }
+
+/* the featured zone: graded photograph, eyebrow, one editorial line, one link */
+.cc-feat{
+  position:relative; isolation:isolate; min-height:296px;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding:var(--ds-space-md); overflow:hidden;
+}
+.cc-feat__img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+.cc-feat__grade{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background-image:linear-gradient(to top,
+    color-mix(in srgb, var(--ds-primary-deep) 94%, transparent)  0%,
+    color-mix(in srgb, var(--ds-primary-deep) 76%, transparent) 36%,
+    color-mix(in srgb, var(--ds-primary-deep) 32%, transparent) 66%,
+    transparent 92%);
+}
+.cc-feat__body{ position:relative; z-index:2; }
+.cc-feat__eyebrow{
+  margin:0 0 var(--ds-space-2xs);
+  font-size:var(--ds-fs-eyebrow); letter-spacing:var(--ds-track-eyebrow);
+  text-transform:uppercase; color:var(--ds-accent-light);
+}
+.cc-feat__line{
+  margin:0 0 var(--ds-space-sm);
+  font-family:var(--ds-font-display); font-size:var(--hp-fs-h3);
+  line-height:var(--ds-lh-head); font-weight:var(--ds-weight-head);
+  color:var(--ds-ink);
+}
+.cc-feat__link{
+  color:var(--ds-ink); text-decoration:none; font-weight:500;
+  border-bottom:1px solid color-mix(in srgb, var(--ds-ink) 45%, transparent);
+  padding-bottom:2px;
+}
+.cc-feat__link:hover{ color:var(--ds-accent-light); border-bottom-color:var(--ds-accent-light); }
+
+/* ---- the plain dropdown, the second open state the owner judges ---- */
+.cc-drop .cc-panel__in{ padding:var(--ds-space-2xs); }
+.cc-drop__item{
+  display:grid; grid-template-columns:auto 1fr; gap:var(--ds-space-sm);
+  align-items:baseline;
+  padding:var(--ds-space-sm) var(--ds-space-md);
+  border-radius:var(--ds-r-control); text-decoration:none; color:var(--ds-ink);
+  transition:background-color var(--ds-dur) var(--ds-ease);
+}
+.cc-drop__item:hover{ background-color:color-mix(in srgb, var(--ds-accent) 12%, transparent); }
+.cc-drop__sub{ display:block; margin-top:2px; color:var(--ds-ink-soft); font-size:var(--ds-fs-fine); line-height:var(--ds-lh-body); }
+
+/* ============================================================================
+   HAMBURGER + DRAWER. CANONICAL selectors: the functional gate drives
+   .site-header__hamburger and #mobile-drawer via aria-hidden.
+   STRUCTURE NOTE, load-bearing: the close control and the call action sit OUTSIDE
+   the drawer <nav>. The nav-consistency gate reads the drawer's top-level
+   triggers and compares them to the header's, so a close button or a CTA inside
+   that nav reads as an extra nav item the header does not have, which is drift.
+   They are siblings of the nav, never children of it.
+   ============================================================================ */
+.site-header__hamburger{
+  display:none; width:44px; height:44px; margin-left:var(--ds-space-sm);
+  align-items:center; justify-content:center;
+  background:none; border:1px solid color-mix(in srgb, var(--ds-ink) 34%, transparent);
+  border-radius:var(--ds-r-control); cursor:pointer;
+}
+.site-header__hamburger span{ display:block; width:18px; height:1.5px; background-color:var(--ds-ink); position:relative; }
+.site-header__hamburger span::before,
+.site-header__hamburger span::after{ content:""; position:absolute; left:0; width:18px; height:1.5px; background-color:inherit; }
+.site-header__hamburger span::before{ top:-6px; }
+.site-header__hamburger span::after{ top:6px; }
+
+#mobile-drawer{
+  position:fixed; inset:0 0 0 auto; width:min(310px, 86vw); z-index:var(--ds-z-drawer, 80);
+  background-color:var(--ds-bg-surface);
+  border-left:var(--cc-rule);
+  box-shadow:-24px 0 60px -30px color-mix(in srgb, var(--ds-primary-deep) 90%, transparent);
+  transform:translateX(100%);
+  transition:transform var(--ds-dur-slow, 320ms) var(--ds-ease-out);
+  display:flex; flex-direction:column; padding:var(--ds-space-md);
+  overflow-y:auto;
+}
+#mobile-drawer[aria-hidden="false"]{ transform:translateX(0); }
+.cc-scrim{
+  position:fixed; inset:0; z-index:var(--ds-z-overlay, 79);
+  background-color:var(--ds-scrim);
+  opacity:0; visibility:hidden;
+  transition:opacity var(--ds-dur) var(--ds-ease), visibility 0s linear var(--ds-dur);
+}
+.cc-scrim.is-on{ opacity:1; visibility:visible; transition-delay:0s; }
+.cc-drawer__head{ display:flex; justify-content:flex-end; }
+.cc-drawer__close{
+  width:40px; height:40px; border:var(--cc-rule); background:none;
+  border-radius:var(--ds-r-control); cursor:pointer; color:var(--ds-ink);
+  font-size:18px; line-height:1;
+}
+.cc-drawer__nav{ display:flex; flex-direction:column; }
+.cc-drawer__group{ border-bottom:var(--cc-rule); }
+/* the numbered prefix is PRESERVED in the drawer, per the catalog entry, and the
+   markup of a drawer label is identical to its header twin so the two navs
+   cannot drift apart. */
+.cc-drawer__link,
+.cc-drawer__sum{
+  display:flex; align-items:baseline; gap:7px; width:100%;
+  padding:var(--ds-space-md) 0; background:none; border:0; cursor:pointer;
+  font:inherit; font-weight:500; color:var(--ds-ink); text-align:left;
+  text-decoration:none;
+}
+.cc-drawer__link{ border-bottom:var(--cc-rule); }
+.cc-drawer__sum{ position:relative; padding-right:var(--ds-space-md); }
+/* the open/closed marker is DRAWN, never written: a text "+" inside the button
+   becomes part of the trigger's LABEL and reads as drift against the header,
+   which lists the same item without one. */
+.cc-drawer__sum::after{
+  content:""; position:absolute; right:2px; top:calc(50% - 6px);
+  width:9px; height:9px;
+  border-right:1.5px solid currentColor; border-bottom:1.5px solid currentColor;
+  transform:rotate(45deg);
+  transition:transform var(--ds-dur) var(--ds-ease);
+}
+.cc-drawer__sum[aria-expanded="true"]::after{ transform:rotate(-135deg); }
+.cc-drawer__sub{ display:none; padding:0 0 var(--ds-space-sm) var(--ds-space-md); }
+.cc-drawer__group.is-open .cc-drawer__sub{ display:block; }
+.cc-drawer__sub a{ display:block; padding:7px 0; color:var(--ds-ink-soft); text-decoration:none; font-size:var(--ds-fs-fine); }
+.cc-drawer__sub a:hover{ color:var(--ds-accent-light); }
+.cc-drawer__cta{ margin-top:var(--ds-space-md); }
+/* the irregular tile pair: two plates of different heights and different tops,
+   so the right column reads as an index of frames rather than one photograph. */
+.cc-plates{ display:grid; grid-template-columns:1fr 1fr; gap:var(--ds-space-sm); align-items:start; }
+.cc-plate{
+  position:relative; margin:0; overflow:hidden;
+  border:var(--cc-rule); border-radius:var(--ds-r-surface);
+  box-shadow:var(--cc-lift);
+}
+.cc-plate--tall{ aspect-ratio:3 / 4; }
+.cc-plate--short{ aspect-ratio:1 / 1; margin-top:var(--ds-space-xl); }
+.cc-plate img{ display:block; width:100%; height:100%; object-fit:cover; }
+.cc-plate__tag{
+  position:absolute; left:0; bottom:0; z-index:2;
+  padding:5px 10px;
+  font-size:var(--ds-fs-eyebrow); letter-spacing:var(--ds-track-eyebrow); text-transform:uppercase;
+  color:var(--ds-ink); background-color:color-mix(in srgb, var(--ds-bg-surface) 84%, transparent);
+  border-top:var(--cc-rule); border-right:var(--cc-rule);
+}
+/* the pulled-up card: it starts above this band's top edge and lands inside it,
+   so the seam between the dark hero and the light relief band is crossed by one
+   object instead of being a hard line. */
+.cc-card{
+  margin-top:calc(var(--hp-py) * -1.3);
+  padding:var(--ds-space-lg);
+  background-color:var(--ds-bg-surface);
+  border:var(--cc-rule); border-radius:var(--ds-r-surface);
+  box-shadow:var(--cc-lift);
+  display:grid; grid-template-columns:auto 1fr; gap:var(--ds-space-lg); align-items:start;
+}
+.cc-card__n{
+  font-family:var(--ds-font-display); font-size:var(--hp-fs-h2);
+  line-height:1; font-weight:var(--ds-weight-display);
+  color:color-mix(in srgb, var(--ds-accent) 40%, transparent);
+  font-variant-numeric:tabular-nums;
+}
+.cc-card h2{
+  margin:0 0 var(--ds-space-xs);
+  font-family:var(--ds-font-display); font-size:var(--hp-fs-h3);
+  line-height:var(--ds-lh-head); font-weight:var(--ds-weight-head);
+  color:var(--ds-ink-heading);
+}
+.cc-card p{ margin:0; color:var(--ds-ink-soft); line-height:var(--ds-lh-body); max-width:68ch; }
+
+/* ---- THE CLOSING BAND. A designed moment on the dark ground: a spotlight, an
+       oversized line, and ONE stacked pair of actions.
+       The risk-reversal slot is NOT a guarantee. This practice cannot make one.
+       It carries page-faq.html's own answer instead: booking is by telephone or
+       by email and there is no online booking. That is a true statement which
+       removes a reader's uncertainty, which is what the slot is actually for. ---- */
+.cc-closing{
+  position:relative; isolation:isolate; overflow:hidden;
+  padding:calc(var(--hp-py) * 1.1) var(--hp-gutter);
+  background-color:var(--ds-bg-surface-2);
+}
+.cc-closing::before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    radial-gradient(66% 120% at 22% 0%, var(--cc-glow) 0%, transparent 64%),
+    linear-gradient(180deg, var(--hp-ground-mid) 0%, var(--ds-bg-surface-2) 50%, var(--hp-ground-low) 100%);
+}
+.cc-closing__in{
+  position:relative; z-index:1;
+  max-width:var(--ds-container-max); margin:0 auto;
+  display:grid; grid-template-columns:1.25fr .75fr; gap:var(--ds-space-xl); align-items:end;
+}
+.cc-closing__eyebrow{
+  margin:0 0 var(--ds-space-sm);
+  font-size:var(--ds-fs-eyebrow); letter-spacing:var(--ds-track-eyebrow);
+  text-transform:uppercase; color:var(--ds-accent-light);
+  font-variant-numeric:tabular-nums;
+}
+.cc-closing h2{
+  margin:0 0 var(--ds-space-md);
+  font-family:var(--ds-font-display); font-size:var(--hp-fs-h2);
+  line-height:var(--ds-lh-head); letter-spacing:var(--ds-track-display);
+  font-weight:var(--ds-weight-display); color:var(--ds-ink-heading);
+  text-wrap:balance;
+}
+.cc-closing p{ margin:0 0 var(--ds-space-xs); color:var(--ds-ink-soft); line-height:var(--ds-lh-body); max-width:58ch; }
+/* CTA-PATTERNS #8: primary above secondary, one column, matching the single
+   reading column the whole direction is built on. */
+.cc-acts{ display:flex; flex-direction:column; gap:var(--ds-space-sm); align-items:stretch; }
+.cc-acts .hp-go{ width:100%; }
+.cc-acts small{ color:var(--ds-ink-soft); font-size:var(--ds-fs-fine); line-height:var(--ds-lh-body); }
+
+/* ============================================================================
+   FOOTER-STYLES #19, EDITORIAL MASTHEAD. Wordmark, then the credits block that
+   carries the disclosure, then the mini-grid of the six numbered links with the
+   legal line beside it.
+   ============================================================================ */
+/* FOOTER HEIGHT WAS MEASURED, NOT ESTIMATED. The first build of this masthead
+   rendered 518px tall at 1440 against direction A's 374px, and the chrome-parity
+   gate refused it at 39% divergence (tolerance 12%). The cause was the credits
+   grid: at three columns the disclosure paragraph became a tall narrow column and
+   forced the whole second row to its height. Running the credits at FIVE columns
+   with the record spanning the full width turns that paragraph into two wide
+   lines instead of six narrow ones, which is also how a printed masthead sets it.
+   The band paddings came down with it. Re-measured with the same gate after the
+   change: 390px against A's 374px, a 4% divergence, gate PASS. Worth recording
+   that the gate FAILED OPEN on the original write because it exceeded its hook
+   timeout, so this was caught by running it deliberately rather than by the hook.
+   The masthead credits themselves were not shortened: the disclosure is the point
+   of the pick, so the height came out of padding and column count, never copy.
+
+   POSTSCRIPT 2026-09-02, after the owner picked this direction. The constraint that
+   forced the second round was INVALID. verify-chrome-parity was treating direction A
+   as a locked reference for its own rivals, because its resolver fell back to a
+   conventional winner slot whenever no concept had been approved. An open tournament
+   has nothing to be parity WITH, and P9 requires these concepts be "genuinely distinct
+   ... NOT three reskins of one bar", so the gate was enforcing the inverse of the
+   doctrine it belongs to. The resolver now returns no reference until a chrome is
+   actually decided, proven by _chrome-parity-open-tournament-smoke.mjs.
+   These values were KEPT ANYWAY, on their own merits and not as gate scars. The
+   five-column regroup is how a printed masthead sets a record line and is a better
+   composition than the three-column original regardless of any gate, and the trimmed
+   paddings were re-read at full resolution after the pick with no crowding visible.
+   Nothing here is owed a revert; the numbers above are history, not a requirement. */
+.cc-foot{
+  background-color:var(--ds-bg-surface);
+  border-top:var(--cc-rule);
+  padding:var(--ds-space-lg) var(--hp-gutter) var(--ds-space-md);
+}
+.cc-foot__in{ max-width:var(--ds-container-max); margin:0 auto; }
+.cc-foot__mark{
+  margin:0 0 var(--ds-space-sm);
+  font-family:var(--ds-font-display); font-size:var(--hp-fs-h2);
+  line-height:1.05; letter-spacing:var(--ds-track-display);
+  font-weight:var(--ds-weight-display); color:var(--ds-ink-heading);
+}
+.cc-mast{
+  display:grid; grid-template-columns:repeat(5, 1fr);
+  gap:var(--ds-space-sm) var(--ds-space-md);
+  padding-top:var(--ds-space-sm);
+  border-top:var(--cc-rule);
+}
+/* the record is the disclosure. It spans the full measure so it sets as two wide
+   lines rather than a tall narrow column, and so it reads as the closing line of
+   the masthead rather than as a sixth credit of equal weight. */
+.cc-mast__record{ grid-column:1 / -1; }
+.cc-mast__k{
+  display:block; margin-bottom:3px;
+  font-size:var(--ds-fs-eyebrow); letter-spacing:var(--ds-track-eyebrow);
+  text-transform:uppercase; color:var(--ds-ink-soft);
+}
+.cc-mast__v{ margin:0; font-size:var(--ds-fs-fine); line-height:1.5; color:var(--ds-ink); }
+.cc-foot__bar{
+  display:flex; flex-wrap:wrap; align-items:baseline;
+  gap:var(--ds-space-xs) var(--ds-space-md);
+  margin-top:var(--ds-space-md); padding-top:var(--ds-space-sm);
+  border-top:var(--cc-rule);
+}
+.cc-foot__link{
+  display:inline-flex; align-items:baseline; gap:6px;
+  color:var(--ds-ink); text-decoration:none; font-size:var(--ds-fs-fine);
+  transition:color var(--ds-dur) var(--ds-ease);
+}
+.cc-foot__link:hover{ color:var(--ds-accent-light); }
+.cc-foot__legal{ margin:0 0 0 auto; color:var(--ds-ink-soft); font-size:var(--ds-fs-eyebrow); line-height:1.6; }
+
+/* ---- responsive ---- */
+@media (max-width:1100px){
+  .cc-idx{ grid-template-columns:1fr; }
+  .cc-feat{ min-height:220px; }
+  .cc-mast{ grid-template-columns:repeat(3, 1fr); }
+}
+@media (max-width:900px){
+  .cc-nav, .cc-tel{ display:none; }
+  /* margin-left:auto lived on .cc-tel, which is hidden at this width. Without
+     moving it, the hamburger sits against the wordmark instead of the header's
+     right edge, which is the parity failure this one line exists to prevent. */
+  .site-header__hamburger{ display:inline-flex; margin-left:auto; }
+  .cc-hero__in{ grid-template-columns:1fr; gap:var(--ds-space-lg); }
+  .cc-closing__in{ grid-template-columns:1fr; align-items:start; }
+  .cc-card{ margin-top:calc(var(--hp-py) * -0.8); grid-template-columns:1fr; gap:var(--ds-space-sm); }
+  .cc-mast{ grid-template-columns:1fr 1fr; }
+  .cc-foot__legal{ margin-left:0; }
+}
+@media (max-width:560px){
+  .cc-plates{ grid-template-columns:1fr; }
+  .cc-plate--short{ margin-top:0; }
+  .cc-mast{ grid-template-columns:1fr; }
+}
+@media (prefers-reduced-motion: reduce){
+  .cc-bar, .cc-panel, .cc-panel--index, .cc-link, .cc-link__label::after, .cc-num,
+  .cc-idx__row, .cc-drop__item, .cc-tel, .cc-skip, .cc-foot__link,
+  #mobile-drawer, .cc-scrim, .cc-drawer__sum::after{
+    transition-duration:1ms !important; transition-delay:0s !important;
+  }
+}

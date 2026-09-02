@@ -22,7 +22,7 @@
 > review on its own, at **[`preview/chrome-a.html`](preview/chrome-a.html)**. It is a candidate, not
 > the decision: two more are being built and the owner picks between them.
 
-**Status as of 2026-09-02.** Run of the `client-site-prep` skill, and now
+**Status as of 2026-09-02 (evening).** Run of the `client-site-prep` skill, and now
 `client-site-build`, against
 `https://stomatology.axiomthemes.com/childrens-dentistry/`.
 
@@ -1239,6 +1239,105 @@ remaining it is nearer 55 to 60 percent.
 
 Directions B and C of the chrome tournament are being built. The eight launch-scope blockers are
 unchanged and remain entirely the owner's.
+
+---
+
+## 17. The chrome landed, the copy lost 87 percent of its words, and the templates were caught by a gate that does not run on them
+
+**2026-09-02, later.** Four things closed and one number moved a long way.
+
+### The chrome is locked
+
+The owner was shown three directions with a measured distinctness table and picked **C, "The
+Index"**: a dark-first numbered nav over an editorial masthead footer. Three artifacts were derived
+from it and stamped: the chrome sheet, the locked carrier, and the shared page shell every built page
+will inherit.
+
+Two gate defects were found and fixed on the way, and one of them is worth naming because it was
+inverting the doctrine it belonged to:
+
+- **The parity gate treated a rival as a reference.** When no chrome had been approved, it fell back
+  to whichever concept sat in one directory slot and required the others to match its geometry within
+  tolerance. P9 requires the concepts be *"genuinely distinct ... NOT three reskins of one bar"*, so
+  the gate was enforcing the opposite of the rule it sits inside. It had already shaped two concepts
+  toward a third before it was caught. Patched to hold its fire until a chrome is actually decided,
+  with a test proving all three states: open tournament, locked chrome, approved letter.
+- **A gate that printed PASS after testing nothing.** The drawer-reachability probe locates the
+  drawer's action block by a literal class name. Finding none, it skipped the file and reported PASS
+  anyway. Two of the three concepts were passing it vacuously.
+
+### The copy: 6,188 words to 835
+
+The owner's instruction was blunt: *"i don't want to be reading long paragraphs that look like
+novels."* They were right, and the numbers were not close.
+
+| page | before | after | cut |
+|---|---|---|---|
+| services | 1,928 | 140 | 93% |
+| contact | 1,817 | 83 | 95% |
+| faq | 1,002 | 209 | 79% |
+| team | 819 | 262 | 68% |
+| about | 622 | 141 | 77% |
+| **total** | **6,188** | **835** | **87%** |
+
+One paragraph had been **409 words**. The longest is now 32, against a limit of 40.
+
+**Two adversarial rounds had run before this and both made the copy longer.** They were chasing voice
+and held claims, and hedging is what that produces: one auditor caught a revision that made a claim
+*harder* than the original, turning "we set out what it involves before anything is agreed" into
+"nothing is agreed until you have heard what it involves", which is a categorical universal the
+content bible bans outright. The cycles were optimising the wrong axis while the real defect
+compounded on another. Cutting fixed most of the held claims for free, because they lived inside the
+long explanatory sentences being deleted.
+
+### A measuring rule that was wrong, reported honestly by the thing being measured
+
+The brevity checkers returned FAIL on two pages. They were right to, and the fault was **the rule, not
+the copy**: the copy files are authoring decks whose build notes and microcopy never reach a visitor,
+and the rule counted all of it. Services measured 1,065 words when its visitor prose was 192. Both
+checkers spotted the ambiguity, reported *both* numbers, and said which question each answered rather
+than simply failing the file.
+
+### The templates, and a gate that cannot see the thing it governs
+
+Four page-type templates were built, one per type in the closed six-page manifest, each composed in
+the owner-locked DOM grammar rather than the bespoke skeleton the approved designs use.
+
+The finding that matters: **the grammar gate's scope is the page set, not the template directory.**
+So a template can violate the grammar, write clean, and hand the violation to every page built from
+it. Feeding each template's own body to that gate as if it were a page found **two orphan-content
+violations in T-HUB** that would have failed every services and questions page downstream. Fixed, and
+the fix was verified by planting a violation and confirming the gate still refuses it, because a green
+result from a gate that has stopped firing is worse than a red one.
+
+The same check found a picture contradicting its own caption: a slot headed "where the work happens",
+beside copy reading *"the work we do happens in the treatment room"*, rendered a photograph of
+**reception**, with an alt string invented for the picture rather than taken from the brief, which
+specifies exactly two image slots for that page and writes both alts down precisely so they are
+*"not the build's to invent"*. Corrected to the treatment-room asset and the brief's own words.
+
+### The contact page could not be built honestly, so the deadlock was decided and written down
+
+Prep flagged `D-PAGE-DEADLOCK-CONTACT` on all six pages before the build began. The conversion gate
+requires the terminal page to carry a form or an explicit enquiry affordance. This practice has no
+form to give: its own FAQ says booking is *"by telephone or by email. There is no online booking"*,
+the email is a `.example` placeholder and the telephone is in the range reserved for fiction.
+
+Both exits were bad. A form that submits nowhere turns the gate green while routing nothing, which is
+exactly the fabricated capability the content bible forbids. Details as plain text is honest and stops
+the build.
+
+**What ships:** an enquiry block carrying the gate's own documented alternative, an explicit inquiry
+affordance whose controls are a real telephone link and a real mail link, with the placeholder marks
+visible on both. No form element. The cost is stated in the decision record: someone who wants to type
+a message and press send cannot. The proper exits are the owner's, and the record says to revisit if a
+real email address arrives.
+
+### Where it stands
+
+Sixteen of the ladder's twenty-two stages are cleared. **No page is assembled yet**: the templates
+exist, the copy exists, the chrome exists, and the machine that joins them has not been run. The eight
+launch-scope blockers are unchanged and remain entirely the owner's.
 
 ---
 

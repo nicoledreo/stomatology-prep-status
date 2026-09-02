@@ -66,6 +66,57 @@ promises a dentist is not a team page with a dentist on it. The finish gap
 
 ---
 
+## OVR-2 · the contact page's conversion affordance
+
+| | |
+|---|---|
+| **Date** | 2026-09-02 |
+| **Authority** | Owner, standing: *"If you have any blockers, resolve it and continue until the bulk of this project is done."* This is the blocker resolved under that instruction, recorded here so the decision is reviewable rather than silent. |
+| **The deadlock** | `D-PAGE-DEADLOCK-CONTACT`, carried on all six pages, raised by prep before the build began |
+| **Ships** | an enquiry block carrying `data-inquiry-form`, routing to `tel:` and `mailto:`, with the placeholder marks visible. **No `<form>` element.** |
+
+### The deadlock, stated exactly
+
+`verify-conversion-integrity` (G6) requires the **terminal** page to carry a `<form>` or an explicit
+`data-(quote|inquiry|conversion)-form` affordance — verified in its source at lines 162 to 164.
+`T-CONTACT`'s registry floor says the same: *"form + routing-block present"*.
+
+This practice has no form to carry. Its own FAQ answers the booking question with *"By telephone or by
+email. There is no online booking."* The email is a `.example` placeholder that routes nowhere, and
+the telephone is a placeholder in the range reserved for fiction.
+
+So the page had two exits and both were bad:
+
+- **Ship a `<form>`.** The gate goes green. A visitor fills it in and nothing happens, because there is
+  nowhere for it to go. That is a working-looking control that does not work: a fabricated capability,
+  which the content bible forbids outright and which prep specifically warned about in this fact's own
+  wording, *"a placeholder inside a live mailto would turn the gate green while routing nowhere"*.
+- **Ship the details as text.** Honest, and the build stops: G6 refuses the terminal page and no page
+  after it can be written.
+
+### What ships instead, and why it is not a dodge
+
+The gate's own fallback exists for exactly this shape. Its source comment describes the accepted
+alternative as *"a JS-driven quote widget / mailto inquiry"* — the affordance is not required to be a
+`<form>`, because not every business converts through one. **This one converts by telephone**, and
+that is a fact of the site rather than a workaround: it is what the FAQ page tells every visitor.
+
+So the contact page carries an enquiry block marked `data-inquiry-form` whose controls are a real
+`tel:` link and a real `mailto:` link. Nothing on it pretends to submit. The placeholder marks stay
+visible on both values, exactly as they are in the chrome, so no reader can mistake either for a
+working route.
+
+**What this costs, stated plainly.** A visitor who wants to type a message and press send cannot. That
+is a real reduction in conversion surface, and it is the honest one: the alternative was a form that
+loses whatever anyone typed into it.
+
+**What resolves it properly.** The fact names its own exits and neither is mine to take: **E1**, the
+owner supplies a real email address, or **E2**, the formal declaration. On E1 this override should be
+revisited, because a real address makes a genuine mailto enquiry possible and may make a real form
+worth building.
+
+---
+
 ## Divergence check
 
 Anything added here should be re-checked whenever prep is re-run, because a fresh
@@ -75,3 +126,4 @@ file untouched.
 | ID | Prep row | Build ships | Still diverging? |
 |---|---|---|---|
 | OVR-1 | `seo-enrichment.md` §5.1 `team` title | `_design/page-team.html` `<title>` | Yes, as of 2026-09-02 |
+| OVR-2 | `T-CONTACT` floor "form + routing-block present" | `pages/contact` enquiry block, `data-inquiry-form`, no `<form>` | Yes, until exit E1 or E2 |

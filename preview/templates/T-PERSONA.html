@@ -1,0 +1,1347 @@
+<!doctype html>
+<!-- ============================================================================
+     T-PERSONA PAGE TEMPLATE. Covers the `team` page.
+
+     WHAT THIS FILE IS. One page-type template, composed from four locked things and
+     inventing none of them: stomatology-tokens.css (the brand), stomatology-structural.css
+     (the system layer), brand-card-standard.css (the control primitives) and
+     stomatology-chrome.css (the frame). Zero colour literals are authored here; every
+     colour reaches for var(--ds-*) or a color-mix of one.
+
+     WHAT IT IS NOT. It is not the approved page design re-skinned. The approved design at
+     _design/page-team.html is read for its VISUAL LANGUAGE only: the band rhythm, the
+     photographic scrims, the gradient grounds, the plate treatments, the hairline card
+     ring, the drop-shadow recipe. Its bespoke band skeleton is replaced, band for band, by
+     the forced DOM grammar below.
+
+     THE FORCED DOM GRAMMAR, which is owner law and is gate-enforced downstream:
+       section  ->  div.container  ->  div.row  ->  div.col  ->  OBJECT
+     The section is the semantic band and carries the ground treatment and the dark flip.
+     The container is the one max-width wrapper in the band. The row is a horizontal group
+     and the col is a cell. The OBJECT is the leaf. Structure classes carry LAYOUT ONLY:
+     every visual skin class sits on the object inside the col, never on the container, the
+     row or the col.
+
+     WHY THE PROFILE CARD DOES NOT RECURSE THE GRAMMAR, recorded because the grammar
+     permits it and a reader will ask. A complex object MAY open its own section, container,
+     row and col internally. This one deliberately does not. A card is 300px wide and a
+     nested container inherits the BAND's gutter, so the 88px inset a 1080px band needs gets
+     applied a second time inside the card unless three further rules undo it; and the
+     three extra section elements it would mint inside the main element are exactly what a
+     section-counting render gate would have to be taught to ignore. The card is therefore
+     a plain complex object: its leaves sit inside the col that holds the list, which is
+     what the grammar asks for and what the approved design already builds.
+
+     NO CLOSING CALL TO ACTION IN THIS BODY. The site has exactly one and the chrome owns
+     it, already built at _design/_chrome-block.html and stamped onto every assembled page.
+     This body therefore ends at asking-for-someone, which renders no link, no button and
+     no form control of any kind, and carries no class token containing the closing-band
+     substring the singularity gate reads.
+
+     HONESTY. Every practice value on this page is a PLACEHOLDER carrying a swap marker:
+     the practice name, the town, the street address, the telephone number, the email
+     address, the opening hours and all three staff names with their roles and lines. No
+     guarantee, no promise about clinical conduct, no testimonial, no rating, no award and
+     no statistic appears in any form. No clinician is named and nothing here implies one
+     exists. The clinical title, register name, registration number and verification line
+     are reserved on every card and rendered EMPTY, carrying no template value and no
+     marker, because a template credential is a fabricated qualification.
+
+     Do not write a tag name inside angle brackets anywhere in a comment in this file. A
+     downstream tool extracts regions by matching tag names and a bracketed tag inside a
+     comment silently corrupts the extraction.
+     ============================================================================ -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- The title is the BUILD-OVERRIDES.md OVR-1 string, not the prescribed one. The prep
+     row reads "Dentist in CITY - PRACTICE NAME"; the owner chose to change it, because a
+     tab that promises a dentist over a page whose three people are a Practice Manager, a
+     Treatment Coordinator and a Reception Lead is the site's largest finish gap and the
+     title is the half of it a build can close without inventing a clinician. 45
+     characters, primary keyword at index 0, no headcount in either reading. -->
+<title>Dental team in Riverbend - Alder Grove Dental</title>
+<!-- swap:practice-name -->
+<!-- swap:city -->
+<meta name="description" content="Who you will see at Alder Grove Dental in Riverbend.">
+
+<link rel="preload" as="image" href="../../assets/dental-clinic-reception.jpg" fetchpriority="high">
+
+<!-- THE FOUR LOCKED SHEETS, in load order. Nothing in them is re-decided here. -->
+<link rel="stylesheet" href="../stomatology-tokens.css">
+<link rel="stylesheet" href="../stomatology-structural.css">
+<link rel="stylesheet" href="../brand-card-standard.css">
+<link rel="stylesheet" href="../stomatology-chrome.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+
+<style>
+/* ============================================================================
+   COMPOSITION LAYER. Two jobs and nothing else:
+     1. the FORCED GRAMMAR's layout classes, which no locked sheet defines because the
+        grammar is a build-side law rather than a brand decision;
+     2. the page-local objects the approved design already settled, carried across as
+        SKIN classes on the leaves.
+   ZERO colour literals. Every value below is a locked token, a color-mix of one, or a
+   sum of the locked spacing steps.
+   ============================================================================ */
+
+/* ---- PAGE-LOCAL TOKENS. Four are the approved design's own, carried byte for byte so
+   this template and the approved page set type and paint plates identically; the fifth
+   is this file's only new step and it exists because this composition draws a monogram
+   where the approved page now prints a face. Everything else the page needs is already
+   in the structural sheet and is deliberately NOT redeclared here. --------------- */
+:root{
+  --hp-ink-veil:    color-mix(in srgb, var(--ds-primary-deep) 34%, transparent);
+  --hp-paper-veil:  color-mix(in srgb, var(--ds-bg-surface)   30%, transparent);
+  --hp-ink-plate:   color-mix(in srgb, var(--ds-primary-deep) 86%, transparent);
+  --hp-paper-plate: color-mix(in srgb, var(--ds-bg-surface)   86%, transparent);
+  /* the SECOND-LEVEL display step, carried from the approved design under the name it
+     already has there so one grep finds both carriers. The locked sheet is not edited
+     and not shadowed: --ds-fs-display still reads what the token sheet says. */
+  --sv-fs-display:  clamp(34px, 4.2vw, 58px);
+  --hp-mono-size:   clamp(64px, 6vw, 88px);
+}
+
+/* ============================================================================
+   THE FORCED GRAMMAR. LAYOUT ONLY: no colour, no shadow, no radius, no type.
+   The container inherits the locked measure and the locked gutter, so the content
+   column inside it is the same 1080 the approved design sets, with the gutter OUTSIDE
+   it rather than inside. That keeps the page's horizontal rhythm identical while the
+   skeleton changes underneath it.
+   ============================================================================ */
+.container{
+  position:relative;
+  z-index:3;
+  width:100%;
+  max-width:calc(var(--ds-container-max) + var(--hp-gutter) + var(--hp-gutter));
+  margin:0 auto;
+  padding-left:var(--hp-gutter);
+  padding-right:var(--hp-gutter);
+}
+.container--full{ max-width:none; padding-left:0; padding-right:0; }
+
+.row{
+  display:grid;
+  grid-template-columns:repeat(12, minmax(0,1fr));
+  gap:var(--ds-space-lg);
+  align-items:start;
+}
+.row + .row{ margin-top:var(--ds-space-xl); }
+
+/* THE GROUND ROW. Its single cell holds nothing but the band's photographic ground,
+   which is absolutely positioned against the section, so the row occupies no space at
+   all. display:block keeps an empty grid track from being minted for it, and the
+   margin reset keeps the row that follows it from being pushed down by a row that has
+   no height. This is a LAYOUT modifier: it paints nothing. */
+.row--ground{ display:block; }
+.row--ground + .row{ margin-top:0; }
+
+.col{ grid-column:span 12; min-width:0; }
+.col--span-7{ grid-column:span 7; min-width:0; }
+.col--full{ grid-column:1 / -1; min-width:0; }
+
+/* ============================================================================
+   THE BAND. The section is the semantic band and carries the ground treatment and the
+   dark flip, exactly as the grammar requires. The vertical rhythm is the approved
+   design's padding ladder, driven from the one shared step so every band's leading
+   space equals its trailing space.
+   ============================================================================ */
+main > section{
+  position:relative;
+  padding-top:var(--hp-py);
+  padding-bottom:var(--hp-py);
+  text-align:center;
+}
+/* the owner centred every band except the hero. The exception lives in the SELECTOR so
+   a band added later cannot quietly miss it and the hero cannot quietly acquire it. */
+main > section.band--hero{ text-align:left; }
+
+@media (min-width:900px){
+  /* the owner: every section matches the height of the desktop. min-height, never
+     height, so a band whose content is taller than the viewport grows instead of
+     clipping; svh, never vh, so a collapsing mobile chrome cannot make a band jump. */
+  main > section{
+    min-height:100vh;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  main > section > .container{ width:100%; }
+}
+
+/* ============================================================================
+   THE GROUNDS. Five recipes across eight bands, so no two adjacent bands paint the
+   same surface. Every stop is a locked token or a color-mix of one, so no new hue can
+   enter and the no-teal absolute cannot be touched by any of it.
+   pick: DIVIDER-PATTERNS.md #10 Hard color band step | considered: DIVIDER-PATTERNS.md
+   #2 Wave smooth, DIVIDER-PATTERNS.md #7 Pulled-up card overlap | why: the owner asked
+   for straight section edges in terms, so #2's curve is refused by instruction and #7
+   would break the same straight edge with an overlapping panel; #10 IS a flat
+   horizontal step from one ground to the next, which is what carries every boundary on
+   this page. No band declares a border-radius, a clip-path or a mask.
+   ============================================================================ */
+.hp-ground--paper{
+  background-color:var(--ds-bg-surface);
+  background-image:
+    radial-gradient(120% 92% at 12% 0%, var(--hp-wash-c) 0%, transparent 58%),
+    linear-gradient(180deg,
+      var(--ds-bg-surface)    0%,
+      var(--ds-bg-surface-2) 52%,
+      var(--hp-ground-low)  100%);
+}
+/* the two light grounds wash from OPPOSITE sides, so the page never reads as one band
+   repeated. paper2 also runs the fall the other way up. */
+.hp-ground--paper2{
+  background-color:var(--ds-bg-surface-2);
+  background-image:
+    radial-gradient(120% 92% at 88% 0%, var(--hp-wash-b) 0%, transparent 56%),
+    linear-gradient(180deg,
+      var(--hp-ground-low)    0%,
+      var(--ds-bg-surface-2) 48%,
+      var(--ds-bg-surface)  100%);
+}
+
+/* ---- THE PHOTOGRAPHIC GROUND. The photograph is a BAND GROUND and never a decorative
+   well with a caption floating beside it. The scrim and the edge vignette are separate
+   layers so the contrast guarantee is analytic rather than hopeful. ------------- */
+.hp-photo__img{
+  position:absolute; inset:0;
+  display:block; width:100%; height:100%;
+  object-fit:cover;
+  object-position:50% 50%;
+  transform:scale(1.04);
+}
+.band--hero .hp-photo__img{
+  object-position:50% 52%;
+  animation:hp-drift 44s cubic-bezier(.37,0,.63,1) infinite alternate;
+  will-change:transform;
+}
+/* the focal vignette on the ink bands. Everything it paints is ink at a positive alpha
+   over ink already at the plateau, so it can only RAISE a contrast ratio. */
+.hp-ground--ink .hp-photo__edge{
+  background-image:
+    radial-gradient(118% 124% at 76% 54%,
+      transparent          0%,
+      transparent         30%,
+      var(--hp-ink-mid)   68%,
+      var(--hp-ink-deep) 100%),
+    linear-gradient(180deg,
+      var(--ds-primary-deep) 0%,
+      transparent           12%,
+      transparent           88%,
+      var(--ds-primary-deep) 100%);
+}
+/* a CENTRED band drops the horizontal ramp: a left-to-right ramp is mid-fall exactly
+   where a centred column sits. These two bands take a flat veil so the room still
+   reads, and the contrast guarantee moves onto the plate, where it is total. */
+.hp-ground--ink.hp-ground--veil .hp-photo__scrim{
+  background-image:none;
+  background-color:var(--hp-ink-veil);
+}
+.hp-ground--paperphoto .hp-photo__scrim{
+  background-image:none;
+  background-color:var(--hp-paper-veil);
+}
+.hp-ground--paperphoto .hp-photo__edge{
+  background-image:linear-gradient(180deg,
+    var(--ds-bg-surface) 0%,
+    transparent         12%,
+    transparent         88%,
+    var(--ds-bg-surface) 100%);
+}
+
+/* ============================================================================
+   TYPE. The locked scale is applied, never re-invented. Only the h1 needs a rule here:
+   the structural sheet ships .hp-h2, .hp-lead, .hp-head, .hp-key and .hp-nb already.
+   ============================================================================ */
+.hp-h1{
+  margin:0 0 var(--ds-space-md);
+  font-family:var(--ds-font-display);
+  font-size:var(--sv-fs-display);
+  line-height:var(--ds-lh-display);
+  letter-spacing:var(--ds-track-display);
+  font-weight:var(--ds-weight-display);
+  color:var(--ds-ink-heading);
+  text-wrap:balance;
+}
+.hp-textzone{ max-width:min(600px, 44vw); }
+.hp-street{ white-space:nowrap; }
+.hp-pillar__label,
+.hp-rail__label,
+.hp-person__name,
+.hp-ask__name,
+.hp-hours__k,
+.hp-qa__q{ text-wrap:balance; }
+.hp-pillar__line,
+.hp-person__line,
+.hp-ask__line,
+.hp-qa__a,
+.hp-hours__note,
+.hp-closing__line{ text-wrap:pretty; }
+main > section:not(.band--hero) .hp-h2,
+main > section:not(.band--hero) .hp-lead,
+main > section:not(.band--hero) .hp-closing__line,
+main > section:not(.band--hero) .hp-hours__note{ margin-left:auto; margin-right:auto; }
+
+/* ============================================================================
+   THE PLATE. A copy panel that carries its own scrim, used on the two photographic
+   bands whose copy is centred. The paper plate is near-white paper on a daylight
+   photograph, which is a white-on-white box in the strictest reading of the owner's
+   drop-shadow release, so it takes the layered shadow. The ink plate does not: it is
+   dark on dark, and the release is for white-on-white boxes.
+   ============================================================================ */
+.hp-plate{
+  position:relative;
+  z-index:3;
+  max-width:880px;
+  margin:0 auto;
+  padding:var(--ds-space-xl) var(--ds-space-lg);
+  border-radius:var(--ds-r-surface);
+}
+.hp-plate--paper{
+  background-color:var(--hp-paper-plate);
+  background-image:linear-gradient(160deg,
+    color-mix(in srgb, var(--ds-bg-surface) 0%, transparent) 0%,
+    var(--hp-plate-tint) 100%);
+  box-shadow:var(--hp-shadow-box);
+}
+.hp-plate--ink{
+  background-color:var(--hp-ink-plate);
+  background-image:linear-gradient(160deg,
+    color-mix(in srgb, var(--ds-primary-deep) 0%, transparent) 0%,
+    var(--hp-ink-mid) 100%);
+}
+
+/* ---- S2 THE PILLARS. Ruled ABOVE. --------------------------------------- */
+.hp-pillars{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:var(--ds-space-lg);
+  margin:0; padding:0;
+  list-style:none;
+  text-align:left;
+}
+.hp-pillar{
+  padding-top:var(--ds-space-sm);
+  border-top:2px solid var(--ds-ink-soft);
+}
+.hp-pillar__label{
+  margin:0 0 var(--ds-space-xs);
+  font-family:var(--ds-font-display);
+  font-size:var(--hp-fs-h3);
+  line-height:var(--ds-lh-head);
+  font-weight:var(--ds-weight-head);
+  color:var(--ds-ink-heading);
+}
+/* the label reserve is a CORRECTION rather than a precaution: two of these three
+   labels take two lines and the third takes one, so without it the third column's body
+   copy starts a line higher and three columns read as three separate blocks. Computed
+   from the two tokens that set the label, never typed as a pixel. The question reserve
+   ADDS the padding and the hairline the question carries and the label does not, or the
+   one-line questions would still sit short of the two-line one and the rules would not
+   line up, which is the defect it is there to fix. */
+@media (min-width:769px){
+  .hp-pillar__label{ min-height:calc(var(--hp-fs-h3) * var(--ds-lh-head) * 2); }
+  .hp-qa__q{ min-height:calc(var(--hp-fs-h3) * var(--ds-lh-head) * 2 + var(--ds-space-sm) + var(--ds-divider-h)); }
+}
+.hp-pillar__line{
+  margin:0;
+  font-size:var(--ds-fs-body);
+  line-height:var(--ds-lh-body);
+  color:var(--ds-ink);
+}
+
+/* ---- S3 THE PROFILE CARDS. --------------------------------------------- */
+.hp-people{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:var(--ds-space-md);
+  margin:0; padding:0;
+  list-style:none;
+}
+/* space-between puts the mark on the card's top edge and the name block on its floor,
+   which is the anchoring the sibling card families on this site already use. A card
+   given a height whose content sits at the top leaves a third of itself empty and reads
+   as unfinished rather than restrained. */
+.hp-person{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  text-align:center;
+  padding:var(--ds-space-md);
+  border-radius:var(--ds-r-surface);
+  background-color:var(--ds-bg-surface-2);
+  box-shadow:var(--ds-shadow-card);
+}
+.hp-person__body{ display:block; }
+@media (min-width:900px){
+  .hp-person{ min-height:clamp(300px, 38svh, 420px); }
+}
+/* THE MONOGRAM MARK. It is the card's picture slot and it is deliberately NOT a face.
+   A photograph of a person on a template staff card is a human being presented as this
+   practice's staff, and every one of them has to be found and replaced when the real
+   team arrives. A monogram is a finished, deliberate mark that real practice sites use,
+   it reads as intentional rather than missing, and it degrades honestly. It is the only
+   circle on a page whose every other corner is 4px, so the three of them read as a
+   designed mark rather than as an empty slot. Measured, not assumed: the accent ink on
+   the accent wash is 6.58:1 on the light polarity and 6.61:1 inside the dark flip. */
+.hp-mono{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:var(--hp-mono-size);
+  height:var(--hp-mono-size);
+  margin:0 auto var(--ds-space-md);
+  border-radius:var(--ds-r-pill);
+  background-color:var(--ds-accent-soft);
+  box-shadow:var(--hp-shadow-box);
+  font-family:var(--ds-font-display);
+  font-size:var(--hp-fs-h3);
+  font-weight:var(--ds-weight-head);
+  letter-spacing:var(--ds-track-eyebrow);
+  line-height:1;
+  color:var(--ds-accent-ink);
+}
+.hp-person__name{
+  margin:0 0 var(--ds-space-2xs);
+  font-family:var(--ds-font-display);
+  font-size:var(--hp-fs-h3);
+  line-height:var(--ds-lh-head);
+  font-weight:var(--ds-weight-head);
+  color:var(--ds-ink-heading);
+}
+.hp-person__role{
+  margin:0 0 var(--ds-space-xs);
+  font-size:var(--ds-fs-eyebrow);
+  letter-spacing:var(--ds-track-eyebrow);
+  text-transform:uppercase;
+  font-weight:500;
+  color:var(--ds-ink-soft);
+}
+/* THE FOUR RESERVED SLOTS collapse into this one empty leaf: clinical title, register
+   name, registration number, verification line. Rendered EMPTY, carrying no template
+   value and NO SWAP MARKER OF ANY KIND, so there is nothing at them for the swap index
+   to find. They are empty by decision, not by omission. */
+.hp-person__cred{ margin:0; padding:0; }
+.hp-person__line{
+  margin:0;
+  font-size:var(--ds-fs-fine);
+  line-height:var(--ds-lh-body);
+  color:var(--ds-ink-soft);
+}
+
+/* ---- S4 THE LATERAL RAIL. Ruled ABOVE, and the whole panel is the link. --- */
+.hp-rails{
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0,1fr));
+  gap:var(--ds-space-lg);
+  margin:0; padding:0;
+  list-style:none;
+  text-align:left;
+}
+.hp-rail{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  height:100%;
+  padding-top:var(--ds-space-sm);
+  border-top:var(--ds-divider-h) solid var(--ds-line);
+  text-decoration:none;
+  color:var(--ds-ink);
+  transition:transform var(--ds-dur-slow) var(--ds-ease-out),
+             border-color var(--ds-dur) var(--ds-ease);
+}
+/* movement PLUS colour, never colour alone. */
+.hp-rail:hover{ transform:translate3d(0,-6px,0); border-top-color:var(--ds-accent); }
+.hp-rail:focus-visible{
+  outline:2px solid var(--ds-accent);
+  outline-offset:4px;
+  border-radius:var(--ds-r-surface);
+}
+.hp-rail__label{
+  margin:0 0 var(--ds-space-xs);
+  font-family:var(--ds-font-display);
+  font-size:var(--hp-fs-h3);
+  line-height:var(--ds-lh-head);
+  font-weight:var(--ds-weight-head);
+  color:var(--ds-ink-heading);
+}
+/* the spacer sits ABOVE the label and anchors it to the panel floor, which is the same
+   anchoring the profile cards use. */
+.hp-rail__spacer{ flex:1 1 auto; order:-1; }
+@media (min-width:900px){
+  .hp-rail{ min-height:clamp(112px, 14svh, 152px); }
+}
+
+/* ---- S5 THE RECORD. Ruled UNDER each row. One locked hairline, three positions
+   across the page, and the position is the whole difference between the bands. -- */
+.hp-hours{
+  max-width:560px;
+  margin:0 auto;
+  padding:0;
+  text-align:left;
+}
+.hp-hours__row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:var(--ds-space-md);
+  align-items:baseline;
+  padding:var(--ds-space-sm) 0;
+  border-bottom:var(--ds-divider-h) solid var(--ds-line);
+}
+.hp-hours__k{
+  margin:0;
+  font-family:var(--ds-font-display);
+  font-size:var(--hp-fs-h3);
+  line-height:var(--ds-lh-head);
+  font-weight:var(--ds-weight-head);
+  color:var(--ds-ink-heading);
+}
+.hp-hours__v{
+  margin:0;
+  font-size:var(--ds-fs-body);
+  line-height:var(--ds-lh-body);
+  font-variant-numeric:tabular-nums;
+  color:var(--ds-ink);
+}
+.hp-hours__note{
+  margin:var(--ds-space-lg) 0 0;
+  max-width:var(--ds-measure);
+  font-size:var(--ds-fs-fine);
+  line-height:var(--ds-lh-body);
+  color:var(--ds-ink-soft);
+  text-align:center;
+}
+
+/* ---- S6 THE QUESTIONS. Ruled THROUGH, between question and answer. ------- */
+.hp-qas{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:var(--ds-space-lg);
+  margin:0;
+  text-align:left;
+}
+.hp-qa{ margin:0; }
+.hp-qa__q{
+  margin:0 0 var(--ds-space-sm);
+  padding-bottom:var(--ds-space-sm);
+  border-bottom:var(--ds-divider-h) solid var(--ds-line);
+  font-family:var(--ds-font-display);
+  font-size:var(--hp-fs-h3);
+  line-height:var(--ds-lh-head);
+  font-weight:var(--ds-weight-head);
+  color:var(--ds-ink-heading);
+}
+.hp-qa__a{
+  margin:0;
+  font-size:var(--ds-fs-body);
+  line-height:var(--ds-lh-body);
+  color:var(--ds-ink);
+}
+
+/* ---- S7 THE RESPONSIBILITY PANELS. Not links, and never a table. --------- */
+.hp-asks{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:var(--ds-space-md);
+  margin:0; padding:0;
+  list-style:none;
+  text-align:left;
+}
+.hp-ask{
+  padding:var(--ds-space-lg) var(--ds-space-md);
+  border-radius:var(--ds-r-surface);
+  background-color:var(--ds-bg-surface);
+  background-image:linear-gradient(180deg, var(--ds-bg-surface) 0%, var(--ds-primary-soft) 100%);
+  box-shadow:var(--hp-shadow-box);
+}
+.hp-ask__name{
+  margin:0 0 var(--ds-space-2xs);
+  font-family:var(--ds-font-display);
+  font-size:var(--hp-fs-h3);
+  line-height:var(--ds-lh-head);
+  font-weight:var(--ds-weight-head);
+  color:var(--ds-ink-heading);
+}
+.hp-ask__role{
+  margin:0 0 var(--ds-space-sm);
+  font-size:var(--ds-fs-eyebrow);
+  letter-spacing:var(--ds-track-eyebrow);
+  text-transform:uppercase;
+  font-weight:500;
+  color:var(--ds-ink-soft);
+}
+.hp-ask__line{
+  margin:0;
+  font-size:var(--ds-fs-body);
+  line-height:var(--ds-lh-body);
+  color:var(--ds-ink);
+}
+
+/* ---- S8 THE LAST BODY BEAT. Three lines and no control. ----------------- */
+.hp-closing{ margin:0; padding:0; list-style:none; display:grid; gap:var(--ds-space-sm); }
+.hp-closing__line{
+  margin:0;
+  max-width:var(--ds-measure);
+  font-size:var(--hp-fs-boxline);
+  line-height:var(--ds-lh-body);
+  color:var(--ds-ink);
+}
+
+/* ---- the one route control row. Centred with the band. ------------------ */
+.hp-gorow{ margin-top:var(--ds-space-lg); display:flex; justify-content:center; }
+
+/* ============================================================================
+   REDUCED MOTION. The owner's requirement is a FINAL VISIBLE STATE, not merely less
+   movement, so every animated class on this page is named here and forced to its
+   resting appearance rather than merely slowed: .hp-rise (the hero stagger),
+   .hp-reveal (the scroll reveal), .hp-photo__img (the hero drift), .hp-rail and
+   .hp-go (the hover lift).
+   ============================================================================ */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:1ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:1ms !important;
+    transition-delay:0s !important;
+    scroll-behavior:auto !important;
+  }
+  html{ scroll-behavior:auto !important; }
+  .hp-rise{ opacity:1 !important; transform:none !important; animation:none !important; }
+  .hp-js .hp-reveal,
+  .hp-reveal{
+    opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
+    transition-delay:0s !important;
+  }
+  .band--hero .hp-photo__img,
+  .hp-photo__img{ animation:none !important; transform:scale(1.04) !important; }
+  .hp-rail:hover{ transform:none !important; }
+  .hp-go--solid:hover,
+  .hp-go--quiet:hover{ transform:none !important; }
+}
+
+/* ============================================================================
+   THE PADDING LADDER. One spacing scale, the locked one. Every value is a token or a
+   sum of tokens; no free number is authored. Both the vertical band padding and the
+   shared gutter step together at 1024, 768 and 390, so the page never has a wide gutter
+   with a short band or the reverse. The 1440 step lives in the structural sheet.
+   ============================================================================ */
+@media (max-width:1024px){
+  .hp-rails{ grid-template-columns:repeat(2, minmax(0,1fr)); }
+  .hp-pillars{ gap:var(--ds-space-md); }
+  .hp-qas{ gap:var(--ds-space-md); }
+}
+@media (max-width:768px){
+  /* below 768 the copy uses the full band width, so the hero's horizontal ramp is
+     DROPPED and the flat plateau covers every pixel of the frame. */
+  .hp-ground--ink .hp-photo__scrim{
+    background-image:none;
+    background-color:var(--hp-ink-plateau);
+  }
+  /* the VEIL band keeps its own flat veil, re-declared so a later edit cannot let the
+     plateau rule above capture it through the shared selector. */
+  .hp-ground--ink.hp-ground--veil .hp-photo__scrim{
+    background-image:none;
+    background-color:var(--hp-ink-veil);
+  }
+  .hp-textzone{ max-width:none; }
+  .hp-photo__img{ object-position:50% 48%; }
+  .col--span-7{ grid-column:span 12; }
+  .hp-people{ grid-template-columns:1fr; }
+  .hp-pillars{ grid-template-columns:1fr; gap:var(--ds-space-md); }
+  .hp-rails{ grid-template-columns:1fr; gap:var(--ds-space-lg); }
+  .hp-qas{ grid-template-columns:1fr; gap:var(--ds-space-lg); }
+  .hp-asks{ grid-template-columns:1fr; }
+  .hp-plate{ padding:var(--ds-space-lg) var(--ds-space-md); }
+  .hp-go{ width:100%; }
+}
+@media (max-width:390px){
+  .hp-label{ padding:var(--ds-space-md) var(--hp-gutter); }
+  .hp-hours__row{ grid-template-columns:1fr; gap:var(--ds-space-2xs); }
+}
+</style>
+</head>
+<body>
+
+<!-- ========================= THE LABEL STRIP (build furniture) ===============
+     Outside the main element on purpose. It is not part of the page and it does not
+     survive promotion: the promoter lifts the main element's body and leaves this
+     behind. It exists so that nobody judging this template can mistake a placeholder
+     for a fact.
+     ========================================================================== -->
+<div class="hp-label">
+  <div class="hp-label__inner">
+    <p class="hp-label__title">Template composition. Nothing on this page is a fact about a real practice.</p>
+    <p class="hp-label__note hp-label__note--faces">THE REGISTER ENTRIES ARE AN OPEN OWNER BLOCKER AND THIS IS THE PAGE THEY BLOCK. Every card below reserves a clinical title, a register name, a registration number and a verification line, and renders all four EMPTY. That is by design and it is not a rendering fault: a template credential is a fabricated qualification and an invented registration number is the one invention with legal teeth. Nothing releases those four slots except real values from the owner.</p>
+    <p class="hp-label__note">The practice name, the town, the street address, the telephone number, the email address, the opening hours and all three staff names with their roles and lines are template values standing in for information the owner has not supplied. Each one carries a swap marker naming what replaces it. The three photographs are generated template images, not this practice's rooms.</p>
+    <p class="hp-label__note">NO CLINICIAN APPEARS ON THIS PAGE AND THAT IS DELIBERATE. The three people are a Practice Manager, a Treatment Coordinator and a Reception Lead, three roles that hold no register entry in any candidate regime. A name beside a clinical role would imply a licence nobody has supplied, so no card carries a title of any kind and no picture on this page is a face.</p>
+    <p class="hp-label__note">THE PROOF SLOT IS HELD. The type registry asks this page for at least one persona-proof element. Proof is omitted on this build, never templated and specifically never shipped behind a representative-example caption, so the floor is UNMET and the slot at section five carries a plain factual record instead. The reasoning sits in the section's own ledger comment rather than only here.</p>
+    <p class="hp-label__note">This is the page body only. There is no header, no footer and no closing call to action in it, because the chrome owns all three and stamps them onto every assembled page. The four route labels and both routes to the questions page are working identifiers the owner may replace, not approved copy.</p>
+  </div>
+</div>
+
+<main id="main">
+<!--META title="Dental team in Riverbend - Alder Grove Dental" desc="Who you will see at Alder Grove Dental in Riverbend." -->
+
+<!-- ===================================================================== S1 ===
+     HERO-PERSONA-OUTCOME (S). DARK GROUND + FULL-BLEED PHOTOGRAPH + INK RAMP.
+     TWO OF THIS CLASS NAME'S THREE THIRDS ARE STRUCK AND THE CLASS NAME IS KEPT.
+     "outcome" is struck because an outcome line in the head position would be a health
+     or anxiety outcome claim, which is held whole on this build. "persona" is struck as
+     a NAMING instruction, because naming the audience is the audience-worded form of a
+     service-mix claim that is separately held; so this ships a persona-SHAPED spine
+     addressed to an unnamed reader. The CLASS NAME survives because the brief-consumed
+     gate joins on it literally. A build that reads either struck word as an instruction
+     has misread this band.
+     The singular in the browser title is a category label and not a row count.
+     ========================================================================== -->
+<!-- pick: HERO-COMPOSITIONS.md #5 Full-bleed image + overlay text | considered: HERO-COMPOSITIONS.md #4 Diptych portrait + product, HERO-COMPOSITIONS.md #9 Cinematic letterbox | rigor: heavy | why: #4 spends half the hero on a portrait, and this is the one page in the site that may never show a face, so the archetype that wants a person is the archetype it must refuse; #9's narrow letterbox band gives a two-line display heading plus a full standfirst no room at 375 without dropping the type below the locked display step, which would make the second-level page quieter than the sections under it. #5 is the entry whose key hook names a gradient overlay for legibility and whose edge case names the exact hazard here, keeping the subject in frame on mobile. -->
+<section class="band band--hero hp-ground--photo hp-ground--ink surface-dark hero-persona-outcome" id="s1-hero-persona-outcome">
+  <div class="container">
+    <div class="row row--ground">
+      <div class="col col--full">
+        <!-- swap:image-team-hero
+             GENERATED TEMPLATE IMAGE, not owner photography. Replace before ship.
+             ALT DEVIATION, declared rather than slipped in. The copy's owed alt for this
+             slot names a doorway behind the counter. The installed photograph has no
+             doorway in frame, so the alt is written from the picture and the doorway is
+             dropped rather than asserted. It names no instrument, procedure, material or
+             technique and it asserts no premises fact: no floor, no entrance direction,
+             no lift, no ramp, no parking, no distance. NO PERSON IS IN FRAME, which on a
+             team page is a rule rather than an accident. -->
+        <figure class="hp-photo">
+          <img class="hp-photo__img" src="../../assets/dental-clinic-reception.jpg"
+               width="1024" height="576" loading="eager" fetchpriority="high" decoding="sync"
+               alt="A reception counter and a row of upholstered chairs beside a wall of tall windows in daylight.">
+          <span class="hp-photo__scrim"></span>
+          <span class="hp-photo__edge"></span>
+        </figure>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col--span-7">
+        <div class="hp-textzone">
+          <!-- swap:team-heading-1
+               This page title's own slot name. The practice name is the OBJECT of the
+               phrase here, not a second brand stamp under the wordmark, which is why
+               this heading is role-referential where the services page's is
+               category-plus-geography. The tail is bound as one nowrap unit, so the only
+               break opportunity is after "see" and the two-line cut can only ever be
+               "Who you will see" over "at Alder Grove Dental". The bind is a span and
+               never a non-breaking space, because the practice name is the one string
+               the copy-fidelity gate reads byte for byte. -->
+          <!-- swap:practice-name -->
+          <h1 class="hp-h1 hp-rise" style="--hp-i:0"><span class="hp-key">Who you will see</span> <span class="hp-nb">at Alder Grove Dental</span></h1>
+          <!-- swap:team-standfirst
+               The standfirst is the sub-line under the heading and is NOT a heading
+               element. It renders verbatim. It asserts no count, reading true against a
+               one-person practice and a fifteen-person one alike; it names no credential
+               and no protected title; and it promises nothing about who the reader will
+               meet, because it describes the roster rather than a future appointment. -->
+          <p class="hp-lead hp-rise" style="--hp-i:1">These are the people who look after reception, appointments and the <span class="hp-nb">day-to-day running</span> of the practice.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== S2 ===
+     PERSONA-PILLARS (M). LIGHT GROUND + PHOTOGRAPH + PAPER PLATE.
+     The three pillars the registry floor asks for. Every one is a fact about how the
+     front of the practice is arranged rather than a claim that would need a receipt.
+     THE GOVERNING TEST, applied line by line: if a sentence would still make sense to
+     somebody who never saw this website, it is content; if it only makes sense as a
+     description of the website, it is scaffolding. Not one clause below has the page as
+     its subject. WHAT IS REFUSED HERE, each for its own reason, so the next author does
+     not re-derive them: a fourth pillar about the people themselves, because every
+     version of that is a statistic, a testimonial or an outcome; a comfort or
+     reassurance beat; a team size or any other count; and any premises particular at
+     all. Pillar three names the CATEGORIES of question and answers none of them, which
+     is the only honest thing a template can do with a fact about a building.
+     ========================================================================== -->
+<!-- pick: SECTION-COMPONENTS.md #6 "Is this for me" qualifier | considered: SECTION-COMPONENTS.md #27 Numbered process steps, SECTION-COMPONENTS.md #50 Topic columns | rigor: heavy | why: #27 numbers its columns, and numbering these three would assert that they happen in an order, which none of them does and which would read as a first-visit procedure the site cannot describe; #50 wants three to five cards stacked under each column heading and there is exactly one line under each of these, so two thirds of that pattern would ship as empty scaffolding. #6 is the catalog's own scenario self-select block, two to three columns of situations a reader matches themselves against, which is exactly what "the front of the practice", "ask the right person first" and "before you come" are. -->
+<section class="band hp-ground--photo hp-ground--paperphoto persona-pillars" id="s2-persona-pillars">
+  <div class="container">
+    <div class="row row--ground">
+      <div class="col col--full">
+        <!-- swap:image-team-pillars
+             GENERATED TEMPLATE IMAGE, not owner photography. Replace before ship.
+             ALT DEVIATION, declared. The copy's owed alt names a wall clock above a
+             noticeboard. The installed photograph is a quiet corridor and carries
+             neither, so the alt is written from the picture. It asserts no premises fact
+             and specifically not that this corridor leads anywhere in particular. No
+             person is in frame. -->
+        <figure class="hp-photo">
+          <img class="hp-photo__img" src="../../assets/dental-clinic-warm.jpg"
+               width="1024" height="576" loading="lazy" decoding="async" fetchpriority="low"
+               alt="A corridor of wooden doors, lit by daylight from the far end.">
+          <span class="hp-photo__scrim"></span>
+          <span class="hp-photo__edge"></span>
+        </figure>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col--full">
+        <!-- THE PAPER PLATE. The band is centred, so the contrast guarantee moves off
+             the band's geometry and onto this panel, where it is flat and total. Near
+             white paper on a daylight photograph is a white-on-white box in the
+             strictest reading of the owner's release, so it takes the layered shadow. -->
+        <div class="hp-plate hp-plate--paper hp-reveal" style="--hp-i:0">
+          <div class="hp-head">
+            <!-- swap:team-heading-2 -->
+            <h2 class="hp-h2">Who you will be <span class="hp-key">dealing&nbsp;with</span></h2>
+          </div>
+          <ul class="hp-pillars">
+            <li class="hp-pillar">
+              <!-- swap:team-pillar-1 -->
+              <p class="hp-pillar__label">The front of the practice</p>
+              <!-- swap:team-pillar-1-line
+                   RENDERS VERBATIM. This line twice carried a word from a held
+                   vocabulary family and once had the website itself as its subject; what
+                   is below is the version that survived both corrections. -->
+              <p class="hp-pillar__line">The same people you meet when you come in look after reception, the appointment book <span class="hp-nb">and the paperwork</span>.</p>
+            </li>
+            <li class="hp-pillar">
+              <!-- swap:team-pillar-2 -->
+              <p class="hp-pillar__label">Ask the right person first</p>
+              <!-- swap:team-pillar-2-line
+                   RENDERS VERBATIM. It names TWO channels, which is what the questions
+                   band three sections down also says, so a reader who acts on either is
+                   acting on the same instruction. It promises nothing about who answers
+                   or how soon. -->
+              <p class="hp-pillar__line">You make and change appointments by telephone or by email, and reception looks after the <span class="hp-nb">appointment book</span>.</p>
+            </li>
+            <li class="hp-pillar">
+              <!-- swap:team-pillar-3 -->
+              <p class="hp-pillar__label">Before you come</p>
+              <!-- swap:team-pillar-3-line
+                   RENDERS VERBATIM, and it is the line that replaced an accessibility
+                   statement. The withdrawn version rendered a floor and an entrance
+                   direction. This one names the categories of question without answering
+                   any of them, is true of any premises, and routes to the two channels
+                   the site already establishes. -->
+              <p class="hp-pillar__line">Access, parking and exactly where to come are questions for reception. Ask when you make your appointment, by telephone <span class="hp-nb">or by email</span>.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== S3 ===
+     CAPABILITY-DEEP-DIVE (M). DARK GROUND + GRADIENT, no photograph.
+     On a people page the deep dive IS the profile block, and it is specified slot by
+     slot so the build has no room to improvise a person into it. Eight slots per card:
+     three template-filled, four rendered EMPTY, one carrying a designed mark.
+     THREE ROWS IS A STRUCTURAL COUNT AND NOTHING SAYS SO OUT LOUD. No copy, heading,
+     alt string or attribute anywhere on this page states or implies how many people
+     work here. When the real headcount lands the row count changes and nothing else
+     has to.
+     ========================================================================== -->
+<!-- pick: SECTION-COMPONENTS.md #18 Team grid 3-col | considered: CARD-VARIATIONS.md #7 Team photo card, CARD-VARIATIONS.md #8 Team bio card | rigor: heavy | why: #7 lays the name over a full-bleed portrait, and the mark on these cards is a monogram rather than a face, so the pattern's whole device would have nothing under it and the name would sit on a coloured rectangle; #8 asks for an extended bio, and every additional sentence about a person this build invented is one more sentence somebody has to notice is fiction and one more place a disposition could creep in beside a duty. #18 keeps the picture as a MARK and the words as words, which is the only honest shape for a card that carries no credential. -->
+<section class="band hp-ground--grad surface-dark capability-deep-dive" id="s3-capability-deep-dive">
+  <div class="container">
+    <div class="row">
+      <div class="col col--full">
+        <div class="hp-head hp-reveal" style="--hp-i:0">
+          <!-- swap:team-heading-3
+               The heading names a PLACE and a FUNCTION, which is the only kind of
+               heading this band may carry. "reception" is the canonical noun, lower
+               case, as a place, never the front desk. A "meet the team" heading was
+               refused because team implies a size and meet promises an encounter this
+               site cannot arrange. -->
+          <h2 class="hp-h2">At <span class="hp-key">reception</span> and on the telephone</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col--full">
+        <ul class="hp-people">
+          <li class="hp-person hp-reveal" style="--hp-i:1">
+            <!-- swap:image-team-card-1
+                 THE CARD MARK. A monogram in the brand palette, never a face, and its
+                 alt equivalent is the empty string: the mark repeats initials the reader
+                 already has as text beside it, so it is decorative and is hidden from
+                 assistive technology rather than described twice. No title attribute is
+                 set. NO BADGE, CREDENTIAL, TITLE OR CLINICAL CLAIM ATTACHES TO IT. Its
+                 swap target is the owner photography of the real person. -->
+            <span class="hp-mono" aria-hidden="true">AM</span>
+            <div class="hp-person__body">
+              <!-- swap:staff-1-name -->
+              <h3 class="hp-person__name">Alex Morgan</h3>
+              <!-- swap:staff-1-role -->
+              <p class="hp-person__role">Practice Manager</p>
+              <!-- THE FOUR RESERVED SLOTS: clinical title, register name, registration
+                   number, verification line. Rendered EMPTY, carrying no template value
+                   and NO SWAP MARKER OF ANY KIND. -->
+              <p class="hp-person__cred"></p>
+              <!-- swap:staff-1-line
+                   The withdrawn version of this line said somebody answers the telephone
+                   and how often, which is a promise about conduct that this page's own
+                   pillar check refuses by name. It is now a duty and a scope, with no
+                   promise and no disposition. -->
+              <p class="hp-person__line">Runs the practice day to day, from staffing to the building itself.</p>
+            </div>
+          </li>
+          <li class="hp-person hp-reveal" style="--hp-i:2">
+            <!-- swap:image-team-card-2
+                 The card mark, as at card one and for the same reasons. -->
+            <span class="hp-mono" aria-hidden="true">JE</span>
+            <div class="hp-person__body">
+              <!-- swap:staff-2-name -->
+              <h3 class="hp-person__name">Jordan Ellis</h3>
+              <!-- swap:staff-2-role -->
+              <p class="hp-person__role">Treatment Coordinator</p>
+              <p class="hp-person__cred"></p>
+              <!-- swap:staff-2-line
+                   It says "a course of treatment" the long way round rather than the
+                   shorter word, deliberately, because the shorter word belongs to a
+                   vocabulary family that is held whole while the jurisdiction halt is in
+                   force. It names no equipment, procedure, material, technique or cost. -->
+              <p class="hp-person__line">Walks you through what a course of treatment involves, before anything is agreed.</p>
+            </div>
+          </li>
+          <li class="hp-person hp-reveal" style="--hp-i:3">
+            <!-- swap:image-team-card-3
+                 The card mark, as at card one and for the same reasons. -->
+            <span class="hp-mono" aria-hidden="true">SP</span>
+            <div class="hp-person__body">
+              <!-- swap:staff-3-name -->
+              <h3 class="hp-person__name">Sam Patel</h3>
+              <!-- swap:staff-3-role -->
+              <p class="hp-person__role">Reception Lead</p>
+              <p class="hp-person__cred"></p>
+              <!-- swap:staff-3-line
+                   This is the line that once carried the site's only invented
+                   CHARACTERISATION, a disposition rather than a duty, which would have
+                   said something about a real person on the day a real name replaced the
+                   template one. It is now three duties and no disposition, and "the
+                   appointment book" is the canonical noun, never the diary. -->
+              <p class="hp-person__line">Books your appointments, sends the reminders, and keeps the appointment book up to date.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== S4 ===
+     ECOSYSTEM-BLOCK (S). LIGHT PLAIN GROUND, the band surface.
+     A LATERAL rail to the four sibling pages with NO CLAIM attached to any of them.
+     Four bare labels is what honouring that rule looks like. A supporting line under
+     each would be a characterisation of a destination, and the second label in
+     particular would sit one sentence away from asserting a services menu that does not
+     exist behind it. The content floor those lines would buy was available and was
+     DECLINED: a floor reached by inventing claims is worse than the rule it dodges.
+     NO CLASS TOKEN IN THIS BAND CONTAINS THE CONVERSION SUBSTRINGS the singularity gate
+     reads, and none of the four labels is a conversion verb. They are the navigation's
+     own working identifiers, which is why each carries a marker rather than being
+     treated as fixed chrome.
+     ========================================================================== -->
+<!-- pick: SECTION-COMPONENTS.md #49 Article cards 4-col compact | considered: SECTION-COMPONENTS.md #45 Category chips, SECTION-COMPONENTS.md #50 Topic columns | rigor: medium | why: #45 renders a chip row, and four chips sitting under a page's content read as filters over that content rather than as four other pages, which is a broken affordance the moment somebody clicks one and the page navigates away; #50 wants three to five cards stacked under each column heading, so three quarters of every column would be empty here. #49 is the only entry in the family whose defining property is LESS text per card, which is exactly what a rail of four bare route labels needs, and it is taken WITHOUT its article furniture: no image, no date, no excerpt, because an excerpt is a characterisation. -->
+<section class="band hp-ground--paper2 ecosystem-block" id="s4-ecosystem-block">
+  <div class="container">
+    <div class="row">
+      <div class="col col--full">
+        <div class="hp-head hp-reveal" style="--hp-i:0">
+          <!-- swap:team-heading-4
+               It attaches no claim to any destination, asserts no count and asserts no
+               completeness: "more" is true whatever the inventory holds. -->
+          <h2 class="hp-h2">More about <span class="hp-key">the&nbsp;practice</span></h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col--full">
+        <ul class="hp-rails">
+          <li class="hp-reveal" style="--hp-i:1">
+            <a class="hp-rail" href="about.html">
+              <!-- swap:team-rail-1 -->
+              <p class="hp-rail__label">About us</p>
+              <span class="hp-rail__spacer" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li class="hp-reveal" style="--hp-i:2">
+            <a class="hp-rail" href="services.html">
+              <!-- swap:team-rail-2 -->
+              <p class="hp-rail__label">What we do</p>
+              <span class="hp-rail__spacer" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li class="hp-reveal" style="--hp-i:3">
+            <a class="hp-rail" href="faq.html">
+              <!-- swap:team-rail-3 -->
+              <p class="hp-rail__label">Questions and answers</p>
+              <span class="hp-rail__spacer" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li class="hp-reveal" style="--hp-i:4">
+            <a class="hp-rail" href="contact.html">
+              <!-- swap:team-rail-4 -->
+              <p class="hp-rail__label">Find us</p>
+              <span class="hp-rail__spacer" aria-hidden="true"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== S5 ===
+     PERSONA-PROOF (S). DARK GROUND + GRADIENT. THE FLOOR IS UNMET AND THIS COMMENT IS
+     WHERE THAT IS RECORDED RATHER THAN ABSORBED.
+     WHAT THE REGISTRY ASKS FOR: at least one persona-proof element on a T-PERSONA page.
+     WHY IT IS NOT DELIVERED: proof is HELD on this build in every form. Testimonials,
+     reviews, ratings, star widgets, review counts, awards, accreditations, statistics,
+     proof strips and proof logos ship in NO form, and specifically not behind a visible
+     representative-example caption, because fabricated structure is permitted on a
+     template and fabricated proof never is, and a caption does not convert one into the
+     other. There is no owner action available today that fills this slot: the one
+     ordinary route, obtaining consent and publishing a real review, is closed while the
+     jurisdiction halt stands, and a template testimonial is not an exit either.
+     WHAT SHIPS INSTEAD: the plain factual record of when the practice is open, which is
+     the one fact this page can put where proof would go without inventing anything. It
+     is a template value under its own swap marker, it is evidence of nothing, and it is
+     content rather than scaffolding, since it would make sense to somebody who never saw
+     this site.
+     THE CLASS NAME IS KEPT AND ITS NOMINAL CONTENT IS STRUCK, exactly as the hero's
+     second and third thirds are, because the brief-consumed gate joins on the class
+     token literally. The class ships; the word does not. Read the heading against the
+     class attribute above it: they share no word.
+     THE HEADING TAKES SLOT NAME 8 AND NOT 5. The heading family already runs 1 to 7
+     across the seven sections this page's copy was written for, and a marker name is
+     never renamed, because a stale grep returns zero hits and zero hits reads exactly
+     like "all done". So the new band mints the next name in the family rather than
+     renumbering the three bands that follow it.
+     NOTHING HERE STATES OR IMPLIES WHEN ANY ONE PERSON IS PRESENT, which is the specific
+     hazard of putting hours three sections under three names, and the note under the
+     record closes it in terms.
+     ========================================================================== -->
+<!-- pick: SECTION-COMPONENTS.md #53 Hours table | considered: SECTION-COMPONENTS.md #24 Testimonials grid, SECTION-COMPONENTS.md #3 Stat strip / metric band | rigor: heavy | why: #24 is the entry the slot name actually points at and it is refused at the root rather than on the merits, because every cell in it would have to be a fabricated quote attributed to a person who does not exist; #3 is the same refusal one step removed, since a metric band on a page with no owner data would have to invent the metric, and a figure printed at display size is the most credible-looking lie a page can tell. #53 is the only entry in the catalog whose entire content is a plain factual record with nothing asserted around it, and its when-to-use line names clinics with specific hours. -->
+<section class="band hp-ground--grad surface-dark persona-proof" id="s5-persona-proof">
+  <div class="container">
+    <div class="row">
+      <div class="col col--full">
+        <div class="hp-head hp-reveal" style="--hp-i:0">
+          <!-- swap:team-heading-8 -->
+          <h2 class="hp-h2">When the practice <span class="hp-key">is&nbsp;open</span></h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col--full">
+        <!-- swap:hours
+             All three rows swap as ONE unit under this single marker. -->
+        <div class="hp-hours hp-reveal" style="--hp-i:1">
+          <div class="hp-hours__row">
+            <p class="hp-hours__k">Monday to Thursday</p>
+            <p class="hp-hours__v">8:00 to 17:00</p>
+          </div>
+          <div class="hp-hours__row">
+            <p class="hp-hours__k">Friday</p>
+            <p class="hp-hours__v">8:00 to 14:00</p>
+          </div>
+          <div class="hp-hours__row">
+            <p class="hp-hours__k">Saturday and Sunday</p>
+            <p class="hp-hours__v">Closed</p>
+          </div>
+        </div>
+        <!-- swap:team-hours-note
+             A NEW SLOT, minted here rather than borrowed, because this sentence is the
+             thing that keeps the record from being read as a rota. It states what the
+             hours are and what they are not. It makes no promise that anybody answers,
+             and it names no person. -->
+        <p class="hp-hours__note hp-reveal" style="--hp-i:2">These are the practice's opening hours. They are not a statement about when any one person is here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== S6 ===
+     FAQ (S). LIGHT GROUND, paper, washed from the opposite side to the rail band above.
+     Three template questions and answers, ALL OF THEM LOGISTICS, plus one route out.
+     WHY EVERY ENTRY IS A LOGISTICS QUESTION, and it is a rule rather than a
+     coincidence: a template question demonstrates the component and is NOT evidence
+     that anybody asked it, and a fabricated inbound history is fabricated proof. All
+     three below are answerable entirely from the template identity values, which is
+     what stops them asserting anything about what this practice's visitors arrive
+     worrying about.
+     WHAT IS NOT TEMPLATED HERE, each for its own reason: no clinical question, no
+     question about what happens in the room, no cost question and no first-visit
+     question, because each would have to be TRUE of a real practice for the entry to be
+     honest. Nothing in the sedation or comfort family is answered in either direction:
+     that antecedent is unverified and silence is the fail-closed state, not an implied
+     offer and not an implied absence.
+     THE HEADING NAMES THE TOPIC AND NEVER THE ASKER. Every idiomatic heading for an
+     on-page question index asserts an inbound history there is no evidence for.
+     ========================================================================== -->
+<!-- pick: SECTION-COMPONENTS.md #35 FAQ grouped | considered: SECTION-COMPONENTS.md #34 FAQ accordion, SECTION-COMPONENTS.md #36 Sticky-sidebar topic nav | rigor: medium | why: #34 hides three one-line logistics answers behind three clicks, which costs a reader who came to find out who they will be dealing with more work than the answers are long, and the owner's motion release does not cover a panel that animates its own height for effect; #36 builds a sidebar index for a long body of sections, and there are three entries here, so the navigation would be as large as the content it indexes. #35 renders question and answer together as one grouped index, which is what three open answers are. -->
+<section class="band hp-ground--paper faq" id="s6-faq">
+  <div class="container">
+    <div class="row">
+      <div class="col col--full">
+        <div class="hp-head hp-reveal" style="--hp-i:0">
+          <!-- swap:team-heading-5 -->
+          <h2 class="hp-h2">Questions about <span class="hp-key">coming&nbsp;here</span></h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col--full">
+        <dl class="hp-qas">
+          <div class="hp-qa hp-reveal" style="--hp-i:1">
+            <!-- swap:team-faq-1-question -->
+            <dt class="hp-qa__q">How do I make an appointment?</dt>
+            <!-- swap:team-faq-1-answer
+                 It states the booking METHOD and says nothing about who answers, how
+                 soon, or what follows. "There is no online booking" is a statement about
+                 this site rather than a promise about anybody's conduct. -->
+            <dd class="hp-qa__a">By telephone or by email. There is <span class="hp-nb">no online booking</span>.</dd>
+          </div>
+          <div class="hp-qa hp-reveal" style="--hp-i:2">
+            <!-- swap:team-faq-2-question -->
+            <dt class="hp-qa__q">Where are you?</dt>
+            <!-- swap:team-faq-2-answer
+                 IT CARRIES THE IDENTITY MARKERS OF THE VALUES IT QUOTES. A swapper
+                 changing the address has to find it in this answer as well as in a
+                 contact block, so three canonical values in one string means three
+                 co-markers beside the answer's own. -->
+            <!-- swap:address -->
+            <!-- swap:street -->
+            <!-- swap:city -->
+            <dd class="hp-qa__a"><span class="hp-street">114&nbsp;Alder&nbsp;Street</span>, Riverbend.</dd>
+          </div>
+          <div class="hp-qa hp-reveal" style="--hp-i:3">
+            <!-- swap:team-faq-3-question -->
+            <dt class="hp-qa__q">Who do I ask about access or parking?</dt>
+            <!-- swap:team-faq-3-answer
+                 A ROUTING answer, which is what a question index can honestly do about a
+                 fact it does not have. It states no floor, no entrance direction, no
+                 distance and no parking arrangement; it says who to ask and when. -->
+            <dd class="hp-qa__a">Reception. Ask when you make your appointment, by telephone <span class="hp-nb">or by email</span>.</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col--full">
+        <p class="hp-gorow hp-reveal" style="--hp-i:4">
+          <!-- swap:team-route-faq
+               The canonical link label for the questions page, character for character
+               from the navigation. This page carries two routes to it, here and at the
+               band below, each under its own marker because each is separately
+               swappable. -->
+          <a class="hp-go hp-go--solid" href="faq.html">Questions and answers</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== S7 ===
+     PRICING-FIT (S). LIGHT GROUND + THE FADED CLINIC PLATE.
+     THIS SLOT'S NOMINAL CONTENT IS STRUCK IN FULL AND THE CLASS NAME IS KEPT, for the
+     same reason the hero's is. There is no price, no fee, no figure, no range, no
+     currency mark, no "from", no plan or network word, and no statement about what
+     other practices publish. There is no template figure either: the halt is not a hold
+     on an unknown number, it is a ban on a currency reaching the page at all, so there
+     is nothing here for a template value to stand in for.
+     THE CLASS NAME MUST NEVER SURFACE AS A VISIBLE HEADING, and that is this band's
+     sharpest constraint: a visible heading over a struck cost block is a promise of
+     content, and it would reproduce the empty payment page the market read records.
+     THE CLASS SHIPS; THE WORD DOES NOT. Read the heading against the class attribute:
+     they share no word.
+     WHAT FILLS THE SLOT is the "fit" half of the registry name, read as WHO TO ASK
+     ABOUT WHAT, which is a question this page and only this page can answer. Each line
+     says what a person is the one to ask about, which allocates responsibility; none
+     says that they will answer, how soon, or what will happen. A Treatment Coordinator
+     is, in many real practices, the person a patient discusses fees with, and THAT
+     READING IS REFUSED HERE IN TERMS: that line says what a course of treatment
+     involves, never what it costs.
+     ========================================================================== -->
+<!-- pick: SECTION-COMPONENTS.md #10 Services 4-col compact, taken at three | considered: SECTION-COMPONENTS.md #31 Pricing 3-tier, SECTION-COMPONENTS.md #15 Comparison table | rigor: heavy | why: #31 and #15 are the two entries the class name invites and both are refused at the root rather than on layout, since there is no figure anywhere on this site to tier and no other practice to compare against, and either would have to invent its own content to render at all; #31 in particular would put three empty price plates on the page, which is the exact unfinished look the whole template mode exists to remove. #10 is a compact panel row taken at three, which is what a table of responsibility looks like when it is not a table and carries no number. -->
+<section class="band hp-ground--paper hp-clinic pricing-fit" id="s7-pricing-fit">
+  <div class="container">
+    <div class="row">
+      <div class="col col--full">
+        <div class="hp-head hp-reveal" style="--hp-i:0">
+          <!-- swap:team-heading-6 -->
+          <h2 class="hp-h2">Who to <span class="hp-key">ask</span> about what</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col--full">
+        <ul class="hp-asks">
+          <li class="hp-ask hp-reveal" style="--hp-i:1">
+            <!-- swap:staff-1-name
+                 SECOND RENDER of this name on this page, under the same marker it
+                 carries above. One string, two carriers, one marker name. -->
+            <p class="hp-ask__name">Alex Morgan</p>
+            <!-- swap:staff-1-role -->
+            <p class="hp-ask__role">Practice Manager</p>
+            <!-- swap:ask-1
+                 THE BIND IS ON THE WHOLE NOUN PHRASE AND NOT ON THE NOUN. With the
+                 article left outside it, the line broke after "about a" and stranded the
+                 indefinite article at the line end, split from the noun it belongs to. -->
+            <p class="hp-ask__line">How the practice is run, and anything that is not about <span class="hp-nb">a particular appointment</span>.</p>
+          </li>
+          <li class="hp-ask hp-reveal" style="--hp-i:2">
+            <!-- swap:staff-2-name -->
+            <p class="hp-ask__name">Jordan Ellis</p>
+            <!-- swap:staff-2-role -->
+            <p class="hp-ask__role">Treatment Coordinator</p>
+            <!-- swap:ask-2 -->
+            <p class="hp-ask__line">What a course of treatment involves, and what <span class="hp-nb">the steps are</span>.</p>
+          </li>
+          <li class="hp-ask hp-reveal" style="--hp-i:3">
+            <!-- swap:staff-3-name -->
+            <p class="hp-ask__name">Sam Patel</p>
+            <!-- swap:staff-3-role -->
+            <p class="hp-ask__role">Reception Lead</p>
+            <!-- swap:ask-3 -->
+            <p class="hp-ask__line">Appointments, changes to appointments, <span class="hp-nb">and reminders</span>.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col--full">
+        <p class="hp-gorow hp-reveal" style="--hp-i:4">
+          <!-- swap:ask-route
+               The same canonical label as the route above, belonging to this band's own
+               slot family, which is why it has its own marker. It takes the QUIET
+               variant of the one button component: two identical solid controls a few
+               hundred pixels apart read as a mistake. -->
+          <a class="hp-go hp-go--quiet" href="faq.html">Questions and answers</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== S8 ===
+     ASKING-FOR-SOMEONE (XS). DARK GROUND + PHOTOGRAPH + FLAT VEIL + INK PLATE.
+     THIS BAND ENDS THE PAGE AND DOES NOT END THE VISIT. It is the only band that says
+     what the names above are FOR, and without it the page lists people and never says
+     why the list is useful.
+     IT IS NOT A SECOND ASK AND IT IS NOT A CLOSING BAND. The site's one closing call to
+     action belongs to the chrome, which stamps it onto every assembled page outside the
+     main element. So this band renders NO link, NO button and NO control of any kind,
+     and no class attribute in it carries a token containing the closing-band substring
+     the singularity gate reads. That token is named in words here and never written in
+     class shape anywhere in this file, so no scan of the raw bytes can find it.
+     LINE TWO IS AN INSTRUCTION AND IS DELIBERATELY NOT AN ASK. It presupposes a contact
+     the reader may or may not make; it does not request one, it routes nowhere and it
+     renders no control. That is the distinction the whole band turns on.
+     "reception" is the canonical noun, lower case, as a place. No number appears,
+     because a number in copy is a headcount claim whatever the row count is.
+     ========================================================================== -->
+<!-- pick: SECTION-COMPONENTS.md #58 Image divider full-bleed | considered: SECTION-COMPONENTS.md #40 Pre-footer CTA band, SECTION-COMPONENTS.md #41 Closing CTA | rigor: heavy | why: #40 and #41 are what this slot was before the brief rewrote it, and both are refused for a mechanical reason as well as a doctrinal one: the chrome already carries the site's single closing band outside the main element, so either would be the SECOND on the assembled page and the singularity gate counts both halves of the file. #58's stated role is a large image acting as a section transition on brand-led pages where imagery does the heavy lifting, which is exactly what a band that says the names above are usable actually is, and it ends the body on the page's fourth and last ground treatment rather than on a repeat. -->
+<section class="band hp-ground--photo hp-ground--ink hp-ground--veil surface-dark asking-for-someone" id="s8-asking-for-someone">
+  <div class="container">
+    <div class="row row--ground">
+      <div class="col col--full">
+        <!-- swap:image-team-closing
+             GENERATED TEMPLATE IMAGE, not owner photography. Replace before ship.
+             ALT DEVIATION, and it is the largest of the three, declared rather than
+             smoothed over. The copy's owed alt for this slot is a doorway seen from
+             inside. The installed photograph is not a doorway: it is a desk under a lamp
+             with two pairs of hands across it, so the alt is written from the picture and
+             this is the first slot to fix when real photography lands.
+             WHY THIS PHOTOGRAPH IS STILL THE RIGHT ONE while the alt is wrong for the
+             copy: the band is about asking a person for someone by name, and this is the
+             only frame in the cleared set that shows one person being asked something by
+             another. Hands, two forearms and a sleeve are in frame. NO FACE AND NO EYES
+             ARE, which is the clause that is still absolute. It names no instrument,
+             procedure, material or technique and asserts no premises fact. -->
+        <figure class="hp-photo">
+          <img class="hp-photo__img" src="../../assets/dental-hands-consult.jpg"
+               width="1024" height="576" loading="lazy" decoding="async" fetchpriority="low"
+               alt="Two pairs of hands across a wooden desk, either side of a study model of teeth under a desk lamp.">
+          <span class="hp-photo__scrim"></span>
+          <span class="hp-photo__edge"></span>
+        </figure>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col--full">
+        <!-- THE INK PLATE. The band is centred, so the contrast guarantee sits on the
+             panel rather than on the band's geometry, where it is flat and total. It
+             carries NO drop shadow: it is dark on dark, and the owner's release is for
+             white-on-white boxes. -->
+        <div class="hp-plate hp-plate--ink hp-reveal" style="--hp-i:0">
+          <div class="hp-head">
+            <!-- swap:team-heading-7 -->
+            <h2 class="hp-h2">Asking for someone <span class="hp-key">by&nbsp;name</span></h2>
+          </div>
+          <!-- swap:team-closing-line
+               The three lines below swap as ONE unit under this single marker. -->
+          <ul class="hp-closing">
+            <li class="hp-closing__line">You may need to ask for one of these people <span class="hp-nb">by name</span>.</li>
+            <li class="hp-closing__line">Say the name when you telephone <span class="hp-nb">or write</span>.</li>
+            <li class="hp-closing__line">If you're not sure who to ask, start <span class="hp-nb">with reception</span>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+/* ============================================================================
+   THE SCROLL REVEAL, carried from the approved design unchanged so this template and
+   the page it templates reveal at the same rate.
+   THREE SEPARATE GUARANTEES THAT NOTHING CAN BE STRANDED INVISIBLE, because the
+   requirement is a FINAL VISIBLE STATE and not merely less motion:
+     1. the hidden start state is gated behind a class only this script can add, so with
+        JavaScript disabled nothing is ever hidden and the page renders complete at
+        first paint;
+     2. the reduced-motion preference is read here as well as in CSS, and when it is set,
+        or when the observer API is missing, everything is revealed immediately and no
+        observer is created at all;
+     3. a four second safety net reveals anything still unrevealed, so a failed or
+        mis-rooted observer cannot leave content hidden.
+   ============================================================================ */
+(function () {
+  var root = document.documentElement;
+  root.className = root.className ? root.className + ' hp-js' : 'hp-js';
+
+  var nodes = document.querySelectorAll('.hp-reveal');
+  function showAll() {
+    for (var i = 0; i < nodes.length; i++) { nodes[i].className += ' hp-in'; }
+  }
+
+  var reduce = false;
+  try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { reduce = false; }
+  if (reduce || !('IntersectionObserver' in window)) { showAll(); return; }
+
+  var io = new IntersectionObserver(function (entries) {
+    for (var i = 0; i < entries.length; i++) {
+      if (entries[i].isIntersecting) {
+        entries[i].target.className += ' hp-in';
+        io.unobserve(entries[i].target);
+      }
+    }
+  }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+
+  for (var j = 0; j < nodes.length; j++) { io.observe(nodes[j]); }
+  window.setTimeout(showAll, 4000);
+})();
+</script>
+
+</body>
+</html>
